@@ -6,13 +6,7 @@ class App extends Component {
   // initialize our state 
   state = {
     data: [],
-    id: 0,
-    message: null,
-    intervalIsSet: false,
-    idToDelete: null,
-    idToUpdate: null,
-    objectToUpdate: null,
-    loading:true
+    loading: true
   };
 
   // when component mounts, first thing it does is fetch all existing data in our db
