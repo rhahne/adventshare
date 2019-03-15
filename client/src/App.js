@@ -19,13 +19,11 @@ class App extends Component {
   // fetch data from our data bases
   getDataFromDb = () => {
     debugger
-    axios.get("/api/demo")
+    axios.get("http://localhost:3002/api/demo")
       .then(data => {
-        debugger
         this.setState({ data: data.data, loading: false })
       });
   };
-
 
   render() {
     return (
