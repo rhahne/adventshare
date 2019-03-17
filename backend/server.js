@@ -10,7 +10,6 @@ const cors = require('cors')
 
 const API_PORT = 3002;
 var app = express();
-const router = express.Router();
 
 const dblink = 'mongodb+srv://Robin:Tj2cEFnJ1RxEltqh@cluster0-qcewh.gcp.mongodb.net/test?retryWrites=true'
 
@@ -39,10 +38,12 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors())
 
-// append /api for our http requests
-const get = require('./api/get');
-app.use("/api/get", get);
+// creating routes
+const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api');
 
+app.use('/', indexRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
