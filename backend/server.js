@@ -39,18 +39,10 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors())
 
-
-// this is our get method
-router.get("/demo", (req, res) => {
-    let demoOne = [
-        {title: 'history', name: 'sÚon'},
-        {title: 'stroopwafels', name: 'sÚon'}
-    ]
-    res.json(demoOne)
-});
-
 // append /api for our http requests
-app.use("/api", router);
+const get = require('./api/get');
+app.use("/api/get", get);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
