@@ -35,29 +35,35 @@ router.get('/', (req, res, next) => {
 
 // POST route => check login information
 router.post('/login', (req, res, next) => {
+  /*
+  const { username, password } = req.body;
+  if(!username || !password){
+    res.status(400).json({message:'Please fill in all the fields, son!'})
+  }
+  */
   User.findOne({
       firstname: req.body.firstname
     })
     .then((foundUser) => {
       if (!foundUser) {
-        res.send('duuude')
-        console.log('user does not exist, son')
+        res.status(400).json({message:'User does not exist, son!'})
       } else {
         bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
           if (result == true) {
-            debugger
+            debugger  
             req.session.user = foundUser._doc;
             req.session.save();
-            res.send(foundUser._doc)
+            res.status(200).json({message:'success!'})
+            //jres.send(foundUser._doc)
           } else {
-            res.send(false)
-            console.log('error, son')
+            res.status(400).json({message:'Password is not correct, son!'})
+            //res.send(false)
           }
         });
       }
     })
     .catch((err) => {
-      res.send('dadadada');
+      res.send(false);
       console.log(err)
     })
 });

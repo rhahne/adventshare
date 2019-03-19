@@ -16,7 +16,6 @@ export default class Login extends Component {
     this.setState(updateInput);
   }
   handleSubmit = (event) => {
-    debugger
     event.preventDefault()
     let loginUser = this.state;
     axios({
@@ -26,23 +25,39 @@ export default class Login extends Component {
       withCredentials: true
     })
       .then((response) => {
-        if(response.data){
+        if (response.data) {
+          this.props.history.push('/users/profile')
           this.props.loggingIn(response);
         }
       })
       .catch((err) => {
-        console.log(err)
-      }) 
+          this.setState({
+            errorMessage: err.response.data.message,
+          })
+      })
   }
   render() {
     return (
       <div>
-        <h2>Log in to de Account!</h2>
-        <form  onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
-          <input onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
-          <input onChange={this.handleChange} type="password" name="password" placeholder="password" value={this.state.password} />
-          <input type="submit" value="Login" />
+        <h2 className="title">Log in</h2>
+        <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
+          <div class="field">
+            <label class="label">Firstname</label>
+            <div class="control">
+              <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input className="input" onChange={this.handleChange} type="password" name="password" placeholder="password" value={this.state.password} />
+            </div>
+          </div>
+          <div class="control">
+            <input className="button is-link" type="submit" value="Login" />
+          </div>
         </form>
+        {this.state.errorMessage}
       </div>
     )
   }

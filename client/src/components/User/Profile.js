@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Label } from 'react-bulma-components/full';
+import Login from './Login';
+import { Link } from 'react-router-dom';
 
 export default class Profile extends Component {
   constructor(props){
     super(props)
     this.state = {
-      firstname: null
+      userData: null
     }
   }
   componentDidMount() {
@@ -16,7 +19,7 @@ export default class Profile extends Component {
     })
       .then((response) => {
         this.setState({
-          firstname: response.data.firstname
+          userData: response.data
         })
       })
       .catch((err) => {
@@ -24,12 +27,19 @@ export default class Profile extends Component {
       })
   }
   render() {
-    debugger
     return (
       <div>
-        <h2>{this.props.loggedIn} </h2>
-       {this.props.loggedIn?<h2>Welcome {this.state.firstname}</h2>:<h2>log in dude!</h2>} 
-       
+        {this.state.userData?
+        <>
+          <h1 className="title">Welcome {this.state.userData.firstname}</h1>
+          <ul>
+            <li>Firstname: {this.state.userData.firstname}</li>
+            <li>Email: {this.state.userData.email}</li>
+            <li>Bio: {this.state.userData.bio}</li>
+          </ul>
+        </>
+        :
+        <h2>log in dude!</h2>}
       </div>
     )
   }
