@@ -3,11 +3,12 @@ import { Switch, Route } from "react-router-dom";
 import { Container, Section } from "react-bulma-components/full";
 import Navigation from './components/Navigation'
 import StartPage from './components/StartPage'
-import Signup from './components/User/Signup'
-import Login from './components/User/Login'
-import UserList from './components/User/UserList'
-import Profile from './components/User/Profile'
-import Logout from './components/User/Logout'
+import Signup from './components/user/Signup'
+import Login from './components/user/Login'
+import UserList from './components/user/UserList'
+import Profile from './components/user/Profile'
+import Logout from './components/user/Logout'
+import Search from './components/general/Search'
 import ProtectedHome from './components/protected/Home'
 import axios from 'axios'
 
@@ -21,6 +22,7 @@ class App extends Component {
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
   }
+
   componentDidMount() {
     axios({
       method: 'get',
@@ -37,6 +39,7 @@ class App extends Component {
         //this.props.history.push('/users/login')
       })
   }
+  
   loggingIn(event) {
     //Auth.login();
     this.setState(() => ({
@@ -44,6 +47,7 @@ class App extends Component {
       user: event.data
     }))
   }
+
   loggingOut() {
     //Auth.logout();
     this.setState({
@@ -51,6 +55,7 @@ class App extends Component {
       user: ''
     })
   }
+  
   render() {
     return (
       <div>
@@ -65,6 +70,7 @@ class App extends Component {
               <Route path="/users/signup" exact component={Signup} />
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
+              <Route path="/search" exact render={(props)=> <Search {...props}/>} />
             </Switch>
           </Container>
         </Section>

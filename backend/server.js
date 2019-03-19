@@ -1,14 +1,15 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const Data = require("./data");
-const cors = require('cors')
-const session      = require("express-session");
-const MongoStore   = require("connect-mongo")(session);
+const createError   = require('http-errors');
+const express       = require('express');
+const path          = require('path');
+const bcrypt        = require('bcrypt');
+const cookieParser  = require('cookie-parser');
+const logger        = require('morgan');
+const mongoose      = require("mongoose");
+const bodyParser    = require("body-parser");
+const Data          = require("./data");
+const cors          = require('cors')
+const session       = require("express-session");
+const MongoStore    = require("connect-mongo")(session);
 
 const API_PORT = 3002;
 var app = express();
@@ -47,12 +48,14 @@ app.use(cors({
 
 app.use(session({
     secret: 'fuckthisshit',
+    resave: false,
+    saveUninitialized: false,
     cookie: {
         maxAge: 999999999,
         expires: 999999999
     },
     store: new MongoStore({
-        mongooseConnection: mongoose.connection,
+        mongooseConnection: db,
         ttl: 24 * 60 * 60 // 1 day
     })
 }));
