@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Switch, Link, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Container, Section } from "react-bulma-components/full";
 import Navigation from './components/Navigation'
 import StartPage from './components/StartPage'
 import Signup from './components/User/Signup'
 import Login from './components/User/Login'
+import UserList from './components/User/UserList'
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class App extends Component {
               <Route path="/" exact component={StartPage} />
               <Route path="/users/login" exact component={Login} />
               <Route path="/users/signup" exact component={Signup} />
+              <Route path="/users" exact component={UserList} />
             </Switch>
           </Container>
         </Section>
