@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Data = require("./data");
 const cors = require('cors')
+const session      = require("express-session");
+const MongoStore   = require("connect-mongo")(session);
 
 const API_PORT = 3002;
 var app = express();
@@ -33,13 +35,27 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors({
     credentials: true,
     origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
-  }));
+}));
+
+app.use(session({
+    secret: 'fuckthisshit',
+    cookie: {
+        maxAge: 999999999,
+        expires: 999999999
+    },
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        ttl: 24 * 60 * 60 // 1 day
+    })
+}));
 
 // creating routes
 var indexRouter = require('./routes/index');
@@ -66,4 +82,4 @@ app.use(function (err, req, res, next) {
     res.send('error');
 });
 
-module.exports = app 
+module.exports = app

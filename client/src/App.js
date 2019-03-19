@@ -6,6 +6,8 @@ import StartPage from './components/StartPage'
 import Signup from './components/User/Signup'
 import Login from './components/User/Login'
 import UserList from './components/User/UserList'
+import Profile from './components/User/Profile'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +18,22 @@ class App extends Component {
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
+  }
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/users/profile',
+      withCredentials: true
+    })
+      .then((response) => {
+        this.setState({
+          isAuthenticated: true,
+          user: response.data
+        })
+      })
+      .catch((err) => {
+        //this.props.history.push('/users/login')
+      })
   }
   loggingIn(event) {
     //Auth.login();
@@ -34,12 +52,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation loggedIn={this.state.isAuthenticated}/>
         <Section>
           <Container>
             <Switch>
               <Route path="/" exact component={StartPage} />
-              <Route path="/users/login" exact component={Login} />
+              <Route path="/users/login" exact render={(props)=> <Login {...props} loggingIn={this.loggingIn}/> }/>
+              <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact component={Signup} />
               <Route path="/users" exact component={UserList} />
             </Switch>

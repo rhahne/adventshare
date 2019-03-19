@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 export default class UserList extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class UserList extends Component {
         <br />
         <ul>
           {this.state.allUsers.map((user) => {
-            return <li key={user._id}>Name: {user.firstname}</li>
+            return <li key={user._id}>Name: {user.firstname} email: {user.email} bio: {user.bio}</li>
           })}
         </ul>
       </div>

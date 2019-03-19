@@ -7,8 +7,6 @@ export default class Login extends Component {
     super(props)
     this.state = {
       firstname: '',
-      email: '',
-      bio: '',
       password: ''
     }
   }
@@ -18,6 +16,7 @@ export default class Login extends Component {
     this.setState(updateInput);
   }
   handleSubmit = (event) => {
+    debugger
     event.preventDefault()
     let loginUser = this.state;
     axios({
