@@ -8,6 +8,7 @@ import Login from './components/User/Login'
 import UserList from './components/User/UserList'
 import Profile from './components/User/Profile'
 import Logout from './components/User/Logout'
+import ProtectedHome from './components/protected/Home'
 import axios from 'axios'
 
 class App extends Component {
@@ -47,7 +48,7 @@ class App extends Component {
     //Auth.logout();
     this.setState({
       isAuthenticated: false,
-      user: null
+      user: ''
     })
   }
   render() {
@@ -63,6 +64,7 @@ class App extends Component {
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact component={Signup} />
               <Route path="/users" exact component={UserList} />
+              <Route path="/protected/index" exact component={ProtectedHome} />
             </Switch>
           </Container>
         </Section>

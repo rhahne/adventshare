@@ -39,7 +39,6 @@ router.post('/login', (req, res, next) => {
       firstname: req.body.firstname
     })
     .then((foundUser) => {
-      debugger
       if (!foundUser) {
         res.send('duuude')
         console.log('user does not exist, son')
@@ -58,7 +57,6 @@ router.post('/login', (req, res, next) => {
       }
     })
     .catch((err) => {
-      debugger
       res.send('dadadada');
       console.log(err)
     })

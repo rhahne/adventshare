@@ -9,33 +9,39 @@ export default class Navigation extends Component {
         <Navbar className="is-dark">
           <Container>
             <Navbar.Brand>
-                <NavLink to="/" style={{ color: 'white' }}>
-                  ADVENTSHARE
+              <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
+                ADVENTSHARE
               </NavLink>
             </Navbar.Brand>
             <Navbar.Menu>
               <Navbar.Container>
                 <Navbar.Item href="#">Home</Navbar.Item>
-                <Navbar.Item href="#">Explore</Navbar.Item>
-                <Navbar.Item href="#">Connect</Navbar.Item>
-              </Navbar.Container>
-              <Navbar.Container position="end">
-                  <NavLink to="/users/login">
-                    login
-                  </NavLink>
-                  <NavLink to="/users/signup">
-                    Sign Up
-                  </NavLink>
-                  <NavLink to="/users/profile">
-                    Profile
-                  </NavLink>
-                  <NavLink to="/users/logout">
-                    Logout
-                  </NavLink>
+                <NavLink className="navbar-item" to="/protected/index" style={{ color: 'white' }}>
+                Protected
+              </NavLink>
                 <Navbar.Item>
-                  STATUS: {this.props.loggedIn ? 'fuck ya' : 'fuck no'}
-                </Navbar.Item>
+                    {this.props.loggedIn ? 'ya' : 'no'}
+                  </Navbar.Item>
               </Navbar.Container>
+              {this.props.loggedIn ?
+                <Navbar.Container position="end">
+                  <NavLink className="navbar-item" to="/users/profile">
+                    <button className="button is-light">Profile</button>
+                  </NavLink>
+                  <NavLink className="navbar-item" to="/users/logout">
+                    <span style={{ color: 'white' }}>Logout</span>
+                  </NavLink>
+                </Navbar.Container>
+                :
+                <Navbar.Container position="end">
+                    <NavLink className="navbar-item" to="/users/signup">
+                      <button className="button is-primary">Sign Up</button>
+                    </NavLink>
+                    <NavLink className="navbar-item" to="/users/login">
+                      <span style={{ color: 'white' }}>Login</span>
+                    </NavLink>
+                </Navbar.Container>
+              }
             </Navbar.Menu>
           </Container>
         </Navbar>
