@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bulma": "^0.7.4",
-    "concurrently": "^4.1.0",
-    "react-bulma-components": "^2.3.0"
+    "concurrently": "^4.1.0"
   }
 }

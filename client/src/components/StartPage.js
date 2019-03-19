@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { Section, Hero, Heading, Container } from "react-bulma-components/full";
+import { Hero, Container, Section, Heading } from 'react-bulma-components'
 
 export default class StartPage extends Component {
   render() {
     return (
       <div>
         <Section>
-          <Hero>
+          <Hero color="primary">
             <Hero.Body>
               <Container>
-                <Heading size={1}>Adventshare</Heading>
-                <Heading subtitle size={4}>
-                  Find an apartment together and go adventsharing!
-              </Heading>
+                <Heading>Hero title Primary</Heading>
+                <Heading subtitle size={3}>
+                  Subtitle
+                </Heading>
               </Container>
             </Hero.Body>
           </Hero>

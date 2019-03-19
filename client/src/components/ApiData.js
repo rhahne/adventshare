@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from "axios";
 import Loader from './Loader';
 
-export default class ApiData extends Component {
+export default class ApiData extends Component {  
     // initialize our state 
     state = {
       data: [],

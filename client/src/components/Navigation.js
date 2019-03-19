@@ -9,14 +9,11 @@ export default class Navigation extends Component {
   render() {
     return (
       <Router>
-
         <Navbar className="is-dark">
           <Container>
             <Navbar.Brand>
             <Link to="/">
-              <Navbar.Item renderAs="a" href="/">
                 <strong>ADVENTSHARE</strong>
-              </Navbar.Item>
             </Link>
             </Navbar.Brand>
             <Navbar.Menu>
@@ -27,14 +24,10 @@ export default class Navigation extends Component {
               </Navbar.Container>
               <Navbar.Container position="end">
                 <Link to="/users/login">
-                  <Navbar.Item>
                   <span className="button is-light">login</span>
-                  </Navbar.Item>
                 </Link>
                 <Link to="/users/signup">
-                  <Navbar.Item>
                     <span className="button is-primary">Sign Up</span>
-                  </Navbar.Item>
                 </Link>
               </Navbar.Container>
             </Navbar.Menu>

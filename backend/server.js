@@ -36,14 +36,19 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
-app.use(cors())
+app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
+  }));
 
 // creating routes
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
+var usersRouter = require('./routes/users');
 
 app.use('/', indexRouter);
 app.use("/api", apiRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
