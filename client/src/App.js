@@ -7,6 +7,7 @@ import Signup from './components/User/Signup'
 import Login from './components/User/Login'
 import UserList from './components/User/UserList'
 import Profile from './components/User/Profile'
+import Logout from './components/User/Logout'
 import axios from 'axios'
 
 class App extends Component {
@@ -58,6 +59,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/login" exact render={(props)=> <Login {...props} loggingIn={this.loggingIn}/> }/>
+              <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact component={Signup} />
               <Route path="/users" exact component={UserList} />

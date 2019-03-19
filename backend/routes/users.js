@@ -72,4 +72,10 @@ router.get('/profile', (req, res) => {
   }
 })
 
+// Click on Logout Button
+router.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.clearCookie("connect.sid"); 
+})
+
 module.exports = router;

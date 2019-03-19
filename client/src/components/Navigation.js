@@ -29,6 +29,9 @@ export default class Navigation extends Component {
                   <NavLink to="/users/profile">
                     Profile
                   </NavLink>
+                  <NavLink to="/users/logout">
+                    Logout
+                  </NavLink>
                 <Navbar.Item>
                   STATUS: {this.props.loggedIn ? 'fuck ya' : 'fuck no'}
                 </Navbar.Item>
