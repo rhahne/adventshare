@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require('bcrypt');
 
 const User = require('../models/user.js')
 
 // POST route => to create a new user
 router.post('/', (req, res, next) => {
+  bcrypt.hash(req.body.password, 10, function (err, hash) {
     User.create({
         firstname: req.body.firstname,
         email: req.body.email,
         bio: req.body.bio,
-        password: req.body.password,
+        password: hash,
       })
       .then(response => {
         res.json(response);
@@ -17,6 +19,7 @@ router.post('/', (req, res, next) => {
       .catch(err => {
         res.json(err);
       })
+  })
 });
 
 // GET route => to get all the projects
@@ -32,7 +35,6 @@ router.get('/', (req, res, next) => {
 
 // POST route => check login information
 router.post('/login', (req, res, next) => {
-  debugger
   User.findOne({
       firstname: req.body.firstname
     })
@@ -42,17 +44,17 @@ router.post('/login', (req, res, next) => {
         res.send('duuude')
         console.log('user does not exist, son')
       } else {
-        //bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
-          //if (result == true) {
+        bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
+          if (result == true) {
             debugger
             req.session.user = foundUser._doc;
             req.session.save();
             res.send(foundUser._doc)
-         // } else {
-          //  res.send(false)
-          //  console.log('error, son')
-          //}
-        //});
+          } else {
+            res.send(false)
+            console.log('error, son')
+          }
+        });
       }
     })
     .catch((err) => {
