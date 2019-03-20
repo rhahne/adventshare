@@ -6,17 +6,28 @@ const User = require('../models/user.js')
 
 // Sign up post request
 router.post('/', (req, res, next) => {
-debugger
+  debugger
   // Frontend Validation
-  const { firstname, email, bio, password } = req.body;
-  if (!firstname || !email || !bio || !password) {
-    res.status(400).json({message:'Please fill in all the fields, son!'})
+  const {
+    firstname,
+    email,
+    bio,
+    password
+  } = req.body;
+  if (!firstname || !email || !bio || !password) {
+    res.status(400).json({
+      message: 'Please fill in all the fields, son!'
+    })
   }
-  if(firstname.length <= 1) {
-    res.status(400).json({message:'A firstname with one character? cmon son!'})
+  if (firstname.length <= 1) {
+    res.status(400).json({
+      message: 'A firstname with one character? cmon son!'
+    })
   }
-  if(password.length < 5) {
-    res.status(400).json({message:'Password has to be at least 5 characters long!'})
+  if (password.length < 5) {
+    res.status(400).json({
+      message: 'Password has to be at least 5 characters long!'
+    })
   }
 
   // Backend Validation
@@ -33,7 +44,9 @@ debugger
       })
       .catch(err => {
         //res.json(err);
-        res.status(400).json({message:'User could not be created!'})
+        res.status(400).json({
+          message: 'User could not be created!'
+        })
       })
   })
 });
@@ -53,9 +66,14 @@ router.get('/', (req, res, next) => {
 router.post('/login', (req, res, next) => {
 
   // Frontend Validation
-  const { firstname, password } = req.body;
-  if(!firstname || !password){
-    res.status(400).json({message:'Please fill in all the fields, son!'})
+  const {
+    firstname,
+    password
+  } = req.body;
+  if (!firstname || !password) {
+    res.status(400).json({
+      message: 'Please fill in all the fields, son!'
+    })
   }
 
   // Backend Validation
@@ -64,17 +82,23 @@ router.post('/login', (req, res, next) => {
     })
     .then((foundUser) => {
       if (!foundUser) {
-        res.status(400).json({message:'User does not exist, son!'})
+        res.status(400).json({
+          message: 'User does not exist, son!'
+        })
       } else {
         bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
           if (result == true) {
-            debugger  
+            debugger
             req.session.user = foundUser._doc;
             req.session.save();
-            res.status(200).json({message:'success!'})
+            res.status(200).json({
+              message: 'success!'
+            })
             //jres.send(foundUser._doc)
           } else {
-            res.status(400).json({message:'Password is not correct, son!'})
+            res.status(400).json({
+              message: 'Password is not correct, son!'
+            })
             //res.send(false)
           }
         });
@@ -99,7 +123,7 @@ router.get('/profile', (req, res) => {
 // Click on Logout Button
 router.get('/logout', function (req, res) {
   req.session.destroy();
-  res.clearCookie("connect.sid"); 
+  res.clearCookie("connect.sid");
 })
 
 module.exports = router;

@@ -12,9 +12,8 @@ export default class Navigation extends Component {
               <Navbar.Brand>
                 <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
                 <img
-                  src="./img/compass.svg"
-                  alt="Bulma: a modern CSS framework based on Flexbox"
-                  width="112"
+                  src="/img/compass.png"
+                  alt="Adventshare"
                   height="28"
                 />
                 </NavLink>
