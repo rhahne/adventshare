@@ -1,0 +1,22 @@
+[{
+    "name": "Jura Mountains",
+    "description": "This climbing area is sick af",
+    "img": ["./img/jura/jura1.jpg","./img/jura/jura2.jpg","./img/jura/jura3.jpg"],
+    "housing": ["houseID","houseID","houseID"],
+    "climbing_areas": ["Soyhières","La Jacoterie","Pelzli","Mushroomcave","Falkenflue","Bärenfels","Basler Jura","Schauenburgflue", "Hermitage"]
+  },
+  {
+    "name": "Eastern Swiss Alps",
+    "description": "This is another climbing area with lots of climbing oppourtunties",
+    "img": ["./img/jura/jura1.jpg","./img/jura/jura2.jpg","./img/jura/jura3.jpg"],
+    "housing": ["houseID1","houseID2","houseID3"],
+    "climbing_areas": ["Sex du corbeau","La Jacoterie","Pelzli","Mushroomcave","Falkenflue","Bärenfels","Basler Jura","Schauenburgflue", "Hermitage"]
+  },
+  {
+    "name": "Western Swiss Alps",
+    "description": "very nice",
+    "img": ["./img/jura/jura1.jpg","./img/jura/jura2.jpg","./img/jura/jura3.jpg"],
+    "housing": ["houseID1","houseID2","houseID3"],
+    "climbing_areas": ["Sustenpass","Steingletscher","Sewen","Engelberg"]
+  }
+]

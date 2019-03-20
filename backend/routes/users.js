@@ -6,7 +6,6 @@ const User = require('../models/user.js')
 
 // Sign up post request
 router.post('/', (req, res, next) => {
-  debugger
   // Frontend Validation
   const {
     firstname,
