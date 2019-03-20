@@ -1,81 +1,141 @@
-import React, { Component } from 'react'
-import { Navbar, Container } from "react-bulma-components/full";
-import { NavLink } from "react-router-dom";
+import React, {Component} from 'react'
+import {Link} from "react-router-dom";
 
 export default class Navigation extends Component {
-  render() {
+    render() {
+        return (
+            <div>
+                {this.props.loggedIn
+                    ? <NavbarAuth/>
+                    : <NavbarNonAuth/>}
+            </div>
+        )
+    }
+}
+
+function NavbarAuth() {
     return (
-      <div>
-        <Navbar className="is-dark">
-          <Container>
+        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div className="container">
+                <div className="navbar-brand">
+                    <Link
+                        className="navbar-item"
+                        to="/"
+                        style={{
+                        color: 'white'
+                    }}>
+                        <img src="/img/compass.png" alt="Adventshare" height="28"/>
+                    </Link>
+                    <Link
+                        role="button"
+                        className="navbar-burger burger"
+                        aria-label="menu"
+                        aria-expanded="false"
+                        data-target="navMenu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </Link>
+                </div>
 
-              <Navbar.Brand>
-                <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
-                <img
-                  src="/img/compass.png"
-                  alt="Adventshare"
-                  height="28"
-                />
-                </NavLink>
-              </Navbar.Brand>
+                <div id="navMenu" className="navbar-menu">
+                    <div className="navbar-start">
+                        <Link
+                            className="navbar-item"
+                            to="/"
+                            style={{
+                            color: 'white'
+                        }}>
+                            Home
+                        </Link>
+                        <Link
+                            className="navbar-item"
+                            to="/search"
+                            style={{
+                            color: 'white'
+                        }}>
+                            Search
+                        </Link>
+                    </div>
 
-              <Navbar.Menu>
-                <Navbar.Container>
-                  <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
-                  Home
-                  </NavLink>
+                    <div className="navbar-end">
+                        <Link className="navbar-item" to="/users/profile">
+                            Account
+                        </Link>
 
-                  <NavLink className="navbar-item" to="/protected/index" style={{ color: 'white' }}>
-                  Protected
-                  </NavLink>
-
-                  <NavLink className="navbar-item" to="/search" style={{ color: 'white' }}>
-                  Search
-                  </NavLink>
-                </Navbar.Container>
-
-              {this.props.loggedIn ?
-                <Navbar.Container position="end">
-                  <NavLink className="navbar-item" to="/users/profile">
-                    <button className="button is-light">
-                    Profile
-                    </button>
-                  </NavLink>
-
-                  <NavLink className="navbar-item" to="/users/logout">
-                    <span style={{ color: 'white' }}>
-                    Logout
-                    </span>
-                  </NavLink>
-
-                  <NavLink className="navbar-item" to="/search">
-                    <button className="button is-light">
-                    Search
-                    </button>
-                  </NavLink>
-                </Navbar.Container>
-
-                :
-
-                <Navbar.Container position="end">
-
-                    <NavLink className="navbar-item" to="/users/signup">
-                      <button className="button is-primary">
-                      Sign Up
-                      </button>
-                    </NavLink>
-
-                    <NavLink className="navbar-item" to="/users/login">
-                      <span style={{ color: 'white' }}>
-                      Login
-                      </span>
-                    </NavLink>
-                </Navbar.Container>
-              }
-            </Navbar.Menu>
-          </Container>
-        </Navbar>
-      </div>
+                        <div className="navbar-item">
+                            <div className="buttons">
+                                <Link className="button is-light" to="/users/logout">
+                                    Log out
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     )
-  }
+}
+
+function NavbarNonAuth() {
+    return (
+        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div className="container">
+                <div className="navbar-brand">
+                    <Link
+                        className="navbar-item"
+                        to="/"
+                        style={{
+                        color: 'white'
+                    }}>
+                        <img src="/img/compass.png" alt="Adventshare" height="28"/>
+                    </Link>
+                    <Link
+                        role="button"
+                        className="navbar-burger burger"
+                        aria-label="menu"
+                        aria-expanded="false"
+                        data-target="navMenu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </Link>
+                </div>
+
+                <div id="navMenu" className="navbar-menu">
+                    <div className="navbar-start">
+                        <Link
+                            className="navbar-item"
+                            to="/"
+                            style={{
+                            color: 'white'
+                        }}>
+                            Home
+                        </Link>
+                        <Link
+                            className="navbar-item"
+                            to="/search"
+                            style={{
+                            color: 'white'
+                        }}>
+                            Search
+                        </Link>
+                    </div>
+
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            <div class="buttons">
+                                <Link class="button is-light" to="/users/signup">
+                                    Sign up
+                                </Link>
+                                <Link className="button is-info" to="/users/login">
+                                    Log in
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    )
 }

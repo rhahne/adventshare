@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 // Housing Model
-const Area = mongoose.model('User', new Schema({
+const Area = mongoose.model('Area', new Schema({
   name: String,
   description: String,
   img: Array,

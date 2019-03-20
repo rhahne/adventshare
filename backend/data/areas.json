@@ -2,7 +2,7 @@
     "name": "Jura Mountains",
     "description": "This climbing area is sick af",
     "img": ["./img/jura/jura1.jpg","./img/jura/jura2.jpg","./img/jura/jura3.jpg"],
-    "housing": ["houseID","houseID","houseID"],
+    "housing": ["houseID1","houseID2","houseID3"],
     "climbing_areas": ["Soyhières","La Jacoterie","Pelzli","Mushroomcave","Falkenflue","Bärenfels","Basler Jura","Schauenburgflue", "Hermitage"]
   },
   {

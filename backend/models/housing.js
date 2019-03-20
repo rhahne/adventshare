@@ -9,7 +9,7 @@ const Housing = mongoose.model('Housing', new Schema({
   img: Array,
   address: Object,
   // host: String,
-  area: { type: Schema.Types.ObjectId, ref: 'Area' },
+  area: Array,
   pricing: Number,
   // rating: Number,
   // reviews: { type: Schema.Types.ObjectId, ref: 'Review' },

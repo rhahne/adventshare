@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const Housing = require('../models/housing')
+const Housing = require('../models/housing');
+const Area = require('../models/area');
 
 router.post('/', (req, res, next) => {
     // Frontend Validation
@@ -18,18 +19,13 @@ router.post('/', (req, res, next) => {
         })
     }
     else {
-    debugger
-    // Backend Validation
-        Housing.find({
-            'area': where
-            })
-            .then(response => {
+        Housing
+            .find({})
+            .then((response) => {
                 res.status(200).json(response)
             })
-            .catch(err => {
-                res.status(400).json({
-                    message: 'Housing not found'
-                })
+            .catch(error => {
+                res.status(400).json(error)
             })
         }
 });
