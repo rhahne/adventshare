@@ -41,19 +41,19 @@ export default class Login extends Component {
       <div>
         <h2 className="title">Log in</h2>
         <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
-          <div class="field">
-            <label class="label">Firstname</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Firstname</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
             </div>
           </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="password" name="password" placeholder="password" value={this.state.password} />
             </div>
           </div>
-          <div class="control">
+          <div className="control">
             <input className="button is-link" type="submit" value="Login" />
           </div>
         </form>

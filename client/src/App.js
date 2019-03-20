@@ -41,7 +41,6 @@ class App extends Component {
   }
   
   loggingIn(event) {
-    //Auth.login();
     this.setState(() => ({
       isAuthenticated: true,
       user: event.data
@@ -49,7 +48,6 @@ class App extends Component {
   }
 
   loggingOut() {
-    //Auth.logout();
     this.setState({
       isAuthenticated: false,
       user: ''

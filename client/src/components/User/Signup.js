@@ -27,10 +27,11 @@ export default class Signup extends Component {
     })
       .then((response) => {
         this.props.history.push('/')
-        console.log('success')
       })
       .catch((err) => {
-        console.log(err)
+        this.setState({
+          errorMessage: err.response.data.message,
+        })
       })
   }
   render() {
@@ -38,34 +39,35 @@ export default class Signup extends Component {
       <div>
         <h1 className="title">Sign Up</h1>
         <form onSubmit={this.handleSubmit} action="localhost:3002/users">
-          <div class="field">
-            <label class="label">Firstname</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Firstname</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
             </div>
           </div>
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="email" name="email" placeholder="email" value={this.state.email} />
             </div>
           </div>
-          <div class="field">
-            <label class="label">Bio</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Bio</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="text" name="bio" placeholder="bio" value={this.state.bio} />
             </div>
           </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
               <input className="input" onChange={this.handleChange} type="password" name="password" placeholder="password" value={this.state.password} />
             </div>
           </div>
-          <div class="control">
+          <div className="control">
             <input className="button is-link" type="submit" value="Sign Up" />
           </div>
         </form>
+        {this.state.errorMessage}
       </div>
     )
   }
