@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const Housing = require('../models/housing')
+const Area = require('../models/area')
+
+router.get('/', (req, res, next) => {
+    Housing.find()
+    .then(allHousing => {
+      res.json(allHousing);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+});
 
 router.post('/', (req, res, next) => {
     // Frontend Validation

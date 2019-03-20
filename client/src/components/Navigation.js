@@ -25,8 +25,8 @@ export default class Navigation extends Component {
                   Home
                   </NavLink>
 
-                  <NavLink className="navbar-item" to="/protected/index" style={{ color: 'white' }}>
-                  Protected
+                  <NavLink className="navbar-item" to="/areas" style={{ color: 'white' }}>
+                  Areas
                   </NavLink>
 
                   <NavLink className="navbar-item" to="/search" style={{ color: 'white' }}>
