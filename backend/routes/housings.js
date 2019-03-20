@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const Area = require('../models/area.js')
+const Housing = require('../models/housing.js')
 
+/*
 // GET route => to get all the projects
 router.get('/', (req, res, next) => {
   Area.find()
@@ -13,15 +14,14 @@ router.get('/', (req, res, next) => {
       res.json(err);
     })
 });
-
-router.get('/:areaId', (req, res) => {
-  Area.findOne({
-    _id:req.params.areaId}
+*/
+// Detail page for housing
+router.get('/:housingId', (req, res) => {
+  Housing.findOne({
+    _id:req.params.housingId}
     )
-    .populate('housing')
-    .then(foundArea => {
-      debugger
-      res.json(foundArea);
+    .then(foundHousing => {
+      res.json(foundHousing);
     })
     .catch(err => {
       res.json(err);

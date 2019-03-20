@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import { Hero, Container, Section, Heading } from 'react-bulma-components'
+import TopAreas from './areas/TopAreas'
 
 export default class StartPage extends Component {
   render() {
     return (
       <div>
-        <Section>
-          <Hero color="primary">
-            <Hero.Body>
-              <Container>
-                <Heading>Hero title Primary</Heading>
-                <Heading subtitle size={3}>
-                  Subtitle
-                </Heading>
-              </Container>
-            </Hero.Body>
-          </Hero>
-        </Section>
+        <section class="hero">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title is-1">
+                Adventshare
+              </h1>
+              <h2 class="subtitle is-3">
+                Le subtitle
+              </h2>
+            </div>
+          </div>
+        </section>
+        <TopAreas />
       </div>
     )
   }

@@ -11,6 +11,8 @@ import Logout from './components/user/Logout'
 import Search from './components/general/Search'
 import ProtectedHome from './components/protected/Home'
 import AreaOverview from './components/areas/Overview'
+import AreaDetail from './components/areas/Detail'
+import HousingDetail from './components/housings/Detail'
 import axios from 'axios'
 
 class App extends Component {
@@ -72,6 +74,9 @@ class App extends Component {
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
               
               <Route path="/areas" exact component={AreaOverview} />
+              <Route path="/areas/:areaId" component={AreaDetail} />
+
+              <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
           </Container>
         </Section>
