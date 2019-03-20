@@ -65,7 +65,7 @@ class App extends Component {
               <Route path="/users/login" exact render={(props)=> <Login {...props} loggingIn={this.loggingIn}/> }/>
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
-              <Route path="/users/signup" exact component={Signup} />
+              <Route path="/users/signup" exact render={(props)=> <Signup {...props} loggingIn={this.loggingIn}/> }/>
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />

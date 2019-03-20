@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 
 export default class Signup extends Component {
   state = {
@@ -26,7 +24,8 @@ export default class Signup extends Component {
       withCredentials: true
     })
       .then((response) => {
-        this.props.history.push('/')
+          this.props.loggingIn(response);
+          this.props.history.push('/users/profile')
       })
       .catch((err) => {
         this.setState({
@@ -38,7 +37,7 @@ export default class Signup extends Component {
     return (
       <div>
         <h1 className="title">Sign Up</h1>
-        <form onSubmit={this.handleSubmit} action="localhost:3002/users">
+        <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
           <div className="field">
             <label className="label">Firstname</label>
             <div className="control">
