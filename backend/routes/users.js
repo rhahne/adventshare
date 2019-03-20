@@ -4,6 +4,53 @@ var bcrypt = require('bcrypt');
 
 const User = require('../models/user.js')
 
+// Sign up post request
+router.post('/', (req, res, next) => {
+  debugger
+  // Frontend Validation
+  const {
+    firstname,
+    email,
+    bio,
+    password
+  } = req.body;
+  if (!firstname || !email || !bio || !password) {
+    res.status(400).json({
+      message: 'Please fill in all the fields, son!'
+    })
+  }
+  if (firstname.length <= 1) {
+    res.status(400).json({
+      message: 'A firstname with one character? cmon son!'
+    })
+  }
+  if (password.length < 5) {
+    res.status(400).json({
+      message: 'Password has to be at least 5 characters long!'
+    })
+  }
+
+  // Backend Validation
+  bcrypt.hash(req.body.password, 10, function (err, hash) {
+    User.create({
+        firstname: req.body.firstname,
+        email: req.body.email,
+        bio: req.body.bio,
+        password: hash,
+      })
+      .then(response => {
+        //res.json(response);
+        res.status(200).json()
+      })
+      .catch(err => {
+        //res.json(err);
+        res.status(400).json({
+          message: 'User could not be created!'
+        })
+      })
+  })
+});
+
 // GET route => to get all the projects
 router.get('/', (req, res, next) => {
   User.find()

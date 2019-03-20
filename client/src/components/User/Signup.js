@@ -9,11 +9,13 @@ export default class Signup extends Component {
     bio: '',
     password: ''
   }
+
   handleChange = (event) => {
     let updateInput = {}
     updateInput[event.target.name] = event.target.value;
     this.setState(updateInput);
   }
+
   handleSubmit = (event) => {
     event.preventDefault()
     let newUser = this.state;
@@ -33,17 +35,21 @@ export default class Signup extends Component {
         })
       })
   }
+  
   render() {
     return (
       <div>
         <h1 className="title">Sign Up</h1>
         <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
           <div className="field">
-            <label className="label">Firstname</label>
+            <label className="label">
+            Firstname
+            </label>
             <div className="control">
               <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
             </div>
           </div>
+
           <div className="field">
             <label className="label">Email</label>
             <div className="control">

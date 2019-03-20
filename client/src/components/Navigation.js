@@ -8,27 +8,31 @@ export default class Navigation extends Component {
       <div>
         <Navbar className="is-dark">
           <Container>
-            <Navbar.Brand>
-              <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
-                ADVENTSHARE
-              </NavLink>
-            </Navbar.Brand>
-            <Navbar.Menu>
 
-              <Navbar.Container>
+              <Navbar.Brand>
                 <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
-                Home
+                <img
+                  src="/img/compass.png"
+                  alt="Adventshare"
+                  height="28"
+                />
                 </NavLink>
+              </Navbar.Brand>
 
-                <NavLink className="navbar-item" to="/protected/index" style={{ color: 'white' }}>
-                Protected
-                </NavLink>
+              <Navbar.Menu>
+                <Navbar.Container>
+                  <NavLink className="navbar-item" to="/" style={{ color: 'white' }}>
+                  Home
+                  </NavLink>
 
-                <NavLink className="navbar-item" to="/search" style={{ color: 'white' }}>
-                Search
-                </NavLink>
+                  <NavLink className="navbar-item" to="/protected/index" style={{ color: 'white' }}>
+                  Protected
+                  </NavLink>
 
-              </Navbar.Container>
+                  <NavLink className="navbar-item" to="/search" style={{ color: 'white' }}>
+                  Search
+                  </NavLink>
+                </Navbar.Container>
 
               {this.props.loggedIn ?
                 <Navbar.Container position="end">
@@ -37,18 +41,22 @@ export default class Navigation extends Component {
                     Profile
                     </button>
                   </NavLink>
+
                   <NavLink className="navbar-item" to="/users/logout">
                     <span style={{ color: 'white' }}>
                     Logout
                     </span>
                   </NavLink>
+
                   <NavLink className="navbar-item" to="/search">
                     <button className="button is-light">
                     Search
                     </button>
                   </NavLink>
                 </Navbar.Container>
+
                 :
+
                 <Navbar.Container position="end">
 
                     <NavLink className="navbar-item" to="/users/signup">
@@ -62,7 +70,6 @@ export default class Navigation extends Component {
                       Login
                       </span>
                     </NavLink>
-
                 </Navbar.Container>
               }
             </Navbar.Menu>
