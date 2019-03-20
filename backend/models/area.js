@@ -3,11 +3,13 @@ const Schema = mongoose.Schema
 
 // Housing Model
 const Area = mongoose.model('User', new Schema({
+  name: String,
+  description: String,
   img: Array,
   housing: { type: Schema.Types.ObjectId, ref: 'Housing' },
-  activities: Array,
-  rating: Number,
-  reviews: { type: Schema.Types.ObjectId, ref: 'Review' },
+  climbingAreas: Array
+  // rating: Number,
+  // reviews: { type: Schema.Types.ObjectId, ref: 'Review' },
 }));
 
 module.exports = Area

@@ -1,0 +1,62 @@
+[{
+    "title": "Picturesque, Historic Villa with Island Views",
+    "description": "Gaze over stunning 180-degree views of Lago Maggiore from the expansive, floor-to-ceiling windows of this lovely, 300-year-old rustic stone villa. Most of the area's main attractions are visible including the three islands, Villa Taranto gardens and Santa Caterina monastery. Comfortable furnishings in timeless styles perfectly complement the historic architecture.  The peaceful garden and hammocks are great for relaxing in and on hot days you'll find plenty of shade. There is also a large trampoline for children to let off some steam.",
+    "img": ["./img/housing/stresa-img-1.jpg","./img/housing/stresa-img-2.jpg","./img/housing/stresa-img-3.jpg"],
+    "address": {
+        "street":"Boschdijk",
+        "number":"10",
+        "city": "Stela",
+        "postalcode":"1062HK",
+        "country":"Italy"
+    },
+    "area": [],
+    "pricing": 40,
+    "beds": 3
+  },
+  {
+    "title": "Charming Farmhouse in Nature",
+    "description": "Welcome to our charming farmhouse in nature! Stechelberg is a small village in the heart of the Bernese Oberland with brilliant and short connections to Schilthorn (007 film location) and the Jungfrau (Top of Europe).",
+    "img": ["./img/housing/lauter-img-1.jpg","./img/housing/lauter-img-2.jpg","./img/housing/lauter-img-3.jpg"],
+    "address": {
+        "street":"Lauterbrunnen",
+        "number":"13",
+        "city": "Stela",
+        "postalcode":"1072HK",
+        "country":"Italy"
+    },
+    "area": [],
+    "pricing": 70,
+    "beds": 20
+  },
+  {
+    "title": "Anzere, Swiss Alps nr Crans-Montana",
+    "description": "This large, bright, south facing studio in the heart of the Swiss Apls, sits on a sunny terrace at 1500m. It has sweeping views across the Rhone Valley. There is a bedroom area (separated from the living room by glass doors), kitchen and shower room. We have high speed internet.",
+    "img": ["./img/housing/ayent-img-1.jpg","./img/housing/ayent-img-2.jpg","./img/housing/ayent-img-3.jpg"],
+    "address": {
+        "street":"ayent",
+        "number":"10",
+        "city": "ayent",
+        "postalcode":"1337",
+        "country":"Swiss"
+    },
+    "area": [],
+    "pricing": 90,
+    "beds": 22
+  },
+  {
+    "title": "mayen Val d'Herens en Valais - Sion",
+    "description": "Calm, contemplation, returning to the roots, walks within nature, rest... The Mayen is the cosy place to be...a former barn-stable which has been transformed in a modern way of living with all necessary commodities, a real little Paradis in Valais.",
+    "img": ["./img/housing/stresa-img-1.jpg","./img/housing/stresa-img-2.jpg","./img/housing/stresa-img-3.jpg"],
+    "address": {
+        "street":"Val D'Herens",
+        "number":"99",
+        "city": "Sage",
+        "postalcode":"7331",
+        "country":"Italy"
+    },
+    "area": [],
+    "pricing": 42,
+    "beds": 9
+  }
+ 
+]
