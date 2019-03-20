@@ -4,8 +4,22 @@ var bcrypt = require('bcrypt');
 
 const User = require('../models/user.js')
 
-// POST route => to create a new user
+// Sign up post request
 router.post('/', (req, res, next) => {
+debugger
+  // Frontend Validation
+  const { firstname, email, bio, password } = req.body;
+  if (!firstname || !email || !bio || !password) {
+    res.status(400).json({message:'Please fill in all the fields, son!'})
+  }
+  if(firstname.length <= 1) {
+    res.status(400).json({message:'A firstname with one character? cmon son!'})
+  }
+  if(password.length < 5) {
+    res.status(400).json({message:'Password has to be at least 5 characters long!'})
+  }
+
+  // Backend Validation
   bcrypt.hash(req.body.password, 10, function (err, hash) {
     User.create({
         firstname: req.body.firstname,
@@ -14,10 +28,12 @@ router.post('/', (req, res, next) => {
         password: hash,
       })
       .then(response => {
-        res.json(response);
+        //res.json(response);
+        res.status(200).json()
       })
       .catch(err => {
-        res.json(err);
+        //res.json(err);
+        res.status(400).json({message:'User could not be created!'})
       })
   })
 });
@@ -35,29 +51,37 @@ router.get('/', (req, res, next) => {
 
 // POST route => check login information
 router.post('/login', (req, res, next) => {
+
+  // Frontend Validation
+  const { firstname, password } = req.body;
+  if(!firstname || !password){
+    res.status(400).json({message:'Please fill in all the fields, son!'})
+  }
+
+  // Backend Validation
   User.findOne({
       firstname: req.body.firstname
     })
     .then((foundUser) => {
       if (!foundUser) {
-        res.send('duuude')
-        console.log('user does not exist, son')
+        res.status(400).json({message:'User does not exist, son!'})
       } else {
         bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
           if (result == true) {
-            debugger
+            debugger  
             req.session.user = foundUser._doc;
             req.session.save();
-            res.send(foundUser._doc)
+            res.status(200).json({message:'success!'})
+            //jres.send(foundUser._doc)
           } else {
-            res.send(false)
-            console.log('error, son')
+            res.status(400).json({message:'Password is not correct, son!'})
+            //res.send(false)
           }
         });
       }
     })
     .catch((err) => {
-      res.send('dadadada');
+      res.send(false);
       console.log(err)
     })
 });
