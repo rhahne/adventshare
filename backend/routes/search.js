@@ -17,23 +17,18 @@ router.post('/', (req, res, next) => {
             message: 'A your end date should be later than your start date sön'
         })
     }
-    else if (password.length < 5) {
-        res.status(400).json({
-            message: 'Password has to be at least 5 characters long!'
-        })
-    }
     else {
+    debugger
     // Backend Validation
         Housing.find({
-            area: where
+            'area': where
             })
             .then(response => {
                 res.status(200).json(response)
             })
             .catch(err => {
-                //res.json(err);
                 res.status(400).json({
-                    message: 'User could not be created!'
+                    message: 'Housing not found'
                 })
             })
         }
@@ -42,6 +37,5 @@ router.post('/', (req, res, next) => {
 router.get('/query', (req, res, next) => {
     res.status(200).json({message: "success"})
 })
-
 
 module.exports = router;

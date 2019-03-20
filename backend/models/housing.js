@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
+const User = require('../models/user')
 
 // Housing Model
-const Housing = mongoose.model('User', new Schema({
+const Housing = mongoose.model('Housing', new Schema({
   title: String,
   description: String,
   img: Array,
