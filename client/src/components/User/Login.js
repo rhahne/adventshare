@@ -26,8 +26,8 @@ export default class Login extends Component {
     })
       .then((response) => {
         if (response.data) {
-          this.props.history.push('/users/profile')
           this.props.loggingIn(response);
+          this.props.history.push('/users/profile')
         }
       })
       .catch((err) => {

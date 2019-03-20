@@ -12,17 +12,17 @@ router.post('/', (req, res, next) => {
             message: 'Please fill in all the fields, son!'
         })
     }
-    if (enddate <= startdate) {
+    else if (enddate <= startdate) {
         res.status(400).json({
             message: 'A your end date should be later than your start date sön'
         })
     }
-    if (password.length < 5) {
+    else if (password.length < 5) {
         res.status(400).json({
             message: 'Password has to be at least 5 characters long!'
         })
     }
-
+    else {
     // Backend Validation
         Housing.find({
             area: where
@@ -36,6 +36,7 @@ router.post('/', (req, res, next) => {
                     message: 'User could not be created!'
                 })
             })
+        }
 });
 
 router.get('/query', (req, res, next) => {

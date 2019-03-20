@@ -62,54 +62,76 @@ router.get('/', (req, res, next) => {
     })
 });
 
-// POST route => check login information
-router.post('/login', (req, res, next) => {
-
+// Sign up post request
+router.post('/', (req, res, next) => {
   // Frontend Validation
-  const {
-    firstname,
-    password
-  } = req.body;
-  if (!firstname || !password) {
-    res.status(400).json({
-      message: 'Please fill in all the fields, son!'
+  const { firstname, email, bio, password } = req.body;
+  if (!firstname || !email || !bio || !password) {
+    res.status(400).json({ message: 'Please fill in all the fields, son!' })
+  } else if (firstname.length <= 1) {
+    res.status(400).json({ message: 'A firstname with one character? cmon son!' })
+  } else if (password.length < 5) {
+    res.status(400).json({ message: 'Password has to be at least 5 characters long!' })
+  } else {
+    // Backend Validation
+    bcrypt.hash(password, 10, function (err, hash) {
+      User.create({
+        firstname: firstname,
+        email: email,
+        bio: bio,
+        password: hash,
+      })
+        .then(newUser => {
+          req.session.user = newUser._doc;
+          req.session.save();
+          res.status(200).json({ message: 'success!' })
+        })
+        .catch(err => {
+          res.status(400).json({ message: 'User could not be created!' })
+        })
     })
   }
-
-  // Backend Validation
-  User.findOne({
-      firstname: req.body.firstname
-    })
-    .then((foundUser) => {
-      if (!foundUser) {
-        res.status(400).json({
-          message: 'User does not exist, son!'
-        })
-      } else {
-        bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
-          if (result == true) {
-            debugger
-            req.session.user = foundUser._doc;
-            req.session.save();
-            res.status(200).json({
-              message: 'success!'
-            })
-            //jres.send(foundUser._doc)
-          } else {
-            res.status(400).json({
-              message: 'Password is not correct, son!'
-            })
-            //res.send(false)
-          }
-        });
-      }
-    })
-    .catch((err) => {
-      res.send(false);
-      console.log(err)
-    })
 });
 
+// Login post request
+router.post('/login', (req, res, next) => {
+  // Frontend Validation
+  const { firstname, password } = req.body;
+  if (!firstname || !password) {
+    res.status(400).json({ message: 'Please fill in all the fields, son!' })
+  } else {
+    // Backend Validation
+    User.findOne({
+      firstname: req.body.firstname
+    })
+      .then((foundUser) => {
+        if (!foundUser) {
+          res.status(400).json({ message: 'User does not exist, son!' })
+        } else {
+          bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
+            if (result == true) {
+              req.session.user = foundUser._doc;
+              req.session.save();
+              res.status(200).json({ message: 'success!' })
+            } else {
+              res.status(400).json({ message: 'Password is not correct, son!' })
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(400).json({ message: 'Something went wrong!' })
+      })
+  }
+});
+
+// Logout post request
+router.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.clearCookie("connect.sid");
+})
+
+// get logged in user in json
 router.get('/profile', (req, res) => {
   if (req.session.user) {
     res.json(req.session.user)
@@ -118,12 +140,6 @@ router.get('/profile', (req, res) => {
       message: 'unauthorized'
     })
   }
-})
-
-// Click on Logout Button
-router.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.clearCookie("connect.sid");
 })
 
 module.exports = router;

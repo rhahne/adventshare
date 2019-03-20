@@ -16,7 +16,6 @@ export default class Search extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
   handleChange = (event) => {
@@ -36,7 +35,6 @@ export default class Search extends Component {
       .then((response) => {
         this.setState({searchQuerry: response.data, searched: true})
       })
-
       .catch((err) => {
         this.setState({
           errorMessage: err.response.data.message,
