@@ -20,6 +20,7 @@ router.get('/:housingId', (req, res) => {
   Housing.findOne({
     _id:req.params.housingId}
     )
+    .populate('area')
     .then(foundHousing => {
       res.json(foundHousing);
     })

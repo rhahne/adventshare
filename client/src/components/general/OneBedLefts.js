@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ListAreas from '../general/AreaComps'
+import ListAreas from './AreaComps'
 import { Container, Section } from "react-bulma-components/full";
 
 
-export default class TopAreas extends Component {
+export default class OneBedLefts extends Component {
     constructor(props) {
       super(props)
       this.state = {
         allAreas: []
       }
     }
-  
+    
     getAllAreas() {
       axios({
         method: 'get',
@@ -27,9 +27,9 @@ export default class TopAreas extends Component {
           //this.props.history.push('/users/login')
         })
     }
-  
+    
     componentDidMount() {
-      this.getAllAreas()
+      this.getOneBedLefts()
     }
     
     render() {

@@ -64,6 +64,7 @@ html {
 .is-custom-icon{
   flex:none;
   width: 30px;
+  text-align: center;
 }
 .home-trinity {
   align-items: center; 

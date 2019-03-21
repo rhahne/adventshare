@@ -1,7 +1,7 @@
+/*
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ListAreas from '../general/AreaComps'
+import { ListAreas } from '../general/AreaComps'
 import { Container, Section } from "react-bulma-components/full";
 
 export default class TopAreas extends Component {
@@ -42,3 +42,4 @@ export default class TopAreas extends Component {
     )
   }
 }
+*/
