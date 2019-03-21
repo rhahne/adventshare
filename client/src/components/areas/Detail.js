@@ -36,10 +36,35 @@ export default class Overview extends Component {
     return (
       <Container>
         <Section>
+          {this.state.selectedArea.name?
+          <AboutArea area={this.state.selectedArea}/>:''
+          }
+          <br />
+          <br />
+          <br />
+          <br />
+
           <h1 className="title">Housing in {this.state.selectedArea.name} ({this.state.housing.length})</h1>
           <ListHousing housing={this.state.housing} />
         </Section>
       </Container>
     )
   }
+}
+
+export const AboutArea = function (props) {
+  const area = props.area
+  return (
+    <div>
+      <h1 className="title">About the Area <span style={{textDecoration:'underline'}}>{area.name}</span></h1>
+      <div className="columns">
+        <div className="column">
+          <img src={area.img[0]} alt="area-img" />
+        </div>
+        <div className="column">
+
+        </div>
+      </div>
+    </div>
+  )
 }
