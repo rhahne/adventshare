@@ -10,6 +10,7 @@ export default class StartPage extends Component {
         <HeroHeader/>
         <TopAreas />
         <Explanation />
+        {/* <JustBooked /> */}
       </div>
     )
   }
@@ -61,7 +62,7 @@ function Explanation() {
           <div className="card step-card" style={{backgroundImage: 'url("/img/rowan-heuvel-21529-unsplash.jpg")'}}>
           <div className="card-content step-card-content">
             {/* <div className="content is-flex"> */}
-              <h1 className="title is-size-1 has-text-light has-text-weight-bold has-text-justified">
+              <h1 className="title has-text-light has-text-weight-bold has-text-justified" style={{fontSize: "4.5em"}}>
               Step One
               </h1>
             {/* </div> */}
@@ -75,11 +76,11 @@ function Explanation() {
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/pablo-merchan-montes-772142-unsplash.jpg")'}}>
           <div className="card-content step-card-content">
-            {/* <div className="content is-flex"> */}
-              <h1 className="title is-size-1 has-text-light has-text-weight-bold has-text-justified">
+            <div className="content is-flex">
+              <h1 className="title has-text-light has-text-weight-bold has-text-justified" style={{fontSize: "4.5em"}}>
               Step Two
               </h1>
-            {/* </div> */}
+            </div>
           </div> 
         </div>
           <p className="subtitle is-size-5" style={{marginTop:'10px' }}>
@@ -90,11 +91,11 @@ function Explanation() {
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/david-calderon-1065248-unsplash.jpg")'}}>
           <div className="card-content step-card-content">
-            {/* <div className="content is-flex"> */}
-              <h1 className="title is-size-1 has-text-light has-text-weight-bold has-text-justified">
+            <div className="content is-flex">
+              <h1 className="title has-text-light has-text-weight-bold has-text-justified" style={{fontSize: "4.5em"}}>
               Step Three
               </h1>
-            {/* </div> */}
+            </div>
           </div> 
         </div>
           <p className="subtitle is-size-5" style={{marginTop:'10px' }}>

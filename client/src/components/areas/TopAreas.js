@@ -11,6 +11,7 @@ export default class TopAreas extends Component {
       allAreas: []
     }
   }
+
   getAllAreas() {
     axios({
       method: 'get',
@@ -25,9 +26,11 @@ export default class TopAreas extends Component {
         //this.props.history.push('/users/login')
       })
   }
+
   componentDidMount() {
     this.getAllAreas()
   }
+  
   render() {
     return (
       <Container>

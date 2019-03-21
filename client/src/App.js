@@ -13,8 +13,8 @@ import AreaOverview from './components/areas/Overview'
 import AreaDetail from './components/areas/Detail'
 import HousingDetail from './components/housings/Detail'
 import axios from 'axios'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
+
 import { faStar, faBed, faLocationArrow, faInfo } from '@fortawesome/free-solid-svg-icons'
 library.add(faStar, faBed, faLocationArrow, faInfo)
 
