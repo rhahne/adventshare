@@ -99,36 +99,36 @@ export class SearchForm extends Component {
                     </div>
 
                     <div className="form-double">
-                    <div className="field">
-                        <label className="label">
-                            Check-in
-                        </label>
-                        <div className="control">
-                            <input
-                                className="input"
-                                onChange={this.handleChange}
-                                type="date"
-                                name="startdate"
-                                value={this.state.startdate} />
-                        </div>
-                    </div>
-
-                    <div className="field">
-                        <div>
+                        <div className="field">
                             <label className="label">
-                                Check-out
+                                Check-in
                             </label>
                             <div className="control">
                                 <input
                                     className="input"
                                     onChange={this.handleChange}
                                     type="date"
-                                    name="enddate"
-                                    placeholder="enddate"
-                                    value={this.state.enddate} />
+                                    name="startdate"
+                                    value={this.state.startdate} />
                             </div>
                         </div>
-                    </div>
+
+                        <div className="field">
+                            <div>
+                                <label className="label">
+                                    Check-out
+                                </label>
+                                <div className="control">
+                                    <input
+                                        className="input"
+                                        onChange={this.handleChange}
+                                        type="date"
+                                        name="enddate"
+                                        placeholder="enddate"
+                                        value={this.state.enddate} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="control">
