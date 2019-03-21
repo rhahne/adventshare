@@ -15,7 +15,7 @@ export default class Navigation extends Component {
 
 function NavbarAuth() {
     return (
-        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-light" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
                     <Link
@@ -79,7 +79,7 @@ function NavbarAuth() {
 
 function NavbarNonAuth() {
     return (
-        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-light" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
                     <Link
