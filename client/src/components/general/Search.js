@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {Link} from "react-router-dom";
+import React, { Component } from 'react'
 import axios from 'axios'
+import ListHousing from './HousingComps'
 
 
 // ------ // Search // ------ //
@@ -17,17 +17,17 @@ export default class Search extends Component {
     }
 
     getSearchResult(SearchResult) {
-      debugger
-        this.setState({searched: true, query: SearchResult})
+        debugger
+        this.setState({ searched: true, query: SearchResult })
     }
 
     render() {
         return (
             <div>
                 {!this.state.searched
-                    ? <SearchForm getSearchResult={this.getSearchResult}/>
-                    : <SearchResponse query={this.state.query}/>
-}
+                    ? <SearchForm getSearchResult={this.getSearchResult} />
+                    : <SearchResponse query={this.state.query} />
+                }
             </div>
         )
     }
@@ -45,18 +45,18 @@ class SearchForm extends Component {
     }
 
     handleChange = (event) => {
-        let {name, value} = event.target;
-        this.setState({[name]: value});
+        let { name, value } = event.target;
+        this.setState({ [name]: value });
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         let searchInfo = this.state;
 
-        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response) => {
+        axios({ method: 'post', url: 'http://localhost:3002/search', data: searchInfo }).then((response) => {
             this.props.getSearchResult(response.data)
         }).catch((err) => {
-            this.setState({errorMessage: 'Errorsön'})
+            this.setState({ errorMessage: 'Errorsön' })
         })
     }
 
@@ -75,7 +75,7 @@ class SearchForm extends Component {
                                 onChange={this.handleChange}
                                 type="text"
                                 name="where"
-                                value={this.state.where}/>
+                                value={this.state.where} />
                         </div>
                     </div>
 
@@ -108,7 +108,7 @@ class SearchForm extends Component {
                                 onChange={this.handleChange}
                                 type="date"
                                 name="startdate"
-                                value={this.state.startdate}/>
+                                value={this.state.startdate} />
                         </div>
                     </div>
 
@@ -124,13 +124,13 @@ class SearchForm extends Component {
                                     type="date"
                                     name="enddate"
                                     placeholder="enddate"
-                                    value={this.state.enddate}/>
+                                    value={this.state.enddate} />
                             </div>
                         </div>
                     </div>
 
                     <div className="control">
-                        <input className="button is-link" type="submit" value="Search"/>
+                        <input className="button is-link" type="submit" value="Search" />
                     </div>
 
                 </form>
@@ -146,35 +146,8 @@ export class SearchResponse extends Component {
     render() {
         return (
             <div>
-                <div className="container">
-                    <div className="columns is-multiline">
-                        {this.props.query
-                            .map((housing) => {
-                                return <ListHousing housing={housing}/>
-                            })}
-                    </div>
-                </div>
+                <ListHousing housing={this.props.query} />
             </div>
         )
     }
-}
-
-
-// -------------- // SearchResponse // -------------- //
-export const ListHousing = function(props) {
-        return (
-        <div className="column is-4">
-            <Link to={"/housings/" + props.housing._id}>
-                <img style={{'borderRadius': '2px'}} src={props.housing.img[0]} alt=""/>
-                <small className="is-size-7 has-text-grey is-uppercase has-text-weight-bold">
-                {props.housing.address.city}, {props.housing.address.country} - {props.housing.area[0]} </small>
-                <p style={{"margin": "0px"}} className="title is-5 is-capitalized">
-                    {props.housing.title}
-                </p>
-                <p className="has-text-dark">
-                    {"€"+ props.housing.pricing + " per night"}
-                </p>
-            </Link>
-        </div>
-    )
 }

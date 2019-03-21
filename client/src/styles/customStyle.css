@@ -1,3 +1,18 @@
 .areaBox{
   padding-bottom: 50px;
 }
+
+.area-card {
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.area-card-content{
+  padding-top: 150px;
+}
+.area-card-content h3{
+  color:white;
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import ListAreas from '../general/AreaComps'
 
 export default class TopAreas extends Component {
   constructor(props) {
@@ -30,26 +31,7 @@ export default class TopAreas extends Component {
     return (
       <div>
         <h1 className="title">Top recommended Areas</h1>
-        <div className="columns">
-          {this.state.allAreas.map((area) => {
-            return <div className="column" key={area._id}>
-              <div className="card">
-                <div className="card-image">
-                  <figure className="image is-4by3">
-                    <img src={area.img[0]} alt="dsadas" />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <div className="content">
-                    <h3 className="title">{area.name}</h3>
-                    <p>{area.description}</p>
-                    <Link to={"/areas/"+area._id} className="button is-light">See More</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          })}
-        </div>
+        <ListAreas allAreas={this.state.allAreas} />
       </div>
     )
   }
