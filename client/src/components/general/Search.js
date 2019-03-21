@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 import axios from 'axios'
 
+
 // ------ // Search // ------ //
 export default class Search extends Component {
     constructor(props) {
@@ -25,12 +26,13 @@ export default class Search extends Component {
             <div>
                 {!this.state.searched
                     ? <SearchForm getSearchResult={this.getSearchResult}/>
-                    : <SearchResponse query={this.state.query} formFill={this.state.formFill}/>
+                    : <SearchResponse query={this.state.query}/>
 }
             </div>
         )
     }
 }
+
 
 // ---------- // SearchForm // ---------- //
 class SearchForm extends Component {
@@ -51,8 +53,8 @@ class SearchForm extends Component {
         event.preventDefault()
         let searchInfo = this.state;
 
-        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response, formFill) => {
-            this.props.getSearchResult(response.data, formFill)
+        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response) => {
+            this.props.getSearchResult(response.data)
         }).catch((err) => {
             this.setState({errorMessage: 'Errorsön'})
         })
@@ -138,33 +140,41 @@ class SearchForm extends Component {
     }
 }
 
+
 // -------------- // SearchResponse // -------------- //
-class SearchResponse extends Component {
+export class SearchResponse extends Component {
     render() {
         return (
             <div>
-                    <div className="container">
-
-                        <div className="columns is-multiline">
-                            {this.props.query
-                                .map((housing) => {
-                                    return <div className="column is-4">
-                                        <Link to={"/housings/" + housing._id}>
-                                            <img style={{'borderRadius': '2px'}} src={housing.img[0]} alt=""/>
-                                            <small className="is-size-7 has-text-grey is-uppercase has-text-weight-bold">
-                                            {housing.address.city}, {housing.address.country} - {housing.area[0]} </small>
-                                            <p style={{"margin": "0px"}} className="title is-5 is-capitalized">
-                                              {housing.title}
-                                            </p>
-                                            <p className="has-text-dark">
-                                              {"€"+ housing.pricing + " per night"}
-                                            </p>
-                                            </Link>
-                                        </div>
-                                })}
-                        </div>
+                <div className="container">
+                    <div className="columns is-multiline">
+                        {this.props.query
+                            .map((housing) => {
+                                return <ListHousing housing={housing}/>
+                            })}
                     </div>
+                </div>
             </div>
         )
     }
+}
+
+
+// -------------- // SearchResponse // -------------- //
+export const ListHousing = function(props) {
+        return (
+        <div className="column is-4">
+            <Link to={"/housings/" + props.housing._id}>
+                <img style={{'borderRadius': '2px'}} src={props.housing.img[0]} alt=""/>
+                <small className="is-size-7 has-text-grey is-uppercase has-text-weight-bold">
+                {props.housing.address.city}, {props.housing.address.country} - {props.housing.area[0]} </small>
+                <p style={{"margin": "0px"}} className="title is-5 is-capitalized">
+                    {props.housing.title}
+                </p>
+                <p className="has-text-dark">
+                    {"€"+ props.housing.pricing + " per night"}
+                </p>
+            </Link>
+        </div>
+    )
 }
