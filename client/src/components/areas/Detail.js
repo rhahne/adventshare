@@ -36,7 +36,7 @@ export default class Overview extends Component {
 
         <div className="columns">
           {housing.map((house) => {
-            return <div className="column">
+            return <div className="column" key={house._id}>
               <div className="card">
                 <div className="card-image">
                   <figure className="image is-4by3">

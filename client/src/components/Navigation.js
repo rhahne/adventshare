@@ -23,7 +23,7 @@ function NavbarAuth() {
                         to="/"
                         style={{
                         color: 'white'
-                    }}>
+                        }}>
                         <img src="/img/compass.png" alt="Adventshare" height="28"/>
                     </Link>
                     <span  
@@ -31,7 +31,7 @@ function NavbarAuth() {
                         className="navbar-burger burger"
                         aria-label="menu"
                         aria-expanded="false"
-                        data-target="navMenu">
+                        >
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
