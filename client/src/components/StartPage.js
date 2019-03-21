@@ -24,7 +24,7 @@ return(
     <div className="columns is-vcentered" style={{'maxWidth': '100vw', 'margin': '0px'}}>
       
 
-      <div className="column is-4" style={{'textAlign': 'left', backgroundColor: "hsl(0, 0%, 96%)", 'padding': "2%", 'borderRadius': "5px" }}>
+      <div className="column is-4" style={{'textAlign': 'left', backgroundColor: "hsl(0, 0%, 100%)", 'padding': "2.5%", 'borderRadius': "5px" }}>
         <h1 id="hero-text-overview" className="title is-spaced">
           Book the best appartments while traveling solo
         </h1>

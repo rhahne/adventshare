@@ -98,6 +98,7 @@ export class SearchForm extends Component {
                         </div>
                     </div>
 
+                    <div className="form-double">
                     <div className="field">
                         <label className="label">
                             Check-in
@@ -127,6 +128,7 @@ export class SearchForm extends Component {
                                     value={this.state.enddate} />
                             </div>
                         </div>
+                    </div>
                     </div>
 
                     <div className="control">

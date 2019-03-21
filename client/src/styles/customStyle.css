@@ -22,14 +22,19 @@ html {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.form-double{
+  display: flex;
+  justify-content: space-between;
+}
+
 .hero-home {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/background-temp.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/img/francesca-cioccio-773154-unsplash.jpg');
 
     /* Set a specific height */
-    height: 50%;
+    height: 80vh;
   
     /* Position and center the image to scale nicely on all screens */
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
