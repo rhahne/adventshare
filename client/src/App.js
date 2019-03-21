@@ -15,8 +15,8 @@ import HousingDetail from './components/housings/Detail'
 import axios from 'axios'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStar, faBed, faLocationArrow, faInfo } from '@fortawesome/free-solid-svg-icons'
-library.add(faStar, faBed, faLocationArrow, faInfo)
+import { faStar, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain } from '@fortawesome/free-solid-svg-icons'
+library.add(faStar, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain)
 
 class App extends Component {
   constructor(props) {

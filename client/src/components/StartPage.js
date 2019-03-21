@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TopAreas from './areas/TopAreas'
+import { TopAreas } from './general/AreaComps'
 import SearchForm from './general/Search'
 import { Container, Section } from "react-bulma-components/full";
 
@@ -14,7 +14,6 @@ export default class StartPage extends Component {
     )
   }
 }
-
 
 function HeroHeader() {
 return (

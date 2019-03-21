@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Container, Section } from 'react-bulma-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { AboutArea, TopAreas } from '../general/AreaComps'
 
 export default class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedHousing: []
+      selectedHousing: [],
+      selectedArea: []
     }
   }
   getSelectedArea() {
@@ -17,7 +19,8 @@ export default class Overview extends Component {
     })
       .then((response) => {
         this.setState({
-          selectedHousing: response.data
+          selectedHousing: response.data,
+          selectedArea: response.data.area
         })
       })
       .catch((err) => {
@@ -29,11 +32,22 @@ export default class Overview extends Component {
   }
   render() {
     const housing = this.state.selectedHousing
+    const area = this.state.selectedArea
     return (
       <div>
         {housing.title ?
           <HouseDetail housing={housing} /> : ''
         }
+        <hr />
+        <Container>
+          <Section>
+              {area.name ? 
+            <AboutArea area={area}/>:''
+          }
+          </Section>
+        </Container>
+        <hr />
+        <TopAreas />
       </div>
     )
   }
@@ -111,7 +125,7 @@ const HouseDetail = function (props) {
                     </div>
                 </div>
                 <hr />
-                <a class="button is-info" href="/">Show Interest</a>
+                <a className="button is-info" href="/">Show Interest</a>
               </div>
             </div>
           </div>
