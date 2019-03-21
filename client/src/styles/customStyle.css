@@ -46,3 +46,14 @@ html {
   border-radius: 5px;
 }
 
+/* Homepage three Step Card */
+.step-card {
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.step-card-content{
+  padding-top: 150px;
+}
