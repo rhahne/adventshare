@@ -5,13 +5,13 @@ export default class StartPage extends Component {
   render() {
     return (
       <div>
-        <section class="hero">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title is-1">
+        <section className="hero">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title is-1">
                 Adventshare
               </h1>
-              <h2 class="subtitle is-3">
+              <h2 className="subtitle is-3">
                 Le subtitle
               </h2>
             </div>
