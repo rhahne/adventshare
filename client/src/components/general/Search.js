@@ -7,89 +7,8 @@ export default class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            query: [
-                {
-                    "title": "Picturesque, Historic Villa with Island Views",
-                    "description": "Gaze over stunning 180-degree views of Lago Maggiore from the expansive, floor-t" +
-                            "o-ceiling windows of this lovely, 300-year-old rustic stone villa. Most of the a" +
-                            "rea's main attractions are visible including the three islands, Villa Taranto ga" +
-                            "rdens and Santa Caterina monastery. Comfortable furnishings in timeless styles p" +
-                            "erfectly complement the historic architecture.  The peaceful garden and hammocks" +
-                            " are great for relaxing in and on hot days you'll find plenty of shade. There is" +
-                            " also a large trampoline for children to let off some steam.",
-                    "img": [
-                        "./img/housing/stresa-img-1.jpg", "./img/housing/stresa-img-2.jpg", "./img/housing/stresa-img-3.jpg"
-                    ],
-                    "address": {
-                        "street": "Boschdijk",
-                        "number": "10",
-                        "city": "Stela",
-                        "postalcode": "1062HK",
-                        "country": "Italy"
-                    },
-                    "area": ["Lauterbrunnen", "Boschdijk"],
-                    "pricing": 40,
-                    "beds": 3
-                }, {
-                    "title": "Charming Farmhouse in Nature",
-                    "description": "Welcome to our charming farmhouse in nature! Stechelberg is a small village in t" +
-                            "he heart of the Bernese Oberland with brilliant and short connections to Schilth" +
-                            "orn (007 film location) and the Jungfrau (Top of Europe).",
-                    "img": [
-                        "./img/housing/lauter-img-1.jpg", "./img/housing/lauter-img-2.jpg", "./img/housing/lauter-img-3.jpg"
-                    ],
-                    "address": {
-                        "street": "Lauterbrunnen",
-                        "number": "13",
-                        "city": "Stela",
-                        "postalcode": "1072HK",
-                        "country": "Italy"
-                    },
-                    "area": ["Lauterbrunnen", "Boschdijk"],
-                    "pricing": 70,
-                    "beds": 20
-                }, {
-                    "title": "Anzere, Swiss Alps nr Crans-Montana",
-                    "description": "This large, bright, south facing studio in the heart of the Swiss Apls, sits on " +
-                            "a sunny terrace at 1500m. It has sweeping views across the Rhone Valley. There i" +
-                            "s a bedroom area (separated from the living room by glass doors), kitchen and sh" +
-                            "ower room. We have high speed internet.",
-                    "img": [
-                        "./img/housing/ayent-img-1.jpg", "./img/housing/ayent-img-2.jpg", "./img/housing/ayent-img-3.jpg"
-                    ],
-                    "address": {
-                        "street": "ayent",
-                        "number": "10",
-                        "city": "ayent",
-                        "postalcode": "1337",
-                        "country": "Swiss"
-                    },
-                    "area": ["Lauterbrunnen", "Boschdijk"],
-                    "pricing": 90,
-                    "beds": 22
-                }, {
-                    "title": "mayen Val d'Herens en Valais - Sion",
-                    "description": "Calm, contemplation, returning to the roots, walks within nature, rest... The Ma" +
-                            "yen is the cosy place to be...a former barn-stable which has been transformed in" +
-                            " a modern way of living with all necessary commodities, a real little Paradis in" +
-                            " Valais.",
-                    "img": [
-                        "./img/housing/sage-img-1.jpg", "./img/housing/sage-img-2.jpg", "./img/housing/sage-img-3.jpg"
-                    ],
-                    "address": {
-                        "street": "Val D'Herens",
-                        "number": "99",
-                        "city": "Sage",
-                        "postalcode": "7331",
-                        "country": "Italy"
-                    },
-                    "area": ["Lauterbrunnen", "Boschdijk"],
-                    "pricing": 42,
-                    "beds": 9
-                }
-
-            ],
-            searched: true
+            query: [],
+            searched: false,
         }
         this.getSearchResult = this
             .getSearchResult
@@ -97,6 +16,7 @@ export default class Search extends Component {
     }
 
     getSearchResult(SearchResult) {
+      debugger
         this.setState({searched: true, query: SearchResult})
     }
 
@@ -105,7 +25,7 @@ export default class Search extends Component {
             <div>
                 {!this.state.searched
                     ? <SearchForm getSearchResult={this.getSearchResult}/>
-                    : <SearchResponse query={this.state.query}/>
+                    : <SearchResponse query={this.state.query} formFill={this.state.formFill}/>
 }
             </div>
         )
@@ -131,13 +51,9 @@ class SearchForm extends Component {
         event.preventDefault()
         let searchInfo = this.state;
 
-        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response) => {
-            debugger
-            this
-                .props
-                .getSearchResult(response.data)
+        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response, formFill) => {
+            this.props.getSearchResult(response.data, formFill)
         }).catch((err) => {
-            debugger
             this.setState({errorMessage: 'Errorsön'})
         })
     }
@@ -228,6 +144,7 @@ class SearchResponse extends Component {
         return (
             <div>
                     <div className="container">
+
                         <div className="columns is-multiline">
                             {this.props.query
                                 .map((housing) => {
@@ -244,7 +161,6 @@ class SearchResponse extends Component {
                                             </p>
                                             </Link>
                                         </div>
-                                    
                                 })}
                         </div>
                     </div>

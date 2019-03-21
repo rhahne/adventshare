@@ -35,6 +35,7 @@ router.post('/', (req, res, next) => {
                 res.status(200).json(response)
             })
             .catch(error => {
+                debugger
                 res.status(400).json(error)
             })
         }
