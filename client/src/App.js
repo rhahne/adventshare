@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { Container, Section } from "react-bulma-components/full";
 import Navigation from './components/Navigation'
 import StartPage from './components/StartPage'
 import Signup from './components/user/Signup'

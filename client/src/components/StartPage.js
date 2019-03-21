@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TopAreas from './areas/TopAreas'
 import SearchForm from './general/Search'
-import { Container, Section } from "react-bulma-components/full";
+import { Section } from "react-bulma-components/full";
 
 export default class StartPage extends Component {
   render() {
@@ -23,7 +23,7 @@ return(
       <div className="column">
       </div>
 
-      <div className="column is-5" style={{'textAlign': 'left', backgroundColor: "grey", }}>
+      <div className="column is-5" style={{'textAlign': 'left', backgroundColor: "hsl(0, 0%, 96%)", 'padding': "2%", 'borderRadius': "5px" }}>
         <h1 id="hero-text-overview" className="title is-spaced">
           Book the best appartments while traveling solo
         </h1>
