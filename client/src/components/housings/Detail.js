@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Container, Section } from 'react-bulma-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Overview extends Component {
   constructor(props) {
@@ -26,13 +28,95 @@ export default class Overview extends Component {
     this.getSelectedArea()
   }
   render() {
+    const housing = this.state.selectedHousing
     return (
       <div>
-        <h1 className="title">{this.state.selectedHousing.title}</h1>
-        <ul>
-          
-        </ul>
+        {housing.title ?
+          <HouseDetail housing={housing} /> : ''
+        }
       </div>
     )
   }
+}
+
+const HouseDetail = function (props) {
+  const housing = props.housing
+  return (
+    <div>
+      <div className="imageBox" style={{ backgroundImage: "url('/img/housing/ayent-img-1.jpg')" }}>
+      </div>
+      <Container>
+        <Section>
+          <div className="columns">
+            <div className="column is-two-thirds">
+              <h1 className="title">{housing.title}</h1>
+              <div className="columns">
+                <div className="column is-custom-icon">
+                <FontAwesomeIcon icon="location-arrow" />
+                </div>
+                <div className="column">
+                  {housing.address.city} - {housing.address.country}
+                </div>
+              </div>
+              <hr />
+              <div className="columns">
+                <div className="column is-custom-icon">
+                  <FontAwesomeIcon icon="info" />
+                </div>
+                <div className="column">
+                  {housing.description}
+                </div>
+              </div>
+              <hr />
+              <div className="columns">
+                <div className="column is-custom-icon">
+                <FontAwesomeIcon icon="bed" />
+                </div>
+                <div className="column">
+                {housing.beds} beds
+                </div>
+              </div>
+            </div>
+            <div className="column">
+              <div className="booking-box">
+                <p className="has-text-dark price">
+                  {"€" + housing.pricing + " per night"}
+                  <br />
+                  <br />
+                  <FontAwesomeIcon icon="star" />
+                  <FontAwesomeIcon icon="star" />
+                  <FontAwesomeIcon icon="star" />
+                  <FontAwesomeIcon icon="star" />
+                  <FontAwesomeIcon icon="star" />
+                </p>
+                <hr />
+                Traveldates:
+                  <div className="columns traveldate-box">
+                  <div className="column">
+                    23.09.2019
+                    </div>
+                  <div className="column">
+                    -->
+                    </div>
+                  <div className="column">
+                    29.09.2019
+                    </div>
+                </div>
+                <div className="columns">
+                  <div className="column">
+                    6 nights x $40
+                    </div>
+                  <div className="column">
+                    = $240
+                    </div>
+                </div>
+                <hr />
+                <a class="button is-info" href="/">Show Interest</a>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </Container>
+    </div>
+  )
 }

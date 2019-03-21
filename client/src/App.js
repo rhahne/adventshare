@@ -14,6 +14,10 @@ import AreaDetail from './components/areas/Detail'
 import HousingDetail from './components/housings/Detail'
 import axios from 'axios'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStar, faBed, faLocationArrow, faInfo } from '@fortawesome/free-solid-svg-icons'
+library.add(faStar, faBed, faLocationArrow, faInfo)
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -70,7 +74,7 @@ class App extends Component {
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
               <Route path="/areas" exact component={AreaOverview} />
-              <Route path="/areas/:areaId" component={AreaDetail} />
+              <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
       </div>

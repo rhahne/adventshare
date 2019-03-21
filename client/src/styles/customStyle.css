@@ -38,6 +38,33 @@ html {
     position: relative;
 }
 
+.imageBox{
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.booking-box{
+  border: 1px solid lightgray;
+  text-align: center;
+  padding: 20px;
+}
+.booking-box .price{
+  font-weight: bold;
+}
+
+.traveldate-box{
+  border: 1px solid lightgray;
+  margin: 10px;
+}
+
+.icon-box{
+  width: 10px;
+}
+.is-custom-icon{
+  flex:none;
+  width: 30px;
+}
 .home-trinity {
   align-items: center; 
   background-color: hsl(0, 0%, 100%);

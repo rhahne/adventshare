@@ -20,7 +20,6 @@ router.get('/:areaId', (req, res) => {
     )
     .populate('housing')
     .then(foundArea => {
-      debugger
       res.json(foundArea);
     })
     .catch(err => {
