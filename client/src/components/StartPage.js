@@ -8,8 +8,8 @@ export default class StartPage extends Component {
     return (
       <div>
         <HeroHeader/>
-        <TopAreas />
         <Explanation />
+        <TopAreas />
         {/* <JustBooked /> */}
       </div>
     )
