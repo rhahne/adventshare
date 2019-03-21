@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TopAreas from './areas/TopAreas'
 import SearchForm from './general/Search'
-import { Section } from "react-bulma-components/full";
+import { Container, Section } from "react-bulma-components/full";
 
 export default class StartPage extends Component {
   render() {
@@ -18,12 +18,13 @@ export default class StartPage extends Component {
 function HeroHeader() {
 return(
   <div className="hero-home">
+  <Container>
   <Section>
-    <div className="columns is-vcentered" style={{'maxWidth': '100vw', 'margin': '0px'}}>
-      <div className="column">
-      </div>
 
-      <div className="column is-5" style={{'textAlign': 'left', backgroundColor: "hsl(0, 0%, 96%)", 'padding': "2%", 'borderRadius': "5px" }}>
+    <div className="columns is-vcentered" style={{'maxWidth': '100vw', 'margin': '0px'}}>
+      
+
+      <div className="column is-4" style={{'textAlign': 'left', backgroundColor: "hsl(0, 0%, 96%)", 'padding': "2%", 'borderRadius': "5px" }}>
         <h1 id="hero-text-overview" className="title is-spaced">
           Book the best appartments while traveling solo
         </h1>
@@ -39,6 +40,7 @@ return(
       </div>
     </div>
     </Section>
+    </Container>
   </div>
   )
 }
