@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Container, Section } from 'react-bulma-components'
 import ListHousing from '../general/HousingComps'
 
 export default class Overview extends Component {
@@ -11,10 +12,10 @@ export default class Overview extends Component {
       housing: []
     }
   }
-  getSelectedArea() {
+  getSelectedArea(areaId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/areas/5c923f3aa949af76694593f8'
+      url: 'http://localhost:3002/areas/'+areaId
     })
       .then((response) => {
         this.setState({
@@ -27,14 +28,18 @@ export default class Overview extends Component {
       })
   }
   componentDidMount() {
-    this.getSelectedArea()
+    let parts = window.location.pathname.split('/');
+    let areaId = parts.pop();
+    this.getSelectedArea(areaId)
   }
   render() {
     return (
-      <div>
-        <h1 className="title">Housing in {this.state.selectedArea.name} (3)</h1>
-        <ListHousing housing={this.state.housing} />
-      </div>
+      <Container>
+        <Section>
+          <h1 className="title">Housing in {this.state.selectedArea.name} ({this.state.housing.length})</h1>
+          <ListHousing housing={this.state.housing} />
+        </Section>
+      </Container>
     )
   }
 }

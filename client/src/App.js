@@ -70,7 +70,7 @@ class App extends Component {
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
               <Route path="/areas" exact component={AreaOverview} />
-              <Route path="/areas/:areaId" component={AreaDetail} />
+              <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
       </div>
