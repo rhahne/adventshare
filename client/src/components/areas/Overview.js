@@ -34,7 +34,7 @@ export default class Overview extends Component {
         <div class="columns">
           <div class="column is-half">
           {this.state.allAreas.map((area) => {
-            return <div className="areaBox">
+            return <div className="areaBox" key={area._id}>
               <Link to={'/areas/'+area._id}>
                 <h2 className="title is-4">{area.name}</h2>
               </Link>

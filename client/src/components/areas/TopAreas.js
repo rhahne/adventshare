@@ -32,7 +32,7 @@ export default class TopAreas extends Component {
         <h1 className="title">Top recommended Areas</h1>
         <div className="columns">
           {this.state.allAreas.map((area) => {
-            return <div className="column">
+            return <div className="column" key={area._id}>
               <div className="card">
                 <div className="card-image">
                   <figure className="image is-4by3">
