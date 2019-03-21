@@ -23,15 +23,16 @@ function NavbarAuth() {
                         to="/"
                         style={{
                         color: 'white'
-                    }}>
+                        }}>
                         <img src="/img/compass.png" alt="Adventshare" height="28"/>
                     </Link>
                     <Link
+                        to=""
                         role="button"
                         className="navbar-burger burger"
                         aria-label="menu"
                         aria-expanded="false"
-                        data-target="navMenu">
+                        >
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -91,6 +92,7 @@ function NavbarNonAuth() {
                         <img src="/img/compass.png" alt="Adventshare" height="28"/>
                     </Link>
                     <Link
+                        to=""
                         role="button"
                         className="navbar-burger burger"
                         aria-label="menu"
@@ -124,8 +126,8 @@ function NavbarNonAuth() {
 
                     <div className="navbar-end">
                         <div className="navbar-item">
-                            <div class="buttons">
-                                <Link class="button is-light" to="/users/signup">
+                            <div className="buttons">
+                                <Link className="button is-light" to="/users/signup">
                                     Sign up
                                 </Link>
                                 <Link className="button is-info" to="/users/login">

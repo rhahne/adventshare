@@ -1,9 +1,5 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-const Housing = require('../models/housing');
-const Area = require('../models/area');
-=======
 const Housing = require('../models/housing')
 const Area = require('../models/area')
 
@@ -16,7 +12,6 @@ router.get('/', (req, res, next) => {
       res.json(err);
     })
 });
->>>>>>> e2238d0e27ede3724cd101006ee77995b8390185
 
 router.post('/', (req, res, next) => {
     // Frontend Validation

@@ -31,9 +31,11 @@ export default class Login extends Component {
         }
       })
       .catch((err) => {
+        if(err.response.data){
           this.setState({
             errorMessage: err.response.data.message,
           })
+        }
       })
   }
   render() {
