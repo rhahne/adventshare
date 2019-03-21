@@ -37,10 +37,10 @@ export class TopAreas extends Component {
             {this.state.allAreas.map((area) => {
               return<div className="column" key={area._id}>
               <Link to={"/areas/"+area._id}>
-                <div className="card area-card" style={{backgroundImage: 'url('+area.img[0]+')'}}>
+                <div className="card area-card is-flex" style={{backgroundImage: 'url('+area.img[0]+')', justifyContent: 'center'}}>
                   <div className="card-content area-card-content">
-                    <div className="content">
-                      <h3>{area.name}</h3>
+                    <div className="content is-flex" style={{height: "45px"}}>
+                      <h3 className="title has-text-light">{area.name}</h3>
                     </div>
                   </div>
                 </div>

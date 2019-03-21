@@ -1,21 +1,16 @@
-.areaBox{
-  padding-bottom: 50px;
-}
+
 
 .area-card {
   color: white;
   text-align: center;
+  height: 250px;
   border-radius: 3px;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
 }
-.area-card-content{
-  padding-top: 150px;
-}
-.area-card-content h3{
-  color:white;
-  font-weight: bold;
-}
+
 body,
 html {
   padding: 0px;
@@ -27,10 +22,11 @@ html {
   justify-content: space-between;
 }
 
+/* STARTPAGE HERO CSS */
 .hero-home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/img/francesca-cioccio-773154-unsplash.jpg');
     /* Set a specific height */
-    height: 80vh;
+    height: 100%;
     /* Position and center the image to scale nicely on all screens */
     background-position: bottom;
     background-repeat: no-repeat;
@@ -38,6 +34,15 @@ html {
     position: relative;
 }
 
+.hero-form {
+  text-align: left;
+  background-color: hsl(0, 0%, 100%);
+  padding: 30px; 
+  border-radius: 5px; 
+}
+
+
+/* ROBIN CSS */
 .imageBox{
   height: 400px;
   background-size: cover;
@@ -66,23 +71,11 @@ html {
   width: 30px;
   text-align: center;
 }
-.home-trinity {
-  align-items: center; 
-  background-color: hsl(0, 0%, 100%);
-  opacity: .85; 
-  text-align: left; 
-  border-radius: 5px;
-}
 
 /* Homepage three Step Card */
 .step-card {
   color: white;
-  text-align: center;
   height: 250px;
   border-radius: 3px;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.step-card-content{
-  padding-top: 150px;
+  background-size: cover;  
 }
