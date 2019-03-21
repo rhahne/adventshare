@@ -61,8 +61,6 @@ class App extends Component {
     return (
       <div>
         <Navigation loggedIn={this.state.isAuthenticated}/>
-        <Section>
-          <Container>
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/login" exact render={(props)=> <Login {...props} loggingIn={this.loggingIn}/> }/>
@@ -72,14 +70,10 @@ class App extends Component {
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
-              
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail} />
-
               <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
-          </Container>
-        </Section>
       </div>
     );
   }

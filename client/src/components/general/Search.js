@@ -35,7 +35,7 @@ export default class Search extends Component {
 
 
 // ---------- // SearchForm // ---------- //
-class SearchForm extends Component {
+export class SearchForm extends Component {
     state = {
         where: '',
         activity: '',
