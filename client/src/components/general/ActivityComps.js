@@ -2,11 +2,10 @@ import React from 'react'
 import {Link} from "react-router-dom";
 
 const ListActivity = function (props) {
+    debugger
     return (
         <div className="columns">
-            {props
-                .activity
-                .map((activity) => {
+            {props.activity.map((activity) => {
                     debugger
                     return <div className="column" key={activity._id}>
                         <Link to={"/activity/" + activity._id}>

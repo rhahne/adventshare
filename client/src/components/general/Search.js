@@ -168,17 +168,15 @@ export class SearchResponse extends Component {
         let areaList = this.state.searchedHouses.map( house => {
             return house.area
         })
-        let areaActivityArrays = areaList.map(area => {
-            area.activity.map(activity => {
-                debugger
-                return activity
-            })
-            return area.activity
+        let allActivities = [];
+        areaList.forEach(area => {
+            allActivities.push(...area.activity)
         })
-        let uniqueActivities = [...new Set(areaActivityArrays.map(area => area.id))]
-
+        const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
+        const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
+        debugger
         this.setState({
-            fiveActivities: uniqueActivities.splice(uniqueActivities.length - 5, 5)
+            fiveActivities: filteredActivities
         })
     }
 
@@ -196,7 +194,7 @@ export class SearchResponse extends Component {
                     </Section>
                     <Section>
                         <h1 className="title is-3">What to do</h1>
-                        <ListActivity activity={this.state.fiveActivities} />
+                        {this.state.fiveActivities?<ListActivity activity={this.state.fiveActivities} />:""}                       
                     </Section>
                 </Container>
         )
