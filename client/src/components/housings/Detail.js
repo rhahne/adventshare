@@ -12,10 +12,10 @@ export default class Overview extends Component {
       selectedArea: []
     }
   }
-  getSelectedArea() {
+  getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/5c924c8ba949af7669459959'
+      url: 'http://localhost:3002/housings/'+housingId
     })
       .then((response) => {
         this.setState({
@@ -28,7 +28,9 @@ export default class Overview extends Component {
       })
   }
   componentDidMount() {
-    this.getSelectedArea()
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    this.getSelectedHousing(housingId)
   }
   render() {
     const housing = this.state.selectedHousing
@@ -57,7 +59,7 @@ const HouseDetail = function (props) {
   const housing = props.housing
   return (
     <div>
-      <div className="imageBox" style={{ backgroundImage: "url('/img/housing/ayent-img-1.jpg')" }}>
+      <div className="imageBox" style={{ backgroundImage: 'url('+housing.img[0]+')' }}>
       </div>
       <Container>
         <Section>
