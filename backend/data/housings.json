@@ -1,0 +1,191 @@
+[{
+    "_id": {
+        "$oid": "5c924c8ba949af7669459959"
+    },
+    "title": "Picturesque, Historic Villa with Island Views",
+    "description": "Gaze over stunning 180-degree views of Lago Maggiore from the expansive, floor-to-ceiling windows of this lovely, 300-year-old rustic stone villa. Most of the area's main attractions are visible including the three islands, Villa Taranto gardens and Santa Caterina monastery. Comfortable furnishings in timeless styles perfectly complement the historic architecture.  The peaceful garden and hammocks are great for relaxing in and on hot days you'll find plenty of shade. There is also a large trampoline for children to let off some steam.",
+    "img": ["/img/housing/stresa-img-1.jpg", "/img/housing/stresa-img-2.jpg", "/img/housing/stresa-img-3.jpg"],
+    "address": {
+        "street": "Boschdijk",
+        "number": "10",
+        "city": "Stela",
+        "postalcode": "1062HK",
+        "country": "Italy"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593f8"
+    },
+    "pricing": 40,
+    "beds": 3
+}, {
+    "_id": {
+        "$oid": "5c924c8ba949af766945995a"
+    },
+    "title": "mayen Val d'Herens en Valais - Sion",
+    "description": "Calm, contemplation, returning to the roots, walks within nature, rest... The Mayen is the cosy place to be...a former barn-stable which has been transformed in a modern way of living with all necessary commodities, a real little Paradis in Valais.",
+    "img": ["/img/housing/stresa-img-1.jpg", "/img/housing/stresa-img-2.jpg", "/img/housing/stresa-img-3.jpg"],
+    "address": {
+        "street": "Val D'Herens",
+        "number": "99",
+        "city": "Sage",
+        "postalcode": "7331",
+        "country": "Italy"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593f9"
+    },
+    "pricing": 42,
+    "beds": 9
+}, {
+    "_id": {
+        "$oid": "5c924c8ba949af766945995b"
+    },
+    "title": "Anzere, Swiss Alps nr Crans-Montana",
+    "description": "This large, bright, south facing studio in the heart of the Swiss Apls, sits on a sunny terrace at 1500m. It has sweeping views across the Rhone Valley. There is a bedroom area (separated from the living room by glass doors), kitchen and shower room. We have high speed internet.",
+    "img": ["/img/housing/ayent-img-1.jpg", "/img/housing/ayent-img-2.jpg", "/img/housing/ayent-img-3.jpg"],
+    "address": {
+        "street": "ayent",
+        "number": "10",
+        "city": "ayent",
+        "postalcode": "1337",
+        "country": "Swiss"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593fa"
+    },
+    "pricing": 90,
+    "beds": 22
+}, {
+    "_id": {
+        "$oid": "5c924c8ba949af766945995c"
+    },
+    "title": "Charming Farmhouse in Nature",
+    "description": "Welcome to our charming farmhouse in nature! Stechelberg is a small village in the heart of the Bernese Oberland with brilliant and short connections to Schilthorn (007 film location) and the Jungfrau (Top of Europe).",
+    "img": ["/img/housing/lauter-img-1.jpg", "/img/housing/lauter-img-2.jpg", "/img/housing/lauter-img-3.jpg"],
+    "address": {
+        "street": "Lauterbrunnen",
+        "number": "13",
+        "city": "Stela",
+        "postalcode": "1072HK",
+        "country": "Italy"
+    },
+    "area": {
+        "$oid": "5c9366297df282b768d776e5"
+    },
+    "pricing": 70,
+    "beds": 20
+}, {
+    "_id": {
+        "$oid": "5c93b9847df282b768d776e7"
+    },
+    "title": "Spacious apartment in the swiss alp",
+    "description": "Lovely holiday apartment with 3 separate bedrooms, a fully equipped kitchen, washing machine and a patio with deck furniture in the garden. It’s perfect starting point for hiking, biking and skiing.  The space  Our apartment also features free WiFi and TV. It comes with its own bathroom with shower, as well as dining facilities for up to 6 people. Parking is free on the premises. Göschenen’s train and bus stations are within 350 m, while the closest restaurant is 50 metres away.",
+    "img": ["/img/housing/spacious-apart-img-1.jpg", "/img/housing/spacious-apart-img-2.jpg"],
+    "address": {
+        "street": "Bergweg",
+        "number": "13",
+        "city": "Göschenen",
+        "postalcode": "1002",
+        "country": "Switzerland"
+    },
+    "area": {
+        "$oid": "5c9366887df282b768d776e6"
+    },
+    "pricing": 70,
+    "beds": 6
+}, {
+    "_id": {
+        "$oid": "5c93bcb77df282b768d776e8"
+    },
+    "title": "Living in the forest",
+    "description": "You are welcome to experience the world of the Jura in peace and modesty. Milk and eggs come directly from the farm. The landscape is secretive, mystical and yet radiantly clear. Your accommodation will be easy, practical and exotic. A really relaxing stay awaits you! Enjoy the starry sky in the sky.  You will be enthusiastic!  I look forward to meeting you!",
+    "img": ["/img/housing/forest-img-1.jpg", "/img/housing/forest-img-2.jpg"],
+    "address": {
+        "street": "Hohlgasse",
+        "number": "13",
+        "city": "Mettembert",
+        "postalcode": "3002",
+        "country": "Switzerland"
+    },
+    "area": {
+        "$oid": "5c9366887df282b768d776e6"
+    },
+    "pricing": 38,
+    "beds": 4
+}, {
+    "_id": {
+        "$oid": "5c93bd777df282b768d776e9"
+    },
+    "title": "Traditional swiss wooden chalet",
+    "description": "In swiss Jura mountains, at an altitude of 1111 meters. Hiking, skiing, snowshoes, cycling, horse riding, are activities available near the chalet (equipments to rent at the small ski ressort near the chalet). Biel (Bienne in french) is 20 min drive from the chalet; Jura, Bern City, Neuchâtel City are 1 hour by car from the chalet. Wifi \u0026 sauna are free. Prices include obligatory \"tourist tax, chf 4.-\" per day/person. Free parking for your car. (the chalet is 30 meters walk from parking).",
+    "img": ["/img/housing/chalet-img-1.jpg", "/img/housing/chalet-img-2.jpg"],
+    "address": {
+        "street": "Kerzenstrasse",
+        "number": "47",
+        "city": "Orvin",
+        "postalcode": "2123",
+        "country": "Switzerland"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593f8"
+    },
+    "pricing": 135,
+    "beds": 6
+}, {
+    "_id": {
+        "$oid": "5c93be4d7df282b768d776ea"
+    },
+    "title": "Contemporary eco-friendly Chalet",
+    "description": "Contemporary eco-friendly wooden house, cosy and full of light.  Located in a tiny village called Hommert, in the wildest part of the Vosges mountains (height 500 mts).  Close to many sites of interest like: Dabo's rock, Chagall Chapel, The beautiful Rhodes wildlife Park, etc. Strasbourg is at 50 mins drive.  Perfect for hiking, resting, and contemplating...",
+    "img": ["/img/housing/eco-img-1.jpg", "/img/housing/eco-img-2.jpg"],
+    "address": {
+        "street": "Salzweg",
+        "number": "22",
+        "city": "Hommert",
+        "postalcode": "3001",
+        "country": "Germany"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593f8"
+    },
+    "pricing": 96,
+    "beds": 4
+}, {
+    "_id": {
+        "$oid": "5c93bec17df282b768d776eb"
+    },
+    "title": "Cosy house in a beautiful setting",
+    "description": "3 well-furnished rooms in a large house. Great view on the Schwabish Albs, dreamy garden, balcony. Fully-equipped kitchen \u0026 living rooms shared with us. Just across bus stop, 15 min walk from center.",
+    "img": ["/img/housing/cosy-img-1.jpg", "/img/housing/cosy-img-2.jpg"],
+    "address": {
+        "street": "Salzweg",
+        "number": "90",
+        "city": "Tübingen",
+        "postalcode": "3000",
+        "country": "Germany"
+    },
+    "area": {
+        "$oid": "5c9366297df282b768d776e5"
+    },
+    "pricing": 120,
+    "beds": 4
+}, {
+    "_id": {
+        "$oid": "5c93bf957df282b768d776ec"
+    },
+    "title": "Amazing large chalet in Verbier",
+    "description": "We are glad to present our large chalet at 5 min walk center of Verbier.  This amazing place include 7 bedroom ( Total 14 persons ), well equiped kitchen, large living room and outside jacuzzi with wonderfull view.  Kids will enjoy our play room with baby foot and large TV.  We manage quality properties.  We offer personal welcome and provide on demand private concierge service like s daily housekeeping, airport transfers,breakfast or dinner at home for your arrival.",
+    "img": ["/img/housing/hugechalet-img-1.jpg", "/img/housing/hugechalet-img-2.jpg"],
+    "address": {
+        "street": "Brotstrasse",
+        "number": "21",
+        "city": "Verbier",
+        "postalcode": "3000",
+        "country": "Switzerland"
+    },
+    "area": {
+        "$oid": "5c923f3aa949af76694593fa"
+    },
+    "pricing": 350,
+    "beds": 9
+}]

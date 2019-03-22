@@ -12,7 +12,12 @@ export default class Overview extends Component {
       selectedArea: []
     }
   }
+<<<<<<< HEAD
   getSelectedHousing(housingId) {
+=======
+  
+  getSelectedArea() {
+>>>>>>> b6f2577153d3f1cfc4d35b8a348ac9d454e15fb0
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/'+housingId
@@ -27,11 +32,13 @@ export default class Overview extends Component {
         //this.props.history.push('/users/login')
       })
   }
+
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
     this.getSelectedHousing(housingId)
   }
+
   render() {
     const housing = this.state.selectedHousing
     const area = this.state.selectedArea

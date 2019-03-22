@@ -31,11 +31,11 @@ router.post('/', (req, res, next) => {
     else {
         Housing
             .find({})
+            .populate('area')
             .then((response) => {
                 res.status(200).json(response)
             })
             .catch(error => {
-                debugger
                 res.status(400).json(error)
             })
         }

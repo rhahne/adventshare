@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ListHousing from './HousingComps'
-
+import { Redirect } from "react-router-dom";
+import { Container, Section } from 'react-bulma-components/full';
 
 // ------ // Search // ------ //
 export default class Search extends Component {
@@ -17,7 +18,6 @@ export default class Search extends Component {
     }
 
     getSearchResult(SearchResult) {
-        debugger
         this.setState({ searched: true, query: SearchResult })
     }
 
@@ -26,7 +26,10 @@ export default class Search extends Component {
             <div>
                 {!this.state.searched
                     ? <SearchForm getSearchResult={this.getSearchResult} />
-                    : <SearchResponse query={this.state.query} />
+                    : <Redirect to={{
+                            pathname: '/search/q',
+                            state: {query: this.state.query}
+                    }} />
                 }
             </div>
         )
@@ -145,11 +148,33 @@ export class SearchForm extends Component {
 
 // -------------- // SearchResponse // -------------- //
 export class SearchResponse extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchedHouses: this.props.location.state.query,
+            topEightHouses: []
+        }
+    }
+
+    getTopEight() {
+        let houseList = this.state.searchedHouses
+        this.setState({
+            topEightHouses: houseList.splice(houseList.length - 8, 8)
+        })
+    }
+
+    componentDidMount() {
+        this.getTopEight()
+    }
+
     render() {
         return (
-            <div>
-                <ListHousing housing={this.props.query} />
-            </div>
+                <Container>
+                    <Section>
+                        <h1 className="title is-3">Where to stay</h1>
+                        <ListHousing housing={this.state.topEightHouses} />
+                    </Section>
+                </Container>
         )
     }
 }
