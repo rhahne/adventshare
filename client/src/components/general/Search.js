@@ -145,21 +145,20 @@ export class SearchForm extends Component {
     }
 }
 
-
 // -------------- // SearchResponse // -------------- //
 export class SearchResponse extends Component {
     constructor(props) {
         super(props);
         this.state = {
             searchedHouses: this.props.location.state.query,
-            topEightHouses: []
+            topEightSearch: []
         }
     }
 
     getTopEight() {
         let houseList = this.state.searchedHouses
         this.setState({
-            topEightHouses: houseList.splice(houseList.length - 8, 8)
+            topEightSearch: houseList.splice(houseList.length - 8, 8)
         })
     }
 
@@ -172,7 +171,11 @@ export class SearchResponse extends Component {
                 <Container>
                     <Section>
                         <h1 className="title is-3">Where to stay</h1>
-                        <ListHousing housing={this.state.topEightHouses} />
+                        <ListHousing housing={this.state.topEightSearch} />
+                    </Section>
+                    <Section>
+                        <h1 className="title is-3">What to do</h1>
+                        <ListHousing housing={this.state.topEightSearch} />
                     </Section>
                 </Container>
         )

@@ -3,14 +3,28 @@
         "$oid": "5c923f3aa949af76694593f8"
     },
     "name": "Western Swiss Alps",
-    "description": " The Western Alps are the western part of the Alpine range including the southeastern part of France (i.e. Savoie), the whole of Monaco, the northwestern part of Italy and the southwestern part of Switzerland (i.e. Valais). In the southeast the range is bounded by the Italian Padan Plain. In the west, the valley of the Rhone river separates it from the Massif Central. The northernmost part of the Western Alps - in the wide meaning of the term - is formed by the Swiss Prealps sub-range.",
+    "description": "The Western Alps are the western part of the Alpine range including the southeastern part of France (i.e. Savoie), the whole of Monaco, the northwestern part of Italy and the southwestern part of Switzerland (i.e. Valais). In the southeast the range is bounded by the Italian Padan Plain. In the west, the valley of the Rhone river separates it from the Massif Central. The northernmost part of the Western Alps - in the wide meaning of the term - is formed by the Swiss Prealps sub-range.",
     "img": ["/img/areas/wsa/wsa1.jpg", "/img/areas/wsa/wsa2.jpg"],
     "housing": [{
         "$oid": "5c93b9847df282b768d776e7"
     }, {
         "$oid": "5c924c8ba949af766945995a"
     }],
-    "activities": ["climbing", "bouldering", "mountaineering", "snowboarding", "hiking"]
+    "activities": [{
+        "$oid": "5c93bd555df282b768d776e9"
+    }, {
+        "$oid": "5c93bd555df282b768d776e8"
+    }, {
+        "$oid": "5c93bd555df282b768d776e6"
+    }, {
+        "$oid": "5c93bd555df282b768d776e3" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e2" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e1"
+    }, {
+        "$oid": "5c93bd555df282b768d776e0" 
+    }]
 }, {
     "_id": {
         "$oid": "5c923f3aa949af76694593f9"
@@ -23,7 +37,17 @@
     }, {
         "$oid": "5c93bd777df282b768d776e9"
     }],
-    "activities": ["climbing", "bouldering", "hiking"]
+    "activities": [{
+        "$oid": "5c93bd555df282b768d776e9" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e8" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e6" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e3" 
+    }, {
+        "$oid": "5c93bd555df282b668d776e9"  
+    }]
 }, {
     "_id": {
         "$oid": "5c923f3aa949af76694593fa"
@@ -40,7 +64,19 @@
     }, {
         "$oid": "5c93bcb77df282b768d776e8"
     }],
-    "activities": ["Sex du corbeau", "La Jacoterie", "Pelzli", "Mushroomcave", "Falkenflue", "Bärenfels", "Basler Jura", "Schauenburgflue", "Hermitage"]
+    "activities": [{
+        "$oid": "5c93bd555df282b768d776e9" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e8" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e6" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e4" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e3" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e2" 
+    }]
 }, {
     "_id": {
         "$oid": "5c9366297df282b768d776e5"
@@ -53,7 +89,21 @@
     }, {
         "$oid": "5c93bec17df282b768d776eb"
     }],
-    "activities": ["hiking", "climbing", "bouldering"]
+    "activities": [{
+        "$oid": "5c93bd555df282b768d776e9" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e8" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e6" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e4" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e3" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e2" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e0" 
+    }]
 }, {
     "_id": {
         "$oid": "5c9366887df282b768d776e6"
@@ -64,5 +114,21 @@
     "housing": [{
         "$oid": "5c924c8ba949af7669459959"
     }],
-    "activities": ["climbing", "hiking", "bouldering"]
+    "activities": [{
+        "$oid": "5c93bd555df282b768d776e7"  
+    }, {
+        "$oid": "5c93bd555df282b768d776e6" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e5" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e4" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e3" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e1" 
+    }, {
+        "$oid": "5c93bd555df282b768d776e0"
+    }, {
+        "$oid": "5c93bd555df282b668d776e9"
+    }]
 }]

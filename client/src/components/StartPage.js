@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {TopAreas} from './general/AreaComps'
 import SearchForm from './general/Search'
+import axios from 'axios'
+import  ListHousing  from './general/HousingComps'
 import { Container, Section } from "react-bulma-components/full"
 
 export default class StartPage extends Component {
@@ -10,11 +12,53 @@ export default class StartPage extends Component {
         <HeroHeader/>
         <Explanation />
         <TopAreas />
+        <EightRandom />
       </div>
     )
   }
 }
 
+export class EightRandom extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allHouses: [],
+      randomEight: []
+    }
+  }
+
+  getRandomEight() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings'
+    })
+    .then((response) => {
+      let houseList = response.data;
+      this.setState({
+        allHouses: houseList,
+        randomEight: houseList.splice(houseList.length - 8, 8)
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  componentDidMount() {
+    this.getRandomEight()
+  }
+
+  render() {
+    return(
+      <Container>
+        <Section>
+          <h1 className="title is-3">Houses in the best areas</h1>
+          <ListHousing housing={this.state.randomEight} />
+        </Section>
+      </Container>
+    )
+  }
+}
 
 function HeroHeader() {
 return (

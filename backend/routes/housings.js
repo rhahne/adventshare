@@ -15,6 +15,21 @@ router.get('/', (req, res, next) => {
     })
 });
 */
+
+// Get all houses
+router.get('/', (req, res, next) => {
+  Housing
+    .find({})
+    .populate('area')
+    .then((response) => {
+        res.status(200).json(response)
+    })
+    .catch(error => {
+        res.status(400).json(error)
+    })
+})
+
+
 // Detail page for housing
 router.get('/:housingId', (req, res) => {
   Housing.findOne({
@@ -28,5 +43,7 @@ router.get('/:housingId', (req, res) => {
       res.json(err);
     })
 })
+
+
 
 module.exports = router;

@@ -1,0 +1,78 @@
+[{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e9"
+    },
+    "name": "Climbing",
+    "description": "",
+    "img": ["/img/activities/climbing.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e8"
+    },
+    "name": "Bouldering",
+    "description": "",
+    "img": ["/img/activities/bouldering.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e7"
+    },
+    "name": "Crosscountry",
+    "description": "",
+    "img": ["/img/activities/crosscountry.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e6"
+    },
+    "name": "Hiking",
+    "description": "",
+    "img": ["/img/activities/hiking.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e5"
+    },
+    "name": "Ice Climbing",
+    "description": "",
+    "img": ["/img/activities/iceclimbing.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e4"
+    },
+    "name": "Kayaking",
+    "description": "",
+    "img": ["/img/activities/kayaking.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e3"
+    },
+    "name": "Mountaineering",
+    "description": "",
+    "img": ["/img/activities/mountaineering.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e2"
+    },
+    "name": "Paragliding",
+    "description": "",
+    "img": ["/img/activities/paragliding.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e1"
+    },
+    "name": "Snowboarding",
+    "description": "",
+    "img": ["/img/activities/snowboarding.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b768d776e0"
+    },
+    "name": "Snow Hiking",
+    "description": "",
+    "img": ["/img/activities/snowhiking.jpg"]
+},{
+    "_id": {
+        "$oid": "5c93bd555df282b668d776e9"
+    },
+    "name": "Trial Running",
+    "description": "",
+    "img": ["/img/activities/trialrun.jpg"]
+}]
