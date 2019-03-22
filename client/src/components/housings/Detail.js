@@ -12,12 +12,7 @@ export default class Overview extends Component {
       selectedArea: []
     }
   }
-<<<<<<< HEAD
   getSelectedHousing(housingId) {
-=======
-  
-  getSelectedArea() {
->>>>>>> b6f2577153d3f1cfc4d35b8a348ac9d454e15fb0
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/'+housingId
