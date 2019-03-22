@@ -170,11 +170,12 @@ export class SearchResponse extends Component {
             url: 'http://localhost:3002/areas/activities'
         })
         .then((response)=> {
+            debugger
             let activityArrays = response.data
             let allAreaActivities = []
 
-            activityArrays.forEach(activity => {
-                allAreaActivities.push(activity)
+            activityArrays.map(activity => {
+                return allAreaActivities.push(activity)
             })
 
             let uniqueActivities = [...new Set(allAreaActivities.map(activity => activity.id))]

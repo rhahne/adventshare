@@ -78,9 +78,9 @@ export const AboutArea = function (props) {
             </div>
             <div className="column">
               <ul>
-                {area.activities.map((activity) => {
+                {/* {area.activity.map((activity) => {
                   return <li key={activity}>   - {activity}</li>
-                })}
+                })} */}
               </ul>
             </div>
           </div>
