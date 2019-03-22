@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from './components/Navigation'
 import StartPage from './components/StartPage'
-import What from './components/user/Signup'
-import { Signup } from './components/general/UserComps'
-import Login from './components/user/Login'
+import { Signup, Login } from './components/general/UserComps'
 import UserList from './components/user/UserList'
 import Profile from './components/user/Profile'
 import Logout from './components/user/Logout'
@@ -29,8 +27,8 @@ class App extends Component {
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
-    this.openSignupModal = this.openSignupModal.bind(this)
-    this.closeSignupModal = this.closeSignupModal.bind(this)
+    this.toggleSignupModal = this.toggleSignupModal.bind(this)
+    this.toggleLoginModal = this.toggleLoginModal.bind(this)
   }
 
   componentDidMount() {
@@ -64,34 +62,26 @@ class App extends Component {
     })
   }
 
-  openSignupModal () {
+  toggleSignupModal () {
     this.setState({
-      signupModal: true
+      signupModal: !this.state.signupModal
     })
   }
 
-  closeSignupModal () {
+  toggleLoginModal () {
     this.setState({
-      signupModal: false
-    })
-  }
-
-  toggleSignupModal (statement) {
-    this.setState({
-      signupModal: statement
+      loginModal: !this.state.loginModal
     })
   }
   
   render() {
     return (
       <div>
-        <Navigation loggedIn={this.state.isAuthenticated} openSignupModal={this.openSignupModal}/>
+        <Navigation loggedIn={this.state.isAuthenticated} toggleLoginModal={this.toggleLoginModal} toggleSignupModal={this.toggleSignupModal}/>
             <Switch>
               <Route path="/" exact component={StartPage} />
-              <Route path="/users/login" exact render={(props)=> <Login {...props} loggingIn={this.loggingIn}/> }/>
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
-              <Route path="/users/signup" exact render={(props)=> <What {...props} loggingIn={this.loggingIn}/> }/>
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
@@ -99,10 +89,9 @@ class App extends Component {
               <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
-
-            {this.state.signupModal ? <Signup closeSignupModal={this.closeSignupModal} />:''}
-            
-      </div>
+            {this.state.signupModal ? <Signup toggleSignupModal={this.toggleSignupModal} />:''}
+            {this.state.loginModal ? <Login toggleLoginModal={this.toggleLoginModal} />:''}
+      </div>  
     );
   }
 }

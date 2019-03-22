@@ -49,7 +49,7 @@ export class Signup extends Component {
             <div className="modal-card">
               <header className="modal-card-head">
                 <p className="modal-card-title">Create an Account!</p>
-                <button onClick={this.props.closeSignupModal} className="delete" aria-label="close"></button>
+                <button onClick={this.props.toggleSignupModal} className="delete" aria-label="close"></button>
               </header>   
               <section className="modal-card-body">
                 <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
@@ -89,6 +89,87 @@ export class Signup extends Component {
             </div>
           </div>
           </>
+    )
+  }
+}
+
+export class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      firstname: '',
+      password: ''
+    }
+  }
+  handleChange = (event) => {
+    let updateInput = {}
+    updateInput[event.target.name] = event.target.value;
+    this.setState(updateInput);
+  }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let loginUser = this.state;
+    axios({
+      method: 'post',
+      url: 'http://localhost:3002/users/login',
+      data: loginUser,
+      withCredentials: true
+    })
+      .then((response) => {
+        if (response.data) {
+          this.props.loggingIn(response);
+          this.props.history.push('/users/profile')
+        }
+      })
+      .catch((err) => {
+        if(err.response.data){
+          this.setState({
+            errorMessage: err.response.data.message,
+          })
+        }
+      })
+  }
+  render() {
+    return (
+      <>
+      <div className="modal ">
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <p className="modal-card-title">Log In!</p>
+          <button className="delete" aria-label="close"></button>
+        </div>
+        <button className="modal-close is-large" aria-label="close"></button>
+      </div>
+      <div className="modal is-active">
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Create an Account!</p>
+            <button onClick={this.props.toggleLoginModal} className="delete" aria-label="close"></button>
+          </header>   
+          <section className="modal-card-body">
+          <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
+          <div className="field">
+            <label className="label">Firstname</label>
+            <div className="control">
+              <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input className="input" onChange={this.handleChange} type="password" name="password" placeholder="password" value={this.state.password} />
+            </div>
+          </div>
+          <div className="control">
+            <input className="button is-link" type="submit" value="Login" />
+          </div>
+        </form>
+            {this.state.errorMessage}
+          </section>
+        </div>
+      </div>
+      </>
     )
   }
 }

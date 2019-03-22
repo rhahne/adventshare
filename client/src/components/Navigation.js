@@ -122,12 +122,12 @@ function NavbarNonAuth(props) {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <div className="button is-light" onClick={props.openSignupModal}>
+                                <div className="button is-light" onClick={props.toggleSignupModal}>
                                     Sign up
                                 </div>
-                                <Link className="button is-info" to="/users/login">
+                                <div className="button is-info" onClick={props.toggleLoginModal}>
                                     Log in
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
