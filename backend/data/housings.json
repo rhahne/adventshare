@@ -32,7 +32,7 @@
         "country": "Italy"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c923f3aa949af76694593f9"
     },
     "pricing": 42,
     "beds": 9
@@ -51,7 +51,7 @@
         "country": "Swiss"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c923f3aa949af76694593fa"
     },
     "pricing": 90,
     "beds": 22
@@ -70,7 +70,7 @@
         "country": "Italy"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c9366297df282b768d776e5"
     },
     "pricing": 70,
     "beds": 20
@@ -89,7 +89,7 @@
         "country": "Switzerland"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c9366887df282b768d776e6"
     },
     "pricing": 70,
     "beds": 6
@@ -108,7 +108,7 @@
         "country": "Switzerland"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c9366887df282b768d776e6"
     },
     "pricing": 38,
     "beds": 4
@@ -165,7 +165,7 @@
         "country": "Germany"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c9366297df282b768d776e5"
     },
     "pricing": 120,
     "beds": 4
@@ -184,7 +184,7 @@
         "country": "Switzerland"
     },
     "area": {
-        "$oid": "5c923f3aa949af76694593f8"
+        "$oid": "5c923f3aa949af76694593fa"
     },
     "pricing": 350,
     "beds": 9

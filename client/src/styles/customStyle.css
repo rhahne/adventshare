@@ -1,4 +1,16 @@
+body,
+html {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
+.housing-card {
+  height: 200px;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 8px;
+}
 
 .area-card {
   color: white;
@@ -9,12 +21,6 @@
   background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
-}
-
-body,
-html {
-  padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .form-double{
@@ -78,4 +84,6 @@ html {
   height: 250px;
   border-radius: 3px;
   background-size: cover;  
+  /* display: flex; */
+  /* align-items: flex-end; */
 }

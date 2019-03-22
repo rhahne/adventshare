@@ -32,7 +32,7 @@ export class TopAreas extends Component {
     return (
       <Container>
         <Section>
-          <h1 className="title">Top recommended Areas</h1>
+          <h1 className="title">Top recommended areas</h1>
           <div className="columns">
             {this.state.allAreas.map((area) => {
               return<div className="column" key={area._id}>

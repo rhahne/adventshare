@@ -21,7 +21,7 @@ return (
   <div className="hero-home">
   <Container>
   <Section>
-    <div className="columns is-vcentered" style={{'maxWidth': '100vw', 'margin': '0px'}}>
+    <div className="columns is-vcentered" style={{'maxWidth': '100vw', minHeight: '100vh', 'margin': '0px'}}>
       <div className="column is-4 hero-form">
         <h1 className="title is-spaced">
           Book the best appartments while traveling solo
@@ -59,8 +59,8 @@ function Explanation() {
 
           <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/rowan-heuvel-21529-unsplash.jpg")'}}>
-          <div className="card-content step-card-content">
-              <h1 className="title has-text-light has-text-weight-bold" style={{fontSize: "5em"}}>
+          <div className="card-content">
+              <h1 className="title has-text-light has-text-weight-bold" style={{fontSize: "4em"}}>
               Step One
               </h1>
           </div> 
@@ -75,9 +75,9 @@ function Explanation() {
 
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/pablo-merchan-montes-772142-unsplash.jpg")'}}>
-          <div className="card-content step-card-content">
+          <div className="card-content">
             <div className="content is-flex">
-              <h1 className="title has-text-light has-text-weight-bold has-text-justified" style={{fontSize: "5em"}}>
+              <h1 className="title has-text-light has-text-weight-bold" style={{fontSize: "4em"}}>
               Step Two
               </h1>
             </div>
@@ -93,9 +93,9 @@ function Explanation() {
 
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/david-calderon-1065248-unsplash.jpg")'}}>
-          <div className="card-content step-card-content">
+          <div className="card-content">
             <div className="content is-flex">
-              <h1 className="title has-text-light has-text-weight-bold has-text-justified" style={{fontSize: "5em"}}>
+              <h1 className="title has-text-light has-text-weight-bold" style={{fontSize: "4em"}}>
               Step Three
               </h1>
             </div>

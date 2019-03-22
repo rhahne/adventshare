@@ -12,6 +12,7 @@ export default class Overview extends Component {
       selectedArea: []
     }
   }
+  
   getSelectedArea() {
     axios({
       method: 'get',
@@ -27,9 +28,11 @@ export default class Overview extends Component {
         //this.props.history.push('/users/login')
       })
   }
+
   componentDidMount() {
     this.getSelectedArea()
   }
+
   render() {
     const housing = this.state.selectedHousing
     const area = this.state.selectedArea

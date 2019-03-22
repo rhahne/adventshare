@@ -7,11 +7,11 @@ import Login from './components/user/Login'
 import UserList from './components/user/UserList'
 import Profile from './components/user/Profile'
 import Logout from './components/user/Logout'
-import Search from './components/general/Search'
 import ProtectedHome from './components/protected/Home'
 import AreaOverview from './components/areas/Overview'
 import AreaDetail from './components/areas/Detail'
 import HousingDetail from './components/housings/Detail'
+import Search, { SearchResponse } from './components/general/Search'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain } from '@fortawesome/free-solid-svg-icons'
@@ -69,6 +69,7 @@ class App extends Component {
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact render={(props)=> <Signup {...props} loggingIn={this.loggingIn}/> }/>
+              <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} /> } />
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
