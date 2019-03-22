@@ -33,6 +33,7 @@ export class EightRandom extends Component {
       url: 'http://localhost:3002/housings'
     })
     .then((response) => {
+      debugger
       let houseList = response.data;
       this.setState({
         allHouses: houseList,

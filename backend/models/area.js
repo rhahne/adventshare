@@ -7,7 +7,7 @@ const Area = mongoose.model('Area', new Schema({
   description: String,
   img: Array,
   housing: [{ type: Schema.Types.ObjectId, ref: 'Housing' }],
-  activities: [{type: Schema.Types.ObjectId, ref: 'Acitivities'}]
+  activity: [{type: Schema.Types.ObjectId, ref: 'Activity'}]
   // rating: Number,
   // reviews: { type: Schema.Types.ObjectId, ref: 'Review' },
 }));
