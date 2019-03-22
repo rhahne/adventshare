@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 export default class Logout extends Component {
   componentDidMount() {
     this.props.loggingOut();
-    this.props.history.push('/users')
+    this.props.history.push('/')
     axios({
       method: 'get',
       url: 'http://localhost:3002/users/logout',
@@ -14,7 +14,7 @@ export default class Logout extends Component {
   }
   render() {
     return (
-      <Redirect to="/users" />
+      <Redirect to="/" />
     )
   }
 }
