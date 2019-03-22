@@ -7,11 +7,14 @@ export default class Navigation extends Component {
             <div>
                 {this.props.loggedIn
                     ? <NavbarAuth/>
-                    : <NavbarNonAuth/>}
+                    : <NavbarNonAuth {...this.props} />}
             </div>
         )
     }
 }
+
+
+
 
 function NavbarAuth() {
     return (
@@ -77,7 +80,7 @@ function NavbarAuth() {
     )
 }
 
-function NavbarNonAuth() {
+function NavbarNonAuth(props) {
     return (
         <nav className="navbar is-light" role="navigation" aria-label="main navigation">
             <div className="container">
@@ -119,9 +122,9 @@ function NavbarNonAuth() {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link className="button is-light" to="/users/signup">
+                                <div className="button is-light" onClick={props.openSignupModal}>
                                     Sign up
-                                </Link>
+                                </div>
                                 <Link className="button is-info" to="/users/login">
                                     Log in
                                 </Link>
