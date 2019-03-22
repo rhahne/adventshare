@@ -165,21 +165,27 @@ export class SearchResponse extends Component {
     }
 
     getFiveActivities = () => {
-        let areaList = this.state.searchedHouses.map( house => {
-            return house.area
+        axios({
+            method: 'get',
+            url: 'http://localhost:3002/areas/activities'
         })
-        let areaActivityArrays = areaList.map(area => {
-            area.activity.map(activity => {
-                debugger
-                return activity
-            })
-            return area.activity
-        })
-        let uniqueActivities = [...new Set(areaActivityArrays.map(area => area.id))]
+        .then((response)=> {
+            let activityArrays = response.data
+            let allAreaActivities = []
 
-        this.setState({
-            fiveActivities: uniqueActivities.splice(uniqueActivities.length - 5, 5)
+            activityArrays.forEach(activity => {
+                allAreaActivities.push(activity)
+            })
+
+            let uniqueActivities = [...new Set(allAreaActivities.map(activity => activity.id))]
+
+            this.setState({
+                fiveActivities: uniqueActivities.splice(uniqueActivities.length -5, 5)
+            })
         })
+
+
+        
     }
 
     componentDidMount() {

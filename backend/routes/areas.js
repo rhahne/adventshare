@@ -27,4 +27,15 @@ router.get('/:areaId', (req, res) => {
     })
 })
 
+router.get('/activities', (req, res) => {
+  Area.findOne({})
+    .populate('activity')
+    .then(activityArray => {
+      res.json(activityArray);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
 module.exports = router;
