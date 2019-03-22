@@ -27,8 +27,7 @@ class App extends Component {
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
-    this.toggleSignupModal = this.toggleSignupModal.bind(this)
-    this.toggleLoginModal = this.toggleLoginModal.bind(this)
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   componentDidMount() {
@@ -51,7 +50,9 @@ class App extends Component {
   loggingIn(event) {
     this.setState(() => ({
       isAuthenticated: true,
-      user: event.data
+      user: event.data,
+      loginModal: false,
+      signupModal: false
     }))
   }
 
@@ -62,22 +63,27 @@ class App extends Component {
     })
   }
 
-  toggleSignupModal () {
-    this.setState({
-      signupModal: !this.state.signupModal
-    })
+  toggleModal (element) {
+    if(element === 'signup'){
+      this.setState({
+        signupModal: !this.state.signupModal
+      })
+    }else if(element === 'login'){
+      this.setState({
+        loginModal: !this.state.loginModal
+      })
+    }else if(element === 'both'){
+      this.setState({
+        signupModal: !this.state.signupModal,
+        loginModal: !this.state.loginModal
+      })
+    }
   }
 
-  toggleLoginModal () {
-    this.setState({
-      loginModal: !this.state.loginModal
-    })
-  }
-  
   render() {
     return (
       <div>
-        <Navigation loggedIn={this.state.isAuthenticated} toggleLoginModal={this.toggleLoginModal} toggleSignupModal={this.toggleSignupModal}/>
+        <Navigation {...this.props} loggedIn={this.state.isAuthenticated} toggleModal={this.toggleModal} />
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
@@ -89,12 +95,15 @@ class App extends Component {
               <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" component={HousingDetail} />
             </Switch>
-            {this.state.signupModal ? <Signup toggleSignupModal={this.toggleSignupModal} />:''}
-            {this.state.loginModal ? <Login toggleLoginModal={this.toggleLoginModal} />:''}
+            {this.state.signupModal ? 
+            <Signup loggingIn={this.loggingIn} toggleModal={this.toggleModal} />
+            :''}
+            {this.state.loginModal ? 
+            <Login loggingIn={this.loggingIn} toggleModal={this.toggleModal} />
+            :''}
       </div>  
     );
   }
 }
-
 
 export default App;

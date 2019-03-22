@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export class Signup extends Component {
-  state = {
-    firstname: '',
-    email: '',
-    bio: '',
-    password: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      firstname: '',
+      email: '',
+      bio: '',
+      password: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange = (event) => {
     let updateInput = {}
@@ -25,18 +29,24 @@ export class Signup extends Component {
     })
       .then((response) => {
         this.props.loggingIn(response);
-        this.props.history.push('/users/profile')
       })
       .catch((err) => {
-        this.setState({
-          errorMessage: err.response.data.message,
-        })
+        debugger
+        if(err.response){
+          this.setState({
+            errorMessage: err.response.data.message,
+          })
+        }else{
+          this.setState({
+            errorMessage: 'something went wrong!, try again...'
+          })
+        }
       })
   }
   render() {
     return (
       <>
-          <div className="modal ">
+          <div className="modal">
             <div className="modal-background"></div>
             <div className="modal-card">
               <p className="modal-card-title">Sign Up!</p>
@@ -49,7 +59,7 @@ export class Signup extends Component {
             <div className="modal-card">
               <header className="modal-card-head">
                 <p className="modal-card-title">Create an Account!</p>
-                <button onClick={this.props.toggleSignupModal} className="delete" aria-label="close"></button>
+                <button onClick={()=>{this.props.toggleModal('signup')}} className="delete" aria-label="close"></button>
               </header>   
               <section className="modal-card-body">
                 <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
@@ -83,7 +93,8 @@ export class Signup extends Component {
                     <input className="button is-link" type="submit" value="Sign Up" />
                   </div>
                 </form>
-                <small>Already have an account? <Link to="/users/login">Login</Link></small>
+                <small>Already have an account? <span onClick={()=>{this.props.toggleModal('both')}} style={{color:'blue', cursor:'pointer'}}>Login</span></small>
+                <br /><br />
                 {this.state.errorMessage}
               </section>
             </div>
@@ -100,6 +111,8 @@ export class Login extends Component {
       firstname: '',
       password: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange = (event) => {
     let updateInput = {}
@@ -118,7 +131,6 @@ export class Login extends Component {
       .then((response) => {
         if (response.data) {
           this.props.loggingIn(response);
-          this.props.history.push('/users/profile')
         }
       })
       .catch((err) => {
@@ -132,20 +144,12 @@ export class Login extends Component {
   render() {
     return (
       <>
-      <div className="modal ">
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <p className="modal-card-title">Log In!</p>
-          <button className="delete" aria-label="close"></button>
-        </div>
-        <button className="modal-close is-large" aria-label="close"></button>
-      </div>
       <div className="modal is-active">
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Create an Account!</p>
-            <button onClick={this.props.toggleLoginModal} className="delete" aria-label="close"></button>
+            <p className="modal-card-title">Log in!</p>
+            <button onClick={()=>{this.props.toggleModal('login')}} className="delete" aria-label="close"></button>
           </header>   
           <section className="modal-card-body">
           <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
@@ -165,6 +169,8 @@ export class Login extends Component {
             <input className="button is-link" type="submit" value="Login" />
           </div>
         </form>
+        <small>Don't have an Account yet? <span onClick={()=>{this.props.toggleModal('both')}} style={{color:'blue', cursor:'pointer'}}>Signup</span></small>
+        <br /><br />
             {this.state.errorMessage}
           </section>
         </div>

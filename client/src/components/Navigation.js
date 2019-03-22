@@ -13,9 +13,6 @@ export default class Navigation extends Component {
     }
 }
 
-
-
-
 function NavbarAuth() {
     return (
         <nav className="navbar is-light" role="navigation" aria-label="main navigation">
@@ -122,10 +119,10 @@ function NavbarNonAuth(props) {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <div className="button is-light" onClick={props.toggleSignupModal}>
+                                <div className="button is-light" onClick={()=>{props.toggleModal('signup')}}>
                                     Sign up
                                 </div>
-                                <div className="button is-info" onClick={props.toggleLoginModal}>
+                                <div className="button is-info" onClick={()=>{props.toggleModal('login')}}>
                                     Log in
                                 </div>
                             </div>
