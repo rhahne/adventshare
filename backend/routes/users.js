@@ -17,37 +17,33 @@ router.post('/', (req, res, next) => {
     res.status(400).json({
       message: 'Please fill in all the fields, son!'
     })
-  }
-  if (firstname.length <= 1) {
+  } else if (firstname.length <= 1) {
     res.status(400).json({
       message: 'A firstname with one character? cmon son!'
     })
-  }
-  if (password.length < 5) {
+  } else if (password.length < 5) {
     res.status(400).json({
       message: 'Password has to be at least 5 characters long!'
     })
-  }
-
-  // Backend Validation
-  bcrypt.hash(req.body.password, 10, function (err, hash) {
-    User.create({
-        firstname: req.body.firstname,
-        email: req.body.email,
-        bio: req.body.bio,
-        password: hash,
-      })
-      .then(response => {
-        //res.json(response);
-        res.status(200).json()
-      })
-      .catch(err => {
-        //res.json(err);
-        res.status(400).json({
-          message: 'User could not be created!'
+  } else {
+    // Backend Validation
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
+      User.create({
+          firstname: req.body.firstname,
+          email: req.body.email,
+          bio: req.body.bio,
+          password: hash,
         })
-      })
-  })
+        .then(() => {
+          res.status(200).json()
+        })
+        .catch(err => {
+          res.status(400).json({
+            message: 'User could not be created!'
+          })
+        })
+    })
+  }
 });
 
 // GET route => to get all the projects
@@ -64,29 +60,44 @@ router.get('/', (req, res, next) => {
 // Sign up post request
 router.post('/', (req, res, next) => {
   // Frontend Validation
-  const { firstname, email, bio, password } = req.body;
+  const {
+    firstname,
+    email,
+    bio,
+    password
+  } = req.body;
   if (!firstname || !email || !bio || !password) {
-    res.status(400).json({ message: 'Please fill in all the fields, son!' })
+    res.status(400).json({
+      message: 'Please fill in all the fields, son!'
+    })
   } else if (firstname.length <= 1) {
-    res.status(400).json({ message: 'A firstname with one character? cmon son!' })
+    res.status(400).json({
+      message: 'A firstname with one character? cmon son!'
+    })
   } else if (password.length < 5) {
-    res.status(400).json({ message: 'Password has to be at least 5 characters long!' })
+    res.status(400).json({
+      message: 'Password has to be at least 5 characters long!'
+    })
   } else {
     // Backend Validation
     bcrypt.hash(password, 10, function (err, hash) {
       User.create({
-        firstname: firstname,
-        email: email,
-        bio: bio,
-        password: hash,
-      })
+          firstname: firstname,
+          email: email,
+          bio: bio,
+          password: hash,
+        })
         .then(newUser => {
           req.session.user = newUser._doc;
           req.session.save();
-          res.status(200).json({ message: 'success!' })
+          res.status(200).json({
+            message: 'success!'
+          })
         })
         .catch(err => {
-          res.status(400).json({ message: 'User could not be created!' })
+          res.status(400).json({
+            message: 'User could not be created!'
+          })
         })
     })
   }
@@ -95,31 +106,45 @@ router.post('/', (req, res, next) => {
 // Login post request
 router.post('/login', (req, res, next) => {
   // Frontend Validation
-  const { firstname, password } = req.body;
+  const {
+    firstname,
+    password
+  } = req.body;
   if (!firstname || !password) {
-    res.status(400).json({ message: 'Please fill in all the fields, son!' })
+    res.status(400).json({
+      message: 'Please fill in all the fields, son!'
+    })
   } else {
     // Backend Validation
     User.findOne({
-      firstname: req.body.firstname
-    })
+        firstname: req.body.firstname
+      })
       .then((foundUser) => {
         if (!foundUser) {
-          res.status(400).json({ message: 'User does not exist, son!' })
+          res.status(400).json({
+            message: 'User does not exist, son!'
+          })
         } else {
           bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
             if (result == true) {
+              debugger
               req.session.user = foundUser._doc;
               req.session.save();
-              res.status(200).json({ message: 'success!' })
+              res.status(200).json({
+                message: 'success!'
+              })
             } else {
-              res.status(400).json({ message: 'Password is not correct, son!' })
+              res.status(400).json({
+                message: 'Password is not correct, son!'
+              })
             }
           });
         }
       })
       .catch((err) => {
-        res.status(400).json({ message: 'Something went wrong!' })
+        res.status(400).json({
+          message: 'Something went wrong!'
+        })
       })
   }
 });
