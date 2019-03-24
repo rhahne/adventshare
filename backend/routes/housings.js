@@ -29,7 +29,6 @@ router.get('/', (req, res, next) => {
     })
 })
 
-
 // Detail page for housing
 router.get('/:housingId', (req, res) => {
   Housing.findOne({
@@ -44,6 +43,17 @@ router.get('/:housingId', (req, res) => {
     })
 })
 
-
+// Show Interest Button
+router.get('/:housingId/interest', (req, res) => {
+  Housing.findOneAndUpdate({_id:req.params.housingId},{ $push: { interests: req.session.user } },{new:true}
+    )
+    .populate('area')
+    .then(foundHousing => {
+      res.json(foundHousing);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
 
 module.exports = router;

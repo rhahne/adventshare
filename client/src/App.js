@@ -95,7 +95,7 @@ class App extends Component {
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail}/>
-              <Route path="/housings/:housingId" component={HousingDetail} />
+              <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} currentUserId={this.state.user} /> } />
             </Switch>
             {this.state.signupModal ? 
             <Signup loggingIn={this.loggingIn} toggleModal={this.toggleModal} />

@@ -9,25 +9,55 @@ export default class Overview extends Component {
     super(props)
     this.state = {
       selectedHousing: [],
-      selectedArea: []
+      selectedArea: [],
+      interested: false,
+      currentUserId: this.props.currentUserId
     }
   }
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+housingId
+      url: 'http://localhost:3002/housings/'+housingId,
+      withCredentials: true
     })
       .then((response) => {
         this.setState({
           selectedHousing: response.data,
           selectedArea: response.data.area
         })
+        this.isUserInterested(response.data.interests)
       })
       .catch((err) => {
         //this.props.history.push('/users/login')
       })
   }
 
+  showInterest() {
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/'+housingId+'/interest',
+      withCredentials: true
+    })
+      .then((response) => {
+        this.isUserInterested(response.data.interests)
+      })
+      .catch((err) => {
+        //this.props.history.push('/users/login')
+      })
+  }
+  
+  isUserInterested(allInterests) {
+    debugger
+    allInterests.forEach((interestId)=>{
+      if (interestId === this.props.currentUserId){
+        this.setState({
+          interested: true
+        })
+      }
+    })
+  }
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
@@ -40,7 +70,7 @@ export default class Overview extends Component {
     return (
       <div>
         {housing.title ?
-          <HouseDetail housing={housing} /> : ''
+          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} /> : ''
         }
         <hr />
         <Container>
@@ -129,7 +159,8 @@ const HouseDetail = function (props) {
                     </div>
                 </div>
                 <hr />
-                <a className="button is-info" href="/">Show Interest</a>
+                {props.isInterested?'ja man':'nein man'}
+                <button className="button is-info" onClick={props.interested}>Show Interest</button>
               </div>
             </div>
           </div>
@@ -138,3 +169,10 @@ const HouseDetail = function (props) {
     </div>
   )
 }
+
+/*
+
+                <Link className="button is-info" to={'/housings/'+housing._id+'/interest'}>
+                  Show Interest
+                </Link>
+                */
