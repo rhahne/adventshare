@@ -5,7 +5,11 @@ import {Redirect, Link} from "react-router-dom";
 import ListActivity from './ActivityComps'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-// ------ // Search // ------ //
+//------------------------------------//
+//------------------------------------//
+//------------// SEARCH //------------//
+//------------------------------------//
+//------------------------------------//
 export default class Search extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +28,6 @@ export default class Search extends Component {
 
     sendQueryUp(searchQuery) {
         this.setState({searchInput: searchQuery})
-        debugger
     }
 
     render() {
@@ -46,7 +49,11 @@ export default class Search extends Component {
     }
 }
 
-// ---------- // SearchForm // ---------- //
+//------------------------------------//
+//------------------------------------//
+//----------// SEARCH FORM //---------//
+//------------------------------------//
+//------------------------------------//
 export class SearchForm extends Component {
     state = {
         where: '',
@@ -155,6 +162,11 @@ export class SearchForm extends Component {
     }
 }
 
+//------------------------------------//
+//------------------------------------//
+//--------// SEARCH SUMMARY //--------//
+//------------------------------------//
+//------------------------------------//
 const SearchSummary = function (props) {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
@@ -164,30 +176,29 @@ const SearchSummary = function (props) {
                     <div className="navbar-start">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link 
+                                <div 
                                     className="button is-info" 
-                                    to="/users/profile">
+                                    onClick={()=>{props.toggleModal('search')}}>
                                     <FontAwesomeIcon style={{marginRight: "5px"}} icon="search" />
                                     {props.searchInput.where}
-                                </Link>
-                                <Link 
+                                </div>
+                                <div 
                                     className="button is-info" 
-                                    to="/users/logout">
+                                    onClick={()=>{props.toggleModal('search')}}>
                                     {props.searchInput.activity}
-                                </Link>
-                                <Link 
+                                </div>
+                                <div 
                                     className="button is-info" 
-                                    to="/users/logout">
+                                    onClick={()=>{props.toggleModal('search')}}>
                                     <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
                                     {props.searchInput.startdate}
-                                </Link>
-                                <Link 
+                                </div>
+                                <div 
                                     className="button is-info" 
-                                    to="/users/logout">
+                                    onClick={()=>{props.toggleModal('search')}}>
                                     <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
                                     {props.searchInput.enddate}
-                                </Link>
-                                
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -198,8 +209,11 @@ const SearchSummary = function (props) {
         
     )
 }
-
-// -------------- // SearchResponse // -------------- //
+//------------------------------------//
+//------------------------------------//
+//--------// SearchResponse //--------//
+//------------------------------------//
+//------------------------------------//
 export class SearchResponse extends Component {
     constructor(props) {
         super(props)
@@ -209,6 +223,7 @@ export class SearchResponse extends Component {
             fiveActivities: [],
             searchInput: this.props.location.state.searchInput
         }
+ 
     }
 
     getEightHouses = () => {
@@ -240,7 +255,9 @@ export class SearchResponse extends Component {
     render() {
         return (
             <div>
-                <SearchSummary searchInput={this.state.searchInput}/>
+                
+                <SearchSummary searchInput={this.state.searchInput} toggleModal={this.props.toggleModal} />
+
                 <ListHousing title={"Where to stay"} housing={this.state.eightHouses}/> {this.state.fiveActivities
                     ? <ListActivity title={"What to do"} activity={this.state.fiveActivities}/>
                     : ""}
@@ -248,3 +265,34 @@ export class SearchResponse extends Component {
         )
     }
 }
+
+
+//------------------------------------//
+//------------------------------------//
+//------------SEARCH MODAL------------//
+//------------------------------------//
+//------------------------------------//
+export class SearchModal extends Component {
+    render() {
+      return (
+        <>
+        <div className="modal is-active">
+          <div className="modal-background"></div>
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <p className="modal-card-title">
+              Search Sön
+              </p>
+              <button className="delete" aria-label="close" onClick={()=>{this.props.toggleModal('search')}}></button>
+            </header>
+
+            <section className="modal-card-body">
+            <SearchForm />
+
+            </section>
+          </div>
+        </div>
+        </>
+      )
+    }
+  }

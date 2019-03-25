@@ -10,7 +10,7 @@ import ProtectedHome from './components/protected/Home'
 import AreaOverview from './components/areas/Overview'
 import AreaDetail from './components/areas/Detail'
 import HousingDetail from './components/housings/Detail'
-import Search, { SearchResponse } from './components/general/Search'
+import Search, { SearchResponse, SearchModal } from './components/general/Search'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faCalendarWeek, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +23,8 @@ class App extends Component {
       isAuthenticated: false,
       user: '',
       signupModal: false,
-      loginModal: false
+      loginModal: false,
+      searchModal: false
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
@@ -52,7 +53,7 @@ class App extends Component {
       isAuthenticated: true,
       user: event.data,
       loginModal: false,
-      signupModal: false
+      signupModal: false,
     }))
   }
 
@@ -77,19 +78,25 @@ class App extends Component {
         signupModal: !this.state.signupModal,
         loginModal: !this.state.loginModal
       })
+    }else if(element === 'search'){
+      debugger
+      this.setState({
+        searchModal: !this.state.searchModal
+      })
     }
   }
 
   render() {
     return (
       <div>
-        <Navigation {...this.props} loggedIn={this.state.isAuthenticated} toggleModal={this.toggleModal} />
+            <Navigation {...this.props} loggedIn={this.state.isAuthenticated} toggleModal={this.toggleModal} />
+
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
               <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact render={(props)=> <Signup {...props} loggingIn={this.loggingIn}/> }/>
-              <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} /> } />
+              <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} toggleModal={this.toggleModal}/> } />
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/search" exact render={(props)=> <Search {...props}/>} />
@@ -97,6 +104,10 @@ class App extends Component {
               <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} currentUserId={this.state.user} /> } />
             </Switch>
+
+            {this.state.searchModal ? 
+            <SearchModal toggleModal={this.toggleModal} />
+            : '' }
             {this.state.signupModal ? 
             <Signup loggingIn={this.loggingIn} toggleModal={this.toggleModal} />
             :''}

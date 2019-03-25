@@ -45,20 +45,13 @@ export class Signup extends Component {
   render() {
     return (
       <>
-          <div className="modal">
-            <div className="modal-background"></div>
-            <div className="modal-card">
-              <p className="modal-card-title">Sign Up!</p>
-              <button className="delete" aria-label="close"></button>
-            </div>
-            <button className="modal-close is-large" aria-label="close"></button>
-          </div>
           <div className="modal is-active">
             <div className="modal-background"></div>
             <div className="modal-card">
               <header className="modal-card-head">
                 <p className="modal-card-title">Create an Account!</p>
-                <button onClick={()=>{this.props.toggleModal('signup')}} className="delete" aria-label="close"></button>
+                <button onClick={()=>{this.props.toggleModal('signup')}} className="delete" aria-label="close">
+                </button>
               </header>   
               <section className="modal-card-body">
                 <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
