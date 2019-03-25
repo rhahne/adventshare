@@ -4,25 +4,98 @@ import { Container, Section } from 'react-bulma-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AboutArea, TopAreas } from '../general/AreaComps'
 import ListActivity from '../general/ActivityComps'
+import DayPicker from 'react-day-picker';
+import Helmet from 'react-helmet';
+import moment from 'moment';
+import 'react-day-picker/lib/style.css';
+
+
+// WEEK SELECTOR
+function getWeekDays(weekStart) {
+  const days = [weekStart];
+  for (let i = 1; i < 7; i += 1) {
+    days.push(
+      moment(weekStart)
+        .add(i, 'days')
+        .toDate()
+    );
+  }
+  return days;
+}
+function getWeekRange(date) {
+  return {
+    from: moment(date)
+      .startOf('week')
+      .toDate(),
+    to: moment(date)
+      .endOf('week')
+      .toDate(),
+  };
+}
+
+function getWeekNumber(date) {
+  return moment(date).week();
+}
+
+
+
+
 
 export default class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      hoverRange: undefined,
+      selectedDays: getWeekDays(getWeekRange(new Date()).from),
       selectedHousing: [],
       selectedArea: [],
+      bookingData: '',
       interested: false,
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
-      date: "1"
+      date: this.getCurrentWeekNumber()
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
     this.isUserInterested = this.isUserInterested.bind(this)
     this.getSelectedHousing = this.getSelectedHousing.bind(this)
-    this.changeDate = this.changeDate.bind(this)
     this.getBookingData = this.getBookingData.bind(this)
   }
+
+  getCurrentWeekNumber() {
+    let today = moment(new Date());
+    let weekNumber = moment(today).week();
+    return weekNumber;
+  }
+
+  // WEEK SELECTOR
+  handleDayChange = date => {
+    this.setState({
+      selectedDays: getWeekDays(getWeekRange(date).from),
+      date: getWeekNumber(date)
+    }, () => {
+      this.getBookingData();
+    })
+  };
+  handleDayEnter = date => {
+    this.setState({
+      hoverRange: getWeekRange(date),
+    });
+  };
+  handleDayLeave = () => {
+    this.setState({
+      hoverRange: undefined,
+    });
+  };
+
+  handleWeekClick = (weekNumber, days, e) => {
+    this.setState({
+      selectedDays: days,
+      date: weekNumber
+    }, () => {
+      this.getBookingData();
+    })
+  };
 
   getSelectedHousing(housingId) {
     axios({
@@ -38,9 +111,6 @@ export default class Overview extends Component {
           fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5)
         })
         this.getBookingData()
-      })
-      .catch((err) => {
-        //this.props.history.push('/users/login')
       })
   }
 
@@ -66,12 +136,8 @@ export default class Overview extends Component {
             bookingData: response.data,
             numberOfInterests: response.data.users.length
           })
+          this.isUserInterested(response.data.users)
         }
-        this.isUserInterested(response.data.users)
-      })
-      .catch((err) => {
-        
-        //this.props.history.push('/users/login')
       })
   }
 
@@ -88,13 +154,9 @@ export default class Overview extends Component {
       .then((response) => {
         this.isUserInterested(response.data.users)
       })
-      .catch((err) => {
-        //this.props.history.push('/users/login')
-      })
   }
 
   deleteInterest() {
-    
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/deleteInterest',
@@ -110,20 +172,9 @@ export default class Overview extends Component {
         })
         this.isUserInterested(response.data.users)
       })
-      .catch((err) => {
-        //this.props.history.push('/users/login')
-      })
   }
-  changeDate(event) {
-    this.setState({
-      date: event.target.value
-    }, () => {
-      this.getBookingData();
-    })
-  }
-
+ 
   isUserInterested(allInterests) {
-    
     allInterests.forEach((interestId) => {
       if (interestId === this.props.currentUserId._id) {
         this.setState({
@@ -147,11 +198,24 @@ export default class Overview extends Component {
     const area = this.state.selectedArea
     const activities = this.state.fiveAreaActivities
     const allActivities = this.state.allActivities
+    const { hoverRange, selectedDays } = this.state;
+    const daysAreSelected = selectedDays.length > 0;
+
+    const modifiers = {
+      hoverRange,
+      selectedRange: daysAreSelected && {
+        from: selectedDays[0],
+        to: selectedDays[6],
+      },
+      hoverRangeStart: hoverRange && hoverRange.from,
+      hoverRangeEnd: hoverRange && hoverRange.to,
+      selectedRangeStart: daysAreSelected && selectedDays[0],
+      selectedRangeEnd: daysAreSelected && selectedDays[6],
+    };
 
     return (
       <div>
         {housing.title ?
-
           <div>
             <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
             </div>
@@ -201,31 +265,79 @@ export default class Overview extends Component {
                       </p>
                       <hr />
                       Traveldates:
-                <select value={this.state.date} onChange={this.changeDate}>
-                        <option value="1">Week 1</option>
-                        <option value="2">Week 2</option>
-                        <option value="3">Week 3</option>
-                        <option value="4">Week 4</option>
-                      </select>
-                      <div className="columns traveldate-box">
-                        <div className="column">
-                          23.09.2019
-                    </div>
-                        <div className="column">
-                          -->
-                    </div>
-                        <div className="column">
-                          29.09.2019
-                  </div>
+
+
+
+                      <div className="SelectedWeekExample">
+                        <DayPicker
+                          selectedDays={selectedDays}
+                          showWeekNumbers
+                          showOutsideDays
+                          modifiers={modifiers}
+                          onDayClick={this.handleDayChange}
+                          onDayMouseEnter={this.handleDayEnter}
+                          onDayMouseLeave={this.handleDayLeave}
+                          onWeekClick={this.handleWeekClick}
+                        />
+                        {selectedDays.length === 7 && (
+                          <div>
+                            {moment(selectedDays[0]).format('LL')} –{' '}
+                            {moment(selectedDays[6]).format('LL')}
+                          </div>
+                        )}
+
+                        <Helmet>
+                          <style>{`
+            .SelectedWeekExample .DayPicker-Month {
+              border-collapse: separate;
+            }
+            .SelectedWeekExample .DayPicker-WeekNumber {
+              outline: none;
+            }
+            .SelectedWeekExample .DayPicker-Day {
+              outline: none;
+              border: 1px solid transparent;
+            }
+            .SelectedWeekExample .DayPicker-Day--hoverRange {
+              background-color: #EFEFEF !important;
+            }
+
+            .SelectedWeekExample .DayPicker-Day--selectedRange {
+              background-color: #fff7ba !important;
+              border-top-color: #FFEB3B;
+              border-bottom-color: #FFEB3B;
+              border-left-color: #fff7ba;
+              border-right-color: #fff7ba;
+            }
+
+            .SelectedWeekExample .DayPicker-Day--selectedRangeStart {
+              background-color: #FFEB3B !important;
+              border-left: 1px solid #FFEB3B;
+            }
+
+            .SelectedWeekExample .DayPicker-Day--selectedRangeEnd {
+              background-color: #FFEB3B !important;
+              border-right: 1px solid #FFEB3B;
+            }
+
+            .SelectedWeekExample .DayPicker-Day--selectedRange:not(.DayPicker-Day--outside).DayPicker-Day--selected,
+            .SelectedWeekExample .DayPicker-Day--hoverRange:not(.DayPicker-Day--outside).DayPicker-Day--selected {
+              border-radius: 0 !important;
+              color: black !important;
+            }
+            .SelectedWeekExample .DayPicker-Day--hoverRange:hover {
+              border-radius: 0 !important;
+            }
+          `}</style>
+                        </Helmet>
                       </div>
-                      <div className="columns">
-                        <div className="column">
-                          6 nights x $40
-                    </div>
-                        <div className="column">
-                          = $240
-                    </div>
-                      </div>
+
+
+
+
+
+                    
+                     
                       <hr />
                       {this.state.interested ?
                         <>
