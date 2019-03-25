@@ -56,4 +56,19 @@ router.get('/:housingId/interest', (req, res) => {
     })
 })
 
+// Delete Interest Button
+router.get('/:housingId/deleteInterest', (req, res) => {
+  debugger
+  Housing.findOneAndUpdate({_id:req.params.housingId},{ $pull: { interests: req.session.userId } },{new:true}
+    )
+    .populate('area')
+    .then(foundHousing => {
+      debugger
+      res.json(foundHousing);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
 module.exports = router;

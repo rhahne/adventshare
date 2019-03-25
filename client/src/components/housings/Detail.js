@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Container, Section } from 'react-bulma-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AboutArea, TopAreas } from '../general/AreaComps'
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 export default class Overview extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ export default class Overview extends Component {
       interested: false,
       currentUserId: this.props.currentUserId
     }
+    this.showInterest = this.showInterest.bind(this)
+    this.deleteInterest = this.deleteInterest.bind(this)
   }
   getSelectedHousing(housingId) {
     axios({
@@ -21,6 +24,7 @@ export default class Overview extends Component {
       withCredentials: true
     })
       .then((response) => {
+        debugger
         this.setState({
           selectedHousing: response.data,
           selectedArea: response.data.area
@@ -45,11 +49,32 @@ export default class Overview extends Component {
         this.isUserInterested(response.data.interests)
       })
       .catch((err) => {
+        debugger
+        //this.props.history.push('/users/login')
+      })
+  }
+
+  deleteInterest() {
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/'+housingId+'/deleteInterest',
+      withCredentials: true
+    })
+      .then((response) => {
+        this.setState({
+          interested: false
+        })
+        this.isUserInterested(response.data.interests)
+      })
+      .catch((err) => {
         //this.props.history.push('/users/login')
       })
   }
   
   isUserInterested(allInterests) {
+    debugger
     allInterests.forEach((interestId)=>{
       if (interestId === this.props.currentUserId._id){
         this.setState({
@@ -70,7 +95,7 @@ export default class Overview extends Component {
     return (
       <div>
         {housing.title ?
-          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} /> : ''
+          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest}/> : ''
         }
         <hr />
         <Container>
@@ -160,9 +185,20 @@ const HouseDetail = function (props) {
                 </div>
                 <hr />
                 {props.isInterested?
+                <>
                 <div className="button is-warning">Interested</div>
+                <button className="delete" onClick={props.deleteInterest}>X</button>
+                </>
                 :
-                <button className="button is-info" onClick={props.interested}>Show Interest</button>}
+                <button className="button is-info" onClick={props.showInterest}>Show Interest</button>}
+                <hr />
+                <strong>Interested Hoomans:</strong>
+                <br /><br />
+                <ul>
+                  {housing.interests.map((interest) => {
+                    return <li>{interest}</li>
+                  })}
+                </ul>
               </div>
             </div>
           </div>
