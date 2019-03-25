@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import ListHousing from './HousingComps'
-import {Redirect, Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import ListActivity from './ActivityComps'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -29,6 +29,17 @@ export default class Search extends Component {
     sendQueryUp(searchQuery) {
         this.setState({searchInput: searchQuery})
     }
+
+
+
+    // TRYING TO PREVENT INF LOOP FROM MODAL<<<<
+    // -----------------------------------------
+    // -----------------------------------------
+    // -----------------------------------------
+    // -----------------------------------------
+    // componentWillMount () { 
+    //     {this.props.modalSearch ? this.setState({searched: false}) : "" } 
+    // }
 
     render() {
         return (
@@ -164,53 +175,6 @@ export class SearchForm extends Component {
 
 //------------------------------------//
 //------------------------------------//
-//--------// SEARCH SUMMARY //--------//
-//------------------------------------//
-//------------------------------------//
-const SearchSummary = function (props) {
-    return (
-        <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
-            <div className="container">
-                <div style={{}}>
-                <div id="navMenu" className="navbar-menu">
-                    <div className="navbar-start">
-                        <div className="navbar-item">
-                            <div className="buttons">
-                                <div 
-                                    className="button is-info" 
-                                    onClick={()=>{props.toggleModal('search')}}>
-                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="search" />
-                                    {props.searchInput.where}
-                                </div>
-                                <div 
-                                    className="button is-info" 
-                                    onClick={()=>{props.toggleModal('search')}}>
-                                    {props.searchInput.activity}
-                                </div>
-                                <div 
-                                    className="button is-info" 
-                                    onClick={()=>{props.toggleModal('search')}}>
-                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
-                                    {props.searchInput.startdate}
-                                </div>
-                                <div 
-                                    className="button is-info" 
-                                    onClick={()=>{props.toggleModal('search')}}>
-                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
-                                    {props.searchInput.enddate}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </nav>
-        
-    )
-}
-//------------------------------------//
-//------------------------------------//
 //--------// SearchResponse //--------//
 //------------------------------------//
 //------------------------------------//
@@ -266,6 +230,53 @@ export class SearchResponse extends Component {
     }
 }
 
+//------------------------------------//
+//------------------------------------//
+//--------// SEARCH SUMMARY //--------//
+//------------------------------------//
+//------------------------------------//
+const SearchSummary = function (props) {
+    return (
+        <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
+            <div className="container">
+                <div style={{}}>
+                <div id="navMenu" className="navbar-menu">
+                    <div className="navbar-start">
+                        <div className="navbar-item">
+                            <div className="buttons">
+                                <div 
+                                    className="button is-info" 
+                                    onClick={()=>{props.toggleModal('search')}}>
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="search" />
+                                    {props.searchInput.where}
+                                </div>
+                                <div 
+                                    className="button is-info" 
+                                    onClick={()=>{props.toggleModal('search')}}>
+                                    {props.searchInput.activity}
+                                </div>
+                                <div 
+                                    className="button is-info" 
+                                    onClick={()=>{props.toggleModal('search')}}>
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
+                                    {props.searchInput.startdate}
+                                </div>
+                                <div 
+                                    className="button is-info" 
+                                    onClick={()=>{props.toggleModal('search')}}>
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
+                                    {props.searchInput.enddate}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav>
+        
+    )
+}
 
 //------------------------------------//
 //------------------------------------//
@@ -277,18 +288,26 @@ export class SearchModal extends Component {
       return (
         <>
         <div className="modal is-active">
-          <div className="modal-background"></div>
+          <div 
+          className="modal-background" 
+          onClick={()=>{this.props.toggleModal('search')}}>
+          </div>
           <div className="modal-card">
             <header className="modal-card-head">
               <p className="modal-card-title">
-              Search Sön
+                Search Sön
               </p>
-              <button className="delete" aria-label="close" onClick={()=>{this.props.toggleModal('search')}}></button>
+              <button 
+                className="delete" 
+                aria-label="close" 
+                onClick={()=>{this.props.toggleModal('search')}}>
+              </button>
             </header>
 
             <section className="modal-card-body">
-            <SearchForm />
-
+                <div>
+                    <Search modalSearch={true}/>
+                </div>
             </section>
           </div>
         </div>
