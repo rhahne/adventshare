@@ -11,7 +11,7 @@ export default class StartPage extends Component {
       <div>
         <HeroHeader/>
         <Explanation />
-        <TopAreas />
+        <TopAreas title={"Most popular area's"}/>
         <EightRandom />
       </div>
     )

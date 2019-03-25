@@ -170,6 +170,7 @@ export class SearchResponse extends Component {
             url: 'http://localhost:3002/areas/activities'
         })
         .then(response => {
+            debugger
             let allActivities = [];
             let areaList = response.data
             areaList.forEach(area => {

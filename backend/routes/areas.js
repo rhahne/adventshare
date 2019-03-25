@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 const Area = require('../models/area.js')
 
 // GET route => to get all the projects
@@ -29,12 +28,15 @@ router.get('/:areaId', (req, res) => {
 })
 
 router.get('/activities', (req, res) => {
-  Area.findOne({})
+  debugger
+  Area.find()
     .populate('activity')
     .then(activityArray => {
+      debugger
       res.json(activityArray);
     })
     .catch(err => {
+      debugger
       res.json(err);
     })
 })

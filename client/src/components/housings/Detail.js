@@ -117,15 +117,11 @@ export default class Overview extends Component {
           </Section>
         </Container>
         <hr className="hr"/>
-        <Container>
-          <Section>
-          <h1 className="title is-3">Best activities in {area.name}</h1>
-        {activities?
-        <ListActivity activity={activities} />:""}
-        </Section>
-        </Container>   
-        <TopAreas />
- 
+        
+            {activities?
+            <ListActivity activity={activities} title={"Best area activities"}/>:""}
+          
+            <TopAreas title={"Other top areas"} />
       </div>
     )
   }
@@ -221,10 +217,3 @@ const HouseDetail = function (props) {
     </div>
   )
 }
-
-/*
-
-                <Link className="button is-info" to={'/housings/'+housing._id+'/interest'}>
-                  Show Interest
-                </Link>
-                */

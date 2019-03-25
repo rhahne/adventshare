@@ -25,7 +25,7 @@ export class TopAreas extends Component {
         return (
             <Container>
                 <Section>
-                    <h1 className="title">Top areas</h1>
+                <h1 className="title is-3">{this.props.title}</h1>
                     <div className="columns">
                         {this
                             .state
