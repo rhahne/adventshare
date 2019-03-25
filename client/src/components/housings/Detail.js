@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AboutArea, TopAreas } from '../general/AreaComps'
 import ListActivity from '../general/ActivityComps'
 import DayPicker from 'react-day-picker';
-import Helmet from 'react-helmet';
 import moment from 'moment';
 import 'react-day-picker/lib/style.css';
 
