@@ -40,7 +40,6 @@ router.get('/booking', (req, res) => {
   })
 })
 
-
 // Show Interest Button
 router.get('/showInterest', (req, res) => {
   let date = req.query.date;
@@ -81,7 +80,6 @@ router.get('/deleteInterest', (req, res) => {
     res.json(err);
   })
 })
-
 
 // Detail page for housing
 router.get('/:housingId', (req, res) => {
