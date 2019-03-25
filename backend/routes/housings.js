@@ -72,7 +72,6 @@ router.get('/showInterest', (req, res) => {
         res.json(newBooking);
       })
     }
-
   })
 })
 

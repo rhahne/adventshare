@@ -87,7 +87,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
-              <Route path="/users/profile" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
+              <Route path="/users/account" exact render={(props)=> <Profile {...props} loggedIn={this.state.isAuthenticated}/> }/>
               <Route path="/users/signup" exact render={(props)=> <Signup {...props} loggingIn={this.loggingIn}/> }/>
               <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} /> } />
               <Route path="/users" exact component={UserList} />

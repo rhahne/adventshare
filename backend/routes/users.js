@@ -167,4 +167,27 @@ router.get('/profile', (req, res) => {
   }
 })
 
+// get logged in user in json
+router.get('/account', (req, res) => {
+  if (req.session.user) {
+    User.findOne({
+      _id: req.session.userId
+    })
+    .populate({
+      path: 'bookings', 
+      model: 'Booking',
+      populate: {
+        path: 'housing',
+        model: 'Housing'
+      }})
+    .then(currentUser => {
+      res.json(currentUser)
+    })
+  } else {
+    res.status(403).json({
+      message: 'unauthorized'
+    })
+  }
+})
+
 module.exports = router;

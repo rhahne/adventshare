@@ -79,6 +79,20 @@ html {
   text-align: center;
 }
 
+ul.no-list-style {
+  margin-left: 0px;
+}
+.no-list-style li {
+  list-style: none;
+}
+.card {
+  border-radius: 3px;
+  border: solid 0.5px hsl(0, 0%, 92%);
+}
+.button-combo a{
+  margin: 10px 5px 0px 0px;
+}
+
 /* Homepage three Step Card */
 .step-card {
   color: white;
