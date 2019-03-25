@@ -4,7 +4,6 @@ const Area = require('../models/area.js')
 
 // GET route => to get all the projects
 router.get('/', (req, res, next) => {
-  debugger
   Area.find()
     .then(allAreas => {
       res.json(allAreas);

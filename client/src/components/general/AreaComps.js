@@ -62,7 +62,6 @@ export class TopAreas extends Component {
 export const AboutArea = function (props) {
     const area = props.area ? props.area: []
     const allActivities = props.allActivities ? props.allActivities: []
-    debugger
     return (
         <div>
             <h1 className="title">

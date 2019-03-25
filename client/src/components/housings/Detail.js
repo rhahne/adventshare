@@ -13,22 +13,24 @@ export default class Overview extends Component {
       selectedArea: [],
       interested: false,
       currentUserId: this.props.currentUserId,
-      numberOfInterests: 0
+      numberOfInterests: 0,
+      date: 0
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
     this.isUserInterested = this.isUserInterested.bind(this)
     this.getSelectedHousing = this.getSelectedHousing.bind(this)
+    this.changeDate = this.changeDate.bind(this)
+    this.getBookingData =this.getBookingData.bind(this)
   }
 
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+housingId,
+      url: 'http://localhost:3002/housings/' + housingId,
       withCredentials: true
     })
       .then((response) => {
-        debugger
         this.setState({
           selectedHousing: response.data,
           selectedArea: response.data.area,
@@ -37,6 +39,29 @@ export default class Overview extends Component {
           numberOfInterests: response.data.interests.length
         })
         this.isUserInterested(response.data.interests)
+        this.getBookingData()
+      })
+      .catch((err) => {
+        //this.props.history.push('/users/login')
+      })
+  }
+
+  getBookingData() {
+    debugger
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/booking',
+      withCredentials: true,
+      params: {
+        housing: this.state.selectedHousing._id,
+        date: this.state.date
+      }
+    })
+      .then((response) => {
+        this.setState({
+          numberOfInterests: response.data.users.length
+        })
+        debugger
       })
       .catch((err) => {
         //this.props.history.push('/users/login')
@@ -48,8 +73,11 @@ export default class Overview extends Component {
     let housingId = parts.pop();
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+housingId+'/interest',
-      withCredentials: true
+      url: 'http://localhost:3002/housings/' + housingId + '/interest',
+      withCredentials: true,
+      params: {
+        date: this.state.date
+      }
     })
       .then((response) => {
         this.isUserInterested(response.data.interests)
@@ -64,7 +92,7 @@ export default class Overview extends Component {
     let housingId = parts.pop();
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+housingId+'/deleteInterest',
+      url: 'http://localhost:3002/housings/' + housingId + '/deleteInterest',
       withCredentials: true
     })
       .then((response) => {
@@ -77,9 +105,15 @@ export default class Overview extends Component {
         //this.props.history.push('/users/login')
       })
   }
+  changeDate(event) {
+    this.setState({
+      date: event.target.value
+    })
+  }
+
   isUserInterested(allInterests) {
-    allInterests.forEach((interestId)=>{
-      if (interestId === this.props.currentUserId._id){
+    allInterests.forEach((interestId) => {
+      if (interestId === this.props.currentUserId._id) {
         this.setState({
           interested: true,
         })
@@ -102,26 +136,25 @@ export default class Overview extends Component {
     const activities = this.state.fiveAreaActivities
     const allActivities = this.state.allActivities
 
-    debugger
     return (
       <div>
         {housing.title ?
-          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest} numberOfInterests={this.state.numberOfInterests}/> : ''
+          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest} numberOfInterests={this.state.numberOfInterests} date={this.state.date} changeDate={this.changeDate}/> : ''
         }
-        <hr className="hr"/>
+        <hr className="hr" />
         <Container>
           <Section>
-              {area.name ? 
-            <AboutArea area={area} allActivities={allActivities}/>:''
-          }
+            {area.name ?
+              <AboutArea area={area} allActivities={allActivities} /> : ''
+            }
           </Section>
         </Container>
-        <hr className="hr"/>
-        
-            {activities?
-            <ListActivity activity={activities} title={"Best area activities"}/>:""}
-          
-            <TopAreas title={"Other top areas"} />
+        <hr className="hr" />
+
+        {activities ?
+          <ListActivity activity={activities} title={"Best area activities"} /> : ""}
+
+        <TopAreas title={"Other top areas"} />
       </div>
     )
   }
@@ -131,7 +164,7 @@ const HouseDetail = function (props) {
   const housing = props.housing
   return (
     <div>
-      <div className="imageBox" style={{ backgroundImage: 'url('+housing.img[0]+')' }}>
+      <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
       </div>
       <Container>
         <Section>
@@ -140,7 +173,7 @@ const HouseDetail = function (props) {
               <h1 className="title">{housing.title}</h1>
               <div className="columns">
                 <div className="column is-custom-icon">
-                <FontAwesomeIcon icon="location-arrow" />
+                  <FontAwesomeIcon icon="location-arrow" />
                 </div>
                 <div className="column">
                   {housing.address.city} - {housing.address.country}
@@ -158,10 +191,10 @@ const HouseDetail = function (props) {
               <hr />
               <div className="columns">
                 <div className="column is-custom-icon">
-                <FontAwesomeIcon icon="bed" />
+                  <FontAwesomeIcon icon="bed" />
                 </div>
                 <div className="column">
-                {housing.beds} beds
+                  {housing.beds} beds
                 </div>
               </div>
             </div>
@@ -179,7 +212,13 @@ const HouseDetail = function (props) {
                 </p>
                 <hr />
                 Traveldates:
-                  <div className="columns traveldate-box">
+                <select value={props.date} onChange={props.changeDate}>
+                  <option value="1">Week 1</option>
+                  <option value="2">Week 2</option>
+                  <option value="3">Week 3</option>
+                  <option value="4">Week 4</option>
+                </select>
+                <div className="columns traveldate-box">
                   <div className="column">
                     23.09.2019
                     </div>
@@ -199,13 +238,13 @@ const HouseDetail = function (props) {
                     </div>
                 </div>
                 <hr />
-                {props.isInterested?
-                <>
-                <div className="button is-warning">Interested</div>
-                <button className="delete" onClick={props.deleteInterest}>X</button>
-                </>
-                :
-                <button className="button is-info" onClick={props.showInterest}>Show Interest</button>}
+                {props.isInterested ?
+                  <>
+                    <div className="button is-warning">Interested</div>
+                    <button className="delete" onClick={props.deleteInterest}>X</button>
+                  </>
+                  :
+                  <button className="button is-info" onClick={props.showInterest}>Show Interest</button>}
                 <hr />
                 <strong> {props.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
                 <br /><br />

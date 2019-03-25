@@ -13,7 +13,7 @@ export default class Profile extends Component {
     axios({
       method: 'get',
       url: 'http://localhost:3002/users/profile',
-      withCredentials: true
+      withCredentials: true,
     })
       .then((response) => {
         this.setState({
