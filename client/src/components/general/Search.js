@@ -3,6 +3,7 @@ import axios from 'axios'
 import ListHousing from './HousingComps'
 import { Redirect } from "react-router-dom";
 import { Container, Section } from 'react-bulma-components/full';
+import ListActivity from './ActivityComps'
 
 // ------ // Search // ------ //
 export default class Search extends Component {
@@ -148,22 +149,49 @@ export class SearchForm extends Component {
 // -------------- // SearchResponse // -------------- //
 export class SearchResponse extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             searchedHouses: this.props.location.state.query,
-            topEightSearch: []
+            eightHouses: [],
+            fiveActivities: []
         }
     }
 
-    getTopEight() {
+    getEightHouses = () => {
         let houseList = this.state.searchedHouses
         this.setState({
-            topEightSearch: houseList.splice(houseList.length - 8, 8)
+            eightHouses: houseList.splice(houseList.length - 8, 8)
         })
     }
 
+    getFiveActivities = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:3002/areas/activities'
+        })
+        .then((response)=> {
+            debugger
+            let activityArrays = response.data
+            let allAreaActivities = []
+
+            activityArrays.map(activity => {
+                return allAreaActivities.push(activity)
+            })
+
+            let uniqueActivities = [...new Set(allAreaActivities.map(activity => activity.id))]
+
+            this.setState({
+                fiveActivities: uniqueActivities.splice(uniqueActivities.length -5, 5)
+            })
+        })
+
+
+        
+    }
+
     componentDidMount() {
-        this.getTopEight()
+        this.getEightHouses()
+        this.getFiveActivities()
     }
 
     render() {
@@ -171,13 +199,14 @@ export class SearchResponse extends Component {
                 <Container>
                     <Section>
                         <h1 className="title is-3">Where to stay</h1>
-                        <ListHousing housing={this.state.topEightSearch} />
+                        <ListHousing housing={this.state.eightHouses} />
                     </Section>
                     <Section>
                         <h1 className="title is-3">What to do</h1>
-                        <ListHousing housing={this.state.topEightSearch} />
+                        <ListActivity activity={this.state.fiveActivities} />
                     </Section>
                 </Container>
         )
     }
 }
+

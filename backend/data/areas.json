@@ -10,7 +10,7 @@
     }, {
         "$oid": "5c924c8ba949af766945995a"
     }],
-    "activities": [{
+    "activity": [{
         "$oid": "5c93bd555df282b768d776e9"
     }, {
         "$oid": "5c93bd555df282b768d776e8"
@@ -37,7 +37,7 @@
     }, {
         "$oid": "5c93bd777df282b768d776e9"
     }],
-    "activities": [{
+    "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
         "$oid": "5c93bd555df282b768d776e8" 
@@ -64,7 +64,7 @@
     }, {
         "$oid": "5c93bcb77df282b768d776e8"
     }],
-    "activities": [{
+    "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
         "$oid": "5c93bd555df282b768d776e8" 
@@ -89,7 +89,7 @@
     }, {
         "$oid": "5c93bec17df282b768d776eb"
     }],
-    "activities": [{
+    "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
         "$oid": "5c93bd555df282b768d776e8" 
@@ -114,7 +114,7 @@
     "housing": [{
         "$oid": "5c924c8ba949af7669459959"
     }],
-    "activities": [{
+    "activity": [{
         "$oid": "5c93bd555df282b768d776e7"  
     }, {
         "$oid": "5c93bd555df282b768d776e6" 

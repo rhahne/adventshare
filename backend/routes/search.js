@@ -29,10 +29,18 @@ router.post('/', (req, res, next) => {
         })
     }
     else {
+        debugger
         Housing
             .find({})
-            .populate('area')
+            .populate({
+                path: 'area', 
+                model: 'Area',
+                populate: {
+                  path: 'activity',
+                  model: 'Activity'
+                }})
             .then((response) => {
+                debugger
                 res.status(200).json(response)
             })
             .catch(error => {
