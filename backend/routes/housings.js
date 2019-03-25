@@ -45,7 +45,7 @@ router.get('/:housingId', (req, res) => {
 
 // Show Interest Button
 router.get('/:housingId/interest', (req, res) => {
-  Housing.findOneAndUpdate({_id:req.params.housingId},{ $push: { interests: req.session.user } },{new:true}
+  Housing.findOneAndUpdate({_id:req.params.housingId},{ $push: { interests: req.session.userId } },{new:true}
     )
     .populate('area')
     .then(foundHousing => {

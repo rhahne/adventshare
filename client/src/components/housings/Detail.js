@@ -41,6 +41,7 @@ export default class Overview extends Component {
       withCredentials: true
     })
       .then((response) => {
+        debugger
         this.isUserInterested(response.data.interests)
       })
       .catch((err) => {
@@ -49,9 +50,8 @@ export default class Overview extends Component {
   }
   
   isUserInterested(allInterests) {
-    debugger
     allInterests.forEach((interestId)=>{
-      if (interestId === this.props.currentUserId){
+      if (interestId === this.props.currentUserId._id){
         this.setState({
           interested: true
         })
@@ -159,8 +159,10 @@ const HouseDetail = function (props) {
                     </div>
                 </div>
                 <hr />
-                {props.isInterested?'ja man':'nein man'}
-                <button className="button is-info" onClick={props.interested}>Show Interest</button>
+                {props.isInterested?
+                <div className="button is-warning">Interested</div>
+                :
+                <button className="button is-info" onClick={props.interested}>Show Interest</button>}
               </div>
             </div>
           </div>
