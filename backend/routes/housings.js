@@ -27,8 +27,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/booking', (req, res) => {
   let housing = req.query.housing
-  let date = req.query.date
-  debugger
+  let date = parseInt(req.query.date)
   Booking.findOne({
     housing: housing,
     date: date
@@ -41,36 +40,16 @@ router.get('/booking', (req, res) => {
   })
 })
 
-// Detail page for housing
-router.get('/:housingId', (req, res) => {
-  Housing.findOne({
-    _id:req.params.housingId}
-    )
-    .populate({
-      path: 'area', 
-      model: 'Area',
-      populate: {
-        path: 'activity',
-        model: 'Activity'
-      }})
-    .then(foundHousing => {
-      res.json(foundHousing);
-    })
-    .catch(err => {
-      res.json(err);
-    })
-})
 
 // Show Interest Button
-router.get('/:housingId/interest', (req, res) => {
-  debugger
+router.get('/showInterest', (req, res) => {
   let date = req.query.date;
-  let housingId = req.params.housingId
+  let housingId = req.query.housingId
 
   Booking.findOneAndUpdate({
     housing: housingId,
     date: date
-  },{ $push: { users: req.session.userId } }, {new:true},
+  },{ $push: { users: req.session.user } }, {new:true},
   (err, result)=>{
     if (result){
       res.json(result);
@@ -87,73 +66,39 @@ router.get('/:housingId/interest', (req, res) => {
       })
     }
   })
-/*
-  Housing.findOne({
-    _id: housingId
-  })
-  .then((theHousing) => {
-    theHousing
-
-    Booking.findOne({
-      housing: theHousing._id,
-      time: 1
-    },(foundBooking)=>{
-      if (foundBooking){
-        // add user to foundbooking
-      } else{
-        // create Booking and add user
-        Booking.create({
-          Housing: theHousing._id,
-        })
-      }
-    })
-  })
-  .catch((err) => {
-    res.send(err)
-  })
-
-  
-
-  User.create({
-    firstname: firstname,
-    email: email,
-    bio: bio,
-    password: hash,
-  })
-  .then(newUser => {
-    req.session.user = newUser._doc;
-    req.session.userId = newUser._doc._id;
-    req.session.save();
-    res.status(200).json({
-      message: 'success!'
-    })
-  })
-  .catch(err => {
-    res.status(400).json({
-      message: 'User could not be created!'
-    })
-  })
-
-  Housing.findOneAndUpdate({_id:req.params.housingId},{ $push: { interests: req.session.userId } },{new:true}
-    )
-    .populate('area')
-    .then(foundHousing => {
-      res.json(foundHousing);
-    })
-    .catch(err => {
-      res.json(err);
-    })
-    */
 })
 
 // Delete Interest Button
-router.get('/:housingId/deleteInterest', (req, res) => {
-  debugger 
-  Housing.findOneAndUpdate({_id:req.params.housingId},{ $pull: { interests: req.session.userId } },{new:true}
+router.get('/deleteInterest', (req, res) => {
+  debugger
+  Booking.findOneAndUpdate({
+    housing: req.query.housingId,
+    date: parseInt(req.query.date)
+  }, {$pull: { users: req.session.userId }},{new:true})
+  .then(updatedBooking => {
+    debugger
+    res.json(updatedBooking);
+  })
+  .catch(err => {
+    debugger
+    res.json(err);
+  })
+})
+
+
+// Detail page for housing
+router.get('/:housingId', (req, res) => {
+  Housing.findOne({
+    _id:req.params.housingId}
     )
-    .populate('area')
+    .populate({
+      path: 'area', 
+      model: 'Area',
+      populate: {
+        path: 'activity',
+        model: 'Activity'
+      }})
     .then(foundHousing => {
-      debugger
       res.json(foundHousing);
     })
     .catch(err => {
