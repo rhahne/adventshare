@@ -50,12 +50,7 @@ export class EightRandom extends Component {
 
   render() {
     return(
-      <Container>
-        <Section>
-          <h1 className="title is-3">Houses in the best areas</h1>
-          <ListHousing housing={this.state.randomEight} />
-        </Section>
-      </Container>
+          <ListHousing housing={this.state.randomEight} title={"Houses in the best areas"} />
     )
   }
 }
