@@ -16,7 +16,7 @@ const ListActivity = function (props) {
                                 {activity
                                     .img
                                     .map((img) => {
-                                        return <div
+                                        return <div key={img}
                                             className="card action-card is-flex is-shadowless"
                                             style={{
                                             backgroundImage: 'url(' + img + ')',

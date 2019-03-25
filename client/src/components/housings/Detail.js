@@ -28,7 +28,6 @@ export default class Overview extends Component {
       withCredentials: true
     })
       .then((response) => {
-        debugger
         this.setState({
           selectedHousing: response.data,
           selectedArea: response.data.area,
@@ -102,7 +101,6 @@ export default class Overview extends Component {
     const activities = this.state.fiveAreaActivities
     const allActivities = this.state.allActivities
 
-    debugger
     return (
       <div>
         {housing.title ?

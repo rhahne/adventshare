@@ -13,8 +13,8 @@ import HousingDetail from './components/housings/Detail'
 import Search, { SearchResponse } from './components/general/Search'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStar, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-library.add(faStar, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope)
+import { faStar, faCalendarWeek, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch } from '@fortawesome/free-solid-svg-icons'
+library.add(faStar, faBed, faCalendarWeek, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch)
 
 class App extends Component {
   constructor(props) {

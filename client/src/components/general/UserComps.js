@@ -31,7 +31,6 @@ export class Signup extends Component {
         this.props.loggingIn(response);
       })
       .catch((err) => {
-        debugger
         if(err.response){
           this.setState({
             errorMessage: err.response.data.message,

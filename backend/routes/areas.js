@@ -27,15 +27,12 @@ router.get('/:areaId', (req, res) => {
 })
 
 router.get('/activities', (req, res) => {
-  debugger
   Area.find({})
     .populate('activity')
     .then(activityArray => {
-      debugger
       res.json(activityArray);
     })
     .catch(err => {
-      debugger
       res.json(err);
     })
 })

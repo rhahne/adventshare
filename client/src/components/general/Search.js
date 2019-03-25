@@ -1,42 +1,50 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import ListHousing from './HousingComps'
-import { Redirect } from "react-router-dom";
-import { Container, Section } from 'react-bulma-components/full';
+import {Redirect, Link} from "react-router-dom";
 import ListActivity from './ActivityComps'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // ------ // Search // ------ //
 export default class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            query: [],
+            searchRes: [],
             searched: false,
+            searchInput: []
         }
-        this.getSearchResult = this
-            .getSearchResult
-            .bind(this)
+        this.getSearchResult = this.getSearchResult.bind(this);
+        this.sendQueryUp = this.sendQueryUp.bind(this);
     }
 
     getSearchResult(SearchResult) {
-        this.setState({ searched: true, query: SearchResult })
+        this.setState({searched: true, searchRes: SearchResult})
+    }
+
+    sendQueryUp(searchQuery) {
+        this.setState({searchInput: searchQuery})
+        debugger
     }
 
     render() {
         return (
             <div>
                 {!this.state.searched
-                    ? <SearchForm getSearchResult={this.getSearchResult} />
-                    : <Redirect to={{
-                            pathname: '/search/q',
-                            state: {query: this.state.query}
-                    }} />
-                }
+                    ? <SearchForm getSearchResult={this.getSearchResult} sendQueryUp={this.sendQueryUp}/>
+                    : <Redirect
+                        to={{
+                        pathname: '/search/q',
+                        state: {
+                            searchRes: this.state.searchRes,
+                            searchInput: this.state.searchInput
+                        }
+                    }}/>
+}
             </div>
         )
     }
 }
-
 
 // ---------- // SearchForm // ---------- //
 export class SearchForm extends Component {
@@ -49,18 +57,19 @@ export class SearchForm extends Component {
     }
 
     handleChange = (event) => {
-        let { name, value } = event.target;
-        this.setState({ [name]: value });
+        let {name, value} = event.target;
+        this.setState({[name]: value});
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         let searchInfo = this.state;
+        this.props.sendQueryUp(searchInfo);
 
-        axios({ method: 'post', url: 'http://localhost:3002/search', data: searchInfo }).then((response) => {
+        axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response) => {
             this.props.getSearchResult(response.data)
         }).catch((err) => {
-            this.setState({ errorMessage: 'Errorsön' })
+            this.setState({errorMessage: 'Errorsön'})
         })
     }
 
@@ -79,7 +88,7 @@ export class SearchForm extends Component {
                                 onChange={this.handleChange}
                                 type="text"
                                 name="where"
-                                value={this.state.where} />
+                                value={this.state.where}/>
                         </div>
                     </div>
 
@@ -113,7 +122,7 @@ export class SearchForm extends Component {
                                     onChange={this.handleChange}
                                     type="date"
                                     name="startdate"
-                                    value={this.state.startdate} />
+                                    value={this.state.startdate}/>
                             </div>
                         </div>
 
@@ -129,14 +138,14 @@ export class SearchForm extends Component {
                                         type="date"
                                         name="enddate"
                                         placeholder="enddate"
-                                        value={this.state.enddate} />
+                                        value={this.state.enddate}/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="control">
-                        <input className="button is-link" type="submit" value="Search" />
+                        <input className="button is-link" type="submit" value="Search"/>
                     </div>
 
                 </form>
@@ -146,28 +155,73 @@ export class SearchForm extends Component {
     }
 }
 
+const SearchSummary = function (props) {
+    return (
+        <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
+            <div className="container">
+                <div style={{}}>
+                <div id="navMenu" className="navbar-menu">
+                    <div className="navbar-start">
+                        <div className="navbar-item">
+                            <div className="buttons">
+                                <Link 
+                                    className="button is-info" 
+                                    to="/users/profile">
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="search" />
+                                    {props.searchInput.where}
+                                </Link>
+                                <Link 
+                                    className="button is-info" 
+                                    to="/users/logout">
+                                    {props.searchInput.activity}
+                                </Link>
+                                <Link 
+                                    className="button is-info" 
+                                    to="/users/logout">
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
+                                    {props.searchInput.startdate}
+                                </Link>
+                                <Link 
+                                    className="button is-info" 
+                                    to="/users/logout">
+                                    <FontAwesomeIcon style={{marginRight: "5px"}} icon="calendar-week" />
+                                    {props.searchInput.enddate}
+                                </Link>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav>
+        
+    )
+}
+
 // -------------- // SearchResponse // -------------- //
 export class SearchResponse extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchedHouses: this.props.location.state.query,
+            searchedHouses: this.props.location.state.searchRes,
             eightHouses: [],
-            fiveActivities: []
+            fiveActivities: [],
+            searchInput: this.props.location.state.searchInput
         }
     }
 
     getEightHouses = () => {
-        let houseList = [...this.state.searchedHouses]
+        let houseList = this.state.searchedHouses
         this.setState({
             eightHouses: houseList.splice(houseList.length - 8, 8)
         })
     }
 
     getFiveActivities = () => {
-        let areaList = this.state.searchedHouses.map( house => {
-            return house.area
-        })
+        let areaList = this.state.searchedHouses.map(house => {
+                return house.area
+            })
         let allActivities = [];
         areaList.forEach(area => {
             allActivities.push(...area.activity)
@@ -175,9 +229,7 @@ export class SearchResponse extends Component {
         const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
         const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
         const fiveActivities = [...filteredActivities.splice(filteredActivities.length - 5, 5)]
-        this.setState({
-            fiveActivities: fiveActivities
-        })
+        this.setState({fiveActivities: fiveActivities})
     }
 
     componentDidMount() {
@@ -188,10 +240,11 @@ export class SearchResponse extends Component {
     render() {
         return (
             <div>
-                <ListHousing title={"Where to stay"} housing={this.state.eightHouses} />
-                {this.state.fiveActivities?<ListActivity title={"What to do"} activity={this.state.fiveActivities} />:""}
-            </div>                       
+                <SearchSummary searchInput={this.state.searchInput}/>
+                <ListHousing title={"Where to stay"} housing={this.state.eightHouses}/> {this.state.fiveActivities
+                    ? <ListActivity title={"What to do"} activity={this.state.fiveActivities}/>
+                    : ""}
+            </div>
         )
     }
 }
-
