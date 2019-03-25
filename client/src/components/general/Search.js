@@ -174,9 +174,8 @@ export class SearchResponse extends Component {
         })
         const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
         const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
-        debugger
         this.setState({
-            fiveActivities: filteredActivities
+            fiveActivities: filteredActivities.splice(filteredActivities.length - 5, 5)
         })
     }
 

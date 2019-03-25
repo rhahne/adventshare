@@ -33,7 +33,6 @@ export class EightRandom extends Component {
       url: 'http://localhost:3002/housings'
     })
     .then((response) => {
-      debugger
       let houseList = response.data;
       this.setState({
         allHouses: houseList,
@@ -100,8 +99,6 @@ function Explanation() {
         </p>
         </div>
         <div className="columns is-centered">
-
-
           <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/rowan-heuvel-21529-unsplash.jpg")'}}>
           <div className="card-content">
@@ -117,7 +114,6 @@ function Explanation() {
               Select the appartments you are interested in. You can select multiple apparments
         </p>
         </div>
-
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/pablo-merchan-montes-772142-unsplash.jpg")'}}>
           <div className="card-content">
@@ -135,7 +131,6 @@ function Explanation() {
           Wait untill enough people have shown interest in one of your selections
           </p>
         </div>
-
         <div className="column">
           <div className="card step-card" style={{backgroundImage: 'url("/img/david-calderon-1065248-unsplash.jpg")'}}>
           <div className="card-content">
@@ -153,7 +148,6 @@ function Explanation() {
           Give a final go and start your adventure. Its gonna be sick!
           </p>
         </div>
-
         </div>
       </Section>
     </Container>

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Container, Section } from 'react-bulma-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AboutArea, TopAreas } from '../general/AreaComps'
+import ListActivity from '../general/ActivityComps'
 
 export default class Overview extends Component {
   constructor(props) {
@@ -12,15 +13,19 @@ export default class Overview extends Component {
       selectedArea: []
     }
   }
+
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+housingId
+      url: 'http://localhost:3002/housings/'+ housingId
     })
       .then((response) => {
+        debugger
         this.setState({
           selectedHousing: response.data,
-          selectedArea: response.data.area
+          selectedArea: response.data.area,
+          allActivities: [...response.data.area.activity],
+          fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5)
         })
       })
       .catch((err) => {
@@ -28,30 +33,50 @@ export default class Overview extends Component {
       })
   }
 
+  // getFiveAreaActivities = () => {
+  //   let allAreaActivities = this.state.areaActivities;
+  //   this.setState({
+  //     fiveAreaActivities: allAreaActivities.splice(allAreaActivities.length - 5, 5)
+  //   })
+  // }
+
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
     this.getSelectedHousing(housingId)
+    // this.getFiveAreaActivities()
   }
 
   render() {
     const housing = this.state.selectedHousing
     const area = this.state.selectedArea
+    const activities = this.state.fiveAreaActivities
+    const allActivities = this.state.allActivities
+
+    debugger
     return (
       <div>
         {housing.title ?
           <HouseDetail housing={housing} /> : ''
         }
-        <hr />
+        <hr className="hr"/>
         <Container>
           <Section>
               {area.name ? 
-            <AboutArea area={area}/>:''
+            <AboutArea area={area} allActivities={allActivities}/>:''
           }
           </Section>
         </Container>
-        <hr />
+        <hr className="hr"/>
+        <Container>
+          <Section>
+          <h1 className="title is-3">Best activities in {area.name}</h1>
+        {activities?
+        <ListActivity activity={activities} />:""}
+        </Section>
+        </Container>   
         <TopAreas />
+ 
       </div>
     )
   }

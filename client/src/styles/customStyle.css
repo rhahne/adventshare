@@ -12,10 +12,10 @@ html {
   margin-bottom: 8px;
 }
 
-.area-card {
+.action-card {
   color: white;
   text-align: center;
-  height: 250px;
+  height: 300px;
   border-radius: 3px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ html {
   align-items: flex-end;
 }
 
-.form-double{
+.form-double {
   display: flex;
   justify-content: space-between;
 }
