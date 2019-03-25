@@ -45,7 +45,6 @@ export default class Overview extends Component {
   }
 
   getBookingData() {
-    debugger
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/booking',
@@ -71,7 +70,7 @@ export default class Overview extends Component {
         this.isUserInterested(response.data.users)
       })
       .catch((err) => {
-        debugger
+        
         //this.props.history.push('/users/login')
       })
   }
@@ -95,7 +94,7 @@ export default class Overview extends Component {
   }
 
   deleteInterest() {
-    debugger
+    
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/deleteInterest',
@@ -124,7 +123,7 @@ export default class Overview extends Component {
   }
 
   isUserInterested(allInterests) {
-    debugger
+    
     allInterests.forEach((interestId) => {
       if (interestId === this.props.currentUserId._id) {
         this.setState({

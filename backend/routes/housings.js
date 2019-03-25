@@ -70,17 +70,14 @@ router.get('/showInterest', (req, res) => {
 
 // Delete Interest Button
 router.get('/deleteInterest', (req, res) => {
-  debugger
   Booking.findOneAndUpdate({
     housing: req.query.housingId,
     date: parseInt(req.query.date)
   }, {$pull: { users: req.session.userId }},{new:true})
   .then(updatedBooking => {
-    debugger
     res.json(updatedBooking);
   })
   .catch(err => {
-    debugger
     res.json(err);
   })
 })
@@ -105,24 +102,5 @@ router.get('/:housingId', (req, res) => {
       res.json(err);
     })
 })
-/*
-// get BookingData for frontend detail site
-router.get('/booking', (req, res) => {
-  debugger
 
-  /*
-  Booking.findOne({
-    housing: housingId,
-    date: date
-  })
-  .then(foundBooking => {
-    debugger
-    res.json(foundBooking);
-  })
-  .catch(err => {
-    debugger
-    res.json(err);
-  })
-})
-*/
 module.exports = router;
