@@ -12,10 +12,13 @@ export default class Overview extends Component {
       selectedHousing: [],
       selectedArea: [],
       interested: false,
-      currentUserId: this.props.currentUserId
+      currentUserId: this.props.currentUserId,
+      numberOfInterests: 0
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
+    this.isUserInterested = this.isUserInterested.bind(this)
+    this.getSelectedHousing = this.getSelectedHousing.bind(this)
   }
   getSelectedHousing(housingId) {
     axios({
@@ -26,7 +29,8 @@ export default class Overview extends Component {
       .then((response) => {
         this.setState({
           selectedHousing: response.data,
-          selectedArea: response.data.area
+          selectedArea: response.data.area,
+          numberOfInterests: response.data.interests.length
         })
         this.isUserInterested(response.data.interests)
       })
@@ -69,14 +73,16 @@ export default class Overview extends Component {
         //this.props.history.push('/users/login')
       })
   }
-  
   isUserInterested(allInterests) {
     allInterests.forEach((interestId)=>{
       if (interestId === this.props.currentUserId._id){
         this.setState({
-          interested: true
+          interested: true,
         })
       }
+    })
+    this.setState({
+      numberOfInterests: allInterests.length
     })
   }
   componentDidMount() {
@@ -91,7 +97,7 @@ export default class Overview extends Component {
     return (
       <div>
         {housing.title ?
-          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest}/> : ''
+          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest} numberOfInterests={this.state.numberOfInterests}/> : ''
         }
         <hr />
         <Container>
@@ -169,7 +175,7 @@ const HouseDetail = function (props) {
                     </div>
                   <div className="column">
                     29.09.2019
-                    </div>
+                  </div>
                 </div>
                 <div className="columns">
                   <div className="column">
@@ -188,13 +194,8 @@ const HouseDetail = function (props) {
                 :
                 <button className="button is-info" onClick={props.showInterest}>Show Interest</button>}
                 <hr />
-                <strong>Interested Hoomans:</strong>
+                <strong> {props.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
                 <br /><br />
-                <ul>
-                  {housing.interests.map((interest) => {
-                    return <li>{interest.firstname}</li>
-                  })}
-                </ul>
               </div>
             </div>
           </div>

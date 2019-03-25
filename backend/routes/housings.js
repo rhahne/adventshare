@@ -35,7 +35,6 @@ router.get('/:housingId', (req, res) => {
     _id:req.params.housingId}
     )
     .populate('area')
-    .populate('interests')
     .then(foundHousing => {
       res.json(foundHousing);
     })
