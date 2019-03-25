@@ -1,15 +1,15 @@
-const createError   = require('http-errors');
-const express       = require('express');
-const path          = require('path');
-const bcrypt        = require('bcrypt');
-const cookieParser  = require('cookie-parser');
-const logger        = require('morgan');
-const mongoose      = require("mongoose");
-const bodyParser    = require("body-parser");
-const Data          = require("./data");
-const cors          = require('cors')
-const session       = require("express-session");
-const MongoStore    = require("connect-mongo")(session);
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const Data = require("./data");
+const cors = require('cors')
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 const API_PORT = 3002;
 var app = express();
@@ -30,6 +30,20 @@ mongoose
 
 let db = mongoose.connection;
 
+app.use(session({
+    secret: 'fuckthisshit',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 999999999,
+        expires: 999999999
+    },
+    store: new MongoStore({
+        mongooseConnection: db,
+        ttl: 24 * 60 * 60 // 1 day
+    })
+}));
+
 db.once("open", () => console.log("connected to the database"));
 // checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -46,25 +60,11 @@ app.use(cors({
     origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
 }));
 
-app.use(session({
-    secret: 'fuckthisshit',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 999999999,
-        expires: 999999999
-    },
-    store: new MongoStore({
-        mongooseConnection: db,
-        ttl: 24 * 60 * 60 // 1 day
-    })
-}));
-
 // creating routes
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 var usersRouter = require('./routes/users');
-var searchRouter= require('./routes/search');
+var searchRouter = require('./routes/search');
 var areasRouter = require('./routes/areas')
 var housingsRouter = require('./routes/housings')
 
@@ -82,6 +82,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+    debugger
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

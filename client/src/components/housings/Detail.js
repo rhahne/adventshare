@@ -10,14 +10,22 @@ export default class Overview extends Component {
     super(props)
     this.state = {
       selectedHousing: [],
-      selectedArea: []
+      selectedArea: [],
+      interested: false,
+      currentUserId: this.props.currentUserId,
+      numberOfInterests: 0
     }
+    this.showInterest = this.showInterest.bind(this)
+    this.deleteInterest = this.deleteInterest.bind(this)
+    this.isUserInterested = this.isUserInterested.bind(this)
+    this.getSelectedHousing = this.getSelectedHousing.bind(this)
   }
 
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/'+ housingId
+      url: 'http://localhost:3002/housings/'+housingId,
+      withCredentials: true
     })
       .then((response) => {
         debugger
@@ -25,21 +33,62 @@ export default class Overview extends Component {
           selectedHousing: response.data,
           selectedArea: response.data.area,
           allActivities: [...response.data.area.activity],
-          fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5)
+          fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5),
+          numberOfInterests: response.data.interests.length
         })
+        this.isUserInterested(response.data.interests)
       })
       .catch((err) => {
         //this.props.history.push('/users/login')
       })
   }
 
-  // getFiveAreaActivities = () => {
-  //   let allAreaActivities = this.state.areaActivities;
-  //   this.setState({
-  //     fiveAreaActivities: allAreaActivities.splice(allAreaActivities.length - 5, 5)
-  //   })
-  // }
+  showInterest() {
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/'+housingId+'/interest',
+      withCredentials: true
+    })
+      .then((response) => {
+        this.isUserInterested(response.data.interests)
+      })
+      .catch((err) => {
+        //this.props.history.push('/users/login')
+      })
+  }
 
+  deleteInterest() {
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/'+housingId+'/deleteInterest',
+      withCredentials: true
+    })
+      .then((response) => {
+        this.setState({
+          interested: false
+        })
+        this.isUserInterested(response.data.interests)
+      })
+      .catch((err) => {
+        //this.props.history.push('/users/login')
+      })
+  }
+  isUserInterested(allInterests) {
+    allInterests.forEach((interestId)=>{
+      if (interestId === this.props.currentUserId._id){
+        this.setState({
+          interested: true,
+        })
+      }
+    })
+    this.setState({
+      numberOfInterests: allInterests.length
+    })
+  }
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
@@ -57,7 +106,7 @@ export default class Overview extends Component {
     return (
       <div>
         {housing.title ?
-          <HouseDetail housing={housing} /> : ''
+          <HouseDetail housing={housing} isInterested={this.state.interested} showInterest={this.showInterest} deleteInterest={this.deleteInterest} numberOfInterests={this.state.numberOfInterests}/> : ''
         }
         <hr className="hr"/>
         <Container>
@@ -143,7 +192,7 @@ const HouseDetail = function (props) {
                     </div>
                   <div className="column">
                     29.09.2019
-                    </div>
+                  </div>
                 </div>
                 <div className="columns">
                   <div className="column">
@@ -154,7 +203,16 @@ const HouseDetail = function (props) {
                     </div>
                 </div>
                 <hr />
-                <a className="button is-info" href="/">Show Interest</a>
+                {props.isInterested?
+                <>
+                <div className="button is-warning">Interested</div>
+                <button className="delete" onClick={props.deleteInterest}>X</button>
+                </>
+                :
+                <button className="button is-info" onClick={props.showInterest}>Show Interest</button>}
+                <hr />
+                <strong> {props.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
+                <br /><br />
               </div>
             </div>
           </div>
@@ -163,3 +221,10 @@ const HouseDetail = function (props) {
     </div>
   )
 }
+
+/*
+
+                <Link className="button is-info" to={'/housings/'+housing._id+'/interest'}>
+                  Show Interest
+                </Link>
+                */

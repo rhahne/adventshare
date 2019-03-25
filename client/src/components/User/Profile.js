@@ -30,7 +30,7 @@ export default class Profile extends Component {
         <Section>
           {this.state.userData ?
             <>
-              <h1 className="title">Welcome {this.state.userData.firstname}</h1>
+              <h1 className="title">Your Account</h1>
               <ul>
                 <li>Firstname: {this.state.userData.firstname}</li>
                 <li>Email: {this.state.userData.email}</li>

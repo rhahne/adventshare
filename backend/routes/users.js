@@ -89,6 +89,7 @@ router.post('/', (req, res, next) => {
         })
         .then(newUser => {
           req.session.user = newUser._doc;
+          req.session.userId = newUser._doc._id;
           req.session.save();
           res.status(200).json({
             message: 'success!'
@@ -127,8 +128,8 @@ router.post('/login', (req, res, next) => {
         } else {
           bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
             if (result == true) {
-              debugger
               req.session.user = foundUser._doc;
+              req.session.userId = foundUser._doc._id;
               req.session.save();
               res.status(200).json({
                 message: 'success!'
