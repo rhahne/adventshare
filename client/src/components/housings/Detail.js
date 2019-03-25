@@ -24,7 +24,6 @@ export default class Overview extends Component {
       withCredentials: true
     })
       .then((response) => {
-        debugger
         this.setState({
           selectedHousing: response.data,
           selectedArea: response.data.area
@@ -45,11 +44,9 @@ export default class Overview extends Component {
       withCredentials: true
     })
       .then((response) => {
-        debugger
         this.isUserInterested(response.data.interests)
       })
       .catch((err) => {
-        debugger
         //this.props.history.push('/users/login')
       })
   }
@@ -74,7 +71,6 @@ export default class Overview extends Component {
   }
   
   isUserInterested(allInterests) {
-    debugger
     allInterests.forEach((interestId)=>{
       if (interestId === this.props.currentUserId._id){
         this.setState({
@@ -196,7 +192,7 @@ const HouseDetail = function (props) {
                 <br /><br />
                 <ul>
                   {housing.interests.map((interest) => {
-                    return <li>{interest}</li>
+                    return <li>{interest.firstname}</li>
                   })}
                 </ul>
               </div>
