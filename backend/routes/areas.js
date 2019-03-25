@@ -4,7 +4,6 @@ const Area = require('../models/area.js')
 
 // GET route => to get all the projects
 router.get('/', (req, res, next) => {
-  debugger
   Area.find()
     .then(allAreas => {
       res.json(allAreas);
@@ -29,7 +28,7 @@ router.get('/:areaId', (req, res) => {
 
 router.get('/activities', (req, res) => {
   debugger
-  Area.find()
+  Area.find({})
     .populate('activity')
     .then(activityArray => {
       debugger

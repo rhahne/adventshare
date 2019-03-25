@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import {Container, Section} from 'react-bulma-components'
 
 const ListHousing = function (props) {
   return (
+<Container>
+        <Section>
+        <h1 className="title is-3">{props.title}</h1>
         <div className="columns is-multiline">
             {props.housing.map((housing) => {
                 return <div 
@@ -33,6 +37,8 @@ const ListHousing = function (props) {
                     </div>
                 })}
         </div>
+        </Section>
+    </Container>
   )
 }
 

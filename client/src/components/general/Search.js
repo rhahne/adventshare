@@ -158,32 +158,25 @@ export class SearchResponse extends Component {
     }
 
     getEightHouses = () => {
-        let houseList = this.state.searchedHouses
+        let houseList = [...this.state.searchedHouses]
         this.setState({
             eightHouses: houseList.splice(houseList.length - 8, 8)
         })
     }
 
     getFiveActivities = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:3002/areas/activities'
+        let areaList = this.state.searchedHouses.map( house => {
+            return house.area
         })
-        .then(response => {
-            debugger
-            let allActivities = [];
-            let areaList = response.data
-            areaList.forEach(area => {
-                allActivities.push(...area.activity)
-            })
-            const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
-            const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
-            this.setState({
-                fiveActivities: filteredActivities.splice(filteredActivities.length - 5, 5)
-            })
+        let allActivities = [];
+        areaList.forEach(area => {
+            allActivities.push(...area.activity)
         })
-        .catch(error => {
-            console.log(error)
+        const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
+        const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
+        const fiveActivities = [...filteredActivities.splice(filteredActivities.length - 5, 5)]
+        this.setState({
+            fiveActivities: fiveActivities
         })
     }
 
@@ -194,16 +187,10 @@ export class SearchResponse extends Component {
 
     render() {
         return (
-                <Container>
-                    <Section>
-                        <h1 className="title is-3">Where to stay</h1>
-                        <ListHousing housing={this.state.eightHouses} />
-                    </Section>
-                    <Section>
-                        <h1 className="title is-3">What to do</h1>
-                        {this.state.fiveActivities?<ListActivity activity={this.state.fiveActivities} />:""}                       
-                    </Section>
-                </Container>
+            <div>
+                <ListHousing title={"Where to stay"} housing={this.state.eightHouses} />
+                {this.state.fiveActivities?<ListActivity title={"What to do"} activity={this.state.fiveActivities} />:""}
+            </div>                       
         )
     }
 }
