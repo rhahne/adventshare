@@ -169,24 +169,21 @@ export class SearchResponse extends Component {
             method: 'get',
             url: 'http://localhost:3002/areas/activities'
         })
-        .then((response)=> {
-            debugger
-            let activityArrays = response.data
-            let allAreaActivities = []
-
-            activityArrays.map(activity => {
-                return allAreaActivities.push(activity)
+        .then(response => {
+            let allActivities = [];
+            let areaList = response.data
+            areaList.forEach(area => {
+                allActivities.push(...area.activity)
             })
-
-            let uniqueActivities = [...new Set(allAreaActivities.map(activity => activity.id))]
-
+            const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
+            const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
             this.setState({
-                fiveActivities: uniqueActivities.splice(uniqueActivities.length -5, 5)
+                fiveActivities: filteredActivities.splice(filteredActivities.length - 5, 5)
             })
         })
-
-
-        
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     componentDidMount() {
@@ -203,7 +200,7 @@ export class SearchResponse extends Component {
                     </Section>
                     <Section>
                         <h1 className="title is-3">What to do</h1>
-                        <ListActivity activity={this.state.fiveActivities} />
+                        {this.state.fiveActivities?<ListActivity activity={this.state.fiveActivities} />:""}                       
                     </Section>
                 </Container>
         )

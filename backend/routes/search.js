@@ -29,7 +29,6 @@ router.post('/', (req, res, next) => {
         })
     }
     else {
-        debugger
         Housing
             .find({})
             .populate({
@@ -40,7 +39,6 @@ router.post('/', (req, res, next) => {
                   model: 'Activity'
                 }})
             .then((response) => {
-                debugger
                 res.status(200).json(response)
             })
             .catch(error => {
