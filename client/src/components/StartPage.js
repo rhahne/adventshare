@@ -3,21 +3,67 @@ import {TopAreas} from './general/AreaComps'
 import SearchForm from './general/Search'
 import axios from 'axios'
 import ListHousing from './general/HousingComps'
-import {Container, Section} from "react-bulma-components/full"
+import ListActivity from './general/ActivityComps'
+import {Container, Section } from "react-bulma-components/full"
 
 export default class StartPage extends Component {
     render() {
         return (
             <div>
-                <HeroHeader/>
+                <HeroHeader {...this.props} />
                 <Explanation/>
                 <TopAreas title={"Most popular area's"}/>
                 <EightRandom/>
+                <FiveActivities title={"Great outdoor activities"}/>
             </div>
         )
     }
 }
 
+//------------------------------------//
+//------------------------------------//
+//--------// FiveActivities //--------//
+//------------------------------------//
+//------------------------------------//
+export class FiveActivities extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            allActivities: [],
+            fiveActivities: []
+        }
+    }
+
+    getFiveActivities() {
+        axios({method: 'get', url: 'http://localhost:3002/activities'})
+        .then((response) => {
+            let allActivities = [...response.data]
+            this.setState({ 
+                allActivities: response.data,
+                fiveActivities: allActivities.slice(allActivities.length - 5, allActivities.length)
+            })
+        })
+        .catch((err) => {
+            //this.props.history.push('/users/login')
+        })
+    }
+    componentDidMount() {
+        this.getFiveActivities()
+    }
+
+    render () {
+        return (
+            <ListActivity title={this.props.title} activity={this.state.fiveActivities}/>
+        )
+    }
+}
+
+
+//------------------------------------//
+//------------------------------------//
+//---------// EightRandom //----------//
+//------------------------------------//
+//------------------------------------//
 export class EightRandom extends Component {
     constructor(props) {
         super(props);
@@ -50,7 +96,13 @@ export class EightRandom extends Component {
     }
 }
 
-function HeroHeader() {
+
+//------------------------------------//
+//------------------------------------//
+//----------// HeroHeader //----------//
+//------------------------------------//
+//------------------------------------//
+function HeroHeader(props) {
     return (
         <div className="hero-home">
             <Container>
@@ -71,7 +123,7 @@ function HeroHeader() {
                                 locations
                             </h2>
                             <div className="" style={{}}>
-                                <SearchForm/>
+                                <SearchForm {...props} />
                             </div>
                         </div>
                         <div
@@ -87,6 +139,11 @@ function HeroHeader() {
     )
 }
 
+//------------------------------------//
+//------------------------------------//
+//----------// Explanation //---------//
+//------------------------------------//
+//------------------------------------//
 function Explanation() {
     return (
         <Container>

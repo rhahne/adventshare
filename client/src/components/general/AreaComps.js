@@ -12,9 +12,11 @@ export class TopAreas extends Component {
         }
     }
     getAllAreas() {
-        axios({method: 'get', url: 'http://localhost:3002/areas'}).then((response) => {
+        axios({method: 'get', url: 'http://localhost:3002/areas'})
+        .then((response) => {
             this.setState({allAreas: response.data})
-        }).catch((err) => {
+        })
+        .catch((err) => {
             //this.props.history.push('/users/login')
         })
     }

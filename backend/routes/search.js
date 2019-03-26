@@ -14,8 +14,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    // Frontend Validation
-
     const { where, activity, startdate, enddate } = req.body;
 
     if (!where || !activity || !startdate || !enddate) {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import ListHousing from './HousingComps'
-import {Redirect} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import ListActivity from './ActivityComps'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -24,36 +24,37 @@ export default class Search extends Component {
 
     getSearchResult(SearchResult) {
         this.setState({searched: true, searchRes: SearchResult})
+
+        if (this.props.modalSearch) {
+            this.props.history.push({
+                pathname: '/search/q',
+                state: {
+                    searchRes: SearchResult,
+                    searchInput: this.state.searchInput
+                }
+              })
+            this.props.toggleSearchModal()
+        } else {
+            this.props.history.push({
+                pathname: '/search/q',
+                state: {
+                    searchRes: SearchResult,
+                    searchInput: this.state.searchInput
+                }
+              })
+        }
     }
 
     sendQueryUp(searchQuery) {
         this.setState({searchInput: searchQuery})
     }
 
-
-
-    // TRYING TO PREVENT INF LOOP FROM MODAL<<<<
-    // -----------------------------------------
-    // -----------------------------------------
-    // -----------------------------------------
-    // -----------------------------------------
-    // componentWillMount () { 
-    //     {this.props.modalSearch ? this.setState({searched: false}) : "" } 
-    // }
-
     render() {
         return (
             <div>
                 {!this.state.searched
                     ? <SearchForm getSearchResult={this.getSearchResult} sendQueryUp={this.sendQueryUp}/>
-                    : <Redirect
-                        to={{
-                        pathname: '/search/q',
-                        state: {
-                            searchRes: this.state.searchRes,
-                            searchInput: this.state.searchInput
-                        }
-                    }}/>
+                    : ""
 }
             </div>
         )
@@ -187,13 +188,12 @@ export class SearchResponse extends Component {
             fiveActivities: [],
             searchInput: this.props.location.state.searchInput
         }
- 
     }
 
     getEightHouses = () => {
         let houseList = this.state.searchedHouses
         this.setState({
-            eightHouses: houseList.splice(houseList.length - 8, 8)
+            eightHouses: houseList.slice(houseList.length - 8, houseList.length)
         })
     }
 
@@ -207,8 +207,18 @@ export class SearchResponse extends Component {
         })
         const uniq = new Set(allActivities.map(e => JSON.stringify(e)));
         const filteredActivities = Array.from(uniq).map(e => JSON.parse(e));
-        const fiveActivities = [...filteredActivities.splice(filteredActivities.length - 5, 5)]
+        const fiveActivities = [...filteredActivities.slice(filteredActivities.length - 5, filteredActivities.length)]
         this.setState({fiveActivities: fiveActivities})
+    }
+    componentDidUpdate (prevProps, prevState) {
+        if(this.props.location.state.searchInput !== prevProps.location.state.searchInput){
+            this.setState({   
+                searchedHouses: this.props.location.state.searchRes,
+                searchInput: this.props.location.state.searchInput
+            })
+            this.getEightHouses()
+            this.getFiveActivities()
+        }
     }
 
     componentDidMount() {
@@ -219,7 +229,6 @@ export class SearchResponse extends Component {
     render() {
         return (
             <div>
-                
                 <SearchSummary searchInput={this.state.searchInput} toggleModal={this.props.toggleModal} />
 
                 <ListHousing title={"Where to stay"} housing={this.state.eightHouses}/> {this.state.fiveActivities
@@ -274,7 +283,6 @@ const SearchSummary = function (props) {
                 </div>
             </div>
         </nav>
-        
     )
 }
 
@@ -283,14 +291,19 @@ const SearchSummary = function (props) {
 //------------SEARCH MODAL------------//
 //------------------------------------//
 //------------------------------------//
-export class SearchModal extends Component {
+export class SearchModalWrapped extends Component {
+
+    toggleSearchModal = () => {
+        this.props.toggleModal('search')
+    }
+
     render() {
       return (
         <>
         <div className="modal is-active">
           <div 
           className="modal-background" 
-          onClick={()=>{this.props.toggleModal('search')}}>
+          onClick={this.toggleSearchModal}>
           </div>
           <div className="modal-card">
             <header className="modal-card-head">
@@ -300,13 +313,12 @@ export class SearchModal extends Component {
               <button 
                 className="delete" 
                 aria-label="close" 
-                onClick={()=>{this.props.toggleModal('search')}}>
+                onClick={this.toggleSearchModal}>
               </button>
             </header>
-
             <section className="modal-card-body">
                 <div>
-                    <Search modalSearch={true}/>
+                    <Search {...this.props} toggleSearchModal={this.toggleSearchModal} modalSearch={true}/>
                 </div>
             </section>
           </div>
@@ -315,3 +327,5 @@ export class SearchModal extends Component {
       )
     }
   }
+  
+export const SearchModal = withRouter(SearchModalWrapped)

@@ -29,7 +29,6 @@ class App extends Component {
     this.loggingIn = this.loggingIn.bind(this)
     this.loggingOut = this.loggingOut.bind(this)
     this.toggleModal = this.toggleModal.bind(this)
-    this.searchFromModal = this.searchFromModal.bind(this)
   }
 
   componentDidMount() {
@@ -80,15 +79,10 @@ class App extends Component {
         loginModal: !this.state.loginModal
       })
     }else if(element === 'search'){
-      debugger
       this.setState({
         searchModal: !this.state.searchModal
       })
     }
-  }
-
-  searchFromModal (searchInfo) {
-    this.setState({searchFromModal: true})
   }
 
   render() {
@@ -111,7 +105,7 @@ class App extends Component {
             </Switch>
 
             {this.state.searchModal ? 
-            <SearchModal searchFromModal={this.searchFromModal} toggleModal={this.toggleModal} />
+            <SearchModal toggleModal={this.toggleModal} />
             : '' }
             {this.state.signupModal ? 
             <Signup loggingIn={this.loggingIn} toggleModal={this.toggleModal} />
