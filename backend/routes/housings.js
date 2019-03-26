@@ -45,12 +45,19 @@ router.get('/booking', (req, res) => {
 router.get('/showInterest', (req, res) => {
   let date = req.query.date;
   let housingId = req.query.housingId
+  let spots = req.query.beds
   Booking.findOneAndUpdate({
     housing: housingId,
     date: date
   },{ $push: { users: req.session.user } }, {new:true},
   (err, result)=>{
     if (result){
+      if(result.users.length === result.spots){
+        Booking.findOneAndUpdate({
+          housing: housingId,
+          date: date
+        },{ full: true }).exec()
+      }
       User.findOneAndUpdate({
         _id: req.session.userId
       },{ $push: { bookings: result } },{new:true})
@@ -60,7 +67,7 @@ router.get('/showInterest', (req, res) => {
       Booking.create({
         housing: housingId,
         users: [req.session.user],
-        spots: 4,
+        spots: spots,
         date: date,
         booked: false
       })
@@ -99,7 +106,7 @@ router.get('/:housingId', (req, res) => {
     _id:req.params.housingId}
     )
     .populate({
-      path: 'area', 
+      path: 'area',
       model: 'Area',
       populate: {
         path: 'activity',

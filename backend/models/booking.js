@@ -7,7 +7,9 @@ const Booking = mongoose.model('Booking', new Schema({
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   spots: Number,
   date: Number,
-  booked: Boolean
+  booked: Boolean,
+  full: Boolean,
+  confirmation: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 }));
 
 module.exports = Booking

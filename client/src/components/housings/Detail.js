@@ -142,7 +142,8 @@ export default class Overview extends Component {
       withCredentials: true,
       params: {
         housingId: this.state.selectedHousing._id,
-        date: this.state.date
+        date: this.state.date,
+        beds: this.state.selectedHousing.beds
       }
     })
       .then((response) => {

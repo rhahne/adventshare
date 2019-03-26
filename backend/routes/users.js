@@ -181,7 +181,24 @@ router.get('/account', (req, res) => {
         model: 'Housing'
       }})
     .then(currentUser => {
-      res.json(currentUser)
+      const bookings = [];
+      const interests = [];
+      currentUser.bookings.forEach((booking) => {
+        if(booking.full){
+          booking.isConfirmed = false;
+          booking.confirmation.forEach(confirmationId => {
+            if(confirmationId === req.session.userId) {
+              booking.isConfirmed = true;
+            }
+          })
+          bookings.push(booking)
+        }else{
+          interests.push(booking)
+        }
+      })
+      const sessionUser = req.session.user
+      const response = {bookings, interests, sessionUser};
+      res.json(response)
     })
   } else {
     res.status(403).json({

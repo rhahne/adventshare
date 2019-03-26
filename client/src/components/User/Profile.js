@@ -9,6 +9,18 @@ export default class Profile extends Component {
       userData: null,
       bookings: null
     }
+    this.confirm = this.confirm.bind(this);
+  }
+  confirm(bookingId, isConfirmed) {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/bookings/confirm',
+      withCredentials: true,
+      params: {
+        isConfirmed: isConfirmed,
+        bookingId: bookingId
+      }
+    })
   }
   componentDidMount() {
     axios({
@@ -17,19 +29,33 @@ export default class Profile extends Component {
       withCredentials: true,
     })
       .then((response) => {
+        const { bookings, interests, sessionUser } = response.data
+
+        bookings.forEach(booking => {
+          booking.confirmation.forEach(confirmationId => {
+            debugger
+            if (confirmationId.indexOf(booking.users)){
+              debugger
+              booking.isConfirmed = true;
+            }
+          })
+        })
+
         this.setState({
-          userData: response.data,
-          bookings: response.data.bookings
+          userData: sessionUser,
+          bookings: bookings,
+          interests: interests
         })
       })
       .catch((err) => {
+        debugger
         this.props.history.push('/users/login')
       })
   }
   render() {
     const user = this.state.userData ? this.state.userData : '';
     const bookings = this.state.bookings ? this.state.bookings:[];
-    debugger
+    const interests = this.state.interests ? this.state.interests:[];
     return (
       <Container>
         <Section className="hero is-bold">
@@ -84,12 +110,36 @@ export default class Profile extends Component {
                         Interests
                       </h1>
                       <ul>
-                      {bookings.map(booking=>{
+                      {interests.map(interest=>{
                         return <div>
+                        <li><strong>Title:</strong> {interest.housing.title}</li>
+                        <li><strong>Date:</strong> Week {interest.date}</li>
+                        <li><strong>Status:</strong> {interest.users.length}/{interest.housing.beds} hoomans</li>
+                        <a href={"/housings/"+interest.housing._id}><strong>Link</strong></a>
+                        <br /><br />
+                        </div>
+                      })}
+                      </ul>
+                      <h1 className="title is-3 is-spaced">
+                        Waiting Confirmation
+                      </h1>
+                      <ul>
+                      {bookings.map(booking=>{
+                        return <div className="columns">
+                        <div className="column is-three-quarters">
                         <li><strong>Title:</strong> {booking.housing.title}</li>
                         <li><strong>Date:</strong> Week {booking.date}</li>
                         <li><strong>Status:</strong> {booking.users.length}/{booking.housing.beds} hoomans</li>
                         <a href={"/housings/"+booking.housing._id}><strong>Link</strong></a>
+                        </div>
+                        {booking.isConfirmed ? 
+                        'CONFIRMED, Waiting for other people to confirm'
+                        :
+                        <div className="column">
+                        <span className="button is-success" onClick={()=>{this.confirm(booking._id, true)}}>Yes</span>
+                        <span className="button is-danger" onClick={()=>{this.confirm(booking._id, false)}}>No</span>
+                        </div>
+                        }
                         <br /><br />
                         </div>
                       })}
@@ -103,6 +153,7 @@ export default class Profile extends Component {
                       <h1 className="title is-3 is-spaced">
                         Bookings
                       </h1>
+                      
                     </div>
                   </div>
                 </div>
