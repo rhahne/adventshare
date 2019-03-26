@@ -16,7 +16,7 @@ export default class Overview extends Component {
   getSelectedArea(areaId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/areas/' + areaId
+      url: 'http://localhost:3002/areas/details/' + areaId
     })
       .then((response) => {
         this.setState({

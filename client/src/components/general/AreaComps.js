@@ -34,7 +34,7 @@ export class TopAreas extends Component {
                             .allAreas
                             .map((area) => {
                                 return <div className="column" key={area._id}>
-                                    <Link to={"/details/areas/" + area._id}>
+                                    <Link to={"/areas/details/" + area._id}>
                                         <div
                                             className="card action-card is-flex is-shadowless"
                                             style={{
