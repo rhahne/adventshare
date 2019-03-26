@@ -7,7 +7,9 @@ export default class Profile extends Component {
     super(props)
     this.state = {
       userData: null,
-      bookings: null
+      finalBookings: null,
+      bookings: null,
+      interests: null
     }
     this.confirm = this.confirm.bind(this);
   }
@@ -29,20 +31,19 @@ export default class Profile extends Component {
       withCredentials: true,
     })
       .then((response) => {
-        const { bookings, interests, sessionUser } = response.data
-
+        const { finalBookings, bookings, interests, sessionUser } = response.data
+        debugger
         bookings.forEach(booking => {
-          booking.confirmation.forEach(confirmationId => {
-            debugger
-            if (confirmationId.indexOf(booking.users)){
+          debugger
+            if (booking.confirmation.indexOf(sessionUser._id) !== -1){
               debugger
               booking.isConfirmed = true;
             }
-          })
         })
 
         this.setState({
           userData: sessionUser,
+          finalBookings: finalBookings,
           bookings: bookings,
           interests: interests
         })
@@ -54,8 +55,10 @@ export default class Profile extends Component {
   }
   render() {
     const user = this.state.userData ? this.state.userData : '';
+    const finalBookings = this.state.finalBookings ? this.state.finalBookings : [];
     const bookings = this.state.bookings ? this.state.bookings:[];
     const interests = this.state.interests ? this.state.interests:[];
+    debugger
     return (
       <Container>
         <Section className="hero is-bold">
@@ -130,6 +133,7 @@ export default class Profile extends Component {
                         <li><strong>Title:</strong> {booking.housing.title}</li>
                         <li><strong>Date:</strong> Week {booking.date}</li>
                         <li><strong>Status:</strong> {booking.users.length}/{booking.housing.beds} hoomans</li>
+                        <li><strong>Confirmations:</strong> {booking.confirmation.length}/{booking.housing.beds}</li>
                         <a href={"/housings/"+booking.housing._id}><strong>Link</strong></a>
                         </div>
                         {booking.isConfirmed ? 
@@ -153,7 +157,17 @@ export default class Profile extends Component {
                       <h1 className="title is-3 is-spaced">
                         Bookings
                       </h1>
-                      
+                      <ul>
+                      {finalBookings.map(finalBooking=>{
+                        return <div>
+                        <li><strong>Title:</strong> {finalBooking.housing.title}</li>
+                        <li><strong>Date:</strong> Week {finalBooking.date}</li>
+                        <li><strong>Prepare your trip son!</strong></li>
+                        <a href={"/housings/"+finalBooking.housing._id}><strong>Link</strong></a>
+                        <br /><br />
+                        </div>
+                      })}
+                      </ul>
                     </div>
                   </div>
                 </div>

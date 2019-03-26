@@ -182,9 +182,12 @@ router.get('/account', (req, res) => {
       }})
     .then(currentUser => {
       const bookings = [];
+      const finalBookings = [];
       const interests = [];
       currentUser.bookings.forEach((booking) => {
-        if(booking.full){
+        if(booking.booked){
+          finalBookings.push(booking)
+        } else if(booking.full){
           booking.isConfirmed = false;
           booking.confirmation.forEach(confirmationId => {
             if(confirmationId === req.session.userId) {
@@ -197,7 +200,7 @@ router.get('/account', (req, res) => {
         }
       })
       const sessionUser = req.session.user
-      const response = {bookings, interests, sessionUser};
+      const response = {finalBookings, bookings, interests, sessionUser};
       res.json(response)
     })
   } else {
