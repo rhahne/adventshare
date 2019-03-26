@@ -79,6 +79,20 @@ html {
   text-align: center;
 }
 
+ul.no-list-style {
+  margin-left: 0px;
+}
+.no-list-style li {
+  list-style: none;
+}
+.card {
+  border-radius: 3px;
+  border: solid 0.5px hsl(0, 0%, 92%);
+}
+.button-combo a{
+  margin: 10px 5px 0px 0px;
+}
+
 /* Homepage three Step Card */
 .step-card {
   color: white;
@@ -87,4 +101,46 @@ html {
   background-size: cover;  
   /* display: flex; */
   /* align-items: flex-end; */
+}
+
+/* REACT-DAY-PICKER */
+.selectedWeek .DayPicker-Month {
+  border-collapse: separate;
+}
+.selectedWeek .DayPicker-WeekNumber {
+  outline: none;
+}
+.selectedWeek .DayPicker-Day {
+  outline: none;
+  border: 1px solid transparent;
+}
+.selectedWeek .DayPicker-Day--hoverRange {
+  background-color: #EFEFEF !important;
+}
+
+.selectedWeek .DayPicker-Day--selectedRange {
+  background-color: #fff7ba !important;
+  border-top-color: #FFEB3B;
+  border-bottom-color: #FFEB3B;
+  border-left-color: #fff7ba;
+  border-right-color: #fff7ba;
+}
+
+.selectedWeek .DayPicker-Day--selectedRangeStart {
+  background-color: #FFEB3B !important;
+  border-left: 1px solid #FFEB3B;
+}
+
+.selectedWeek .DayPicker-Day--selectedRangeEnd {
+  background-color: #FFEB3B !important;
+  border-right: 1px solid #FFEB3B;
+}
+
+.selectedWeek .DayPicker-Day--selectedRange:not(.DayPicker-Day--outside).DayPicker-Day--selected,
+.selectedWeek .DayPicker-Day--hoverRange:not(.DayPicker-Day--outside).DayPicker-Day--selected {
+  border-radius: 0 !important;
+  color: black !important;
+}
+.selectedWeek .DayPicker-Day--hoverRange:hover {
+  border-radius: 0 !important;
 }

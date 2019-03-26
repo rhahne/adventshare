@@ -167,4 +167,47 @@ router.get('/profile', (req, res) => {
   }
 })
 
+// get logged in user in json
+router.get('/account', (req, res) => {
+  if (req.session.user) {
+    User.findOne({
+      _id: req.session.userId
+    })
+    .populate({
+      path: 'bookings', 
+      model: 'Booking',
+      populate: {
+        path: 'housing',
+        model: 'Housing'
+      }})
+    .then(currentUser => {
+      const bookings = [];
+      const finalBookings = [];
+      const interests = [];
+      currentUser.bookings.forEach((booking) => {
+        if(booking.booked){
+          finalBookings.push(booking)
+        } else if(booking.full){
+          booking.isConfirmed = false;
+          booking.confirmation.forEach(confirmationId => {
+            if(confirmationId === req.session.userId) {
+              booking.isConfirmed = true;
+            }
+          })
+          bookings.push(booking)
+        }else{
+          interests.push(booking)
+        }
+      })
+      const sessionUser = req.session.user
+      const response = {finalBookings, bookings, interests, sessionUser};
+      res.json(response)
+    })
+  } else {
+    res.status(403).json({
+      message: 'unauthorized'
+    })
+  }
+})
+
 module.exports = router;

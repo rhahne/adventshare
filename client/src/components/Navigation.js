@@ -57,7 +57,7 @@ function NavbarAuth() {
                     <div className="navbar-end">
                         <Link 
                             className="navbar-item" 
-                            to="/users/profile">
+                            to="/users/account">
                             Account
                         </Link>
 

@@ -68,6 +68,7 @@ var searchRouter = require('./routes/search');
 var areasRouter = require('./routes/areas')
 var housingsRouter = require('./routes/housings')
 var activitiesRouter = require('./routes/activities')
+var bookingsRouter = require('./routes/bookings')
 
 app.use('/', indexRouter);
 app.use("/api", apiRouter);
@@ -76,6 +77,7 @@ app.use("/search", searchRouter);
 app.use("/areas", areasRouter);
 app.use("/housings", housingsRouter);
 app.use("/activities", activitiesRouter);
+app.use("/bookings", bookingsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
