@@ -6,7 +6,8 @@ const User = mongoose.model('User', new Schema({
   firstname: String,
   email: String,
   bio: String,
-  password: String
+  password: String,
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
 }));
 
 module.exports = User

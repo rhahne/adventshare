@@ -37,6 +37,7 @@ export class FiveActivities extends Component {
     getFiveActivities() {
         axios({method: 'get', url: 'http://localhost:3002/activities'})
         .then((response) => {
+            debugger
             let allActivities = [...response.data]
             this.setState({ 
                 allActivities: response.data,
