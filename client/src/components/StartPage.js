@@ -12,9 +12,9 @@ export default class StartPage extends Component {
             <div>
                 <HeroHeader {...this.props} />
                 <Explanation/>
-                <TopAreas title={"Most popular area's"}/>
+                <TopAreas title={"Most popular area's"} />
                 <EightRandom/>
-                <FiveActivities title={"Great outdoor activities"}/>
+                <FiveActivities title={"Great outdoor activities"} />
             </div>
         )
     }

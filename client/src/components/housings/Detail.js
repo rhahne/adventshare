@@ -8,6 +8,7 @@ import DayPicker from 'react-day-picker';
 import moment from 'moment';
 import ListHousing from '../general/HousingComps'
 import 'react-day-picker/lib/style.css';
+import Loader from '../Loader';
 
 
 // WEEK SELECTOR
@@ -42,6 +43,7 @@ export default class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: true,
       hoverRange: undefined,
       selectedDays: getWeekDays(getWeekRange(new Date()).from),
       selectedHousing: [],
@@ -180,6 +182,7 @@ export default class Overview extends Component {
     })
       .then((response) => {
         this.isUserInterested(response.data.users)
+        this.getCalenderInfo()
       })
   }
 
@@ -198,6 +201,7 @@ export default class Overview extends Component {
           interested: false
         })
         this.isUserInterested(response.data.users)
+        this.getCalenderInfo()
       })
   }
 
@@ -213,7 +217,8 @@ export default class Overview extends Component {
       .then((response) => {
         let housesInSameArea = response.data
         this.setState({
-          otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length)
+          otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length),
+          loading: false
         })
     })
   } 
@@ -325,6 +330,7 @@ export default class Overview extends Component {
 
     return (
       <div>
+        {this.state.loading && <Loader /> }
         {housing.title ?
           <div>
             <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
