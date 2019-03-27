@@ -12,6 +12,14 @@ html {
   margin-bottom: 8px;
 }
 
+.housing-detail-card {
+  height: 120px;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 8px;
+}
+
 .action-card {
   color: white;
   text-align: center;
@@ -50,7 +58,7 @@ html {
 
 /* ROBIN CSS */
 .imageBox{
-  height: 400px;
+  height: 550px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -60,9 +68,6 @@ html {
   border: 1px solid lightgray;
   text-align: center;
   padding: 20px;
-}
-.booking-box .price{
-  font-weight: bold;
 }
 
 .traveldate-box{
