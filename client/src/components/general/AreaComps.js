@@ -65,7 +65,8 @@ export const AboutArea = function (props) {
     const area = props.area ? props.area: []
     const allActivities = props.allActivities ? props.allActivities: []
     return (
-        <div>
+        <Container>
+            <Section>
             <h1 className="title">
                 <span
                     style={{
@@ -105,7 +106,8 @@ export const AboutArea = function (props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </Section>
+    </Container>
     )
 }
 

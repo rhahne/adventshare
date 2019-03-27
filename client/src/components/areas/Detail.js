@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Section } from 'react-bulma-components'
 import ListHousing from '../general/HousingComps'
 import { AboutArea } from '../general/AreaComps'
 
@@ -37,20 +36,12 @@ export default class Overview extends Component {
 
   render() {
     return (
-      <Container>
-        <Section>
+      <div>
           {this.state.selectedArea.name ?
             <AboutArea area={this.state.selectedArea} /> : ''
           }
-          <br />
-          <br />
-          <br />
-          <br />
-
-          <h1 className="title">Housing in {this.state.selectedArea.name} ({this.state.housing.length})</h1>
-          <ListHousing housing={this.state.housing} />
-        </Section>
-      </Container>
+          <ListHousing housing={this.state.housing} title={"Housing in " + this.state.selectedArea.name}/>
+        </div>
     )
   }
 }

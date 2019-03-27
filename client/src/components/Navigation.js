@@ -15,7 +15,7 @@ export default class Navigation extends Component {
 
 function NavbarAuth() {
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
+        <nav className="navbar is-transparent" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
             <div className="container">
                 <div className="navbar-brand">
                     <Link
@@ -79,7 +79,7 @@ function NavbarAuth() {
 
 function NavbarNonAuth(props) {
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
+        <nav className="navbar is-transparent" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
             <div className="container">
                 <div className="navbar-brand">
                     <Link
