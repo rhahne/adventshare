@@ -225,22 +225,33 @@ export default class Overview extends Component {
               <Section>
                 <div className="columns">
                   <div className="column is-two-thirds">
-                    <h1 className="title">{housing.title}</h1>
+                    <h1 className="title is-2">
+                    {housing.title}
+                    </h1>
+
                     <div className="columns">
                       <div className="column is-custom-icon">
                         <FontAwesomeIcon icon="location-arrow" />
                       </div>
+
                       <div className="column">
+                      <p className="subtitle is-5">
                         {housing.address.city} - {housing.address.country}
+                        </p>
                       </div>
                     </div>
+
                     <hr />
+
                     <div className="columns">
                       <div className="column is-custom-icon">
                         <FontAwesomeIcon icon="info" />
                       </div>
+
                       <div className="column">
+                      <p className="subtitle is-5 is-capitalized">
                         {housing.description}
+                      </p>
                       </div>
                     </div>
                     <hr />
@@ -249,7 +260,9 @@ export default class Overview extends Component {
                         <FontAwesomeIcon icon="bed" />
                       </div>
                       <div className="column">
+                      <p className="subtitle is-5">
                         {housing.beds} beds
+                      </p>
                 </div>
                     </div>
                   </div>
