@@ -1,0 +1,86 @@
+[{
+    "_id": {
+        "$oid": "5c92640531393b472439dc73"
+    },
+    "firstname": "Bas",
+    "email": "bas@bas.com",
+    "bio": "Bassiee",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b2f6e8ce75a331c80396c"
+    },
+    "bookings": [{
+        "$oid": "5c9b2f778ce75a331c80396d"
+    }],
+    "firstname": "Abdo",
+    "email": "abdo@abdo.com",
+    "bio": "Abdo",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b2fc18ce75a331c80396e"
+    },
+    "bookings": [],
+    "firstname": "Robin",
+    "email": "robin@robin.com",
+    "bio": "robin",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    },
+    "bookings": [],
+    "firstname": "Jelte",
+    "email": "jelte@jelte.com",
+    "bio": "jelte",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b30578ce75a331c803971"
+    },
+    "bookings": [],
+    "firstname": "Gersom",
+    "email": "gersom@gersom.com",
+    "bio": "gersom",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b30868ce75a331c803973"
+    },
+    "bookings": [],
+    "firstname": "Constantin",
+    "email": "constantin@constantin.com",
+    "bio": "constantin",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9b317d8ce75a331c803974"
+    },
+    "bookings": [],
+    "firstname": "Jurgen",
+    "email": "jurgen@jurgen.com",
+    "bio": "jurgen",
+    "password": "$2b$10$JdwvCJ1TCu5Eqyn8ybRQ0uY.9Ag/IwhCtBWgkuITMYstZF66JI8Ti",
+    "__v": {
+        "$numberInt": "0"
+    }
+}]

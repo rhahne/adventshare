@@ -5,11 +5,6 @@
     "name": "Western Swiss Alps",
     "description": "The Western Alps are the western part of the Alpine range including the southeastern part of France (i.e. Savoie), the whole of Monaco, the northwestern part of Italy and the southwestern part of Switzerland (i.e. Valais). In the southeast the range is bounded by the Italian Padan Plain. In the west, the valley of the Rhone river separates it from the Massif Central. The northernmost part of the Western Alps - in the wide meaning of the term - is formed by the Swiss Prealps sub-range.",
     "img": ["/img/areas/wsa/wsa1.jpg", "/img/areas/wsa/wsa2.jpg"],
-    "housing": [{
-        "$oid": "5c93b9847df282b768d776e7"
-    }, {
-        "$oid": "5c924c8ba949af766945995a"
-    }],
     "activity": [{
         "$oid": "5c93bd555df282b768d776e9"
     }, {
@@ -32,11 +27,6 @@
     "name": "Jura Mountains",
     "description": "The Jura Mountains are a sub-alpine mountain range located north of the Western Alps, mainly following the course of the France–Switzerland border. The Jura separates the Rhine and Rhône basins, forming part of the watershed of each.",
     "img": ["/img/areas/jura/jura1.jpg", "/img/areas/jura/jura2.jpg"],
-    "housing": [{
-        "$oid": "5c93bcb77df282b768d776e8"
-    }, {
-        "$oid": "5c93bd777df282b768d776e9"
-    }],
     "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
@@ -55,15 +45,6 @@
     "name": "Eastern Swiss Alps",
     "description": "Eastern Alps is the name given to the eastern half of the Alps, usually defined as the area east of a line from Lake Constance and the Alpine Rhine valley up to the Splügen Pass at the Alpine divide and down the Liro River to Lake Como in the south. The peaks and mountain passes are lower compared to the Western Alps, while the range itself is broader and less arched.",
     "img": ["/img/areas/esa/esa1.jpg", "/img/areas/esa/esa2.jpg"],
-    "housing": [{
-        "$oid": "5c924c8ba949af766945995c"
-    }, {
-        "$oid": "5c924c8ba949af766945995b"
-    }, {
-        "$oid": "5c93bf957df282b768d776ec"
-    }, {
-        "$oid": "5c93bcb77df282b768d776e8"
-    }],
     "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
@@ -84,11 +65,6 @@
     "name": "Black Forest",
     "description": "The Black Forest is a large forested mountain range in the state of Baden-Württemberg in southwest Germany. It is bounded by the Rhine valley to the west and south. Its highest peak is the Feldberg with an elevation of 1,493 metres (4,898 ft). The region is roughly oblong in shape with a length of 160 km (99 mi) and breadth of up to 50 km",
     "img": ["/img/areas/bf/bf1.jpg", "/img/areas/bf/bf2.jpg"],
-    "housing": [{
-        "$oid": "5c93be4d7df282b768d776ea"
-    }, {
-        "$oid": "5c93bec17df282b768d776eb"
-    }],
     "activity": [{
         "$oid": "5c93bd555df282b768d776e9" 
     }, {
@@ -111,9 +87,6 @@
     "name": "French Alps",
     "description": "The French Alps are the portions of the Alps mountain range that stand within France, located in the Auvergne-Rhône-Alpes and Provence-Alpes-Côte d'Azur regions. While some of the ranges of the French Alps are entirely in France, others, such as the Mont Blanc massif, are shared with Switzerland and Italy.",
     "img": ["/img/areas/fa/fa1.jpg", "/img/areas/fa/fa2.jpg"],
-    "housing": [{
-        "$oid": "5c924c8ba949af7669459959"
-    }],
     "activity": [{
         "$oid": "5c93bd555df282b768d776e7"  
     }, {
