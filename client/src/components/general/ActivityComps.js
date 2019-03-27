@@ -12,7 +12,7 @@ const ListActivity = function (props) {
                     .activity
                     .map((activity) => {
                         return <div className="column" key={activity._id}>
-                            <Link to={"/activity/" + activity._id}>
+                            <Link to={"/activities/details/" + activity._id}>
                                 {activity
                                     .img
                                     .map((img) => {

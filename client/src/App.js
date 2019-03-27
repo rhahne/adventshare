@@ -9,6 +9,7 @@ import Logout from './components/user/Logout'
 import ProtectedHome from './components/protected/Home'
 import AreaOverview from './components/areas/Overview'
 import AreaDetail from './components/areas/Detail'
+import ActivityDetail from './components/activity/Detail'
 import HousingDetail from './components/housings/Detail'
 import { SearchResponse, SearchModal } from './components/general/Search'
 import axios from 'axios'
@@ -103,6 +104,7 @@ class App extends Component {
               <Route path="/protected/index" exact component={ProtectedHome} />
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail}/>
+              <Route path="/activities/:activityId" component={ActivityDetail} />
               <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} isAuthenticated={this.state.isAuthenticated} toggleModal={this.toggleModal} currentUserId={this.state.user} /> } />
             </Switch>
 

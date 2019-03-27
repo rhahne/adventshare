@@ -64,7 +64,7 @@ function NavbarAuth(props) {
                                 <div
                                     className="button is-light"
                                     style={{
-                                    width: '150px'
+                                    
                                 }}
                                     onClick={() => {
                                     props.toggleModal('search')
@@ -145,7 +145,7 @@ function NavbarNonAuth(props) {
                                 <div
                                     className="button is-light"
                                     style={{
-                                    width: '150px'
+                                    
                                 }}
                                     onClick={() => {
                                     props.toggleModal('search')
