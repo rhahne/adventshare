@@ -6,6 +6,7 @@ import { AboutArea, TopAreas } from '../general/AreaComps'
 import ListActivity from '../general/ActivityComps'
 import DayPicker from 'react-day-picker';
 import moment from 'moment';
+import ListHousing from '../general/HousingComps'
 import 'react-day-picker/lib/style.css';
 
 
@@ -47,6 +48,7 @@ export default class Overview extends Component {
       selectedArea: [],
       bookingData: '',
       interested: false,
+      otherHousesInArea: [],
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
       date: getWeekNumber(new Date()),
@@ -56,6 +58,7 @@ export default class Overview extends Component {
     this.isUserInterested = this.isUserInterested.bind(this)
     this.getSelectedHousing = this.getSelectedHousing.bind(this)
     this.getBookingData = this.getBookingData.bind(this)
+    this.getOtherHousesInArea = this.getOtherHousesInArea.bind(this)
   }
 
   // WEEK SELECTOR
@@ -105,6 +108,7 @@ export default class Overview extends Component {
           fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5)
         })
         this.getBookingData()
+        this.getOtherHousesInArea()
       })
   }
 
@@ -168,6 +172,22 @@ export default class Overview extends Component {
         this.isUserInterested(response.data.users)
       })
   }
+
+  getOtherHousesInArea() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/inarea',
+      params: {
+        areaId: this.state.selectedHousing.area._id
+      }
+      })
+      .then((response) => {
+        let housesInSameArea = response.data
+        this.setState({
+          otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length)
+        })
+    })
+  }
  
   isUserInterested(allInterests) {
     allInterests.forEach((interestId) => {
@@ -181,11 +201,11 @@ export default class Overview extends Component {
       numberOfInterests: allInterests.length
     })
   }
+
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
     this.getSelectedHousing(housingId)
-    // this.getFiveAreaActivities()
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -200,6 +220,7 @@ export default class Overview extends Component {
     const activities = this.state.fiveAreaActivities
     const allActivities = this.state.allActivities
     const { hoverRange, selectedDays } = this.state;
+    const otherHousesInArea = this.state.otherHousesInArea;
     const daysAreSelected = selectedDays.length > 0;
 
     const modifiers = {
@@ -357,11 +378,20 @@ export default class Overview extends Component {
         {area.name ?
         <AboutArea area={area} allActivities={allActivities} /> : ''
         }
+        <hr className="hr" />
 
-        <hr className="hr" />
         {activities ?
-        <ListActivity activity={activities} title={"Best area activities"} /> : ""}
+          <ListActivity activity={activities} title={"Best area activities"} /> : ""}
         <hr className="hr" />
+
+        {otherHousesInArea ? 
+        <ListHousing housing={otherHousesInArea} title={"Similar houses in the " + area.name}/> : ''
+        }
+        <hr className="hr" />
+
+        
+
+
         <TopAreas title={"Other top areas"} />
       </div>
       )

@@ -67,24 +67,30 @@ export const AboutArea = function (props) {
     return (
         <Container>
             <Section>
-            <h1 className="title is-2">
+            <h1 className="title is-3">
                 <span
                     style={{
                     textDecoration: 'none'
-                }}>{area.name}</span>
+                }}>
+                {area.name}
+                </span>
             </h1>
             <div className="columns">
-                <div className="column is-one-third">
-                    <img src={area.img[0]} alt="area-img"/>
+
+                <div className="column is-two-fifths" style={{marginRight:"20px"}}>
+                <div 
+                    className="about-area-card" 
+                    style={{ 'borderRadius': '2px', backgroundImage: 'url('+area.img[0]+')' }} 
+                    alt="area-img" >
                 </div>
+                    
+                </div>
+
                 <div className="column">
                     <div
-                        className="columns"
-                        style={{
-                        paddingTop: '20px'
-                    }}>
+                        className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
                         <div className="column is-custom-icon">
-                            <FontAwesomeIcon icon="info"/>
+                            <FontAwesomeIcon icon="info" style={{marginLeft:"6px"}}/>
                         </div>
                         <div className="column ">
                             <p className="subtitle is-5">
@@ -92,7 +98,7 @@ export const AboutArea = function (props) {
                             </p>
                         </div>
                     </div>
-                    <div className="columns">
+                    <div className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
                         <div className="column is-custom-icon">
                             <FontAwesomeIcon icon="mountain"/>
                         </div>
@@ -100,8 +106,8 @@ export const AboutArea = function (props) {
                             <ul>
                                 {allActivities
                                     .map((activity) => {
-                                        return <li key={activity._id}>
-                                            - {activity.name}</li>
+                                        return <li className="subtitle is-5 is-marginless" key={activity._id}>
+                                             {activity.name}</li>
                                     })}
                             </ul>
                         </div>

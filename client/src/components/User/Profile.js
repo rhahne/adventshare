@@ -29,7 +29,6 @@ export default class Profile extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    debugger
     if(prevState.bookings !== this.state.bookings){
     }
   }
@@ -42,11 +41,8 @@ export default class Profile extends Component {
     })
       .then((response) => {
         const { finalBookings, bookings, interests, sessionUser } = response.data
-        debugger
         bookings.forEach(booking => {
-          debugger
             if (booking.confirmation.indexOf(sessionUser._id) !== -1){
-              debugger
               booking.isConfirmed = true;
             }
         })
@@ -59,7 +55,6 @@ export default class Profile extends Component {
         })
       })
       .catch((err) => {
-        debugger
         this.props.history.push('/users/login')
       })
   }
@@ -68,7 +63,6 @@ export default class Profile extends Component {
     const finalBookings = this.state.finalBookings ? this.state.finalBookings : [];
     const bookings = this.state.bookings ? this.state.bookings:[];
     const interests = this.state.interests ? this.state.interests:[];
-    debugger
     return (
       <Container>
         <Section className="hero is-bold">
