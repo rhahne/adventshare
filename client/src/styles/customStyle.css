@@ -55,6 +55,13 @@ html {
   border-radius: 5px; 
 }
 
+.about-area-card {
+  height: 300px;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+}
 
 /* ROBIN CSS */
 .imageBox{

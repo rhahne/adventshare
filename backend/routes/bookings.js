@@ -29,18 +29,14 @@ router.get('/confirm', (req, res, next) => {
       }
       , { new: true })
       .then(newBooking => {
-        debugger
       })
       .catch(err => {
-        debugger
       })
     User.findOneAndUpdate({
       _id: req.session.userId
     }, { $pull: { bookings: bookingId } }, { new: true }).
       then(foundUse => {
-        debugger
       }).catch(err => {
-        debugger
       })
   }
 });

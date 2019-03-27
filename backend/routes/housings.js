@@ -1,6 +1,7 @@
 var express = require('express');
 var moment = require('moment')
 var router = express.Router();
+const mongoose = require('mongoose')
 
 const Housing = require('../models/housing.js')
 const Area = require('../models/area.js')
@@ -26,6 +27,29 @@ router.get('/', (req, res, next) => {
           res.status(400).json(error)
       })
 })
+
+
+// Get Houses in certain AREA ID
+router.get('/inarea', (req, res, next) => {
+  // let area = mongoose.Types.ObjectId(req.query.areaId)
+  Housing.find({
+    area: req.query.areaId }
+    )
+    .populate({
+      path: 'area', 
+      model: 'Area',
+      populate: {
+        path: 'activity',
+        model: 'Activity'
+      }})
+      .then((foundHousesInArea) => {
+          res.status(200).json(foundHousesInArea)
+      })
+      .catch(error => {
+          res.status(400).json(error)
+      })
+})
+
 
 router.get('/booking', (req, res) => {
   let housing = req.query.housing
@@ -160,7 +184,7 @@ router.get('/deleteInterest', (req, res) => {
 // Detail page for housing
 router.get('/:housingId', (req, res) => {
   Housing.findOne({
-    _id:req.params.housingId}
+    _id: req.params.housingId }
     )
     .populate({
       path: 'area',
