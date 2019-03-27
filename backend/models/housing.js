@@ -13,7 +13,7 @@ const Housing = mongoose.model('Housing', new Schema({
   // rating: Number,
   // reviews: { type: Schema.Types.ObjectId, ref: 'Review' },
   beds: Number,
-  interests: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }]
 }));
 
 module.exports = Housing

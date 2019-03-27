@@ -76,11 +76,16 @@ router.get('/showInterest', (req, res) => {
           _id: req.session.userId
         },{ $push: { bookings: newBooking } },{new:true})
         .exec()
+        Housing.findOneAndUpdate({
+          _id:housingId
+        }, {$push: {bookings: newBooking}}, {new: true})
+        .exec()
         res.json(newBooking);
       })
     }
   })
 })
+
 
 // Delete Interest Button
 router.get('/deleteInterest', (req, res) => {
