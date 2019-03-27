@@ -171,11 +171,13 @@ export default class Overview extends Component {
  
   isUserInterested(allInterests) {
     allInterests.forEach((interestId) => {
+     let interested = false;
       if (interestId === this.props.currentUserId._id) {
-        this.setState({
-          interested: true,
-        })
+        interested = true
       }
+      this.setState({
+        interested: interested,
+      })
     })
     this.setState({
       numberOfInterests: allInterests.length
