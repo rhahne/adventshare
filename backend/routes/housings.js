@@ -28,25 +28,27 @@ router.get('/', (req, res, next) => {
 })
 
 
-// Get Houses in certain AREA ID
+// Get Houses in certain AREA IDw
 router.get('/inarea', (req, res, next) => {
-  // let area = mongoose.Types.ObjectId(req.query.areaId)
   Housing.find({
-    area: req.query.areaId }
-    )
-    .populate({
-      path: 'area', 
-      model: 'Area',
-      populate: {
-        path: 'activity',
-        model: 'Activity'
-      }})
-      .then((foundHousesInArea) => {
-          res.status(200).json(foundHousesInArea)
-      })
-      .catch(error => {
-          res.status(400).json(error)
-      })
+    $and: [
+      {area: req.query.areaId},
+      { _id: { $nin: [req.query.houseId] } }
+    ]
+  })
+  .populate({
+    path: 'area', 
+    model: 'Area',
+    populate: {
+      path: 'activity',
+      model: 'Activity'
+    }})
+    .then((foundHousesInArea) => {
+        res.status(200).json(foundHousesInArea)
+    })
+    .catch(error => {
+        res.status(400).json(error)
+    })
 })
 
 
