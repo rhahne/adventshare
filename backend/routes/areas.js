@@ -21,6 +21,7 @@ router.get('/details/:areaId', (req, res) => {
   Area.findOne({
     _id:req.params.areaId}
     )
+    .populate('activity')
     .then(area => {
       Housing.find({
         area: req.params.areaId

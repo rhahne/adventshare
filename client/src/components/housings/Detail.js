@@ -206,7 +206,8 @@ export default class Overview extends Component {
       method: 'get',
       url: 'http://localhost:3002/housings/inarea',
       params: {
-        areaId: this.state.selectedHousing.area._id
+        areaId: this.state.selectedHousing.area._id,
+        houseId: this.state.selectedHousing._id
       }
       })
       .then((response) => {
@@ -215,7 +216,7 @@ export default class Overview extends Component {
           otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length)
         })
     })
-  }
+  } 
  
   isUserInterested(allInterests) {
     allInterests.forEach((interestId) => {
@@ -236,6 +237,13 @@ export default class Overview extends Component {
     let parts = window.location.pathname.split('/');
     let housingId = parts.pop();
     this.getSelectedHousing(housingId)
+  }
+
+  componentWillUpdate(prevProps, prevState) {
+    if (prevState.selectedHousing._id !== window.location.pathname.split('/').pop()) {
+      this.getSelectedHousing(window.location.pathname.split('/').pop())
+      window.scrollTo(0, 0)
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -272,7 +280,7 @@ export default class Overview extends Component {
     if (this.state.bookingData.booked) {
       button = <button className="button is-success">
             Booked
-                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+                    <span className="icon is-small" style={{ marginLeft: "7px" }}>
               <FontAwesomeIcon icon="check-circle" />
             </span>
           </button>
@@ -280,7 +288,7 @@ export default class Overview extends Component {
     } else if (this.state.bookingData.full) {
       button = <button className="button">
             Reserved
-                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+                    <span className="icon is-small" style={{ marginLeft: "7px" }}>
               <FontAwesomeIcon icon="check-circle" />
             </span>
           </button>
@@ -291,7 +299,7 @@ export default class Overview extends Component {
           className="button is-warning has-icon-right"
           onClick={this.deleteInterest}>
           Interested
-                      <span class="icon is-small" style={{ marginLeft: "7px" }}>
+                      <span className="icon is-small" style={{ marginLeft: "7px" }}>
             <FontAwesomeIcon icon="check-circle" />
           </span>
         </div>
@@ -300,14 +308,14 @@ export default class Overview extends Component {
         if (this.props.isAuthenticated) {
           button = <button className="button is-info" onClick={this.showInterest}>
             Show Interest
-                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+                    <span className="icon is-small" style={{ marginLeft: "7px" }}>
               <FontAwesomeIcon icon="heart" />
             </span>
           </button>
         } else {
           button = <button className="button is-info" onClick={() => { this.props.toggleModal('login') }}>
             Show Interest
-                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+                    <span className="icon is-small" style={{ marginLeft: "7px" }}>
               <FontAwesomeIcon icon="heart" />
             </span>
           </button>
@@ -366,22 +374,34 @@ export default class Overview extends Component {
                           {housing.beds} beds
                       </p>
                       </div>
-                    </div>
+                      </div>
 
-                    <hr />
+                      <hr />
 
-                    <div className="columns is-variable is-2">
-                      {housing.img.map(image => {
+                      <div className="columns is-variable is-2">
+                        {housing.img.map(image => {
                         return <div className="column">
-                          <div
-                            className="housing-detail-card"
-                            style={{ 'borderRadius': '2px', backgroundImage: 'url(' + image + ')' }}
-                            alt="" >
+                          <div className="housing-detail-card"
+                            style={{ 'borderRadius': '2px', backgroundImage: 'url(' + image + ')' }} alt="">
                           </div>
                         </div>
-                      })}
+                        })}
+                      </div>
+
+                      {/* <hr />
+
+                      <div className="columns is-variable is-2">
+                        <div className="column">
+
+                              <iframe scrolling={"no"}
+                                marginHeight={"0"} marginWidth={"0"} src={"https://maps.google.com/maps?q=" +
+                                housing.address.city + "&t=&z=9&ie=UTF8&iwloc=&output=embed" }>
+                              </iframe>
+                            
+                        </div>
+                      </div> */}
                     </div>
-                  </div>
+
 
 
                   <div className="column">

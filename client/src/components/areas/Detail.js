@@ -8,6 +8,7 @@ export default class Overview extends Component {
     super(props)
     this.state = {
       selectedArea: [],
+      activities: [],
       housing: []
     }
   }
@@ -21,7 +22,8 @@ export default class Overview extends Component {
         const { area, housingsInArea } = response.data;
         this.setState({
           selectedArea: area,
-          housing: housingsInArea
+          housing: housingsInArea,
+          activities: area.activity
         })
       })
       .catch((err) => {
@@ -39,7 +41,7 @@ export default class Overview extends Component {
     return (
       <div>
           {this.state.selectedArea.name ?
-            <AboutArea area={this.state.selectedArea} /> : ''
+            <AboutArea area={this.state.selectedArea} allActivities={this.state.activities} /> : ''
           }
           <ListHousing housing={this.state.housing} title={"Housing in " + this.state.selectedArea.name}/>
         </div>
