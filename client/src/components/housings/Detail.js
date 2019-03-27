@@ -218,122 +218,152 @@ export default class Overview extends Component {
     return (
       <div>
         {housing.title ?
-          <div>
-            <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
-            </div>
-            <Container>
-              <Section>
-                <div className="columns">
-                  <div className="column is-two-thirds">
-                    <h1 className="title is-2">
+        <div>
+          <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
+          </div>
+          <Container>
+            <Section>
+              <div className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+                <div className="column is-7">
+                  <h1 className="title is-2">
                     {housing.title}
-                    </h1>
+                  </h1>
 
-                    <div className="columns">
-                      <div className="column is-custom-icon">
-                        <FontAwesomeIcon icon="location-arrow" />
-                      </div>
+                  <div className="columns">
+                    <div className="column is-custom-icon">
+                      <FontAwesomeIcon icon="location-arrow" />
+                    </div>
 
-                      <div className="column">
+                    <div className="column">
                       <p className="subtitle is-5">
                         {housing.address.city} - {housing.address.country}
-                        </p>
-                      </div>
+                      </p>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <div className="columns">
+                    <div className="column is-custom-icon">
+                      <FontAwesomeIcon icon="info" />
                     </div>
 
-                    <hr />
-
-                    <div className="columns">
-                      <div className="column is-custom-icon">
-                        <FontAwesomeIcon icon="info" />
-                      </div>
-
-                      <div className="column">
-                      <p className="subtitle is-5 is-capitalized">
+                    <div className="column">
+                      <p className="subtitle is-5">
                         {housing.description}
                       </p>
-                      </div>
                     </div>
-                    <hr />
-                    <div className="columns">
-                      <div className="column is-custom-icon">
-                        <FontAwesomeIcon icon="bed" />
-                      </div>
-                      <div className="column">
+                  </div>
+
+                  <hr />
+
+                  <div className="columns">
+                    <div className="column is-custom-icon">
+                      <FontAwesomeIcon icon="bed" />
+                    </div>
+                    <div className="column">
                       <p className="subtitle is-5">
                         {housing.beds} beds
                       </p>
-                </div>
                     </div>
                   </div>
-                  <div className="column">
-                    <div className="booking-box">
-                      <p className="has-text-dark price">
-                        {"€" + housing.pricing + " per night"}
-                        <br />
-                        <br />
-                        <FontAwesomeIcon icon="star" />
-                        <FontAwesomeIcon icon="star" />
-                        <FontAwesomeIcon icon="star" />
-                        <FontAwesomeIcon icon="star" />
-                        <FontAwesomeIcon icon="star" />
-                      </p>
-                      <hr />
-                      Traveldates:
-                      <div className="selectedWeek">
-                        <DayPicker
-                          selectedDays={selectedDays}
-                          showWeekNumbers
-                          showOutsideDays
-                          modifiers={modifiers}
-                          onDayClick={this.handleDayChange}
-                          onDayMouseEnter={this.handleDayEnter}
-                          onDayMouseLeave={this.handleDayLeave}
-                          onWeekClick={this.handleWeekClick}
-                        />
-                        {selectedDays.length === 7 && (
-                          <div>
-                            {moment(selectedDays[0]).format('LL')} –{' '}
-                            {moment(selectedDays[6]).format('LL')}
-                          </div>
-                        )}
-                      </div>
-                      <hr />
-                      {this.state.interested ?
-                        <>
-                          <div className="button is-warning">Interested</div>
-                          <button className="delete" onClick={this.deleteInterest}>X</button>
-                        </>
-                        :
-                        this.props.isAuthenticated ? 
-                        <button className="button is-info" onClick={this.showInterest}>Show Interest</button>
-                        :
-                        <button className="button is-primary" onClick={()=>{this.props.toggleModal('login')}}>Show Interest</button>
-                        }
-                      <hr />
-                      <strong> {this.state.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
-                      <br /><br />
 
-                     
-                    </div>
+                  <hr />
+
+                  <div className="columns is-variable is-2">
+                    {housing.img.map(image => {
+                      return <div className="column">
+                            <div 
+                                className="housing-detail-card" 
+                                style={{ 'borderRadius': '2px', backgroundImage: 'url('+image+')' }} 
+                                alt="" >
+                            </div>
+                      </div>
+                    })}
                   </div>
                 </div>
-              </Section>
-            </Container>
-          </div>
-          : ''}
+
+
+                <div className="column">
+
+                </div>
+
+                <div className="column is-4" >
+                  <div className="booking-box">
+                    <p className="subtitle is-5 price">
+                    <div style={{marginBottom:"7px"}}>
+                       <strong className="title is-4">{"€"}{housing.pricing}</strong> {" per night"}
+                       </div>
+                      <FontAwesomeIcon icon="star" />
+                      <FontAwesomeIcon icon="star" />
+                      <FontAwesomeIcon icon="star" />
+                      <FontAwesomeIcon icon="star" />
+                      <FontAwesomeIcon icon="star" />
+                    </p>
+                    <hr />
+                    <p className="subtitle is-5">
+                    Traveldates:
+                    </p>
+                    <div className="selectedWeek">
+                      <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers}
+                        onDayClick={this.handleDayChange} onDayMouseEnter={this.handleDayEnter}
+                        onDayMouseLeave={this.handleDayLeave} onWeekClick={this.handleWeekClick} />
+                      {selectedDays.length === 7 && (
+                      <div>
+                        {moment(selectedDays[0]).format('LL')} –{' '}
+                        {moment(selectedDays[6]).format('LL')}
+                      </div>
+                      )}
+                    </div>
+                    <hr />
+                    {this.state.interested ?
+                    <>
+                      <div 
+                      className="button is-warning has-icon-right" 
+                      onClick={this.deleteInterest}>
+                      
+                      Interested
+                      <span class="icon is-small" style={{marginLeft:"7px"}}>
+                        <FontAwesomeIcon icon="check-circle" />
+                      </span>
+                      </div>
+                    </>
+                    :
+                    this.props.isAuthenticated ?
+                    <button className="button is-info" onClick={this.showInterest}>
+                    Show Interest
+                    <span class="icon is-small" style={{marginLeft:"7px"}}>
+                        <FontAwesomeIcon icon="heart" />
+                      </span>
+                    </button>
+                    :
+                    <button className="button is-primary" onClick={()=>{this.props.toggleModal('login')}}>Show
+                      Interest</button>
+                    }
+                    <hr />
+                    <strong> {this.state.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
+                    <br /><br />
+
+
+                  </div>
+                </div>
+              </div>
+            </Section>
+          </Container>
+        </div>
+        : ''}
         <hr className="hr" />
 
-            {area.name ?
-              <AboutArea area={area} allActivities={allActivities} /> : ''
-            }
+        {area.name ?
+        <AboutArea area={area} allActivities={allActivities} /> : ''
+        }
 
         <hr className="hr" />
         {activities ?
-          <ListActivity activity={activities} title={"Best area activities"} /> : ""}
-          <hr className="hr" />
+        <ListActivity activity={activities} title={"Best area activities"} /> : ""}
+        <hr className="hr" />
         <TopAreas title={"Other top areas"} />
       </div>
-    )
-  }
-}
+      )
+      }
+      }

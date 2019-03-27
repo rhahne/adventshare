@@ -67,7 +67,7 @@ export const AboutArea = function (props) {
     return (
         <Container>
             <Section>
-            <h1 className="title">
+            <h1 className="title is-2">
                 <span
                     style={{
                     textDecoration: 'none'
@@ -86,8 +86,10 @@ export const AboutArea = function (props) {
                         <div className="column is-custom-icon">
                             <FontAwesomeIcon icon="info"/>
                         </div>
-                        <div className="column">
-                            <p>{area.description}</p>
+                        <div className="column ">
+                            <p className="subtitle is-5">
+                            {area.description}
+                            </p>
                         </div>
                     </div>
                     <div className="columns">
