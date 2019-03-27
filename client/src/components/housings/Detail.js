@@ -191,11 +191,13 @@ export default class Overview extends Component {
  
   isUserInterested(allInterests) {
     allInterests.forEach((interestId) => {
+      let interested = false;
       if (interestId === this.props.currentUserId._id) {
-        this.setState({
-          interested: true,
-        })
+        interested = true
       }
+      this.setState({
+        interested: interested,
+      })
     })
     this.setState({
       numberOfInterests: allInterests.length
@@ -209,7 +211,7 @@ export default class Overview extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.isAuthenticated !== this.props.isAuthenticated){
+    if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
       this.getBookingData();
     }
   }
@@ -235,148 +237,182 @@ export default class Overview extends Component {
       selectedRangeEnd: daysAreSelected && selectedDays[6],
     };
 
+    let button = ''
+    let info = ''
+    if (this.state.bookingData.booked) {
+      button = <button className="button is-success">
+            Booked
+                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+              <FontAwesomeIcon icon="check-circle" />
+            </span>
+          </button>
+      if(this.props.isAuthenticated) info = 'You booked this place!'
+    } else if (this.state.bookingData.full) {
+      button = <button className="button">
+            Reserved
+                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+              <FontAwesomeIcon icon="check-circle" />
+            </span>
+          </button>
+          if(this.props.isAuthenticated) info = 'You reserved this place!'
+    } else {
+      if (this.state.interested) {
+        button = <div
+          className="button is-warning has-icon-right"
+          onClick={this.deleteInterest}>
+          Interested
+                      <span class="icon is-small" style={{ marginLeft: "7px" }}>
+            <FontAwesomeIcon icon="check-circle" />
+          </span>
+        </div>
+        if(this.props.isAuthenticated) info = 'You are interested in this place!'
+      } else {
+        if (this.props.isAuthenticated) {
+          button = <button className="button is-info" onClick={this.showInterest}>
+            Show Interest
+                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+              <FontAwesomeIcon icon="heart" />
+            </span>
+          </button>
+        } else {
+          button = <button className="button is-info" onClick={() => { this.props.toggleModal('login') }}>
+            Show Interest
+                    <span class="icon is-small" style={{ marginLeft: "7px" }}>
+              <FontAwesomeIcon icon="heart" />
+            </span>
+          </button>
+        }
+      }
+    }
 
     return (
       <div>
         {housing.title ?
-        <div>
-          <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
-          </div>
-          <Container>
-            <Section>
-              <div className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
-                <div className="column is-7">
-                  <h1 className="title is-2">
-                    {housing.title}
-                  </h1>
+          <div>
+            <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
+            </div>
+            <Container>
+              <Section>
+                <div className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+                  <div className="column is-7">
+                    <h1 className="title is-2">
+                      {housing.title}
+                    </h1>
 
-                  <div className="columns">
-                    <div className="column is-custom-icon">
-                      <FontAwesomeIcon icon="location-arrow" />
-                    </div>
-
-                    <div className="column">
-                      <p className="subtitle is-5">
-                        {housing.address.city} - {housing.address.country}
-                      </p>
-                    </div>
-                  </div>
-
-                  <hr />
-
-                  <div className="columns">
-                    <div className="column is-custom-icon">
-                      <FontAwesomeIcon icon="info" />
-                    </div>
-
-                    <div className="column">
-                      <p className="subtitle is-5">
-                        {housing.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <hr />
-
-                  <div className="columns">
-                    <div className="column is-custom-icon">
-                      <FontAwesomeIcon icon="bed" />
-                    </div>
-                    <div className="column">
-                      <p className="subtitle is-5">
-                        {housing.beds} beds
-                      </p>
-                    </div>
-                  </div>
-
-                  <hr />
-
-                  <div className="columns is-variable is-2">
-                    {housing.img.map(image => {
-                      return <div className="column">
-                            <div 
-                                className="housing-detail-card" 
-                                style={{ 'borderRadius': '2px', backgroundImage: 'url('+image+')' }} 
-                                alt="" >
-                            </div>
+                    <div className="columns">
+                      <div className="column is-custom-icon">
+                        <FontAwesomeIcon icon="location-arrow" />
                       </div>
-                    })}
-                  </div>
-                </div>
 
-
-                <div className="column">
-
-                </div>
-
-                <div className="column is-4" >
-                  <div className="booking-box">
-                    <p className="subtitle is-5 price">
-                    <div style={{marginBottom:"7px"}}>
-                       <strong className="title is-4">{"€"}{housing.pricing}</strong> {" per night"}
-                       </div>
-                      <FontAwesomeIcon icon="star" />
-                      <FontAwesomeIcon icon="star" />
-                      <FontAwesomeIcon icon="star" />
-                      <FontAwesomeIcon icon="star" />
-                      <FontAwesomeIcon icon="star" />
-                    </p>
-                    <hr />
-                    <p className="subtitle is-5">
-                    Traveldates:
-                    </p>
-                    <div className="selectedWeek">
-                      <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers}
-                        onDayClick={this.handleDayChange} onDayMouseEnter={this.handleDayEnter}
-                        onDayMouseLeave={this.handleDayLeave} onWeekClick={this.handleWeekClick} />
-                      {selectedDays.length === 7 && (
-                      <div>
-                        {moment(selectedDays[0]).format('LL')} –{' '}
-                        {moment(selectedDays[6]).format('LL')}
+                      <div className="column">
+                        <p className="subtitle is-5">
+                          {housing.address.city} - {housing.address.country}
+                        </p>
                       </div>
-                      )}
                     </div>
+
                     <hr />
-                    {this.state.interested ?
-                    <>
-                      <div 
-                      className="button is-warning has-icon-right" 
-                      onClick={this.deleteInterest}>
+
+                    <div className="columns">
+                      <div className="column is-custom-icon">
+                        <FontAwesomeIcon icon="info" />
+                      </div>
+
+                      <div className="column">
+                        <p className="subtitle is-5">
+                          {housing.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <hr />
+
+                    <div className="columns">
+                      <div className="column is-custom-icon">
+                        <FontAwesomeIcon icon="bed" />
+                      </div>
+                      <div className="column">
+                        <p className="subtitle is-5">
+                          {housing.beds} beds
+                      </p>
+                      </div>
+                    </div>
+
+                    <hr />
+
+                    <div className="columns is-variable is-2">
+                      {housing.img.map(image => {
+                        return <div className="column">
+                          <div
+                            className="housing-detail-card"
+                            style={{ 'borderRadius': '2px', backgroundImage: 'url(' + image + ')' }}
+                            alt="" >
+                          </div>
+                        </div>
+                      })}
+                    </div>
+                  </div>
+
+
+                  <div className="column">
+
+                  </div>
+
+                  <div className="column is-4" >
+                    <div className="booking-box">
+                      <p className="subtitle is-5 price">
+                        <div style={{ marginBottom: "7px" }}>
+                          <strong className="title is-4">{"€"}{housing.pricing}</strong> {" per night"}
+                        </div>
+                        <FontAwesomeIcon icon="star" />
+                        <FontAwesomeIcon icon="star" />
+                        <FontAwesomeIcon icon="star" />
+                        <FontAwesomeIcon icon="star" />
+                        <FontAwesomeIcon icon="star" />
+                      </p>
+                      <hr />
+                      <p className="subtitle is-5">
+                        Traveldates:
+                    </p>
+                      <div className="selectedWeek">
+                        <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers}
+                          onDayClick={this.handleDayChange} onDayMouseEnter={this.handleDayEnter}
+                          onDayMouseLeave={this.handleDayLeave} onWeekClick={this.handleWeekClick} />
+                        {selectedDays.length === 7 && (
+                          <div>
+                            {moment(selectedDays[0]).format('LL')} –{' '}
+                            {moment(selectedDays[6]).format('LL')}
+                          </div>
+                        )}
+                      </div>
+                      <hr />
+
+                      {button}
                       
-                      Interested
-                      <span class="icon is-small" style={{marginLeft:"7px"}}>
-                        <FontAwesomeIcon icon="check-circle" />
-                      </span>
-                      </div>
-                    </>
-                    :
-                    this.props.isAuthenticated ?
-                    <button className="button is-info" onClick={this.showInterest}>
-                    Show Interest
-                    <span class="icon is-small" style={{marginLeft:"7px"}}>
-                        <FontAwesomeIcon icon="heart" />
-                      </span>
-                    </button>
-                    :
-                    <button className="button is-primary" onClick={()=>{this.props.toggleModal('login')}}>Show
-                      Interest</button>
-                    }
-                    <hr />
-                    <strong> {this.state.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
-                    <br /><br />
+                      {info !== '' ? 
+                      <>
+                      <br /><br />
+                      <strong>{info}</strong>
+                      </>
+                      :''}
 
 
+                      <hr />
+                      <strong> {this.state.numberOfInterests} / {housing.beds} Interested Adventsharers:</strong>
+                      
+                      <br /><br />
+
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Section>
-          </Container>
-        </div>
-        : ''}
+              </Section>
+            </Container>
+          </div>
+          : ''}
         <hr className="hr" />
 
         {area.name ?
-        <AboutArea area={area} allActivities={allActivities} /> : ''
+          <AboutArea area={area} allActivities={allActivities} /> : ''
         }
         <hr className="hr" />
 
@@ -394,6 +430,7 @@ export default class Overview extends Component {
 
         <TopAreas title={"Other top areas"} />
       </div>
-      )
-      }
-      }
+    )
+  }
+}
+
