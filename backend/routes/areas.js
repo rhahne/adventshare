@@ -21,9 +21,12 @@ router.get('/details/:areaId', (req, res) => {
   Area.findOne({
     _id:req.params.areaId}
     )
-    .populate('housing')
-    .then(foundArea => {
-      res.json(foundArea);
+    .then(area => {
+      Housing.find({
+        area: req.params.areaId
+      }).then(housingsInArea => {
+        res.json({area, housingsInArea});
+      })
     })
     .catch(err => {
       res.json(err);

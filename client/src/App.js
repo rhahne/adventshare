@@ -10,7 +10,7 @@ import ProtectedHome from './components/protected/Home'
 import AreaOverview from './components/areas/Overview'
 import AreaDetail from './components/areas/Detail'
 import HousingDetail from './components/housings/Detail'
-import Search, { SearchResponse, SearchModal } from './components/general/Search'
+import { SearchResponse, SearchModal } from './components/general/Search'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faCalendarWeek, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -101,7 +101,6 @@ class App extends Component {
               <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} toggleModal={this.toggleModal}/> } />
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
-              {/* <Route path="/search" exact render={(props)=> <Search {...props}/>} /> */}
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} isAuthenticated={this.state.isAuthenticated} toggleModal={this.toggleModal} currentUserId={this.state.user} /> } />

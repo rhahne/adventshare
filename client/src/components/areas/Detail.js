@@ -18,9 +18,11 @@ export default class Overview extends Component {
       url: 'http://localhost:3002/areas/details/' + areaId
     })
       .then((response) => {
+        debugger
+        const { area, housingsInArea } = response.data;
         this.setState({
-          selectedArea: response.data,
-          housing: response.data.housing
+          selectedArea: area,
+          housing: housingsInArea
         })
       })
       .catch((err) => {
