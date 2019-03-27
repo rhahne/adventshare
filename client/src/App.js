@@ -32,6 +32,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getUserInfo();
+  }
+
+  getUserInfo() {
     axios({
       method: 'get',
       url: 'http://localhost:3002/users/profile',
@@ -49,9 +53,8 @@ class App extends Component {
   }
   
   loggingIn(event) {
+    this.getUserInfo();
     this.setState(() => ({
-      isAuthenticated: true,
-      user: event.data,
       loginModal: false,
       signupModal: false,
     }))
@@ -101,7 +104,7 @@ class App extends Component {
               {/* <Route path="/search" exact render={(props)=> <Search {...props}/>} /> */}
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail}/>
-              <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} currentUserId={this.state.user} /> } />
+              <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} isAuthenticated={this.state.isAuthenticated} toggleModal={this.toggleModal} currentUserId={this.state.user} /> } />
             </Switch>
 
             {this.state.searchModal ? 

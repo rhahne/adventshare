@@ -25,6 +25,16 @@ export default class Profile extends Component {
     })
   }
   componentDidMount() {
+    this.getBookingData()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    debugger
+    if(prevState.bookings !== this.state.bookings){
+    }
+  }
+ 
+  getBookingData() {
     axios({
       method: 'get',
       url: 'http://localhost:3002/users/account',

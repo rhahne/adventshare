@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Section } from 'react-bulma-components'
 import ListHousing from '../general/HousingComps'
 import { AboutArea } from '../general/AreaComps'
 

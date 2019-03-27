@@ -209,7 +209,7 @@
     "beds": 5
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d77675"
+        "$oid": "5c9b39f57df2827b86d77675"
     },
     "title": "Villa Wilen: modern, awesome views, lake access",
     "description": "Top modern villa with unique views into the lake and the Alps. According to Airbnb the most popular destination in Switzerland. Most highlights can be reached in a maximum of one hour. Free parking and wifi. Guests will live in the attic studio with their own kitchen (from May 1, 2019), bedroom (with entertainment system), bathroom and winter garden on balcony. For occupancy of 3-5 people, a room can be rented in the middle floor. Access to lake and garden. Children are possible, dogs not.",
@@ -380,7 +380,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b59f5fdf277b778d776f5"
+        "$oid": "5c9b59f5fdf277b778d775b6"
     },
     "title": "B&B Stazione 39 - Mountain Attic",
     "description": "Grazioso attico in una casa tipica completamente ristrutturata nel centro di Airolo. Arredata con cura, troverai un ambiente semplice e autentico. Su richiesta potrai avere una colazione preparata con prodotti fatti in casa e locali. La casa è facilmente raggiungibile con i mezzi pubblici.",
@@ -665,7 +665,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c924c8b136728766945995a"
+        "$oid": "13374c8b136728766945135a"
     },
     "title": "Leon's Holiday Resort: Villa 1",
     "description": "The Villa is close to Zurich and is perfect for sommer thanks to the pool! In winter it is a pure relaxation after winter sports due to the whirlpool, sauna and fitness area. It takes 1,5h to ski runs and 30min to Zurich. The nearest cross-country ski run is 25 min away.",
@@ -684,7 +684,7 @@
     "beds": 9
 }, {
     "_id": {
-        "$oid": "5c924c8b1367287669459951"
+        "$oid": "13374c8b1367287669459951"
     },
     "title": "Holiday Villa Lucerne Switzerland",
     "description": "The Villa Griswolden is surrounded by a generous garden from where one can enjoy a breathtaking view of the mountains, the lake Lucerne and the city of Lucerne. One enjoys absolute privacy and rest and is, nevertheless, quite near the city centre.",
@@ -703,7 +703,7 @@
     "beds": 9
 }, {
     "_id": {
-        "$oid": "5c924c8b13672876694599a3"
+        "$oid": "13374c8b13672876694599a3"
     },
     "title": "Next to Eiger, Jungfrau! Amazing!",
     "description": "Brand new apartment with views to Eiger Nordwand, close to the railwaystation where the train to Jungfraujoch departs. Location right in the middle of ski slopes and hiking paths. Completely equipped, kitchen, bathroom with tub, ski room, etc. New: amazing balcony facing the EIGER North Wall!",
@@ -722,7 +722,7 @@
     "beds": 6
 }, {
     "_id": {
-        "$oid": "5c924c8b136798766945895a"
+        "$oid": "13374c8b136798766945895a"
     },
     "title": "Villa Casablanca",
     "description": "30 minutes driving from Geneva airport and 15 minutes from Annecy city center, a very nice and welcoming chalet, with a contemporary architecture of wood and glass, located in a calm and amazing area close to the city facilities.",
@@ -741,7 +741,7 @@
     "beds": 3
 }, {
     "_id": {
-        "$oid": "5c942c8b136728766945995a"
+        "$oid": "13372c8b136728766945995a"
     },
     "title": "mayen Val d'Herens en Valais - Sion",
     "description": "Calm, contemplation, returning to the roots, walks within nature, rest... The Mayen is the cosy place to be...a former barn-stable which has been transformed in a modern way of living with all necessary commodities, a real little Paradis in Valais.",
@@ -760,7 +760,7 @@
     "beds": 9
 }, {
     "_id": {
-        "$oid": "59c24c8b136728766945995a"
+        "$oid": "13374c8b136728766945995a"
     },
     "title": "Vegenan 71 route de Siviez.1997 Haute-Nendaz",
     "description": "Chalet récent situé dans le quartier du Bleusy, à 5 min du centre de la station. 1 chambre avec 1 lit double, 2 chambres avec 2 lits simples, 2 salles de bain avec douche, 1 WC séparé. Cuisine entièrement équipée avec un grand frigo, four, machine à café Nespresso, lave-vaisselle, machine à laver, séchoir. Séjour avec poêle, télévision câblée, WIFI, terrasse avec une magnifique vue dans un endroit calme et ensoleillé en pleine nature. Garage intérieur pour 1 voiture + 1 place extérieure.",
@@ -779,7 +779,7 @@
     "beds": 9
 }, {
     "_id": {
-        "$oid": "5c93bd777df282b768d776e9"
+        "$oid": "1337bd777df282b768d776e9"
     },
     "title": "Traditional swiss wooden chalet",
     "description": "In swiss Jura mountains, at an altitude of 1111 meters. Hiking, skiing, snowshoes, cycling, horse riding, are activities available near the chalet (equipments to rent at the small ski ressort near the chalet). Biel (Bienne in french) is 20 min drive from the chalet; Jura, Bern City, Neuchâtel City are 1 hour by car from the chalet. Wifi \u0026 sauna are free. Prices include obligatory \"tourist tax, chf 4.-\" per day/person. Free parking for your car. (the chalet is 30 meters walk from parking).",
@@ -798,7 +798,7 @@
     "beds": 6
 }, {
     "_id": {
-        "$oid": "5c93be4d7df282b768d776ea"
+        "$oid": "1337be4d7df282b768d776ea"
     },
     "title": "Contemporary eco-friendly Chalet",
     "description": "Contemporary eco-friendly wooden house, cosy and full of light.  Located in a tiny village called Hommert, in the wildest part of the Vosges mountains (height 500 mts).  Close to many sites of interest like: Dabo's rock, Chagall Chapel, The beautiful Rhodes wildlife Park, etc. Strasbourg is at 50 mins drive.  Perfect for hiking, resting, and contemplating...",
@@ -817,7 +817,7 @@
     "beds": 4
 },  {
     "_id": {
-        "$oid": "5c924c8ba949af7669459959"
+        "$oid": "13374c8ba949af7669459959"
     },
     "title": "Picturesque, Historic Villa with Island Views",
     "description": "Gaze over stunning 180-degree views of Lago Maggiore from the expansive, floor-to-ceiling windows of this lovely, 300-year-old rustic stone villa. Most of the area's main attractions are visible including the three islands, Villa Taranto gardens and Santa Caterina monastery. Comfortable furnishings in timeless styles perfectly complement the historic architecture.  The peaceful garden and hammocks are great for relaxing in and on hot days you'll find plenty of shade. There is also a large trampoline for children to let off some steam.",
@@ -836,7 +836,7 @@
     "beds": 3
 }, {
     "_id": {
-        "$oid": "5c93bf957df282b768d776ec"
+        "$oid": "1337bf957df282b768d776ec"
     },
     "title": "Amazing large chalet in Verbier",
     "description": "We are glad to present our large chalet at 5 min walk center of Verbier.  This amazing place include 7 bedroom ( Total 14 persons ), well equiped kitchen, large living room and outside jacuzzi with wonderfull view.  Kids will enjoy our play room with baby foot and large TV.  We manage quality properties.  We offer personal welcome and provide on demand private concierge service like s daily housekeeping, airport transfers,breakfast or dinner at home for your arrival.",
@@ -855,7 +855,7 @@
     "beds": 9
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d7765c"
+        "$oid": "133739f57df282b768d7765c"
     },
     "title": "Chalet Sandgrube",
     "description": "A lovely 3 bedroom Apartment in a traditional chalet in the peaceful/beautiful village of Ried-Mörel. Ideally located for walking, biking and winter sports. Also a great base for train trips in Switzerland including the Glacier Express.",
@@ -874,7 +874,7 @@
     "beds": 5
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d77675"
+        "$oid": "133739f57df131b768d77675"
     },
     "title": "Villa Wilen: modern, awesome views, lake access",
     "description": "Top modern villa with unique views into the lake and the Alps. According to Airbnb the most popular destination in Switzerland. Most highlights can be reached in a maximum of one hour. Free parking and wifi. Guests will live in the attic studio with their own kitchen (from May 1, 2019), bedroom (with entertainment system), bathroom and winter garden on balcony. For occupancy of 3-5 people, a room can be rented in the middle floor. Access to lake and garden. Children are possible, dogs not.",
@@ -893,7 +893,7 @@
     "beds": 3
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d77695"
+        "$oid": "133739f57df282b768d77695"
     },
     "title": "Dans le Jura, de rivière en forêts",
     "description": "chambre confortable, accès autonome, donnant sur un verger. + salle-à-manger/ salon face à la forêt de la Serre Toilettes et salle d'eau autonomes. frigo/congélateur indépendant, cuisine privée possible (plaque de cuisson 4 feux, vaisselle et ustensiles de cuisine) petit-déjeuner non compris, en option.",
@@ -912,7 +912,7 @@
     "beds": 2
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d776f5"
+        "$oid": "133739f57df282b768d776f5"
     },
     "title": "Cozy old chalet in Gimmelwald",
     "description": "Welcome in a lovely cozy old Chalet. Located in a quiet car free village. Enjoy your own small sleeping room with view to the stunning mountains Jungfrau, Äbniflue, Breithorn. Perfect for hiking/skiing relaxing. Jungfraujoch and Schilthorn are close. Attention, bathroom, kitchen and living room are shared with us (me and my wife)!",
@@ -931,7 +931,7 @@
     "beds": 2
 }, {
     "_id": {
-        "$oid": "5c924c8ba949af766945995b"
+        "$oid": "13374c8ba949af766945995b"
     },
     "title": "Anzere, Swiss Alps nr Crans-Montana",
     "description": "This large, bright, south facing studio in the heart of the Swiss Apls, sits on a sunny terrace at 1500m. It has sweeping views across the Rhone Valley. There is a bedroom area (separated from the living room by glass doors), kitchen and shower room. We have high speed internet.",
@@ -950,7 +950,7 @@
     "beds": 22
 }, {
     "_id": {
-        "$oid": "5c9b59f5fdf277b868d776f5"
+        "$oid": "133759f5fdf277b868d776f5"
     },
     "title": "Room with a view to the mountains",
     "description": "A room with 2 double beds: 1 on the floor, the other over the bathroom, access with stairway, see floorplan by the pictures. 55TV, free WIFI breakfastbuffet included. share with other guests: kitchen / lounge",
@@ -969,7 +969,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b786d7765c"
+        "$oid": "133739f57df282b786d7765c"
     },
     "title": "Fùr Bergliebhaber",
     "description": "Unser bequemes Beb ist gerade neben der Skipiste.Kein Verkehr, ein gemùtliches Restaurant nebenan. Hòflicher und persòhnlicher Empfang. Ruhe und feine Luft. Wie Zuhause.",
@@ -988,7 +988,7 @@
     "beds": 3
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d77675"
+        "$oid": "133739f57df282b786d77675"
     },
     "title": "Chalet Stella Alpina STELLA ALPINA - Superior room",
     "description": "A room with 2 double beds: 1 on the floor, the other over the bathroom, access with stairway, see floorplan by the pictures. 55TV, free WIFI breakfastbuffet included. share with other guests: kitchen / lounge",
@@ -1007,7 +1007,7 @@
     "beds": 5
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b768d95695"
+        "$oid": "133739f57df282b768d95695"
     },
     "title": "Sunny apartment with mountain views",
     "description": "4.5 room apartment, well-located with beautiful views in a peaceful street. Comfortable beds, relaxing lounge room and modern kitchen. TV with chromecast attached, and some boardgames for kids. Private washing machine, tumble drier. Private indoor garage and one outdoor parking space. There is space to leave skis and toboggans in the garage. NOTE: Some renovations are still needed, e.g. replacing the floors and painting the doors which are unattractive. The dishwasher is also not very powerful.",
@@ -1026,7 +1026,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b39f5f7d282b768d776f5"
+        "$oid": "133739f5f7d282b768d776f5"
     },
     "title": "Casa Leci - Dream holiday flat",
     "description": "Our luxury flat in the upper floor of a newly built house offers a wonderful panoramic view. It comfortably fits six people and is well located, close to the ski slopes of Sedrun-Andermatt ski arena. Enjoy a cosy evening reading by the fireplace!",
@@ -1045,7 +1045,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b59f5fdf277b778d776f5"
+        "$oid": "133759f5fdf277b778d776f5"
     },
     "title": "B&B Stazione 39 - Mountain Attic",
     "description": "Grazioso attico in una casa tipica completamente ristrutturata nel centro di Airolo. Arredata con cura, troverai un ambiente semplice e autentico. Su richiesta potrai avere una colazione preparata con prodotti fatti in casa e locali. La casa è facilmente raggiungibile con i mezzi pubblici.",
@@ -1064,7 +1064,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282ba91d7765c"
+        "$oid": "133739f57df282ba91d7765c"
     },
     "title": "Elsass, 18km to EuropaPark",
     "description": "Prices include breakfast, towels & sheets. A family house with 1 till 4 bedrooms (depending on the availability and the number of guests) : 4 double beds, 4 adult bunk-beds, 1 Single Bed, 1 children bed, 2 baby beds (price upon request), mattresses available. 1 small private bathroom with shower & WC, 1 shared big bathroom with shower & WC, 1 shared WC. For x-mas and New year’s we only accept reservations for minimum 3 nights and at least 10 people for the entire house without breakfast.",
@@ -1083,7 +1083,7 @@
     "beds": 3
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b76d877675"
+        "$oid": "133739f57df282b76d877675"
     },
     "title": "Simple & friendly",
     "description": "Traveling and learning is the new concept of our Academy. Learn how to save energy and protect the environment. If you like you can have singing lessons or you learn new aspects about German or European history. Anyway, a trip to Ottenhöfen is worthwhile. The beauty and the surroundings can give a lot of energy. Our small village is a bit the forgotten world, where you can find old fashion little markets and fresh selfmade food. Not just travel, but learn how to enjoy real natural life.",
@@ -1102,7 +1102,7 @@
     "beds": 5
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b767d95695"
+        "$oid": "133739f57df282b767d95695"
     },
     "title": "Ferienwohnung am Naturschutzgebiet , Wolfmoos I",
     "description": "Du wohnst in einem ehemaligen Bauernhaus in ruhiger Lage, direkt angrenzend an das Naturschutzgebiet Wolfmoos, im heilklimatischen Luftkurort. Die Unterkunft ist nahe dem Schluchsee, Titisee-Neustadt und des Feldberggebietes. Der Hochschwarzwald eignet sich hervorragend zum Wandern, Mountainbike fahren oder Skifahren. Kurtaxe ist im Preis inbegriffen. Der Gast erhält eine Konuskarte mit der er und eine weitere Person kostenlos in Baden-Württemberg die öffentlichen Verkehrsmittel nutzen können.",
@@ -1121,7 +1121,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b39fd7bc282b768d776f5"
+        "$oid": "133739fd7bc282b768d666f5"
     },
     "title": "Alsace: Wine route and the foothills of the Vosges",
     "description": "Come and share a moment in the region whether you are a solo traveller or travelling with children. We are at the crossroads of historic towns, wineries, gourmet and near the high places of heritage.",
@@ -1140,7 +1140,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b59f5fdf277b778d776f5"
+        "$oid": "133759f5fdf277b778d775b2"
     },
     "title": "Chambre/studio",
     "description": "Chambre/Studio tout confort avec kitchenette. Sanitaire dans le studio. A l'étage de ma maison située sur la route des vins. A 3km de KAYSERSBERG Village préféré des Français en 2017 COLMAR à 8 km et de nombreux sites remarquables à proximité Accès piscine intérieure chauffée, terrain de pétanque. Parking",
@@ -1159,7 +1159,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c93bec17df282b768d776eb"
+        "$oid": "1337bec17df282b768d776eb"
     },
     "title": "Cosy house in a beautiful setting",
     "description": "3 well-furnished rooms in a large house. Great view on the Schwabish Albs, dreamy garden, balcony. Fully-equipped kitchen \u0026 living rooms shared with us. Just across bus stop, 15 min walk from center.",
@@ -1178,7 +1178,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c924c8ba949af766945995c"
+        "$oid": "13374c8ba949af766945995c"
     },
     "title": "Charming Farmhouse in Nature",
     "description": "Welcome to our charming farmhouse in nature! Stechelberg is a small village in the heart of the Bernese Oberland with brilliant and short connections to Schilthorn (007 film location) and the Jungfrau (Top of Europe).",
@@ -1197,7 +1197,7 @@
     "beds": 20
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b13377765c"
+        "$oid": "133739f57df282b13377765c"
     },
     "title": "Chalet cosy et rustique 3p, près du Mont-Blanc-Plage",
     "description": "Bring your hiking boots and gear, and prepare for magnificent views of the Mont Blanc during your vacation in Passy! Feel like you're camping but with the comforts of cozy bedding and an equipped kitchenette for easy meal preparation! Other features you'll love:",
@@ -1216,7 +1216,7 @@
     "beds": 2
 }, {
     "_id": {
-        "$oid": "5c9b39f57df282b76d871337"
+        "$oid": "133739f57df282b76d871337"
     },
     "title": "The Gingerbread House",
     "description": "The Double + 1 single Room 'Garden' is one of 4 rooms available in The Gingerbread House. The room is in the garden attached to the chalet, with a separate entrance, and it has 1 double and 1 single bed. The shared kitchen and the 2 bathrooms are in the main building. We already have 2 lovely dogs, so we are not able to host pets, sorry!",
@@ -1235,7 +1235,7 @@
     "beds": 5
 }, {
     "_id": {
-        "$oid": "5c9b39f5713372b767d95695"
+        "$oid": "133739f5713372b767d95695"
     },
     "title": "Family chalet with unique charm & stunning views.",
     "description": "Charming and unique family chalet with panoramic views, hot tub and sauna. BOSE speaker system both upstairs and in the kitchen on the ground floor level.",
@@ -1254,7 +1254,7 @@
     "beds": 8
 }, {
     "_id": {
-        "$oid": "133739fd7bc282b768d776f5"
+        "$oid": "1337391337c282b768d776f5"
     },
     "title": "Chalet Raphael -Modern chalet with terrace in central Chamonix",
     "description": "Chalet Raphael is a modern, 4 bedroom / 3 bathroom Chamonix chalet sleeping 8 in town centre, sunny terrace &garden, log fire, parking, TV/DVD, Playstation & wifi.",
@@ -1273,7 +1273,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c9b59f5fdf277b7713376f5"
+        "$oid": "133759f5fdf277b7713376f5"
     },
     "title": "Chambre/studio",
     "description": "Chambre/Studio tout confort avec kitchenette. Sanitaire dans le studio. A l'étage de ma maison située sur la route des vins. A 3km de KAYSERSBERG Village préféré des Français en 2017 COLMAR à 8 km et de nombreux sites remarquables à proximité Accès piscine intérieure chauffée, terrain de pétanque. Parking",
@@ -1292,7 +1292,7 @@
     "beds": 10
 }, {
     "_id": {
-        "$oid": "5c93b9847df282b768d776e7"
+        "$oid": "1337b9847df282b768d776e7"
     },
     "title": "Spacious apartment in the swiss alp",
     "description": "Lovely holiday apartment with 3 separate bedrooms, a fully equipped kitchen, washing machine and a patio with deck furniture in the garden. It’s perfect starting point for hiking, biking and skiing.  The space  Our apartment also features free WiFi and TV. It comes with its own bathroom with shower, as well as dining facilities for up to 6 people. Parking is free on the premises. Göschenen’s train and bus stations are within 350 m, while the closest restaurant is 50 metres away.",
@@ -1311,7 +1311,7 @@
     "beds": 6
 }, {
     "_id": {
-        "$oid": "5c93bcb77df282b768d776e8"
+        "$oid": "1337bcb77df282b768d776e8"
     },
     "title": "Living in the forest",
     "description": "You are welcome to experience the world of the Jura in peace and modesty. Milk and eggs come directly from the farm. The landscape is secretive, mystical and yet radiantly clear. Your accommodation will be easy, practical and exotic. A really relaxing stay awaits you! Enjoy the starry sky in the sky.  You will be enthusiastic!  I look forward to meeting you!",
@@ -1330,7 +1330,7 @@
     "beds": 4
 }, {
     "_id": {
-        "$oid": "5c93bcb77df28bb768d776e8"
+        "$oid": "1337bcb77df28bb768d776e8"
     },
     "title": "By the Lake",
     "description": "You are welcome to experience the world of the Jura in peace and modesty. Milk and eggs come directly from the farm. The landscape is secretive, mystical and yet radiantly clear. Your accommodation will be easy, practical and exotic. A really relaxing stay awaits you! Enjoy the starry sky in the sky.  You will be enthusiastic!  I look forward to meeting you!",
