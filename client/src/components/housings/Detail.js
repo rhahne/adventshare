@@ -50,6 +50,8 @@ export default class Overview extends Component {
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
       date: getWeekNumber(new Date()),
+      bookedDays: [],
+      interestedDays: []
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
@@ -105,6 +107,32 @@ export default class Overview extends Component {
           fiveAreaActivities: response.data.area.activity.splice(response.data.area.activity.length - 5, 5)
         })
         this.getBookingData()
+        this.getCalenderInfo()
+      })
+  }
+
+  getCalenderInfo() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/calendarInfo',
+      params: {
+        housing: this.state.selectedHousing._id
+      }
+    })
+    .then((response) => {
+        const {bookedDays, interestedDays} = response.data
+        let allBookedDays = [];
+        let allInterestedDays = [];
+        bookedDays.forEach(bookedDay => {
+          allBookedDays.push(new Date(bookedDay))
+        })
+        interestedDays.forEach(interestedDay => {
+          allInterestedDays.push(new Date(interestedDay))
+        })
+        this.setState({
+            bookedDays: allBookedDays,
+            interestedDays: allInterestedDays
+          })
       })
   }
 
@@ -214,6 +242,8 @@ export default class Overview extends Component {
       hoverRangeEnd: hoverRange && hoverRange.to,
       selectedRangeStart: daysAreSelected && selectedDays[0],
       selectedRangeEnd: daysAreSelected && selectedDays[6],
+      booked: this.state.bookedDays,
+      abdo: this.state.interestedDays
     };
 
     let button = ''
@@ -354,7 +384,7 @@ export default class Overview extends Component {
                         Traveldates:
                     </p>
                       <div className="selectedWeek">
-                        <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers}
+                        <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers} 
                           onDayClick={this.handleDayChange} onDayMouseEnter={this.handleDayEnter}
                           onDayMouseLeave={this.handleDayLeave} onWeekClick={this.handleWeekClick} />
                         {selectedDays.length === 7 && (

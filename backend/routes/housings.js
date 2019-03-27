@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment')
 var router = express.Router();
 
 const Housing = require('../models/housing.js')
@@ -35,6 +36,57 @@ router.get('/booking', (req, res) => {
   })
   .then(foundBooking => {
     res.json(foundBooking);
+  })
+  .catch(err => {
+    res.json(err);
+  })
+})
+
+function getWeekDays(weekStart) {
+  const days = [weekStart];
+  for (let i = 1; i < 7; i += 1) {
+    days.push(
+      moment(weekStart)
+        .add(i, 'days')
+    );
+  }
+  return days;
+}
+function getWeekRange(date) {
+  return {
+    from: moment(date)
+      .startOf('week')
+      .toDate(),
+    to: moment(date)
+      .endOf('week')
+      .toDate(),
+  };
+}
+
+router.get('/calendarInfo', (req, res) => {
+  Booking.find({
+    housing: req.query.housing,
+  })
+  .then(foundBookings => {
+    let bookedDays = [];
+    let interestedDays = [];
+    foundBookings.forEach(booking => {
+      if(booking.booked || booking.full){
+        let firstDayOfWeek = moment().day("Sunday").week(booking.date);
+        let allDays = getWeekDays(firstDayOfWeek)
+        allDays.forEach(day =>{
+          bookedDays.push(String(day._d))
+        })
+      }
+      else if(booking.users.length > 0){
+        let firstDayOfWeek = moment().day("Sunday").week(booking.date);
+        let allDays = getWeekDays(firstDayOfWeek)
+        allDays.forEach(day =>{
+          interestedDays.push(String(day._d))
+        })
+      }
+    })
+    res.json({bookedDays, interestedDays});
   })
   .catch(err => {
     res.json(err);
