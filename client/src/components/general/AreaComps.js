@@ -70,7 +70,7 @@ export const AboutArea = function (props) {
             <h1 className="title">
                 <span
                     style={{
-                    textDecoration: 'underline'
+                    textDecoration: 'none'
                 }}>{area.name}</span>
             </h1>
             <div className="columns">

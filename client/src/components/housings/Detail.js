@@ -298,16 +298,15 @@ export default class Overview extends Component {
           </div>
           : ''}
         <hr className="hr" />
-        <Container>
-          <Section>
+
             {area.name ?
               <AboutArea area={area} allActivities={allActivities} /> : ''
             }
-          </Section>
-        </Container>
+
         <hr className="hr" />
         {activities ?
           <ListActivity activity={activities} title={"Best area activities"} /> : ""}
+          <hr className="hr" />
         <TopAreas title={"Other top areas"} />
       </div>
     )

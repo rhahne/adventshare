@@ -165,7 +165,7 @@ function Explanation() {
                 <div className="columns is-centered">
                     <div className="column">
                         <div
-                            className="card step-card"
+                            className="card step-card is-borderless is-shadowless"
                             style={{
                             backgroundImage: 'url("/img/rowan-heuvel-21529-unsplash.jpg")'
                         }}>
@@ -192,7 +192,7 @@ function Explanation() {
                     </div>
                     <div className="column">
                         <div
-                            className="card step-card"
+                            className="card step-card is-borderless is-shadowless"
                             style={{
                             backgroundImage: 'url("/img/pablo-merchan-montes-772142-unsplash.jpg")'
                         }}>
@@ -221,7 +221,7 @@ function Explanation() {
                     </div>
                     <div className="column">
                         <div
-                            className="card step-card"
+                            className="card step-card is-borderless is-shadowless"
                             style={{
                             backgroundImage: 'url("/img/david-calderon-1065248-unsplash.jpg")'
                         }}>

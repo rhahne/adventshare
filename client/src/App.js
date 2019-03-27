@@ -98,7 +98,7 @@ class App extends Component {
               <Route path='/search/q' render={(props) => <SearchResponse {...props} query={props.location.state.query} toggleModal={this.toggleModal}/> } />
               <Route path="/users" exact component={UserList} />
               <Route path="/protected/index" exact component={ProtectedHome} />
-              <Route path="/search" exact render={(props)=> <Search {...props}/>} />
+              {/* <Route path="/search" exact render={(props)=> <Search {...props}/>} /> */}
               <Route path="/areas" exact component={AreaOverview} />
               <Route path="/areas/:areaId" component={AreaDetail}/>
               <Route path="/housings/:housingId" render={(props) => <HousingDetail {...props} currentUserId={this.state.user} /> } />

@@ -13,10 +13,19 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.post('/', (req, res, next) => {
-    const { where, activity, startdate, enddate } = req.body;
+function getNumberOfWeek(dateIn) {
+    const date = new Date(dateIn);
+    const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+    const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+}
 
-    if (!where || !activity || !startdate || !enddate) {
+router.post('/', function (req, res, next) {
+        const { where, activity, startdate, enddate } = req.body;
+        const weekNumStart = getNumberOfWeek(startdate)
+        const weekNumEnd = getNumberOfWeek(enddate)
+
+    if (!where || !activity || !weekNumStart || !weekNumEnd) {
         res.status(400).json({
             message: 'Please fill in all the fields, son!'
         })
