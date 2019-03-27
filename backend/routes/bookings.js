@@ -13,7 +13,7 @@ router.get('/confirm', (req, res, next) => {
         if(newBooking.confirmation.length === newBooking.spots){
           Booking.findOneAndUpdate({
           _id: bookingId,
-        }, { booked: true }).exec()
+        }, { booked: true }).exec() 
         }
       })
   } else {

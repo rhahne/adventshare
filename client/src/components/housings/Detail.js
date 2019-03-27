@@ -49,7 +49,7 @@ export default class Overview extends Component {
       interested: false,
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
-      date: getWeekNumber(new Date())
+      date: getWeekNumber(new Date()),
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
@@ -188,6 +188,12 @@ export default class Overview extends Component {
     // this.getFiveAreaActivities()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.isAuthenticated !== this.props.isAuthenticated){
+      this.getBookingData();
+    }
+  }
+
   render() {
     const housing = this.state.selectedHousing
     const area = this.state.selectedArea
@@ -286,10 +292,16 @@ export default class Overview extends Component {
                           <button className="delete" onClick={this.deleteInterest}>X</button>
                         </>
                         :
-                        <button className="button is-info" onClick={this.showInterest}>Show Interest</button>}
+                        this.props.isAuthenticated ? 
+                        <button className="button is-info" onClick={this.showInterest}>Show Interest</button>
+                        :
+                        <button className="button is-primary" onClick={()=>{this.props.toggleModal('login')}}>Show Interest</button>
+                        }
                       <hr />
                       <strong> {this.state.numberOfInterests} / {housing.beds} Interested Hoomans:</strong>
                       <br /><br />
+
+                     
                     </div>
                   </div>
                 </div>
