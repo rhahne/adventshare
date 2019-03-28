@@ -21,6 +21,7 @@ function getNumberOfWeek(dateIn) {
 }
 
 router.post('/', function (req, res, next) {
+    debugger
         const { where, activity, startdate, enddate } = req.body;
         const weekNumStart = getNumberOfWeek(startdate)
         const weekNumEnd = getNumberOfWeek(enddate)
@@ -37,21 +38,25 @@ router.post('/', function (req, res, next) {
     }
     else {
         Housing
-            .find({})
-            .populate({
-                path: 'area', 
-                model: 'Area',
-                populate: {
-                  path: 'activity',
-                  model: 'Activity'
-                }})
-            .then((response) => {
-                res.status(200).json(response)
+        .find({area: where})
+        .populate({
+            path: 'area', 
+            model: 'Area',
+            populate: {
+                path: 'activity',
+                model: 'Activity'
+            }})
+        .populate({
+            path: 'bookings',
+            match: { booked: { $nin: false }},
             })
-            .catch(error => {
+        .then(allHouses => {
+            res.status(200).json(allHouses)
+        })
+        .catch(error => {
                 res.status(400).json(error)
-            })
-        }
+        })
+    }
 });
 
 router.get('/query', (req, res, next) => {

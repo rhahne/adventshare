@@ -129,10 +129,12 @@ ul.no-list-style {
 }
 .selectedWeek .DayPicker-Day {
   outline: none;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
 }
 .selectedWeek .DayPicker-Day--hoverRange {
   background-color: #EFEFEF !important;
+  /* border-radius: 100px; */
+  /* border: 1.5px #EFEFEF; */
 }
 .selectedWeek .DayPicker-Day--selectedRange {
   background-color: hsl(0, 0%, 96%) !important;

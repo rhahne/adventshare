@@ -46,6 +46,7 @@ export default class Search extends Component {
     }
 
     sendQueryUp(searchQuery) {
+
         this.setState({
             searchInput: searchQuery
         })
@@ -88,6 +89,7 @@ export class SearchForm extends Component {
         this.props.sendQueryUp(searchInfo);
 
         axios({method: 'post', url: 'http://localhost:3002/search', data: searchInfo}).then((response) => {
+            debugger
             this.props.getSearchResult(response.data)
         }).catch((err) => {
             this.setState({errorMessage: 'Errorsön'})
@@ -99,17 +101,23 @@ export class SearchForm extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
 
-                    <div className="field">
+                <div className="field">
                         <label className="label">
                             Where
                         </label>
-                        <div className="control">
-                            <input
-                                className="input"
+                        <div className="select">
+                            <select
                                 onChange={this.handleChange}
                                 type="text"
                                 name="where"
-                                value={this.state.where}/>
+                                value={this.state.where}>
+                                <option >Select</option>
+                                <option value="5c923f3aa949af76694593f8">Western Swiss Alps</option>
+                                <option value="5c923f3aa949af76694593f9">Jura Mountains</option>
+                                <option value="5c923f3aa949af76694593fa">Eastern Swiss Alps</option>
+                                <option value="5c9366297df282b768d776e5">Black Forest</option>
+                                <option value="5c9366887df282b768d776e6">French Alps</option>
+                            </select>
                         </div>
                     </div>
 
@@ -194,13 +202,20 @@ export class SearchResponse extends Component {
 
     getEightHouses = () => {
         let houseList = this.state.searchedHouses
-        this.setState({
-            eightHouses: houseList.slice(houseList.length - 8, houseList.length)
-        })
+        if(houseList.length > 8) {
+            this.setState({
+                eightHouses: houseList.slice(houseList.length - 8, houseList.length)
+            })
+        } else {
+            this.setState({
+                eightHouses: houseList
+            })
+        }
     }
 
     getFiveActivities = () => {
         let areaList = this.state.searchedHouses.map(house => {
+            debugger
                 return house.area
             })
         let allActivities = [];
@@ -247,6 +262,30 @@ export class SearchResponse extends Component {
 //------------------------------------//
 //------------------------------------//
 const SearchSummary = function (props) {
+    debugger
+    // eslint-disable-next-line default-case
+    switch(props.searchInput.where) {
+        case "5c923f3aa949af76694593f8":
+            props.searchInput.where = "Western Swiss Alps"
+          break;
+
+        case "5c923f3aa949af76694593f9":
+            props.searchInput.where = "Jura Mountains"
+          break;
+
+        case "5c923f3aa949af76694593fa":
+          props.searchInput.where = "Eastern Swiss Alps"
+          break;
+
+        case "5c9366297df282b768d776e5":
+          props.searchInput.where = "Black Forest"
+          break;
+
+        case "5c9366887df282b768d776e6":
+          props.searchInput.where = "French Alps"
+          break;
+      }
+
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{borderBottom:"solid 1px hsl(0, 0%, 96%)"}}>
             <div className="container">
@@ -294,11 +333,9 @@ const SearchSummary = function (props) {
 //------------------------------------//
 //------------------------------------//
 export class SearchModalWrapped extends Component {
-
     toggleSearchModal = () => {
         this.props.toggleModal('search')
     }
-
     render() {
       return (
         <>

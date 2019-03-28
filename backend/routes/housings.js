@@ -30,6 +30,7 @@ router.get('/', (req, res, next) => {
 
 
 // Get Houses in certain AREA IDw
+
 router.get('/inarea', (req, res, next) => {
   Housing.find({
     $and: [
