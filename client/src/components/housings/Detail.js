@@ -12,42 +12,13 @@ import Loader from '../Loader';
 import Lightbox from 'react-images';
 import Gallery from 'react-photo-gallery';
 
-
-// WEEK SELECTOR
-function getWeekDays(weekStart) {
-  const days = [weekStart];
-  for (let i = 1; i < 7; i += 1) {
-    days.push(
-      moment(weekStart)
-        .add(i, 'days')
-        .toDate()
-    );
-  }
-  return days;
-}
-function getWeekRange(date) {
-  return {
-    from: moment(date)
-      .startOf('week')
-      .toDate(),
-    to: moment(date)
-      .endOf('week')
-      .toDate(),
-  };
-}
-
-function getWeekNumber(date) {
-  return moment(date).week();
-}
-
-
-export default class Overview extends Component {
+export default class HousingDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
       loading: true,
       hoverRange: undefined,
-      selectedDays: getWeekDays(getWeekRange(new Date()).from),
+      selectedDays: this.getWeekDays(this.getWeekRange(new Date()).from),
       selectedHousing: [],
       selectedArea: [],
       bookingData: '',
@@ -55,7 +26,7 @@ export default class Overview extends Component {
       otherHousesInArea: [],
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
-      date: getWeekNumber(new Date()),
+      date: this.getWeekNumber(new Date()),
       bookedDays: [],
       interestedDays: [],
       currentImage: 0
@@ -66,14 +37,89 @@ export default class Overview extends Component {
     this.getSelectedHousing = this.getSelectedHousing.bind(this)
     this.getBookingData = this.getBookingData.bind(this)
     this.getOtherHousesInArea = this.getOtherHousesInArea.bind(this)
-
-    // LightBox
     this.closeLightbox = this.closeLightbox.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
   }
 
+  // *** COMPONENT FUNCTIONS *** //
+  componentDidMount() {
+    let parts = window.location.pathname.split('/');
+    let housingId = parts.pop();
+    this.getSelectedHousing(housingId)
+  }
+  componentWillUpdate(prevProps, prevState) {
+    if (prevState.selectedHousing._id !== window.location.pathname.split('/').pop()) {
+      this.getSelectedHousing(window.location.pathname.split('/').pop())
+      window.scrollTo(0, 0)
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
+      this.getBookingData();
+    }
+  }
+
+  // *** CALENDAR *** //
+  getWeekDays(weekStart) {
+    const days = [weekStart];
+    for (let i = 1; i < 7; i += 1) {
+      days.push(
+        moment(weekStart)
+          .add(i, 'days')
+          .toDate()
+      );
+    }
+    return days;
+  }
+  getWeekRange(date) {
+    return {
+      from: moment(date)
+        .startOf('week')
+        .toDate(),
+      to: moment(date)
+        .endOf('week')
+        .toDate(),
+    };
+  }
+  getWeekNumber(date) {
+    return moment(date).week();
+  }
+  getCurrentWeekNumber() {
+    let today = moment(new Date());
+    let weekNumber = moment(today).week();
+    return weekNumber;
+  }
+  handleDayChange = date => {
+    this.setState({
+      selectedDays: this.getWeekDays(this.getWeekRange(date).from),
+      date: this.getWeekNumber(date)
+    }, () => {
+      this.getBookingData();
+    })
+  };
+  handleDayEnter = date => {
+    this.setState({
+      hoverRange: this.getWeekRange(date),
+    });
+  };
+  handleDayLeave = () => {
+    this.setState({
+      hoverRange: undefined,
+    });
+  };
+  handleWeekClick = (weekNumber, days, e) => {
+    this.setState({
+      selectedDays: days,
+      date: weekNumber
+    }, () => {
+      this.getBookingData();
+    })
+  };
+
+
+  // *** LIGHTBOX *** //
   openLightbox(event, obj) {
     this.setState({
       currentImage: obj.index,
@@ -97,39 +143,8 @@ export default class Overview extends Component {
     });
   }
 
-  // WEEK SELECTOR
-  getCurrentWeekNumber() {
-    let today = moment(new Date());
-    let weekNumber = moment(today).week();
-    return weekNumber;
-  }
-  handleDayChange = date => {
-    this.setState({
-      selectedDays: getWeekDays(getWeekRange(date).from),
-      date: getWeekNumber(date)
-    }, () => {
-      this.getBookingData();
-    })
-  };
-  handleDayEnter = date => {
-    this.setState({
-      hoverRange: getWeekRange(date),
-    });
-  };
-  handleDayLeave = () => {
-    this.setState({
-      hoverRange: undefined,
-    });
-  };
-  handleWeekClick = (weekNumber, days, e) => {
-    this.setState({
-      selectedDays: days,
-      date: weekNumber
-    }, () => {
-      this.getBookingData();
-    })
-  };
 
+  // *** GET BACKEND DATA *** //
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
@@ -147,33 +162,6 @@ export default class Overview extends Component {
         this.getCalenderInfo()
       })
   }
-
-  getCalenderInfo() {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3002/housings/calendarInfo',
-      params: {
-        housing: this.state.selectedHousing._id
-      }
-    })
-    .then((response) => {
-        const {bookedDays, interestedDays} = response.data
-        let allBookedDays = [];
-        let allInterestedDays = [];
-        bookedDays.forEach(bookedDay => {
-          allBookedDays.push(new Date(bookedDay))
-        })
-        interestedDays.forEach(interestedDay => {
-          allInterestedDays.push(new Date(interestedDay))
-        })
-        this.setState({
-            bookedDays: allBookedDays,
-            interestedDays: allInterestedDays
-          })
-        this.getOtherHousesInArea()
-      })
-  }
-
   getBookingData() {
     axios({
       method: 'get',
@@ -200,7 +188,51 @@ export default class Overview extends Component {
         }
       })
   }
+  getCalenderInfo() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/calendarInfo',
+      params: {
+        housing: this.state.selectedHousing._id
+      }
+    })
+    .then((response) => {
+        const {bookedDays, interestedDays} = response.data
+        let allBookedDays = [];
+        let allInterestedDays = [];
+        bookedDays.forEach(bookedDay => {
+          allBookedDays.push(new Date(bookedDay))
+        })
+        interestedDays.forEach(interestedDay => {
+          allInterestedDays.push(new Date(interestedDay))
+        })
+        this.setState({
+            bookedDays: allBookedDays,
+            interestedDays: allInterestedDays
+          })
+        this.getOtherHousesInArea()
+      })
+  }
+  getOtherHousesInArea() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/housings/inarea',
+      params: {
+        areaId: this.state.selectedHousing.area._id,
+        houseId: this.state.selectedHousing._id
+      }
+      })
+      .then((response) => {
+        let housesInSameArea = response.data
+        this.setState({
+          otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length),
+          loading: false
+        })
+    })
+  }
 
+
+  // *** BOOKING HANDLER **/
   showInterest() {
     axios({
       method: 'get',
@@ -217,7 +249,6 @@ export default class Overview extends Component {
         this.getCalenderInfo()
       })
   }
-
   deleteInterest() {
     axios({
       method: 'get',
@@ -236,25 +267,6 @@ export default class Overview extends Component {
         this.getCalenderInfo()
       })
   }
-
-  getOtherHousesInArea() {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3002/housings/inarea',
-      params: {
-        areaId: this.state.selectedHousing.area._id,
-        houseId: this.state.selectedHousing._id
-      }
-      })
-      .then((response) => {
-        let housesInSameArea = response.data
-        this.setState({
-          otherHousesInArea: housesInSameArea.slice(housesInSameArea.length - 8, housesInSameArea.length),
-          loading: false
-        })
-    })
-  } 
- 
   isUserInterested(allInterests) {
     allInterests.forEach((interestId) => {
       let interested = false;
@@ -270,24 +282,6 @@ export default class Overview extends Component {
     })
   }
 
-  componentDidMount() {
-    let parts = window.location.pathname.split('/');
-    let housingId = parts.pop();
-    this.getSelectedHousing(housingId)
-  }
-
-  componentWillUpdate(prevProps, prevState) {
-    if (prevState.selectedHousing._id !== window.location.pathname.split('/').pop()) {
-      this.getSelectedHousing(window.location.pathname.split('/').pop())
-      window.scrollTo(0, 0)
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
-      this.getBookingData();
-    }
-  }
 
   render() {
     const housing = this.state.selectedHousing
@@ -297,7 +291,6 @@ export default class Overview extends Component {
     const { hoverRange, selectedDays } = this.state;
     const otherHousesInArea = this.state.otherHousesInArea;
     const daysAreSelected = selectedDays.length > 0;
-
     const modifiers = {
       hoverRange,
       selectedRange: daysAreSelected && {
@@ -311,7 +304,12 @@ export default class Overview extends Component {
       booked: this.state.bookedDays,
       abdo: this.state.interestedDays
     };
-
+    const photos = []
+    if(housing.img){
+      housing.img.forEach(image => {
+        photos.push({src: image, width: 4, height: 3})
+      })
+    } 
     let button = ''
     let info = ''
     if (this.state.bookingData.booked) {
@@ -359,18 +357,9 @@ export default class Overview extends Component {
         }
       }
     }
-
-    var photos = []
-    if(housing.img){
-      housing.img.forEach(image => {
-        photos.push({src: image, width: 4, height: 3})
-      })
-    } 
-   
     return (
       <div>
         {this.state.loading && <Loader /> }
-
         {housing.title ?
           <div>
             <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
@@ -382,35 +371,28 @@ export default class Overview extends Component {
                     <h1 className="title is-2">
                       {housing.title}
                     </h1>
-
                     <div className="columns">
                       <div className="column is-custom-icon">
                         <FontAwesomeIcon icon="location-arrow" />
                       </div>
-
                       <div className="column">
                         <p className="subtitle is-5">
                           {housing.address.city} - {housing.address.country}
                         </p>
                       </div>
                     </div>
-
                     <hr />
-
                     <div className="columns">
                       <div className="column is-custom-icon">
                         <FontAwesomeIcon icon="info" />
                       </div>
-
                       <div className="column">
                         <p className="subtitle is-5">
                           {housing.description}
                         </p>
                       </div>
                     </div>
-
                     <hr />
-
                     <div className="columns">
                       <div className="column is-custom-icon">
                         <FontAwesomeIcon icon="bed" />
@@ -446,13 +428,8 @@ export default class Overview extends Component {
                         </div>
                       </div> */}
                     </div>
-
-
-
                   <div className="column">
-
                   </div>
-
                   <div className="column is-4" >
                     <div className="booking-box">
                       <p className="subtitle is-5 price">
@@ -481,22 +458,16 @@ export default class Overview extends Component {
                         )}
                       </div>
                       <hr />
-
                       {button}
-                      
                       {info !== '' ? 
                       <>
                       <br /><br />
                       <strong>{info}</strong>
                       </>
                       :''}
-
-
                       <hr />
                       <strong> {this.state.numberOfInterests} / {housing.beds} Interested Adventsharers:</strong>
-                      
                       <br /><br />
-
                     </div>
                   </div>
                 </div>
@@ -519,10 +490,6 @@ export default class Overview extends Component {
         <ListHousing housing={otherHousesInArea} title={"Similar houses in the " + area.name}/> : ''
         }
         <hr className="hr" />
-
-        
-
-
         <TopAreas title={"Other top areas"} />
       </div>
     )
