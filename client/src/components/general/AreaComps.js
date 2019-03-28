@@ -29,10 +29,7 @@ export class TopAreas extends Component {
                 <Section>
                 <h1 className="title is-3">{this.props.title}</h1>
                     <div className="columns">
-                        {this
-                            .state
-                            .allAreas
-                            .map((area) => {
+                        {this.state.allAreas.map((area) => {
                                 return <div className="column" key={area._id}>
                                     <Link to={"/areas/details/" + area._id}>
                                         <div
@@ -60,6 +57,41 @@ export class TopAreas extends Component {
         )
     }
 }
+
+export const ListAreas = function (props) {
+    return (
+        <Container>
+                <Section>
+                <h1 className="title is-3">{props.title} <span className="is-lowercase">{props.activity.name}</span> </h1>
+                <div className="columns is-multiline">
+                    {props.areas.map((area) => {
+                        return <div className="column" key={area._id}>
+                                    <Link to={"/areas/details/" + area._id}>
+                                        <div
+                                            className="card action-card is-flex is-shadowless"
+                                            style={{
+                                            backgroundImage: 'url(' + area.img[0] + ')',
+                                            justifyContent: 'center'
+                                        }}>
+                                            <div className="card-content action-card-content">
+                                                <div
+                                                    className="content is-flex"
+                                                    style={{
+                                                    height: "45px"
+                                                }}>
+                                                    <h3 className="title has-text-light">{area.name}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                        })}
+                </div>
+                </Section>
+            </Container>
+    )
+}
+
 
 export const AboutArea = function (props) {
     const area = props.area ? props.area: []
@@ -118,25 +150,3 @@ export const AboutArea = function (props) {
     </Container>
     )
 }
-
-/*
-export const ListAreas = function (props) {
-  return (
-    <div className="columns">
-    {props.allAreas.map((area) => {
-      return<div className="column" key={area._id}>
-       <Link to={"/areas/"+area._id}>
-        <div className="card area-card" style={{backgroundImage: 'url('+area.img[0]+')'}}>
-          <div className="card-content area-card-content">
-            <div className="content">
-              <h3>{area.name}</h3>
-            </div>
-          </div>
-        </div>
-      </Link>
-      </div>
-    })}
-  </div>
-  )
-}
-*/

@@ -3,6 +3,7 @@ import axios from 'axios'
 import ListHousing from '../general/HousingComps'
 import { AboutArea } from '../general/AreaComps'
 import Loader from '../Loader';
+import ListActivity from '../general/ActivityComps';
 
 export default class Overview extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export default class Overview extends Component {
       loading: true,
       selectedArea: [],
       activities: [],
-      housing: []
+      housing: [],
+      topActivities: []
     }
   }
   
@@ -22,11 +24,13 @@ export default class Overview extends Component {
     })
       .then((response) => {
         const { area, housingsInArea } = response.data;
+        let allActivities = [...response.data.area.activity]
         this.setState({
           selectedArea: area,
           housing: housingsInArea,
           activities: area.activity,
-          loading: false
+          loading: false,
+          topActivities: allActivities.slice(allActivities.length - 5, allActivities.length)
         })
       })
       .catch((err) => {
@@ -47,6 +51,11 @@ export default class Overview extends Component {
           {this.state.selectedArea.name ?
             <AboutArea area={this.state.selectedArea} allActivities={this.state.activities} /> : ''
           }
+          {this.state.topActivities? 
+          <ListActivity activity={this.state.topActivities} title={"Top activities in the " + this.state.selectedArea.name}/>
+          : '' 
+          }
+
           <ListHousing housing={this.state.housing} title={"Housing in " + this.state.selectedArea.name}/>
         </div>
     )

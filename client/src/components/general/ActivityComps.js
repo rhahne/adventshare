@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {Container, Section} from 'react-bulma-components'
 
 const ListActivity = function (props) {
+    debugger
     return (
 <Container>
         <Section>

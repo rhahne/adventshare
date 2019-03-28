@@ -1,49 +1,94 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ListHousing from '../general/HousingComps'
-import { AboutArea } from '../general/AreaComps'
+import { ListAreas } from '../general/AreaComps'
+import Loader from '../Loader';
 
 export default class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedArea: [],
-      activities: [],
-      housing: []
+      areasWithActivity: [],
+      housingsWithActivity: [],
+      activityInfo: [],
+      loading: true
     }
+    this.getAreasWithActivity = this.getAreasWithActivity.bind(this)
+    this.getHousingWithActivity = this.getHousingWithActivity.bind(this)
   }
   
-  getSelectedActivity(activityId) {
+  getHousingWithActivity(activityId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/activities/details/' + activityId
+      url: 'http://localhost:3002/activities/details/housing/' + activityId
     })
       .then((response) => {
-        const { area, housingsInArea } = response.data;
         this.setState({
-          selectedArea: area,
-          housing: housingsInArea,
-          activities: area.activity
+          housingsWithActivity: response.data,
         })
       })
       .catch((err) => {
-        //this.props.history.push('/users/login')
+        console.log(err)
+      })
+  }
+
+  getActivity(activityId) {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/activities/details/activity/' + activityId
+    })
+      .then((response) => {
+        this.setState({
+          activityInfo: response.data[0],
+          loading: false
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  getAreasWithActivity(activityId) {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3002/activities/details/area/' + activityId
+    })
+      .then((response) => {
+        this.setState({
+          areasWithActivity: response.data,
+        })
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 
   componentDidMount() {
     let parts = window.location.pathname.split('/');
     let activityId = parts.pop();
-    this.getSelectedActivity(activityId)
+    this.getAreasWithActivity(activityId)
+    this.getHousingWithActivity(activityId)
+    this.getActivity(activityId)
   }
 
   render() {
+    let activity = this.state.activityInfo
+    let housing = this.state.housingsWithActivity
+    let areas = this.state.areasWithActivity
+
+
     return (
       <div>
-          {this.state.selectedArea.name ?
-            <AboutArea area={this.state.selectedArea} allActivities={this.state.activities} /> : ''
+        {this.state.loading && <Loader /> }
+          {areas ?
+            <ListAreas title={"Great areas to go"} activity={activity} areas={areas}/> : ''
           }
-          <ListHousing housing={this.state.housing} title={"Housing in " + this.state.selectedArea.name}/>
+          <ListHousing 
+          housing={housing} 
+          title={"Lovely houses for your "}
+          activityTitle={activity.name} 
+          activity={activity}/>
+
         </div>
     )
   }
