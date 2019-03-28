@@ -106,7 +106,10 @@ export class SearchForm extends Component {
     handleToChange(to) {
         this.setState({ to }, this.showFromMonth);
     }
-
+    handleChange = (event) => {
+        let {name, value} = event.target;
+        this.setState({[name]: value});
+    }
     handleSubmit = (event) => {
         event.preventDefault()
         let searchInfo = this.state;
