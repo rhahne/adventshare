@@ -314,6 +314,10 @@ const SearchSummary = function (props) {
             break;
     }
 
+    const startDate = moment(props.from).format('MMMM Do YYYY')
+    const endDate = moment(props.to).format('MMMM Do YYYY')
+
+    debugger
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{ borderBottom: "solid 1px hsl(0, 0%, 96%)" }}>
             <div className="container">
@@ -328,22 +332,22 @@ const SearchSummary = function (props) {
                                         <FontAwesomeIcon style={{ marginRight: "5px" }} icon="search" />
                                         {props.searchInput.where}
                                     </div>
-                                    <div
+                                    {/* <div
                                         className="button is-info"
                                         onClick={() => { props.toggleModal('search') }}>
                                         {props.searchInput.activity}
+                                    </div> */}
+                                    <div
+                                        className="button is-info"
+                                        onClick={() => { props.toggleModal('search') }}>
+                                        <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
+                                        {startDate}
                                     </div>
                                     <div
                                         className="button is-info"
                                         onClick={() => { props.toggleModal('search') }}>
                                         <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
-                                        {props.searchInput.from}
-                                    </div>
-                                    <div
-                                        className="button is-info"
-                                        onClick={() => { props.toggleModal('search') }}>
-                                        <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
-                                        {props.searchInput.to}
+                                        {endDate}
                                     </div>
                                 </div>
                             </div>

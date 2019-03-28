@@ -21,17 +21,17 @@ function getNumberOfWeek(dateIn) {
 }
 
 router.post('/', function (req, res, next) {
-    debugger
-        const { where, activity, from, to } = req.body;
+        const { where, from, to } = req.body;
         const weekNumStart = getNumberOfWeek(from)
         const weekNumEnd = getNumberOfWeek(to)
 
-    if (!where || !activity ) {
+    if (!where) {
         res.status(400).json({
+            
             message: 'Please fill in all the fields, son!'
         })
     }
-    else if (enddate <= startdate) {
+    else if (weekNumEnd <= weekNumStart) {
         res.status(400).json({
             message: 'A your end date should be later than your start date sön'
         })
