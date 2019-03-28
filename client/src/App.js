@@ -93,7 +93,6 @@ class App extends Component {
     return (
       <div>
             <Navigation {...this.props} loggedIn={this.state.isAuthenticated} toggleModal={this.toggleModal} />
-
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/users/logout" exact render={(props)=> <Logout {...props} loggingOut={this.loggingOut}/> }/>
