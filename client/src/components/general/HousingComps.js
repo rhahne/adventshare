@@ -6,7 +6,7 @@ const ListHousing = function (props) {
   return (
 <Container>
         <Section>
-        <h1 className="title is-3">{props.title}</h1>
+        <h1 className="title is-3">{props.title} {props.activityTitle ? <span className="is-lowercase">{props.activityTitle} {" trip"}</span> : ""}</h1>
         <div className="columns is-multiline">
             {props.housing.map((housing) => {
                 return <div 
