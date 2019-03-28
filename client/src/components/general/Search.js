@@ -116,7 +116,6 @@ export class SearchForm extends Component {
         this.props.sendQueryUp(searchInfo);
 
         axios({ method: 'post', url: 'http://localhost:3002/search', data: searchInfo }).then((response) => {
-            debugger
             this.props.getSearchResult(response.data)
         }).catch((err) => {
             this.setState({ errorMessage: 'Errorsön' })
@@ -243,7 +242,6 @@ export class SearchResponse extends Component {
 
     getFiveActivities = () => {
         let areaList = this.state.searchedHouses.map(house => {
-            debugger
             return house.area
         })
         let allActivities = [];
@@ -290,7 +288,6 @@ export class SearchResponse extends Component {
 //------------------------------------//
 //------------------------------------//
 const SearchSummary = function (props) {
-    debugger
     // eslint-disable-next-line default-case
     switch (props.searchInput.where) {
         case "5c923f3aa949af76694593f8":
@@ -314,10 +311,9 @@ const SearchSummary = function (props) {
             break;
     }
 
-    const startDate = moment(props.from).format('MMMM Do YYYY')
-    const endDate = moment(props.to).format('MMMM Do YYYY')
+    const startDate = moment(String(props.searchInput.from)).format('MMMM Do YYYY')
+    const endDate = moment(String(props.searchInput.to)).format('MMMM Do YYYY')
 
-    debugger
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{ borderBottom: "solid 1px hsl(0, 0%, 96%)" }}>
             <div className="container">

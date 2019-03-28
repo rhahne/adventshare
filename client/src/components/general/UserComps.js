@@ -46,7 +46,7 @@ export class Signup extends Component {
     return (
       <>
           <div className="modal is-active">
-            <div className="modal-background"></div>
+            <div className="modal-background" onClick={()=>{this.props.toggleModal('signup')}}></div>
             <div className="modal-card">
               <header className="modal-card-head">
                 <p className="modal-card-title">Create an Account!</p>
@@ -137,7 +137,7 @@ export class Login extends Component {
     return (
       <>
       <div className="modal is-active">
-        <div className="modal-background"></div>
+        <div className="modal-background" onClick={()=>{this.props.toggleModal('login')}}></div>
         <div className="modal-card">
           <header className="modal-card-head">
             <p className="modal-card-title">Log in!</p>

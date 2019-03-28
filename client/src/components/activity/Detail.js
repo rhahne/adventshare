@@ -76,7 +76,6 @@ export default class Overview extends Component {
     let housing = this.state.housingsWithActivity
     let areas = this.state.areasWithActivity
 
-    debugger
     return (
       <div>
         {this.state.loading && <Loader /> }

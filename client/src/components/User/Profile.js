@@ -40,7 +40,6 @@ export default class Profile extends Component {
       .then((response) => {
         const { finalBookings, bookings, interests, sessionUser } = response.data
         bookings.forEach(booking => {
-          debugger
           if (booking.confirmation.indexOf(sessionUser._id) !== -1) {
             booking.isConfirmed = true;
           }
