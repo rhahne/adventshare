@@ -145,24 +145,7 @@ export class SearchForm extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className="field">
-                        <label className="label">
-                            What
-                        </label>
-                        <div className="select">
-                            <select
-                                onChange={this.handleChange}
-                                type="text"
-                                name="activity"
-                                value={this.state.activity}>
-                                <option>Select</option>
-                                <option>Climbing</option>
-                                <option>Snowboarding</option>
-                                <option>Mountaineering</option>
-                                <option>Hiking</option>
-                            </select>
-                        </div>
-                    </div>
+
                     <div className="form-double InputFromTo">
                         <div className="field">
                             <label className="label">
@@ -171,7 +154,7 @@ export class SearchForm extends Component {
                             <div className="control">
                                 <DayPickerInput
                                     value={from}
-                                    placeholder="From"
+                                    placeholder = "From"
                                     format="LL"
                                     formatDate={formatDate}
                                     parseDate={parseDate}

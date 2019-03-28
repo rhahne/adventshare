@@ -52,7 +52,7 @@ router.post('/', function (req, res, next) {
                 $and: [ 
                     { date: { $gt: weekNumStart } }, 
                     { date: { $lt: weekNumEnd } }, 
-                    {booked: { $nin: [false] } 
+                    { booked: { $nin: [false] } 
                 } ] },
             })
         .then(allHouses => {

@@ -41,7 +41,7 @@ html {
 .hero-home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/img/francesca-cioccio-773154-unsplash.jpg');
     /* Set a specific height */
-    height: 100%;
+    height: calc(100vh - 45px);
     /* Position and center the image to scale nicely on all screens */
     background-position: bottom;
     background-repeat: no-repeat;
