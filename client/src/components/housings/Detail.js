@@ -462,7 +462,9 @@ export default class HousingDetail extends Component {
                           onDayClick={this.handleDayChange} 
                           onDayMouseEnter={this.handleDayEnter}
                           onDayMouseLeave={this.handleDayLeave} 
-                          onWeekClick={this.handleWeekClick} />
+                          onWeekClick={this.handleWeekClick} 
+                          month={new Date(2019, 3)}
+                          />
                         {selectedDays.length === 7 && (
                           <div>
                             {moment(selectedDays[0]).format('LL')} –{' '}
