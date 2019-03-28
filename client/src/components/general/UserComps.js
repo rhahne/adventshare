@@ -100,7 +100,7 @@ export class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstname: '',
+      email: '',
       password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -146,9 +146,9 @@ export class Login extends Component {
           <section className="modal-card-body">
           <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
           <div className="field">
-            <label className="label">Firstname</label>
+            <label className="label">E-Mail</label>
             <div className="control">
-              <input className="input" onChange={this.handleChange} type="text" name="firstname" placeholder="firstname" value={this.state.firstname} />
+              <input className="input" onChange={this.handleChange} type="text" name="email" placeholder="email" value={this.state.email} />
             </div>
           </div>
           <div className="field">

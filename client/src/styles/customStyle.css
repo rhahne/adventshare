@@ -204,3 +204,9 @@ ul.no-list-style {
   object-fit: cover;
   height: 150px;
 }
+
+.profileBox{
+  width: 100%;
+  height: 100%;
+  object-fit: conver;
+}

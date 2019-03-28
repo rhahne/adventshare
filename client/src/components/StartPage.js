@@ -12,7 +12,7 @@ export default class StartPage extends Component {
         loading: true
     }
     stopLoader() {
-            this.setState({loading: false});
+        this.setState({loading: false});
     }
     render() {
         return (
