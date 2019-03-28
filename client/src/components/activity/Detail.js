@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ListHousing from '../general/HousingComps'
 import { ListAreas } from '../general/AreaComps'
+import Loader from '../Loader';
 
 export default class Overview extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export default class Overview extends Component {
     this.state = {
       areasWithActivity: [],
       housingsWithActivity: [],
-      activityInfo: []
+      activityInfo: [],
+      loading: true
     }
     this.getAreasWithActivity = this.getAreasWithActivity.bind(this)
     this.getHousingWithActivity = this.getHousingWithActivity.bind(this)
@@ -38,6 +40,7 @@ export default class Overview extends Component {
       .then((response) => {
         this.setState({
           activityInfo: response.data[0],
+          loading: false
         })
       })
       .catch((err) => {
@@ -76,6 +79,7 @@ export default class Overview extends Component {
 
     return (
       <div>
+        {this.state.loading && <Loader /> }
           {areas ?
             <ListAreas title={"Great areas to go"} activity={activity} areas={areas}/> : ''
           }
