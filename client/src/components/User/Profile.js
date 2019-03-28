@@ -15,7 +15,6 @@ export default class Profile extends Component {
     this.confirm = this.confirm.bind(this);
   }
   confirm(bookingId, isConfirmed) {
-    debugger
     axios({
       method: 'get',
       url: 'http://localhost:3002/bookings/confirm',
@@ -24,17 +23,12 @@ export default class Profile extends Component {
         isConfirmed: isConfirmed,
         bookingId: bookingId
       }
-    }).then(() =>{
-      this.getBookingData()
     })
-  }
-  componentDidMount() {
     this.getBookingData()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.bookings !== this.state.bookings) {
-    }
+  componentDidMount() {
+    this.getBookingData()
   }
 
   getBookingData() {
@@ -146,14 +140,20 @@ export default class Profile extends Component {
                             <p><strong>{booking.housing.title}</strong></p>
                             <p>2019 Week {booking.date}</p>
                             <p>{booking.users.length}/{booking.housing.beds} interested Adventsharers</p>
+                            <p>{booking.confirmation.length}/{booking.housing.beds} confirmations</p>
                           </div>
                           <div className="media-right" style={{textAlign: 'right'}}>
                             <a href={"/housings/" + booking.housing._id}>
                               <FontAwesomeIcon icon="link" />
                             </a>
                               <br /><br />
+                              {booking.isConfirmed ?
+                                <FontAwesomeIcon icon="check-circle" />
+                              :
+                              <>
                               <span className="button is-success" onClick={() => { this.confirm(booking._id, true) }}><FontAwesomeIcon icon="check-circle" /></span>
                               <span className="button is-danger" onClick={() => { this.confirm(booking._id, false) }}><FontAwesomeIcon icon="times-circle" /></span>
+                              </>}
                           </div>
                         </div>
                         })}
