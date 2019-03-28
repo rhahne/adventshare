@@ -96,7 +96,15 @@ router.get('/calendarInfo', (req, res) => {
   .then(foundBookings => {
     let bookedDays = [];
     let interestedDays = [];
+    let myDays = [];
     foundBookings.forEach(booking => {
+      if(booking.users.indexOf(req.session.userId) > -1){
+        let firstDayOfWeek = moment().day("Sunday").week(booking.date);
+        let allDays = getWeekDays(firstDayOfWeek)
+        allDays.forEach(day =>{
+          myDays.push(String(day._d))
+        })
+      }
       if(booking.booked || booking.full){
         let firstDayOfWeek = moment().day("Sunday").week(booking.date);
         let allDays = getWeekDays(firstDayOfWeek)
@@ -112,7 +120,7 @@ router.get('/calendarInfo', (req, res) => {
         })
       }
     })
-    res.json({bookedDays, interestedDays});
+    res.json({myDays, bookedDays, interestedDays});
   })
   .catch(err => {
     res.json(err);
