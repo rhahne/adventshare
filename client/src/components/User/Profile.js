@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Container, Section } from 'react-bulma-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class Profile extends Component {
     this.confirm = this.confirm.bind(this);
   }
   confirm(bookingId, isConfirmed) {
+    debugger
     axios({
       method: 'get',
       url: 'http://localhost:3002/bookings/confirm',
@@ -22,6 +24,8 @@ export default class Profile extends Component {
         isConfirmed: isConfirmed,
         bookingId: bookingId
       }
+    }).then(() =>{
+      this.getBookingData()
     })
   }
   componentDidMount() {
@@ -29,10 +33,10 @@ export default class Profile extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.bookings !== this.state.bookings){
+    if (prevState.bookings !== this.state.bookings) {
     }
   }
- 
+
   getBookingData() {
     axios({
       method: 'get',
@@ -42,9 +46,9 @@ export default class Profile extends Component {
       .then((response) => {
         const { finalBookings, bookings, interests, sessionUser } = response.data
         bookings.forEach(booking => {
-            if (booking.confirmation.indexOf(sessionUser._id) !== -1){
-              booking.isConfirmed = true;
-            }
+          if (booking.confirmation.indexOf(sessionUser._id) !== -1) {
+            booking.isConfirmed = true;
+          }
         })
 
         this.setState({
@@ -61,8 +65,8 @@ export default class Profile extends Component {
   render() {
     const user = this.state.userData ? this.state.userData : '';
     const finalBookings = this.state.finalBookings ? this.state.finalBookings : [];
-    const bookings = this.state.bookings ? this.state.bookings:[];
-    const interests = this.state.interests ? this.state.interests:[];
+    const bookings = this.state.bookings ? this.state.bookings : [];
+    const interests = this.state.interests ? this.state.interests : [];
     return (
       <Container>
         <Section className="hero is-bold">
@@ -112,41 +116,47 @@ export default class Profile extends Component {
                       <h1 className="title is-3 is-spaced">
                         Interests
                       </h1>
-                      <ul>
-                      {interests.map(interest=>{
-                        return <div>
-                        <li><strong>Title:</strong> {interest.housing.title}</li>
-                        <li><strong>Date:</strong> Week {interest.date}</li>
-                        <li><strong>Status:</strong> {interest.users.length}/{interest.housing.beds} hoomans</li>
-                        <a href={"/housings/"+interest.housing._id}><strong>Link</strong></a>
-                        <br /><br />
+                      {interests.map(interest => {
+                        return <div className="media">
+                          <div className="media-left">
+                            <FontAwesomeIcon icon="info-circle" />
+                          </div>
+                          <div className="media-content">
+                            <p><strong>{interest.housing.title}</strong></p>
+                            <p>2019 Week {interest.date}</p>
+                            <p>{interest.users.length}/{interest.housing.beds} interested Adventsharers</p>
+                          </div>
+                          <div className="media-right">
+                            <a href={"/housings/" + interest.housing._id}>
+                              <FontAwesomeIcon icon="link" />
+                            </a>
+                          </div>
                         </div>
                       })}
-                      </ul>
                       <h1 className="title is-3 is-spaced">
                         Waiting Confirmation
                       </h1>
                       <ul>
-                      {bookings.map(booking=>{
-                        return <div className="columns">
-                        <div className="column is-three-quarters">
-                        <li><strong>Title:</strong> {booking.housing.title}</li>
-                        <li><strong>Date:</strong> Week {booking.date}</li>
-                        <li><strong>Status:</strong> {booking.users.length}/{booking.housing.beds} hoomans</li>
-                        <li><strong>Confirmations:</strong> {booking.confirmation.length}/{booking.housing.beds}</li>
-                        <a href={"/housings/"+booking.housing._id}><strong>Link</strong></a>
+                        {bookings.map(booking => {
+                          return <div className="media">
+                          <div className="media-left">
+                            <FontAwesomeIcon icon="question-circle" />
+                          </div>
+                          <div className="media-content">
+                            <p><strong>{booking.housing.title}</strong></p>
+                            <p>2019 Week {booking.date}</p>
+                            <p>{booking.users.length}/{booking.housing.beds} interested Adventsharers</p>
+                          </div>
+                          <div className="media-right" style={{textAlign: 'right'}}>
+                            <a href={"/housings/" + booking.housing._id}>
+                              <FontAwesomeIcon icon="link" />
+                            </a>
+                              <br /><br />
+                              <span className="button is-success" onClick={() => { this.confirm(booking._id, true) }}><FontAwesomeIcon icon="check-circle" /></span>
+                              <span className="button is-danger" onClick={() => { this.confirm(booking._id, false) }}><FontAwesomeIcon icon="times-circle" /></span>
+                          </div>
                         </div>
-                        {booking.isConfirmed ? 
-                        'CONFIRMED, Waiting for other people to confirm'
-                        :
-                        <div className="column">
-                        <span className="button is-success" onClick={()=>{this.confirm(booking._id, true)}}>Yes</span>
-                        <span className="button is-danger" onClick={()=>{this.confirm(booking._id, false)}}>No</span>
-                        </div>
-                        }
-                        <br /><br />
-                        </div>
-                      })}
+                        })}
                       </ul>
                     </div>
                   </div>
@@ -158,15 +168,23 @@ export default class Profile extends Component {
                         Bookings
                       </h1>
                       <ul>
-                      {finalBookings.map(finalBooking=>{
-                        return <div>
-                        <li><strong>Title:</strong> {finalBooking.housing.title}</li>
-                        <li><strong>Date:</strong> Week {finalBooking.date}</li>
-                        <li><strong>Prepare your trip son!</strong></li>
-                        <a href={"/housings/"+finalBooking.housing._id}><strong>Link</strong></a>
-                        <br /><br />
+                        {finalBookings.map(finalBooking => {
+                          return <div className="media">
+                          <div className="media-left">
+                            <FontAwesomeIcon icon="check-circle" />
+                          </div>
+                          <div className="media-content">
+                            <p><strong>{finalBooking.housing.title}</strong></p>
+                            <p>2019 Week {finalBooking.date}</p>
+                            <p>{finalBooking.users.length}/{finalBooking.housing.beds} interested Adventsharers</p>
+                          </div>
+                          <div className="media-right">
+                            <a href={"/housings/" + finalBooking.housing._id}>
+                              <FontAwesomeIcon icon="link" />
+                            </a>
+                          </div>
                         </div>
-                      })}
+                        })}
                       </ul>
                     </div>
                   </div>
