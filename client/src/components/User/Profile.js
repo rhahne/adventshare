@@ -101,10 +101,6 @@ export default class Profile extends Component {
                             {user.bio}
                           </li>
                         </ul>
-                        <div className="button-combo" style={{ display: 'flex' }}>
-                          <a href="/users/edit" className="button is-primary">Logout</a>
-                          <a href="/users/edit" className="button is-primary">Edit</a>
-                        </div>
                       </div>
                     </div>
                   </div>
