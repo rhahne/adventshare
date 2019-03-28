@@ -76,10 +76,17 @@ export default class Overview extends Component {
     let housing = this.state.housingsWithActivity
     let areas = this.state.areasWithActivity
 
-
+    debugger
     return (
       <div>
         {this.state.loading && <Loader /> }
+        {activity.name ? 
+        <div className="hero heroBgImage" style={{ backgroundImage: 'url(' + activity.img[0] + ')' }}>
+            <h1 class="is-1 title heroing" style={{color:'white'}}>
+              {activity.name}
+            </h1>
+        </div>
+        : ''}
           {areas ?
             <ListAreas title={"Great areas to go"} activity={activity} areas={areas}/> : ''
           }

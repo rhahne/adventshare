@@ -208,3 +208,16 @@ ul.no-list-style {
   height: 100%;
   object-fit: conver;
 }
+
+.heroBgImage{
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.heroing {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 300px; 
+}

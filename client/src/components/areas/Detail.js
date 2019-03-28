@@ -16,7 +16,7 @@ export default class Overview extends Component {
       topActivities: []
     }
   }
-  
+
   getSelectedArea(areaId) {
     axios({
       method: 'get',
@@ -48,6 +48,15 @@ export default class Overview extends Component {
     return (
       <div>
           {this.state.loading && <Loader /> }
+
+          {this.state.selectedArea.name ? 
+          <div className="hero heroBgImage" style={{ backgroundImage: 'url(' + this.state.selectedArea.img[1] + ')' }}>
+              <h1 class="is-1 title heroing" style={{color:'white'}}>
+                {this.state.selectedArea.name}
+              </h1>
+          </div>
+          : ''}
+
           {this.state.selectedArea.name ?
             <AboutArea area={this.state.selectedArea} allActivities={this.state.activities} /> : ''
           }
