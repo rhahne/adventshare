@@ -423,13 +423,15 @@ export default class Overview extends Component {
                       </div>
 
                       <hr />
-                      <Gallery photos={photos} onClick={this.openLightbox} columns={4}/>
+                      <Gallery photos={photos} onClick={this.openLightbox} columns={2}/>
                       <Lightbox images={photos}
                         onClose={this.closeLightbox}
                         onClickPrev={this.gotoPrevious}
                         onClickNext={this.gotoNext}
                         currentImage={this.state.currentImage}
                         isOpen={this.state.lightboxIsOpen}
+                        backdropClosesModal={true}
+                        showThumbnails={true}
                       />
                       {/* <hr />
 
