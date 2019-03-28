@@ -163,3 +163,7 @@ ul.no-list-style {
   border-radius: 0;
   color: black;
 }
+
+.react-photo-gallery--gallery img {
+  max-height: 100%;
+}

@@ -9,6 +9,8 @@ import moment from 'moment';
 import ListHousing from '../general/HousingComps'
 import 'react-day-picker/lib/style.css';
 import Loader from '../Loader';
+import Lightbox from 'react-images';
+import Gallery from 'react-photo-gallery';
 
 
 // WEEK SELECTOR
@@ -55,7 +57,8 @@ export default class Overview extends Component {
       numberOfInterests: 0,
       date: getWeekNumber(new Date()),
       bookedDays: [],
-      interestedDays: []
+      interestedDays: [],
+      currentImage: 0
     }
     this.showInterest = this.showInterest.bind(this)
     this.deleteInterest = this.deleteInterest.bind(this)
@@ -63,6 +66,35 @@ export default class Overview extends Component {
     this.getSelectedHousing = this.getSelectedHousing.bind(this)
     this.getBookingData = this.getBookingData.bind(this)
     this.getOtherHousesInArea = this.getOtherHousesInArea.bind(this)
+
+    // LightBox
+    this.closeLightbox = this.closeLightbox.bind(this);
+    this.openLightbox = this.openLightbox.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoPrevious = this.gotoPrevious.bind(this);
+  }
+
+  openLightbox(event, obj) {
+    this.setState({
+      currentImage: obj.index,
+      lightboxIsOpen: true,
+    });
+  }
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    });
+  }
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
   }
 
   // WEEK SELECTOR
@@ -328,9 +360,17 @@ export default class Overview extends Component {
       }
     }
 
+    var photos = []
+    if(housing.img){
+      housing.img.forEach(image => {
+        photos.push({src: image, width: 4, height: 3})
+      })
+    } 
+   
     return (
       <div>
         {this.state.loading && <Loader /> }
+
         {housing.title ?
           <div>
             <div className="imageBox" style={{ backgroundImage: 'url(' + housing.img[0] + ')' }}>
@@ -383,17 +423,14 @@ export default class Overview extends Component {
                       </div>
 
                       <hr />
-
-                      <div className="columns is-variable is-2">
-                        {housing.img.map(image => {
-                        return <div className="column">
-                          <div className="housing-detail-card"
-                            style={{ 'borderRadius': '2px', backgroundImage: 'url(' + image + ')' }} alt="">
-                          </div>
-                        </div>
-                        })}
-                      </div>
-
+                      <Gallery photos={photos} onClick={this.openLightbox} columns={4}/>
+                      <Lightbox images={photos}
+                        onClose={this.closeLightbox}
+                        onClickPrev={this.gotoPrevious}
+                        onClickNext={this.gotoNext}
+                        currentImage={this.state.currentImage}
+                        isOpen={this.state.lightboxIsOpen}
+                      />
                       {/* <hr />
 
                       <div className="columns is-variable is-2">
