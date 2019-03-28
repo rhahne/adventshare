@@ -22,11 +22,11 @@ function getNumberOfWeek(dateIn) {
 
 router.post('/', function (req, res, next) {
     debugger
-        const { where, activity, startdate, enddate } = req.body;
-        const weekNumStart = getNumberOfWeek(startdate)
-        const weekNumEnd = getNumberOfWeek(enddate)
+        const { where, activity, from, to } = req.body;
+        const weekNumStart = getNumberOfWeek(from)
+        const weekNumEnd = getNumberOfWeek(to)
 
-    if (!where || !activity || !weekNumStart || !weekNumEnd) {
+    if (!where || !activity ) {
         res.status(400).json({
             message: 'Please fill in all the fields, son!'
         })
@@ -48,7 +48,12 @@ router.post('/', function (req, res, next) {
             }})
         .populate({
             path: 'bookings',
-            match: { booked: { $nin: false }},
+            match: {
+                $and: [ 
+                    { date: { $gt: weekNumStart } }, 
+                    { date: { $lt: weekNumEnd } }, 
+                    {booked: { $nin: [false] } 
+                } ] },
             })
         .then(allHouses => {
             res.status(200).json(allHouses)

@@ -1,39 +1,853 @@
-{"_id":{"$oid":"5c9ce0ea03cb959f658b868d"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"},{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"},{"$oid":"5c9b2f6e8ce75a331c80396c"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce0f303cb959f658b868e"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce12d03cb959f658b868f"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"},{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"17"},"booked":false,"__v":{"$numberInt":"0"},"full":true}
-{"_id":{"$oid":"5c9ce13a03cb959f658b8690"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"133739f5713372b767d95695"},"spots":{"$numberInt":"8"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce13c03cb959f658b8691"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"133739f5713372b767d95695"},"spots":{"$numberInt":"8"},"date":{"$numberInt":"18"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce14503cb959f658b8692"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"},{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce14803cb959f658b8693"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"},{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"17"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce15203cb959f658b8694"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"133759f5fdf277b7713376f5"},"spots":{"$numberInt":"10"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce15803cb959f658b8695"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337bcb77df282b768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce15d03cb959f658b8696"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337b9847df282b768d776e7"},"spots":{"$numberInt":"6"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce15f03cb959f658b8697"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337b9847df282b768d776e7"},"spots":{"$numberInt":"6"},"date":{"$numberInt":"20"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce16103cb959f658b8698"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337b9847df282b768d776e7"},"spots":{"$numberInt":"6"},"date":{"$numberInt":"22"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce16403cb959f658b8699"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337b9847df282b768d776e7"},"spots":{"$numberInt":"6"},"date":{"$numberInt":"29"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce17903cb959f658b869a"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337bcb77df28bb768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce17d03cb959f658b869b"},"users":[{"$oid":"5c9b2fe78ce75a331c80396f"}],"confirmation":[],"housing":{"$oid":"1337bcb77df28bb768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"13"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1cf03cb959f658b869c"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"17"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1d103cb959f658b869d"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"19"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1d303cb959f658b869e"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"21"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1e203cb959f658b869f"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b2f6e8ce75a331c80396c"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"},"full":true}
-{"_id":{"$oid":"5c9ce1e703cb959f658b86a0"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"},"full":true}
-{"_id":{"$oid":"5c9ce1ea03cb959f658b86a1"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"18"},"booked":false,"__v":{"$numberInt":"0"},"full":true}
-{"_id":{"$oid":"5c9ce1eb03cb959f658b86a2"},"users":[{"$oid":"5c9b30868ce75a331c803973"},{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"19"},"booked":false,"__v":{"$numberInt":"0"},"full":true}
-{"_id":{"$oid":"5c9ce1ed03cb959f658b86a3"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"21"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1ef03cb959f658b86a4"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"22"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1fb03cb959f658b86a5"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f5713372b767d95695"},"spots":{"$numberInt":"8"},"date":{"$numberInt":"17"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1fc03cb959f658b86a6"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f5713372b767d95695"},"spots":{"$numberInt":"8"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce1ff03cb959f658b86a7"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"133739f5713372b767d95695"},"spots":{"$numberInt":"8"},"date":{"$numberInt":"19"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce20b03cb959f658b86a8"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"15"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce20e03cb959f658b86a9"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"19"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce21b03cb959f658b86aa"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"1337bcb77df282b768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"17"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce21d03cb959f658b86ab"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"1337bcb77df282b768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"18"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce21e03cb959f658b86ac"},"users":[{"$oid":"5c9b30868ce75a331c803973"}],"confirmation":[],"housing":{"$oid":"1337bcb77df282b768d776e8"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"16"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce24a03cb959f658b86ad"},"users":[{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"20"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce24c03cb959f658b86ae"},"users":[{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"22"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce27603cb959f658b86af"},"users":[{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"18"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce27703cb959f658b86b0"},"users":[{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"21"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce27903cb959f658b86b1"},"users":[{"$oid":"5c9b317d8ce75a331c803974"}],"confirmation":[],"housing":{"$oid":"1337391337c282b768d776f5"},"spots":{"$numberInt":"4"},"date":{"$numberInt":"20"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce2ab03cb959f658b86b2"},"users":[],"confirmation":[],"housing":{"$oid":"133739f57df282b76d871337"},"spots":{"$numberInt":"5"},"date":{"$numberInt":"18"},"booked":false,"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5c9ce2c903cb959f658b86b3"},"users":[{"$oid":"5c9b2f6e8ce75a331c80396c"}],"confirmation":[],"housing":{"$oid":"133739f57df282b13377765c"},"spots":{"$numberInt":"2"},"date":{"$numberInt":"20"},"booked":false,"__v":{"$numberInt":"0"}}
+[{
+    "_id": {
+        "$oid": "5c9ce0ea03cb959f658b868d"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }, {
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }, {
+        "$oid": "5c9b2f6e8ce75a331c80396c"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce0f303cb959f658b868e"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce12d03cb959f658b868f"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }, {
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "17"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    },
+    "full": true
+}, {
+    "_id": {
+        "$oid": "5c9ce13a03cb959f658b8690"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f5713372b767d95695"
+    },
+    "spots": {
+        "$numberInt": "8"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce13c03cb959f658b8691"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f5713372b767d95695"
+    },
+    "spots": {
+        "$numberInt": "8"
+    },
+    "date": {
+        "$numberInt": "18"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce14503cb959f658b8692"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }, {
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce14803cb959f658b8693"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }, {
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "17"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce15203cb959f658b8694"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133759f5fdf277b7713376f5"
+    },
+    "spots": {
+        "$numberInt": "10"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce15803cb959f658b8695"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df282b768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce15d03cb959f658b8696"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337b9847df282b768d776e7"
+    },
+    "spots": {
+        "$numberInt": "6"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce15f03cb959f658b8697"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337b9847df282b768d776e7"
+    },
+    "spots": {
+        "$numberInt": "6"
+    },
+    "date": {
+        "$numberInt": "20"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce16103cb959f658b8698"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337b9847df282b768d776e7"
+    },
+    "spots": {
+        "$numberInt": "6"
+    },
+    "date": {
+        "$numberInt": "22"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce16403cb959f658b8699"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337b9847df282b768d776e7"
+    },
+    "spots": {
+        "$numberInt": "6"
+    },
+    "date": {
+        "$numberInt": "29"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce17903cb959f658b869a"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df28bb768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce17d03cb959f658b869b"
+    },
+    "users": [{
+        "$oid": "5c9b2fe78ce75a331c80396f"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df28bb768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "13"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1cf03cb959f658b869c"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "17"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1d103cb959f658b869d"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "19"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1d303cb959f658b869e"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "21"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1e203cb959f658b869f"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b2f6e8ce75a331c80396c"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    },
+    "full": true
+}, {
+    "_id": {
+        "$oid": "5c9ce1e703cb959f658b86a0"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    },
+    "full": true
+}, {
+    "_id": {
+        "$oid": "5c9ce1ea03cb959f658b86a1"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "18"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    },
+    "full": true
+}, {
+    "_id": {
+        "$oid": "5c9ce1eb03cb959f658b86a2"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }, {
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "19"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    },
+    "full": true
+}, {
+    "_id": {
+        "$oid": "5c9ce1ed03cb959f658b86a3"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "21"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1ef03cb959f658b86a4"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "22"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1fb03cb959f658b86a5"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f5713372b767d95695"
+    },
+    "spots": {
+        "$numberInt": "8"
+    },
+    "date": {
+        "$numberInt": "17"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1fc03cb959f658b86a6"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f5713372b767d95695"
+    },
+    "spots": {
+        "$numberInt": "8"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce1ff03cb959f658b86a7"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f5713372b767d95695"
+    },
+    "spots": {
+        "$numberInt": "8"
+    },
+    "date": {
+        "$numberInt": "19"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce20b03cb959f658b86a8"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "15"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce20e03cb959f658b86a9"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "19"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce21b03cb959f658b86aa"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df282b768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "17"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce21d03cb959f658b86ab"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df282b768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "18"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce21e03cb959f658b86ac"
+    },
+    "users": [{
+        "$oid": "5c9b30868ce75a331c803973"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337bcb77df282b768d776e8"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "16"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce24a03cb959f658b86ad"
+    },
+    "users": [{
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "20"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce24c03cb959f658b86ae"
+    },
+    "users": [{
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "22"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce27603cb959f658b86af"
+    },
+    "users": [{
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "18"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce27703cb959f658b86b0"
+    },
+    "users": [{
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "21"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce27903cb959f658b86b1"
+    },
+    "users": [{
+        "$oid": "5c9b317d8ce75a331c803974"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "1337391337c282b768d776f5"
+    },
+    "spots": {
+        "$numberInt": "4"
+    },
+    "date": {
+        "$numberInt": "20"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce2ab03cb959f658b86b2"
+    },
+    "users": [],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b76d871337"
+    },
+    "spots": {
+        "$numberInt": "5"
+    },
+    "date": {
+        "$numberInt": "18"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "5c9ce2c903cb959f658b86b3"
+    },
+    "users": [{
+        "$oid": "5c9b2f6e8ce75a331c80396c"
+    }],
+    "confirmation": [],
+    "housing": {
+        "$oid": "133739f57df282b13377765c"
+    },
+    "spots": {
+        "$numberInt": "2"
+    },
+    "date": {
+        "$numberInt": "20"
+    },
+    "booked": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}]

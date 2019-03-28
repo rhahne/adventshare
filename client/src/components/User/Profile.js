@@ -40,6 +40,7 @@ export default class Profile extends Component {
       .then((response) => {
         const { finalBookings, bookings, interests, sessionUser } = response.data
         bookings.forEach(booking => {
+          debugger
           if (booking.confirmation.indexOf(sessionUser._id) !== -1) {
             booking.isConfirmed = true;
           }
@@ -127,6 +128,12 @@ export default class Profile extends Component {
                           </div>
                         </div>
                       })}
+                      
+                      <hr className="hr" />
+
+{/* ------------ */}
+{/* CONFIRMATION */}
+{/* ------------ */}
                       <h1 className="title is-3 is-spaced">
                         Waiting Confirmation
                       </h1>
@@ -161,6 +168,10 @@ export default class Profile extends Component {
                     </div>
                   </div>
                 </div>
+
+{/* -------- */}
+{/* BOOKINGS */}
+{/* -------- */}
                 <div className="column is-one-third">
                   <div className="card is-shadowless">
                     <div className="card-content">
@@ -189,6 +200,7 @@ export default class Profile extends Component {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
