@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ListHousing from '../general/HousingComps'
 import { AboutArea } from '../general/AreaComps'
+import Loader from '../Loader';
 
 export default class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: true,
       selectedArea: [],
       activities: [],
       housing: []
@@ -23,7 +25,8 @@ export default class Overview extends Component {
         this.setState({
           selectedArea: area,
           housing: housingsInArea,
-          activities: area.activity
+          activities: area.activity,
+          loading: false
         })
       })
       .catch((err) => {
@@ -40,6 +43,7 @@ export default class Overview extends Component {
   render() {
     return (
       <div>
+          {this.state.loading && <Loader /> }
           {this.state.selectedArea.name ?
             <AboutArea area={this.state.selectedArea} allActivities={this.state.activities} /> : ''
           }

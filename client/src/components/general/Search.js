@@ -46,7 +46,9 @@ export default class Search extends Component {
     }
 
     sendQueryUp(searchQuery) {
-        this.setState({searchInput: searchQuery})
+        this.setState({
+            searchInput: searchQuery
+        })
     }
 
     render() {

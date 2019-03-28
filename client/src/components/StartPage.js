@@ -5,16 +5,24 @@ import axios from 'axios'
 import ListHousing from './general/HousingComps'
 import ListActivity from './general/ActivityComps'
 import {Container, Section } from "react-bulma-components/full"
+import Loader from './Loader';
 
 export default class StartPage extends Component {
+    state = {
+        loading: true
+    }
+    stopLoader() {
+            this.setState({loading: false});
+    }
     render() {
         return (
             <div>
+                { this.state.loading && <Loader /> }
                 <HeroHeader {...this.props} />
                 <Explanation/>
                 <TopAreas title={"Most popular area's"} />
                 <EightRandom/>
-                <FiveActivities title={"Great outdoor activities"} />
+                <FiveActivities title={"Great outdoor activities"} stopLoader={this.stopLoader.bind(this)}/>
             </div>
         )
     }
@@ -42,6 +50,7 @@ export class FiveActivities extends Component {
                 allActivities: response.data,
                 fiveActivities: allActivities.slice(allActivities.length - 5, allActivities.length)
             })
+            this.props.stopLoader()
         })
         .catch((err) => {
             //this.props.history.push('/users/login')
