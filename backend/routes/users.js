@@ -108,17 +108,17 @@ router.post('/', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   // Frontend Validation
   const {
-    firstname,
+    email,
     password
   } = req.body;
-  if (!firstname || !password) {
+  if (!email || !password) {
     res.status(400).json({
       message: 'Please fill in all the fields, son!'
     })
   } else {
     // Backend Validation
     User.findOne({
-        firstname: req.body.firstname
+        email: req.body.email
       })
       .then((foundUser) => {
         if (!foundUser) {
