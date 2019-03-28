@@ -56,6 +56,7 @@ export default class Overview extends Component {
       currentUserId: this.props.currentUserId,
       numberOfInterests: 0,
       date: getWeekNumber(new Date()),
+      myDays: [],
       bookedDays: [],
       interestedDays: [],
       currentImage: 0
@@ -152,14 +153,19 @@ export default class Overview extends Component {
     axios({
       method: 'get',
       url: 'http://localhost:3002/housings/calendarInfo',
+      withCredentials: true,
       params: {
         housing: this.state.selectedHousing._id
       }
     })
     .then((response) => {
-        const {bookedDays, interestedDays} = response.data
+        const {myDays, bookedDays, interestedDays} = response.data
+        let allMyDays = []
         let allBookedDays = [];
         let allInterestedDays = [];
+        myDays.forEach(myDay => {
+          allMyDays.push(new Date(myDay))
+        })
         bookedDays.forEach(bookedDay => {
           allBookedDays.push(new Date(bookedDay))
         })
@@ -167,6 +173,7 @@ export default class Overview extends Component {
           allInterestedDays.push(new Date(interestedDay))
         })
         this.setState({
+            myDays: allMyDays,
             bookedDays: allBookedDays,
             interestedDays: allInterestedDays
           })
@@ -309,7 +316,8 @@ export default class Overview extends Component {
       selectedRangeStart: daysAreSelected && selectedDays[0],
       selectedRangeEnd: daysAreSelected && selectedDays[6],
       booked: this.state.bookedDays,
-      abdo: this.state.interestedDays
+      interests: this.state.interestedDays,
+      myDays: this.state.myDays
     };
 
     let button = ''
@@ -323,7 +331,7 @@ export default class Overview extends Component {
           </button>
       if(this.props.isAuthenticated) info = 'You booked this place!'
     } else if (this.state.bookingData.full) {
-      button = <button className="button">
+      button = <button className="button is-primary">
             Reserved
                     <span className="icon is-small" style={{ marginLeft: "7px" }}>
               <FontAwesomeIcon icon="check-circle" />
@@ -333,7 +341,7 @@ export default class Overview extends Component {
     } else {
       if (this.state.interested) {
         button = <div
-          className="button is-warning has-icon-right"
+          className="button is-primary has-icon-right"
           onClick={this.deleteInterest}>
           Interested
                       <span className="icon is-small" style={{ marginLeft: "7px" }}>
@@ -468,9 +476,14 @@ export default class Overview extends Component {
                         Traveldates:
                     </p>
                       <div className="selectedWeek">
-                        <DayPicker selectedDays={selectedDays} showWeekNumbers showOutsideDays modifiers={modifiers} 
-                          onDayClick={this.handleDayChange} onDayMouseEnter={this.handleDayEnter}
-                          onDayMouseLeave={this.handleDayLeave} onWeekClick={this.handleWeekClick} />
+                        <DayPicker 
+                        selectedDays={selectedDays} 
+                        showWeekNumbers showOutsideDays 
+                        modifiers={modifiers} 
+                          onDayClick={this.handleDayChange} 
+                          onDayMouseEnter={this.handleDayEnter}
+                          onDayMouseLeave={this.handleDayLeave} 
+                          onWeekClick={this.handleWeekClick} />
                         {selectedDays.length === 7 && (
                           <div>
                             {moment(selectedDays[0]).format('LL')} –{' '}

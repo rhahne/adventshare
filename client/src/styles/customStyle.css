@@ -64,7 +64,6 @@ html {
   margin-right: 8px;
 }
 
-/* ROBIN CSS */
 .imageBox{
   height: 550px;
   background-size: cover;
@@ -72,6 +71,11 @@ html {
   background-position: center center;
 }
 
+/*/ ---------------------- /*/
+/*/ ---------------------- /*/
+/*/ ------BOOKINGBOX------ /*/
+/*/ ---------------------- /*/
+/*/ ---------------------- /*/
 .booking-box{
   border: 1px solid lightgray;
   text-align: center;
@@ -87,7 +91,7 @@ html {
   width: 10px;
 }
 .is-custom-icon{
-  flex:none;
+  flex: none;
   width: 30px;
   text-align: center;
 }
@@ -131,8 +135,9 @@ ul.no-list-style {
   background-color: #EFEFEF !important;
 }
 .selectedWeek .DayPicker-Day--selectedRange {
-  background-color: #fff !important;
-  border-bottom: 4px solid black !important;
+  background-color: hsl(0, 0%, 96%) !important;
+  font-weight: 600;
+  color: hsl(0, 0%, 21%);
 }
 /*
 .selectedWeek .DayPicker-Day--selectedRangeStart {
@@ -145,24 +150,51 @@ ul.no-list-style {
 
 .selectedWeek .DayPicker-Day--selectedRange:not(.DayPicker-Day--outside).DayPicker-Day--selected,
 .selectedWeek .DayPicker-Day--hoverRange:not(.DayPicker-Day--outside).DayPicker-Day--selected {
-  border-radius: 0 !important;
-  color: black !important;
+  /* border-radius: 0 !important; */
+  color: hsl(0, 0%, 21%) !important;
 }
 .selectedWeek .DayPicker-Day--hoverRange:hover {
-  border-radius: 0 !important;
+  /* border-radius: 0 !important; */
 }
 
+/* If its full and you're not it. */
 .selectedWeek .DayPicker-Day--booked {
-  background-color: #ff8080 !important;
+  background-color: hsl(0, 0%, 100%) !important;
   border-radius: 0;
-  color: black;
+  color: hsl(0, 0%, 86%);
+  text-decoration: line-through;
 }
 
-.selectedWeek .DayPicker-Day--abdo {
-  background-color: #ffe6b3 !important;
-  border-radius: 0;
-  color: black;
+/* If someone has shown interest */
+.selectedWeek .DayPicker-Day--interests {
+  background-color: hsl(0, 0%, 96%) !important;
+  border-radius: 50px;
+  color: hsl(0, 0%, 71%);
 }
+
+/* If its your booking, and its not full */
+.selectedWeek .DayPicker-Day--myDays {
+  border: 1.5px solid hsl(171, 100%, 41%) !important;
+  border-radius: 100px;
+  color: hsl(0, 0%, 71%);
+  text-decoration: none;
+}
+
+/* If its your booking, and its full */
+.selectedWeek .DayPicker-Day--myDays.DayPicker-Day--booked {
+  background-color: hsl(171, 100%, 41%) !important;
+  color: white !important;
+}
+
+/* If you select fullybooked week */
+.selectedWeek .DayPicker-Day--selectedRange.DayPicker-Day--booked {
+  font-weight: 50 !important; 
+  /* background-color: hsl(0, 0%, 100%) !important; */
+  /* border-radius: 0 !important; */
+  color: hsl(0, 0%, 86%) !important; 
+  /* text-decoration: line-through; */
+}
+
 
 .react-photo-gallery--gallery img {
   max-height: 100%;
