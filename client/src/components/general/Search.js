@@ -311,9 +311,10 @@ const SearchSummary = function (props) {
             break;
     }
 
-    const startDate = moment(String(props.searchInput.from)).format('MMMM Do YYYY')
-    const endDate = moment(String(props.searchInput.to)).format('MMMM Do YYYY')
 
+    
+
+    debugger
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{ borderBottom: "solid 1px hsl(0, 0%, 96%)" }}>
             <div className="container">
@@ -333,18 +334,27 @@ const SearchSummary = function (props) {
                                         onClick={() => { props.toggleModal('search') }}>
                                         {props.searchInput.activity}
                                     </div> */}
-                                    <div
-                                        className="button is-info"
-                                        onClick={() => { props.toggleModal('search') }}>
-                                        <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
-                                        {startDate}
-                                    </div>
-                                    <div
-                                        className="button is-info"
-                                        onClick={() => { props.toggleModal('search') }}>
-                                        <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
-                                        {endDate}
-                                    </div>
+
+
+                                    { String(props.searchInput.from) !== "undefined"  ? 
+                                        <div 
+                                            className="button is-info"
+                                            onClick={() => { props.toggleModal('search') }}>
+                                            <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
+                                            {moment(String(props.searchInput.from)).format('MMMM Do YYYY')}
+                                        </div>
+                                    : "" }
+                                    
+
+
+                                    {String(props.searchInput.to) !== "undefined" ? 
+                                        <div
+                                            className="button is-info"
+                                            onClick={() => { props.toggleModal('search') }}>
+                                            <FontAwesomeIcon style={{ marginRight: "5px" }} icon="calendar-week" />
+                                            {moment(String(props.searchInput.to)).format('MMMM Do YYYY')}
+                                        </div>
+                                    : "" }
                                 </div>
                             </div>
                         </div>
