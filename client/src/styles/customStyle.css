@@ -52,7 +52,8 @@ html {
 .hero-form {
   text-align: left;
   background-color: hsl(0, 0%, 100%);
-  padding: 30px; 
+  padding: 30px;
+   
   border-radius: 5px; 
 }
 

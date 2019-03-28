@@ -56,6 +56,7 @@ router.post('/', function (req, res, next) {
                 } ] },
             })
         .then(allHouses => {
+            debugger
             res.status(200).json(allHouses)
         })
         .catch(error => {

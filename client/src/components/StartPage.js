@@ -120,8 +120,8 @@ function HeroHeader(props) {
                         className="columns is-vcentered"
                         style={{
                         'maxWidth': '100vw',
-                        minHeight: '100vh',
-                        'margin': '0px'
+                        minHeight: 'calc(100vh - 20vh)',
+                        'margin': '0px',
                     }}>
                         <div className="column is-4 hero-form">
                             <h1 className="title is-spaced">
