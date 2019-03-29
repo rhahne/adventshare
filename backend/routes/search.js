@@ -51,12 +51,12 @@ router.post('/', function (req, res, next) {
             }})
         .populate({
             path: 'bookings',
-            match: {
-                $and: [ 
-                    { date: { $gt: weekNumStart } }, 
-                    { date: { $lt: weekNumEnd } }, 
-                    { booked: { $nin: [false] } 
-                } ] },
+            // match: {
+            //     $and: [ 
+            //         { date: { $gt: weekNumStart } }, 
+            //         { date: { $lt: weekNumEnd } }, 
+            //         { booked: { $nin: [false] } 
+            //     } ] },
             })
         .then(allHouses => {
             res.status(200).json(allHouses)

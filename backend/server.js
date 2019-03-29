@@ -57,8 +57,10 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
+    origin: [REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
 }));
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public/build')))
 
 // creating routes
 var indexRouter = require('./routes/index');
