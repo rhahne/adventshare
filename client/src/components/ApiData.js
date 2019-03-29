@@ -18,7 +18,7 @@ export default class ApiData extends Component {
   
     // fetch data from our data bases
     getDataFromDb = () => {
-      axios.get("http://localhost:3002/api/demo")
+      axios.get(`${process.env.REACT_APP_API_URL}/api/demo`)
         .then(data => {
           this.setState({ data: data.data, loading: false })
         });

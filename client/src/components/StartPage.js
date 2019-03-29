@@ -43,7 +43,7 @@ export class FiveActivities extends Component {
     }
 
     getFiveActivities() {
-        axios({method: 'get', url: 'http://localhost:3002/activities'})
+        axios({method: 'get', url: `${process.env.REACT_APP_API_URL}/activities`})
         .then((response) => {
             let allActivities = [...response.data]
             this.setState({ 
@@ -83,7 +83,7 @@ export class EightRandom extends Component {
     }
 
     getRandomEight() {
-        axios({method: 'get', url: 'http://localhost:3002/housings'}).then((response) => {
+        axios({method: 'get', url: `${process.env.REACT_APP_API_URL}/housings`}).then((response) => {
             let houseList = response.data;
             this.setState({
                 allHouses: houseList,

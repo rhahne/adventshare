@@ -8,7 +8,7 @@ export default class Logout extends Component {
     this.props.history.push('/')
     axios({
       method: 'get',
-      url: 'http://localhost:3002/users/logout',
+      url: `${process.env.REACT_APP_API_URL}/users/logout`,
       withCredentials: true
     })
   }

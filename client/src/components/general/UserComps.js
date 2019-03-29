@@ -23,7 +23,7 @@ export class Signup extends Component {
     let newUser = this.state;
     axios({
       method: 'post',
-      url: 'http://localhost:3002/users',
+      url: `${process.env.REACT_APP_API_URL}/users`,
       data: newUser,
       withCredentials: true
     })
@@ -54,7 +54,7 @@ export class Signup extends Component {
                 </button>
               </header>   
               <section className="modal-card-body">
-                <form onSubmit={this.handleSubmit} action="http://localhost:3002/users">
+                <form onSubmit={this.handleSubmit} action={process.env.REACT_APP_API_URL+'/users'}>
                   <div className="field">
                     <label className="label">E-Mail Address</label>
                     <div className="control">
@@ -116,7 +116,7 @@ export class Login extends Component {
     let loginUser = this.state;
     axios({
       method: 'post',
-      url: 'http://localhost:3002/users/login',
+      url: `${process.env.REACT_APP_API_URL}/users/login`,
       data: loginUser,
       withCredentials: true
     })
@@ -144,7 +144,7 @@ export class Login extends Component {
             <button onClick={()=>{this.props.toggleModal('login')}} className="delete" aria-label="close"></button>
           </header>   
           <section className="modal-card-body">
-          <form onSubmit={this.handleSubmit} action="http://localhost:3002/users/login">
+          <form onSubmit={this.handleSubmit} action={process.env.REACT_APP_API_URL+"/users/login"}>
           <div className="field">
             <label className="label">E-Mail</label>
             <div className="control">

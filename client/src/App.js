@@ -39,7 +39,7 @@ class App extends Component {
   getUserInfo() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/users/profile',
+      url: `${process.env.REACT_APP_API_URL}/users/profile`,
       withCredentials: true
     })
       .then((response) => {

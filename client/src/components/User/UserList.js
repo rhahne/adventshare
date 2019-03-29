@@ -9,7 +9,7 @@ export default class UserList extends Component {
     }
   }
   getAllUsers() {
-    axios.get('http://localhost:3002/users')
+    axios.get(`${process.env.REACT_APP_API_URL}/users`)
       .then((response) => {
         this.setState({
           allUsers: response.data
