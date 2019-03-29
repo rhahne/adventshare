@@ -26,9 +26,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build-dev": "dotenv -e .env.development react-scripts build && cp -r ./build ../backend/public",
+    "build-prod": "dotenv -e .env.production react-scripts build",
     "build": "react-scripts build",
-    "build-dev": "dotenv -e .dev.env react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

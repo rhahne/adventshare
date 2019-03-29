@@ -49,7 +49,7 @@ html {
     position: relative;
 }
 
-.hero-form {
+.column.is-4.hero-form {
   text-align: left;
   background-color: hsl(0, 0%, 100%);
   padding: 30px;

@@ -8,17 +8,16 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Data = require("./data");
 const cors = require('cors')
+var app = express();
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+require("dotenv").config();
 
-const API_PORT = 3002;
-var app = express();
-
-const dblink = 'mongodb+srv://Robin:Tj2cEFnJ1RxEltqh@cluster0-qcewh.gcp.mongodb.net/test?retryWrites=true'
+// const dblink = 'mongodb+srv://Robin:Tj2cEFnJ1RxEltqh@cluster0-qcewh.gcp.mongodb.net/test?retryWrites=true'
 
 // Connect to mongo
 mongoose
-    .connect('mongodb://localhost/adventshare', {
+    .connect(process.env.DB_HOST, {
         useNewUrlParser: true
     })
     .then(x => {
@@ -57,9 +56,8 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors({
     credentials: true,
-    origin: [REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
+    origin: [process.env.REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
 }));
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'public/build')))
 
 // creating routes
@@ -72,7 +70,6 @@ var housingsRouter = require('./routes/housings')
 var activitiesRouter = require('./routes/activities')
 var bookingsRouter = require('./routes/bookings')
 
-app.use('/', indexRouter);
 app.use("/api", apiRouter);
 app.use("/users", usersRouter);
 app.use("/search", searchRouter);
