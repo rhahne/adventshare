@@ -16,7 +16,7 @@
 //     getAllAreas() {
 //       axios({
 //         method: 'get',
-//         url: ${process.env.REACT_APP_API_URL}/areas'
+//         url: `${process.env.REACT_APP_API_URL}/areas`
 //       })
 //         .then((response) => {
 //           this.setState({
