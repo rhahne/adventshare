@@ -128,7 +128,7 @@ function HeroHeader(props) {
                                 Book the best appartments while traveling solo
                             </h1>
                             <h2 className="subtitle is-size-4">
-                                Meet other outdoor enthausiasts and share unique appartments in the best
+                                Meet other outdoor enthusiasts and share unique appartments in the best
                                 locations
                             </h2>
                             <div className="" style={{}}>
