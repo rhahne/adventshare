@@ -20,7 +20,7 @@ export default class Overview extends Component {
   getSelectedArea(areaId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/areas/details/' + areaId
+      url: `${process.env.REACT_APP_API_URL}/areas/details/` + areaId
     })
       .then((response) => {
         const { area, housingsInArea } = response.data;

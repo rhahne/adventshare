@@ -12,7 +12,7 @@ export class TopAreas extends Component {
         }
     }
     getAllAreas() {
-        axios({method: 'get', url: 'http://localhost:3002/areas'})
+        axios({method: 'get', url: `${process.env.REACT_APP_API_URL}/areas`})
         .then((response) => {
             this.setState({allAreas: response.data})
         })

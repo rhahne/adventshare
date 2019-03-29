@@ -1,3 +1,4 @@
+import './styles/customStyle.css';
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from './components/Navigation'
@@ -16,6 +17,7 @@ import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faCalendarWeek, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch, faCheckCircle, faHeart, faLink, faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 library.add(faStar, faBed, faCalendarWeek, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch, faCheckCircle, faHeart, faLink, faQuestionCircle, faTimesCircle)
+
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class App extends Component {
   getUserInfo() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/users/profile',
+      url: `${process.env.REACT_APP_API_URL}/users/profile`,
       withCredentials: true
     })
       .then((response) => {

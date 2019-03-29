@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "bulma": "^0.7.4",
     "bulma-extensions": "^6.2.3",
+    "dotenv": "^7.0.0",
     "i": "^0.3.6",
     "moment": "^2.24.0",
     "npm": "^6.9.0",
@@ -26,6 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-dev": "dotenv -e .dev.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -31,7 +31,7 @@ const ListHousing = function (props) {
                             </p>
                             <p 
                                 className="has-text-dark">
-                                    {"€" + housing.pricing + " per night"}
+                                    {"€" + housing.pricing + " per week"}
                             </p>
                         </Link>
                     </div>

@@ -110,23 +110,22 @@ export class SearchForm extends Component {
         let {name, value} = event.target;
         this.setState({[name]: value});
     }
-    avoidDateCollision(from, to) {
-        if (from || to) {
-            debugger
-        } else {
-        this.setState({
-            // from: Thu Mar 07 2000 12:00:00 GMT+0100 (Central European Standard Time),
-            // to: Thu Mar 17 2000 12:00:00 GMT+0100 (Central European Standard Time)
-        })}
-
-    }
+    // avoidDateCollision(from, to) {
+    //     if (from || to) {
+    //         debugger
+    //     } else {
+    //     this.setState({
+    //         // from: Thu Mar 07 2000 12:00:00 GMT+0100 (Central European Standard Time),
+    //         // to: Thu Mar 17 2000 12:00:00 GMT+0100 (Central European Standard Time)
+    //     })}
+    // }
     handleSubmit = (event) => {
         event.preventDefault()
-        this.avoidDateCollision(this.state.from, this.state.to)
+        // this.avoidDateCollision(this.state.from, this.state.to)
         let searchInfo = this.state;
         this.props.sendQueryUp(searchInfo);
 
-        axios({ method: 'post', url: 'http://localhost:3002/search', data: searchInfo }).then((response) => {
+        axios({ method: 'post', url: `${process.env.REACT_APP_API_URL}/search`, data: searchInfo }).then((response) => {
             this.props.getSearchResult(response.data)
         }).catch((err) => {
             this.setState({ errorMessage: 'Errorsön' })

@@ -20,7 +20,7 @@ export default class Overview extends Component {
   getHousingWithActivity(activityId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/activities/details/housing/' + activityId
+      url: `${process.env.REACT_APP_API_URL}/activities/details/housing/` + activityId
     })
       .then((response) => {
         this.setState({
@@ -35,7 +35,7 @@ export default class Overview extends Component {
   getActivity(activityId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/activities/details/activity/' + activityId
+      url: `${process.env.REACT_APP_API_URL}/activities/details/activity/` + activityId
     })
       .then((response) => {
         this.setState({
@@ -51,7 +51,7 @@ export default class Overview extends Component {
   getAreasWithActivity(activityId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/activities/details/area/' + activityId
+      url: `${process.env.REACT_APP_API_URL}/activities/details/area/` + activityId
     })
       .then((response) => {
         this.setState({

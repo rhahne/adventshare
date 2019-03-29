@@ -23,7 +23,7 @@ export class Signup extends Component {
     let newUser = this.state;
     axios({
       method: 'post',
-      url: 'http://localhost:3002/users',
+      url: ${process.env.REACT_APP_API_URL}/users',
       data: newUser,
       withCredentials: true
     })
@@ -116,7 +116,7 @@ export class Login extends Component {
     let loginUser = this.state;
     axios({
       method: 'post',
-      url: 'http://localhost:3002/users/login',
+      url: ${process.env.REACT_APP_API_URL}/users/login',
       data: loginUser,
       withCredentials: true
     })

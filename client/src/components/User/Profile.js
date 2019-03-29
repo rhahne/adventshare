@@ -17,7 +17,7 @@ export default class Profile extends Component {
   confirm(bookingId, isConfirmed) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/bookings/confirm',
+      url: `${process.env.REACT_APP_API_URL}/bookings/confirm`,
       withCredentials: true,
       params: {
         isConfirmed: isConfirmed,
@@ -34,7 +34,7 @@ export default class Profile extends Component {
   getBookingData() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/users/account',
+      url: `${process.env.REACT_APP_API_URL}/users/account`,
       withCredentials: true,
     })
       .then((response) => {

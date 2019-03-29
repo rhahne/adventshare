@@ -149,7 +149,7 @@ export default class HousingDetail extends Component {
   getSelectedHousing(housingId) {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/' + housingId,
+      url: `${process.env.REACT_APP_API_URL}/housings/` + housingId,
       withCredentials: true
     })
       .then((response) => {
@@ -166,7 +166,7 @@ export default class HousingDetail extends Component {
   getBookingData() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/booking',
+      url: `${process.env.REACT_APP_API_URL}/housings/booking`,
       withCredentials: true,
       params: {
         housing: this.state.selectedHousing._id,
@@ -192,7 +192,7 @@ export default class HousingDetail extends Component {
   getCalenderInfo() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/calendarInfo',
+      url: `${process.env.REACT_APP_API_URL}/housings/calendarInfo`,
       withCredentials: true,
       params: {
         housing: this.state.selectedHousing._id
@@ -223,7 +223,7 @@ export default class HousingDetail extends Component {
   getOtherHousesInArea() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/inarea',
+      url: `${process.env.REACT_APP_API_URL}/housings/inarea`,
       params: {
         areaId: this.state.selectedHousing.area._id,
         houseId: this.state.selectedHousing._id
@@ -243,7 +243,7 @@ export default class HousingDetail extends Component {
   showInterest() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/showInterest',
+      url: `${process.env.REACT_APP_API_URL}/housings/showInterest`,
       withCredentials: true,
       params: {
         housingId: this.state.selectedHousing._id,
@@ -259,7 +259,7 @@ export default class HousingDetail extends Component {
   deleteInterest() {
     axios({
       method: 'get',
-      url: 'http://localhost:3002/housings/deleteInterest',
+      url: `${process.env.REACT_APP_API_URL}/housings/deleteInterest`,
       withCredentials: true,
       params: {
         housingId: this.state.selectedHousing._id,
@@ -442,7 +442,7 @@ export default class HousingDetail extends Component {
                     <div className="booking-box">
                       <p className="subtitle is-5 price">
                         <div style={{ marginBottom: "7px" }}>
-                          <strong className="title is-4">{"€"}{housing.pricing}</strong> {" per night"}
+                          <strong className="title is-4">{"€"}{housing.pricing}</strong> {" per week"}
                         </div>
                         <FontAwesomeIcon icon="star" />
                         <FontAwesomeIcon icon="star" />
