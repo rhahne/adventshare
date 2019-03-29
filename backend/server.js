@@ -60,9 +60,13 @@ app.use(cors({
 }));
 app.use(express.static(path.join(__dirname, 'public/build')))
 
+app.use("/", (req, res, next )=> {
+debugger
+next()
+
+})
+
 // creating routes
-var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api');
 var usersRouter = require('./routes/users');
 var searchRouter = require('./routes/search');
 var areasRouter = require('./routes/areas')
@@ -70,13 +74,37 @@ var housingsRouter = require('./routes/housings')
 var activitiesRouter = require('./routes/activities')
 var bookingsRouter = require('./routes/bookings')
 
-app.use("/api", apiRouter);
-app.use("/users", usersRouter);
-app.use("/search", searchRouter);
-app.use("/areas", areasRouter);
-app.use("/housings", housingsRouter);
-app.use("/activities", activitiesRouter);
-app.use("/bookings", bookingsRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/search", searchRouter);
+app.use("/api/areas", areasRouter);
+app.use("/api/housings", housingsRouter);
+app.use("/api/activities", activitiesRouter);
+app.use("/api/bookings", bookingsRouter);
+
+
+
+
+app.get("/*", (req, res, next) => {
+    debugger
+    var options = {
+        root: __dirname + '/public/build',
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+      };
+    
+      var fileName = req.params.name;
+      res.sendFile("index.html", options, function (err) {
+        if (err) {
+            debugger
+          next(err);
+        } else {
+          console.log('Sent:', fileName);
+        }
+      });
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -85,13 +113,13 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+    debugger
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-
     // render the error page
     res.status(err.status || 500);
-    res.send('error');
+    res.send('errrrrrrrrror');
 });
 
 module.exports = app

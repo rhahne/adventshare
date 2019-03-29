@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build-dev": "dotenv -e .env.development react-scripts build && cp -r ./build ../backend/public",
+    "build-dev": "dotenv -e .env.development react-scripts build && cp -r ./build ../backend/public && rm -r ./build",
     "build-prod": "dotenv -e .env.production react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

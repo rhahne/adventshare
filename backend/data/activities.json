@@ -72,7 +72,7 @@
     "_id": {
         "$oid": "5c93bd555df282b668d776e9"
     },
-    "name": "Trial Running",
+    "name": "Trail Running",
     "description": "",
     "img": ["/img/activities/trialrun.jpg"]
 }]
