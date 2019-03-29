@@ -21,22 +21,25 @@ function getNumberOfWeek(dateIn) {
 }
 
 router.post('/', function (req, res, next) {
+    debugger
         const { where, from, to } = req.body;
         const weekNumStart = getNumberOfWeek(from)
         const weekNumEnd = getNumberOfWeek(to)
 
     if (!where) {
+        debugger
         res.status(400).json({
-            
-            message: 'Please fill in all the fields, son!'
+            message: 'Please fill in where you want to go'
         })
     }
-    else if (weekNumEnd <= weekNumStart) {
+    else if (weekNumEnd < weekNumStart) {
+        debugger
         res.status(400).json({
             message: 'A your end date should be later than your start date sön'
         })
     }
     else {
+        debugger
         Housing
         .find({area: where})
         .populate({

@@ -110,8 +110,19 @@ export class SearchForm extends Component {
         let {name, value} = event.target;
         this.setState({[name]: value});
     }
+    avoidDateCollision(from, to) {
+        if (from || to) {
+            debugger
+        } else {
+        this.setState({
+            // from: Thu Mar 07 2000 12:00:00 GMT+0100 (Central European Standard Time),
+            // to: Thu Mar 17 2000 12:00:00 GMT+0100 (Central European Standard Time)
+        })}
+
+    }
     handleSubmit = (event) => {
         event.preventDefault()
+        this.avoidDateCollision(this.state.from, this.state.to)
         let searchInfo = this.state;
         this.props.sendQueryUp(searchInfo);
 
@@ -311,10 +322,6 @@ const SearchSummary = function (props) {
             break;
     }
 
-
-    
-
-    debugger
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation" style={{ borderBottom: "solid 1px hsl(0, 0%, 96%)" }}>
             <div className="container">
