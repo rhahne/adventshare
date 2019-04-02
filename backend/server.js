@@ -13,8 +13,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 require("dotenv").config();
 
-// const dblink = 'mongodb+srv://Robin:Tj2cEFnJ1RxEltqh@cluster0-qcewh.gcp.mongodb.net/test?retryWrites=true'
-
 // Connect to mongo
 mongoose
     .connect(process.env.DB_HOST, {
@@ -60,11 +58,10 @@ app.use(cors({
 }));
 app.use(express.static(path.join(__dirname, 'public/build')))
 
-app.use("/", (req, res, next )=> {
-debugger
-next()
+// app.use("/", (req, res, next ) => {
+// next()
 
-})
+// })
 
 // creating routes
 var usersRouter = require('./routes/users');
@@ -89,13 +86,13 @@ app.get("/*", (req, res, next) => {
             'x-timestamp': Date.now(),
             'x-sent': true
         }
-      };
-   
+      }
+
       res.sendFile("index.html", options, function (err) {
         if (err) {
           next(err);
         } else {
-          console.log('Sent:', fileName);
+          console.log('send:', err);
         }
       });
 })
