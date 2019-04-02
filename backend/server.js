@@ -52,10 +52,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
-app.use(cors({
-    credentials: true,
-    origin: [process.env.REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
-}));
+// app.use(cors({
+//     credentials: true,
+//     origin: [process.env.REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
+// }));
 app.use(express.static(path.join(__dirname, 'public/build')))
 
 // app.use("/", (req, res, next ) => {
