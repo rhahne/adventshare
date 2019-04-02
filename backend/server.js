@@ -81,11 +81,7 @@ app.use("/api/housings", housingsRouter);
 app.use("/api/activities", activitiesRouter);
 app.use("/api/bookings", bookingsRouter);
 
-
-
-
 app.get("/*", (req, res, next) => {
-    debugger
     var options = {
         root: __dirname + '/public/build',
         dotfiles: 'deny',
@@ -94,11 +90,9 @@ app.get("/*", (req, res, next) => {
             'x-sent': true
         }
       };
-    
-      var fileName = req.params.name;
+   
       res.sendFile("index.html", options, function (err) {
         if (err) {
-            debugger
           next(err);
         } else {
           console.log('Sent:', fileName);
