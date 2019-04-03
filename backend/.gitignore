@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules
+public/build
 
 # Environment Variables should NEVER be published
 .env

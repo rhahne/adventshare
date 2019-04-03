@@ -1,4 +1,10 @@
-# [START runtime]
 runtime: nodejs
 env: flex
-# [END runtime]
+handlers:
+- url: /api/.*
+  script: auto
+- url: /
+  static_files: public/build/index.html
+  upload: public/build/index.html
+- url: /
+  static_dir: public/build
