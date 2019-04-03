@@ -14,7 +14,7 @@ require("dotenv").config();
 
 // Connect to mongo
 mongoose
-    .connect(process.env.DB_HOST, {
+    .connect(process.env.MONGODB_URI, {
         useNewUrlParser: true
     })
     .then(x => {
