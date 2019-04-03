@@ -2,7 +2,7 @@
 
 > Book the best appartments while traveling solo, meet other outdoor enthusiasts and share unique appartments in the best locations
 
-[![](https://robinhahne.ch/img/adventshare.png)]()
+[![adventshare](https://robinhahne.ch/img/adventshare.png)]()
 
 ## Description
 
