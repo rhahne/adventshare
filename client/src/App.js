@@ -18,8 +18,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faCalendarWeek, faBed, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch, faCheckCircle, faHeart, faLink, faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 library.add(faStar, faBed, faCalendarWeek, faLocationArrow, faInfo, faInfoCircle, faMountain, faEnvelope, faSearch, faCheckCircle, faHeart, faLink, faQuestionCircle, faTimesCircle)
 
-
-
 class App extends Component {
   constructor(props) {
     super(props)

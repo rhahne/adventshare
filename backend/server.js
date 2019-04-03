@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const Data = require("./data");
 const cors = require('cors')
 var app = express();
 const session = require("express-session");
@@ -52,16 +51,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
-// app.use(cors({
-//     credentials: true,
-//     origin: [process.env.REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
-// }));
+app.use(cors({
+    credentials: true,
+    origin: [process.env.REACT_APP_BASE_URL] // <== this will be the URL of our React app (it will be running on port 3000)
+}));
 app.use(express.static(path.join(__dirname, 'public/build')))
-
-// app.use("/", (req, res, next ) => {
-// next()
-
-// })
 
 // creating routes
 var usersRouter = require('./routes/users');
@@ -86,8 +80,9 @@ app.get("/*", (req, res, next) => {
             'x-timestamp': Date.now(),
             'x-sent': true
         }
-      }
-
+      };
+    
+    //   var fileName = req.params.name;
       res.sendFile("index.html", options, function (err) {
         if (err) {
           next(err);
