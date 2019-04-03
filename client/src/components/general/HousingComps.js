@@ -8,7 +8,7 @@ const ListHousing = function (props) {
         <Section>
         <h1 className="title is-3">{props.title} {props.activityTitle ? <span className="is-lowercase">{props.activityTitle} {" trip"}</span> : ""}</h1>
         <div className="columns is-multiline">
-            {props.housing.map((housing) => {
+            {props.housing ? props.housing.map((housing) => {
                 return <div 
                             className="column is-3" 
                             key={housing._id}>
@@ -35,7 +35,7 @@ const ListHousing = function (props) {
                             </p>
                         </Link>
                     </div>
-                })}
+                }): "" }
         </div>
         </Section>
     </Container>
